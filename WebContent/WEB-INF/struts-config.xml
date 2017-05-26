@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<!DOCTYPE struts-config PUBLIC
+		"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+		"http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<!--
+     This is a blank Struts configuration file with an example
+     welcactionstion/page and other commented sample elements.
+
+     Struts Validator is configured using the factory defaults
+     and is ready-to-use.
+
+     NOTE: If you have a generator tool to create the corresponding Java classes
+     for you, you could include the details in the "form-bean" declarations.
+     Otherwise, you would only define the "form-bean" element itself, with the
+     corresponding "name" and "type" attributes, as shown here.
+-->
+
+<struts-config>
+
+	<!-- ================================================ Form Bean Definitions -->
+
+	<form-beans>
+		<!-- 유효성검사를 위한 ActionForm등록 -->
+		<!--
+			namactionstion 에서 연결할 이름
+			type : 연결되어야할 클래스
+		-->
+
+		<!-- sample form bean descriptor for an ActionForm
+			<form-bean
+				name="inputForm"
+				type="app.InputForm"/>
+		end sample -->
+
+		<!-- sample form bean descriptor for a DynaActionForm
+			<form-bean
+				name="logonForm"
+				type="org.apache.stractionstion.DynaActionForm">
+				<form-property
+					name="username"
+					type="java.lang.String"/>
+				<form-property
+					name="password"
+					type="java.lang.String"/>
+		   </form-bean>
+		end sample -->
+	</form-beans>
+
+	<!-- ========================================= Global Exception Definitions -->
+
+	<global-exceptions>
+		<!-- sample exception handler
+		<exception
+			key="expired.password"
+			type="app.ExpiredPasswordException"
+			path="/changePassword.jsp"/>
+		end sample -->
+	</global-exceptions>
+
+	<!-- =========================================== Global Forward Definitions -->
+
+	<global-forwards>
+		<!-- Default forward to "Welcoactionstion -->
+		<!-- Demonstra      tes using index.jsp to forward -->
+	</global-forwards>
+
+	<!-- =========================================== Action Mapping Definitions -->
+
+	<action-mappings>
+		<!-- Tiles 타일즈 액션 등록 시작!! -->
+		<!-- TODO Tiles 액션등록 !! CLIENT -->
+		<!-- 클라이언트~~최초 인덱스 진입 -->
+		<action path="/client"
+		        forward=".client_idx"/>
+
+		<!-- 클라이언트~~회원가입 -->
+		<action path="/join"
+		        forward=".menu_join"/>
+
+		<!-- 클라이언트~~로그인 -->
+		<action path="/login"
+		        forward=".menu_login"/>
+
+		<!-- 클라이언트~~회원정보 -->
+		<action path="/mem"
+		        forward=".menu_memberinfo"/>
+
+		<!-- 클라이언트~~성형정보 -->
+		<action path="/plaSur"
+		        forward=".menu_plasticSurgery"/>
+
+		<!-- 클라이언트~~온라인상담 -->
+		<action path="/coun"
+		        forward=".menu_counsel"/>
+
+		<!-- 클라이언트~~예약신청 -->
+		<action path="/reser"
+		        forward=".menu_reservation"/>
+
+		<!-- 클라이언트~~견적 -->
+		<action path="/esti"
+		        forward=".menu_estimate"/>
+
+		<!-- 클라이언트~~병원소개 -->
+		<action path="/intro"
+		        forward=".menu_hospinfo"/>
+
+		<!-- 클라이언트~~위치약도 -->
+		<action path="/map"
+		        forward=".menu_map"/>
+
+		<!-- TODO Tiles 액션등록 !! ADMIN -->
+		<!-- 어드민~~최초 인덱스 진입 -->
+		<action path="/admin"
+		        forward=".admin_idx"/>
+
+		<!-- 어드민~~로그인 -->
+		<action path="/ad_login"
+		        forward=".ad_menu_login"/>
+
+		<!-- 어드민~~회원정보 -->
+		<action path="/ad_mem"
+		        forward=".ad_menu_member"/>
+
+		<!-- 어드민~~온라인상담 -->
+		<action path="/ad_coun"
+		        forward=".ad_menu_counsel"/>
+
+		<!-- 어드민~~예약신청 -->
+		<action path="/ad_reser"
+		        forward=".ad_menu_reservation"/>
+
+		<!-- 어드민~~견적 -->
+		<action path="/ad_esti"
+		        forward=".ad_menu_estimate"/>
+
+		<!-- 어드민~~사원정보 -->
+		<action path="/ad_emp"
+		        forward=".ad_menu_employee"/>
+
+		<!-- 어드민~~성형타입:기준 -->
+		<action path="/ad_plasTy"
+		        forward=".ad_menu_plasType"/>
+
+		<!-- 어드민~~성형시술:기준 -->
+		<action path="/ad_plasIt"
+		        forward=".ad_menu_plasItem"/>
+
+		<!-- 어드민~~관리등급:기준 -->
+		<action path="/ad_grade"
+		        forward=".ad_menu_grade"/>
+
+
+
+		<!-- Tiles 타일즈 액션 등록 종료!! -->
+		<!-- Default "Welcoactionstion -->
+
+		<!-- 단순 JSP 포워딩
+			 forward속성: 실제 JSP 경로
+			 path속성: JSP페이지와 매핑될 가상의 URL경로
+					  ===> 스트럿츠에서 접미에 자동으로 .do 붙음!!
+		 -->
+
+		<!-- Action클래스(모델객체생성,호출)를 실행후 JSP 포워딩 -->
+
+		<!-- sample input and input submit actions
+
+actionstion
+				path="/Input"
+				type="org.apache.struts.actions.ForwardAction"
+				parameter="/pages/Input.jsp"/>
+
+actionstion
+				path="/InputSubmit"
+				type="app.InputAction"
+				name="inputForm"
+				scope="request"
+				validate="true"
+				input="/pages/Input.jsp"/>
+
+	actionstion
+					path="/edit*"
+					type="app.Edit{1}Action"
+					name="inputForm"
+					scope="request"
+					validate="true"
+					input="/pages/Edit{1}.jsp"/>
+
+		end samples -->
+	</action-mappings>
+
+	<!-- 컨트롤러 등록 시작!! -->
+	<controller processorClass="kr.hospi.processors.ChefRequestProcessor"></controller>
+	<!-- 컨트롤러 등록 종료!! -->
+
+	<!-- ======================================== Message Resources Definitions -->
+
+	<message-resources parameter="resources.application"/>
+
+
+	<!-- =============================================== Plug Ins Configuration -->
+
+	<!-- ======================================================= Tiles plugin -->
+	<!--
+	   This plugin initialize Tiles definition factory. This later can takes some
+	   parameters explained here after. The plugin first read parameters from
+	   web.xml, thenoverload them with parameters defined here. All parameters
+	   are optional.
+	   The plugin should be declared in each struts-config file.
+		 - definitions-config: (optional)
+			  Specify configuration file names. There can be several comma
+			  separated file names (default: ?? )
+		 - moduleAware: (optional - struts1.1)
+			  Specify if the Tiles definition factory is module aware. If true
+			  (default), there will be one factory for each Struts module.
+			  If false, there will be one common factory for all module. In this
+			  later case, it is still needed to declare one plugin per module.
+			  The factory will be initialized with parameters found in the first
+			  initialized plugin (generally the one associated with the default
+			  module).
+				true : One factory per module. (default)
+				false : one single shared factory for all modules
+		 - definitions-parser-validate: (optional)
+			  Specify if xml parser should validate the Tiles configuration file.
+				true : validate. DTD should be specified in file header (default)
+				false : no validation
+
+		Paths found in Tiles definitions are relative to clientmain context.
+
+		To use this plugin, download and add the Tiles jar to your WEB-INF/lib
+		directory then uncomment the plugin definition below.
+
+	  <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+
+		<set-property property="definitions-config"
+						 value="/WEB-INF/tiles-defs.xml" />
+		<set-property property="moduleAware" value="true" />
+	  </plug-in>
+	-->
+
+	<!-- =================================================== Validator plugin -->
+	<!-- Tiles Framework 플러그인 추가 시작!! -->
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/config/tiles-defs.xml"/>
+		<set-property property="definitions-debug" value="2"/>
+		<set-property property="definitions-parser-details" value="2"/>
+		<set-property property="definitions-parser-validate" value="true"/>
+	</plug-in>
+	<!-- Tiles Framework 플러그인 추가 끝!! -->
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property
+				property="pathnames"
+				value="/org/apache/struts/validator/validator-rules.xml,
+               /WEB-INF/validation.xml"/>
+	</plug-in>
+
+</struts-config>
+

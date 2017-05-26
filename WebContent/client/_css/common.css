@@ -1,0 +1,135 @@
+/*@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+/* 전체 태그 공통 속성 시작 */
+body, td, th, div, span, input, select, textarea {
+	/*font-family: 'Nanum Gothic Coding';*/
+	font-family: 'Nanum Gothic';
+	font-size : 1.5vw;
+	color: #7c7b7b;
+	margin: 0;
+	line-height: 1.7vw;
+}
+
+img, th, td {
+	border: 0;
+}
+
+li, ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+textarea {
+	border: 1px solid #d1d1d1;
+}
+/* 전체 태그 공통 속성 종료 */
+
+/* a링크 시작 */
+a:link {
+	color: #7c7b7b;
+	text-decoration: none;
+	line-height: 1.7vw;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #7c7b7b;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #d55f95;
+}
+
+a:active {
+	text-decoration: none;
+	color: #aac0ff;
+}
+/* a링크 종료 */
+
+/* 메인 화면 시작 */
+#cl_view_table {
+	width: 96vw;
+	border: solid;
+}
+
+#cl_view_main {
+	float: left;
+	width: 80vw;
+	/*background-color: #ff80f1;*/
+	border: solid;
+	min-height: 29vw;
+}
+/* 메인 화면 종료 */
+
+/* 좌측 메뉴 시작 */
+#cl_view_left {
+	vertical-align: top;
+	height: 13vw;
+	padding-left:2vw;
+}
+
+#left_menu {
+	float: left;
+	width: 10vw;
+	border-right: 0.1px solid #e0e0e0;
+	/*background-color: #aac0ff;*/
+}
+
+.left_ul {
+	margin-left: 2vw;
+}
+
+.font_style {
+	font-size: 1vw;
+	color: #797979;
+}
+/* 좌측 메뉴 종료 */
+
+/* 헤더 시작 */
+#cl_view_header {
+	height: 6vw;
+}
+
+#logo {
+	width: 16vw;
+}
+
+#header_login {
+	width: 78vw;
+	text-align: right;
+	font-size: 1.2vw;
+	line-height: 18px;
+}
+
+#header_navi {
+	text-align: left;
+	font-size: 1.7vw;
+	padding-left:20px;
+}
+/* 헤더 종료 */
+
+/* 푸터 시작 */
+#cl_view_footer {
+	height: 10vw;
+}
+
+#footer_info table {
+	/*align-content: center;*/
+
+	float: left;
+}
+
+#footer_link {
+	margin-bottom: 10px;
+	font-size: 1.2vw;
+}
+
+#footer_info {
+	font-size: 1vw;
+	line-height: 2vw;
+	width: 93vw;
+}
+/* 푸터 종료 */

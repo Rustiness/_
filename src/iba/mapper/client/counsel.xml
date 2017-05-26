@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap >
+	<!-- counsel.xml -->
+	<select id="selEname" resultClass="String">
+		SELECT ename FROM Emp
+		WHERE empno=7788
+	</select>
+
+	<select id="selectAll" resultClass="com.kosta.s0519.dto.Emp2">
+		SELECT empno,ename,hiredate FROM emp
+	</select>
+</sqlMap>

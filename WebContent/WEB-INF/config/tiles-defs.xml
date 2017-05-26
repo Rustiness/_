@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+		"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+		"http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+	<!-- 클라이언트~~ 최초 인덱스 진입 -->
+	<definition name=".client_idx" path="/client/index.jsp"><!-- 타일의 네임을 struts-config에 액션등록해야 함-->
+		<!-- put태그의 value에는 definition의 path에 포함될 페이지들을 정의 -->
+		<put name="menu_header" value="/client/menu/menu_header.jsp"></put>
+		<put name="menu_footer" value="/client/menu/menu_footer.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put>
+		<put name="main_body" value="/client/main_body.jsp"></put>
+	</definition>
+
+	<!-- 클라이언트~~회원가입 -->
+	<definition name=".menu_join" extends=".client_idx"> <!-- extends로 상속을 하여 화면 표시 가능 -->
+		<put name="main_body" value="/client/member/join_confirm.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+
+	<!-- 클라이언트~~로그인 -->
+	<definition name=".menu_login" extends=".client_idx">
+		<put name="main_body" value="/client/member/login_confirm.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+
+	<!-- 클라이언트~~회원정보 -->
+	<definition name=".menu_memberinfo" extends=".client_idx">
+		<put name="main_body" value="/client/member/mem_confirm.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+
+	<!-- 클라이언트~~성형정보 -->
+	<definition name=".menu_plasticSurgery" extends=".client_idx">
+		<put name="main_body" value="/client/plasticSurgery/plaSur_eye.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+
+	<!-- 클라이언트~~온라인상담 -->
+	<definition name=".menu_counsel" extends=".client_idx">
+		<put name="main_body" value="/client/counsel/coun_list.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+
+	<!-- 클라이언트~~예약신청 -->
+	<definition name=".menu_reservation" extends=".client_idx">
+		<put name="main_body" value="/client/reservation/reser_confirm.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+
+	<!-- 클라이언트~~견적 -->
+	<definition name=".menu_estimate" extends=".client_idx">
+		<put name="main_body" value="/client/estimate/esti_confirm.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+
+	<!-- 클라이언트~~병원소개 -->
+	<definition name=".menu_hospinfo" extends=".client_idx">
+		<put name="main_body" value="/client/etc/intro_info.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+
+	<!-- 클라이언트~~위치약도 -->
+	<definition name=".menu_map" extends=".client_idx">
+		<put name="main_body" value="/client/etc/info_map.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+
+	<!-- 어드민~~ 최초 인덱스 진입 -->
+	<definition name=".admin_idx" path="/admin/index.jsp"><!-- 타일의 네임을 struts-config에 액션등록해야 함-->
+		<!-- put태그의 value에는 definition의 path에 포함될 페이지들을 정의 -->
+		<put name="a_menu_left" value="/admin/menu/ad_menu_left.jsp"></put>
+		<put name="a_main_body" value="/admin/main_body.jsp"></put>
+	</definition>
+
+	<!-- 어드민~~로그인 -->
+	<definition name=".ad_menu_login" extends=".admin_idx">
+		<put name="a_main_body" value="/admin/employee/ad_login_confirm.jsp"></put>
+	</definition>
+
+	<!-- 어드민~~회원정보 -->
+	<definition name=".ad_menu_member" extends=".admin_idx"><!-- 목록 -->
+		<put name="a_main_body" value="/admin/member/ad_mem_list.jsp"></put>
+	</definition>
+
+	<!-- 어드민~~온라인상담 -->
+	<definition name=".ad_menu_counsel" extends=".admin_idx"><!-- 목록 -->
+		<put name="a_main_body" value="/admin/counsel/ad_coun_list.jsp"></put>
+	</definition>
+
+	<!-- 어드민~~예약 -->
+	<definition name=".ad_menu_reservation" extends=".admin_idx"><!-- 목록 -->
+		<put name="a_main_body" value="/admin/reservation/ad_reser_list.jsp"></put>
+	</definition>
+
+	<!-- 어드민~~견적 -->
+	<definition name=".ad_menu_estimate" extends=".admin_idx"><!-- 목록 -->
+		<put name="a_main_body" value="/admin/estimate/ad_esti_list.jsp"></put>
+	</definition>
+
+	<!-- 어드민~~사원정보 -->
+	<definition name=".ad_menu_employee" extends=".admin_idx"><!-- 목록 -->
+		<put name="a_main_body" value="/admin/employee/ad_emp_list.jsp"></put>
+	</definition>
+
+	<!-- 어드민~~성형타입:기준 -->
+	<definition name=".ad_menu_plasType" extends=".admin_idx"><!-- 목록 -->
+		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasTy_list.jsp"></put>
+	</definition>
+
+	<!-- 어드민~~성형시술:기준 -->
+	<definition name=".ad_menu_plasItem" extends=".admin_idx"><!-- 목록 -->
+		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasIt_list.jsp"></put>
+	</definition>
+
+	<!-- 어드민~~관리자등급:기준 -->
+	<definition name=".ad_menu_grade" extends=".admin_idx"><!-- 목록 -->
+		<put name="a_main_body" value="/admin/employee/ad_grade_list.jsp"></put>
+	</definition>
+
+
+</tiles-definitions>
