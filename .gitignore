@@ -1,7 +1,10 @@
 /build/
 /.settings/
 /.idea/
-.settings
-.idea
+/bin/
+/.classpath
 .classpath
+/.project
 .project
+
+
