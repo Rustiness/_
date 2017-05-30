@@ -16,7 +16,7 @@
 		<h3><html:link action="/reser">진료예약</html:link></h3>
 		<ul class="left_ul">
 			<li><html:link action="/reser">예약신청</html:link></li>
-			<li><html:link action="/reser">예약확인</html:link></li>
+			<li><html:link action="/reser_info.do?reser=mInfo">예약목록</html:link></li>
 		</ul>
 
 		<h3><html:link action="/coun">온라인상담</html:link></h3></p>

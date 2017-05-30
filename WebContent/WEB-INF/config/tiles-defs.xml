@@ -49,6 +49,18 @@
 		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
 	</definition>
 
+	<!-- 클라이언트~~예약확인 -->
+	<definition name=".menu_reservation_info" extends=".client_idx">
+		<put name="main_body" value="/client/reservation/reser_info.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+
+	<!-- 클라이언트~~예약수정 -->
+	<definition name=".menu_reservation_modify" extends=".client_idx">
+		<put name="main_body" value="/client/reservation/reser_modify.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+
 	<!-- 클라이언트~~견적 -->
 	<definition name=".menu_estimate" extends=".client_idx">
 		<put name="main_body" value="/client/estimate/esti_confirm.jsp"></put>

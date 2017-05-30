@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<!-- reservation.xml -->
+<sqlMap namespace="reser">
+	<typeAlias alias="reservation" type="kr.hospi.beans.Reservation"/>
+	<typeAlias alias="reservation2" type="kr.hospi.beans.Reservation2"/>
+	
+	<!-- 고객용: 예약정보 입력 -->
+	<insert id="insert" parameterClass="reservation">
+		insert into reservation
+		values (reservation_rNOseq.nextval, #mNO#, #pTypeNO#, #rDate#, #rFTime#, #rLTime#, #rContent#, #rState#)
+	</insert>
+	
+	<!-- 고객용: 예약정보 출력 (mNO) -->
+	<select id="selectmNO" resultClass="reservation2" parameterClass="String">
+		select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState
+		from member natural join reservation natural join plasticType
+		where mNO=#mNO#
+		order by rNO desc
+	</select>
+	
+	<!-- 고객&관리자용: 예약정보 출력 (rNO) -->
+	<select id="selectrNO" resultClass="reservation2" parameterClass="String">
+		select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState
+		from member natural join reservation natural join plasticType
+		where rNO=#mNO#
+	</select>
+	
+	<!-- 고객용: 예약정보 수정 -->
+	<update id="update" parameterClass="reservation">
+    	update reservation set pTypeNO=#pTypeNO#, rDate=#rDate#, rFTime=#rFTime#, rLTime=#rLTime#, rContent=#rContent#, rState=#rState# 
+    	where rNO=#rNO#
+    </update>
+</sqlMap>

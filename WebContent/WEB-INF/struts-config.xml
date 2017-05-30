@@ -8,6 +8,11 @@
 <struts-config>
 
 	<form-beans>
+		<!-- reservation form등록 시작!! -->
+		<!-- 고객용: 예약(insert) ActionForm 등록 -->
+    	<form-bean name="reserInsertForm" 
+    			   type="kr.hospi.forms.ReserForm"></form-bean> 
+		<!-- reservation form등록 종료!! -->
 	</form-beans>
 
 	<!-- ========================================= Global Exception Definitions -->
@@ -52,6 +57,18 @@
 		<!-- 클라이언트~~예약신청 -->
 		<action path="/reser"
 		        forward=".menu_reservation"/>
+
+		<!-- 클라이언트~~예약목록 -->
+		<action path="/reser_info"
+				type="kr.hospi.actions.ReserSelectAction">
+			<forward name="reser_info" path=".menu_reservation_info"></forward>
+		</action>
+
+		<!-- 클라이언트~~예약수정 -->
+		<action path="/reser_modify"
+				type="kr.hospi.actions.ReserSelectAction">
+			<forward name="reser_modify" path=".menu_reservation_modify"></forward>
+		</action>
 
 		<!-- 클라이언트~~견적 -->
 		<action path="/esti"
@@ -107,8 +124,29 @@
 		<!-- 어드민~~관리등급:기준 -->
 		<action path="/ad_grade"
 		        forward=".ad_menu_grade"/>
-
 		<!-- Tiles 타일즈 액션 등록 종료!! -->
+		
+		
+		<!-- reservation액션등록 시작!! -->
+		<!-- 고객용: 예약 Action(insert) 등록 -->
+    	<action path="/reserIAction" 
+      			type="kr.hospi.actions.ReserInsertAction"
+      			name="reserInsertForm"
+      			scope="request"
+      			validate="true"
+      			input="/reser.do">
+    	  	<forward name="success" path="/reser_info.do?reser=mInfo"></forward>
+    	  	<forward name="fail" path="/reser.do"></forward>
+      	</action>
+
+		<!-- 고객용: 예약 Action(update) 등록 -->
+    	<action path="/reserUAction" 
+      			type="kr.hospi.actions.ReserUpdateAction">
+    	  	<forward name="success" path="/reser_info.do?reser=mInfo"></forward>
+    	  	<forward name="fail" path="/reser_modify.do"></forward>
+      	</action>
+		<!-- reservation액션등록 종료!! -->
+
 	</action-mappings>
 
 	<!-- 컨트롤러 등록 시작!! -->
