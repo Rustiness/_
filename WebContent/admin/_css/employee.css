@@ -1,0 +1,61 @@
+/**
+ * Created
+ * User: KJK
+ * Date: 2017-05-30
+ * Time: 오전 11:18
+ */
+/*tbody tr:nth-child(2n) {*/
+tbody tr:nth-child(even) {
+	background-color: #f4f7ff;
+}
+
+#tableHead th {
+	background-color: #d55f95;
+	color: white;
+}
+
+#tableHead th:nth-child(1) {
+	width: 7vw;
+}
+
+#tableHead th:nth-child(2) {
+	width: 8vw;
+}
+
+#tableHead th:nth-child(3) {
+	width: 5vw;
+}
+
+#tableHead th:nth-child(4) {
+	width: 8vw;
+}
+
+#tableHead th:nth-child(5) {
+	width: 4vw;
+}
+
+#tableHead th:nth-child(6) {
+	width: 11vw;
+}
+
+#tableHead th:nth-child(7) {
+	width: 10vw;
+}
+
+#tableHead th:nth-child(8) {
+	width: 4vw;
+}
+
+#tableHead th:nth-child(9) {
+	width: 9vw;
+}
+
+#tableHead th:nth-child(10) {
+	width: 4vw;
+}
+
+#tableData td {
+	font-size: 1vw;
+	color: #797979;
+}
+

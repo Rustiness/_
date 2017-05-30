@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Created
+   User: KJK
+   Date: 2017-05-30
+   Time: 오후 12:45
+-->
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="emp">
+	<!-- employee.xml -->
+	<select id="selectAll" resultClass="kr.hospi.beans.Employee">
+		SELECT eNo, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state FROM employee
+	</select>
+</sqlMap>

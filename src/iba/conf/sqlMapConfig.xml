@@ -22,16 +22,16 @@
 		</dataSource>
 	</transactionManager>
 	<!-- sql문들이 저장되어 있는 XML을 등록 -->
-	<sqlMap resource="./iba/mapper/client/counsel.xml"/><!--
-	<sqlMap resource="./iba/mapper/client/estimate.xml"/>
-	<sqlMap resource="./iba/mapper/client/etc.xml"/>
-	<sqlMap resource="./iba/mapper/client/member.xml"/>
-	<sqlMap resource="./iba/mapper/client/plasticSurgery.xml"/>
-	<sqlMap resource="./iba/mapper/client/reservation.xml"/>
+	<!--<sqlMap resource="./iba/mapper/client/counsel.xml"/>-->
+	<!--<sqlMap resource="./iba/mapper/client/estimate.xml"/>-->
+	<!--<sqlMap resource="./iba/mapper/client/etc.xml"/>-->
+	<!--<sqlMap resource="./iba/mapper/client/member.xml"/>-->
+	<!--<sqlMap resource="./iba/mapper/client/plasticSurgery.xml"/>-->
+	<!--<sqlMap resource="./iba/mapper/client/reservation.xml"/>-->
 
-	<sqlMap resource="./iba/mapper/admin/counsel.xml"/>
-	<sqlMap resource="./iba/mapper/admin/employee.xml"/>
-	<sqlMap resource="./iba/mapper/admin/estimate.xml"/>
-	<sqlMap resource="./iba/mapper/admin/member.xml"/>
-	<sqlMap resource="./iba/mapper/admin/reservation.xml"/>-->
+	<!--<sqlMap resource="./iba/mapper/admin/counsel.xml"/>-->
+	<sqlMap resource="./iba/mapper/admin/employee.xml"/><!-- 관리자 직원정보 : KJK -->
+	<!--<sqlMap resource="./iba/mapper/admin/estimate.xml"/>-->
+	<!--<sqlMap resource="./iba/mapper/admin/member.xml"/>-->
+	<!--<sqlMap resource="./iba/mapper/admin/reservation.xml"/>-->
 </sqlMapConfig>
