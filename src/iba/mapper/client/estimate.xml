@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="estimate">
+	<!-- estimatebeans.xml -->
+	<!-- 성형타입 입력 
+	<insert id="insert" parameterClass="kr.hospi.beans.Estimate">
+		insert into plasticType (pTypeNO, pTypeName)
+		values (#pTypeNO#, #pTypeName#)
+	</insert>-->
+	
+	
+	<!-- 눈 성형시술 정보 입력 #PTypeNO#_seq.nextval--> 
+	<insert id="insert" parameterClass="kr.hospi.beans.Estimate">
+		insert into plasticItem (num, pTypeNO ,pItemNO, pItemName, pItemValue)
+		values (#num#, #pTypeNO# ,#pItemNO# ,#pItemName#, #pItemValue#)
+	</insert>
+	
+
+	<!--  성형 견적 전체 내용(num,성형타입번호, 성형타입명, 성형시술번호, 성형시술명, 성형시술가격) for 관리자 Page-->
+	<select id="selectAll"  resultClass="kr.hospi.beans.Estimate">
+	select  i.num, i.pTypeNO, t.pTypeName, i.pItemNO, i.pItemName, i.pItemValue, i.state 
+	from plasticItem i left outer join plasticType t on i.pTypeNO =t.pTypeNO
+	</select>
+	
+	<!--  성형과목별견적 전체 내용(num,성형타입번호, 성형타입명, 성형시술번호, 성형시술명, 성형시술가격) for 관리자 Page-->
+	<select id="selectType"  resultClass="kr.hospi.beans.Estimate" parameterClass="String">
+	select num, pTypeNO, pItemNO, pItemName, pItemValue, state from plasticItem where pTypeNO= #pTypeNO#
+	</select>
+	
+	<!--admin-update (comboBox) plasticType 1.EY 2. NO 3. FA 4. BO 5. BR 
+	성형 진료과목 1.눈성형 2. 코성형 3. 안면윤곽성형 4. 체형성형 5. 가슴성형-->
+	<select id="selectpTypeName"  resultClass="String">
+     select pTypeName from plasticType
+  </select> 
+  
+ 	 <!--admin-update (comboBox Name) plasticType eg)-->
+   <select id="selectpItemName"  resultClass="String" parameterClass="String" >
+     select distinct pItemName from plasticItem where pTypeNO = (select pTypeNO from plasticType where pTypeName = #pTypeName#)
+  </select> 
+  
+  	<!-- admin-update (AFTER SELECTING COMBOBOX, pItemName , pItemValue, status) -->
+ 	<select id="selectInfo"  resultClass="kr.hospi.beans.Estimate" parameterClass="String">
+	select num, pTypeNO, pItemNO, pItemName, pItemValue, state from plasticItem 
+	where pItemNO = (select pItemNO from plasticItem where pItemName = #pItemName#)
+	</select>
+	<!-- 성형항목 수정 
+	<update id="update" parameterClass="kr.hospi.beans.Estimate">
+		update plasticItem set pItemName=#pItemName#, pItemValue=#pItemValue#
+		 where pItemNO= #pItemNO#
+	</update>
+	 -->
+	
+	
+		<!-- print-out page1 -->
+		<!-- page를 나누어서 볼때 활용할 뷰 
+	<select id="selectPage" resultClass="kr.hospi.beans.Estimate" parameterClass="java.util.Map"><![CDATA[
+		select num, pTypeNO, pItemNO, pItemName, pItemValue, state 
+		from (select pTypeNO, pTypeName, pItemNO, pItemName, pItemValue ,rownum rn
+		from (select pTypeNO, pTypeName, pItemNO, pItemName, pItemValue
+		from plasticItem natural join plasticType order by pItemNO desc)
+		)
+		where rn between #start# and #end#
+		]]></select>-->
+	<!-- 등록된 성형시술의 개수  -->
+	<select id="selectCount" resultClass="int">
+		select count(*) from plasticItem
+	</select>
+	
+	
+</sqlMap>

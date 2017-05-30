@@ -70,9 +70,16 @@
 			<forward name="reser_modify" path=".menu_reservation_modify"></forward>
 		</action>
 
-		<!-- 클라이언트~~견적 -->
+		<!-- 클라이언트~~견적 시작Complete-->
 		<action path="/esti"
-		        forward=".menu_estimate"/>
+		        type="kr.hospi.actions.EstiUserAction">
+			<forward name="success" path=".menu_estimate"></forward>	
+		</action>
+
+		<!-- 클라이언트~~견적결과보기 on processing-->
+		<action path="/esti_res" forward="/client/estimate/esti_result.jsp">
+			<!--  <forward name="success" path=".menu_estimate"></forward>	-->
+		</action>
 
 		<!-- 클라이언트~~병원소개 -->
 		<action path="/intro"
@@ -102,10 +109,16 @@
 		<!-- 어드민~~예약신청 -->
 		<action path="/ad_reser"
 		        forward=".ad_menu_reservation"/>
-
+			
+		<!-- 어드민~~견적 -->    
+		<action path="/ad_esti" 
+			forward="/admin/estimate/ad_esti_list.jsp"/>
+			
 		<!-- 어드민~~견적 -->
-		<action path="/ad_esti"
-		        forward=".ad_menu_estimate"/>
+		<action path="/ad_input" type="kr.hospi.actions.EstiAction"
+		name ="EstiActionForm" scope="request" validate="true"  input="/admin/estimate/ad_esti_input.jsp">
+		<forward name="success" path=".ad_menu_estimate" redirect="true"></forward>
+		      </action>
 
 		<!-- 어드민~~사원정보 -->
 		<action path="/ad_emp"
