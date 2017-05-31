@@ -34,17 +34,23 @@ public class EmpAction extends Action {
 		System.out.println("발생한 action : " + action);
 		EmployeeDAO dao = new EmployeeDAO();
 		ActionForward forward = null; //이동할 페이지 저장
+		List<Employee> list = null;
 
 		switch (action) {
 			case "list"://직원목록  if(action==null || action.equals("list"))
-				List<Employee> list = dao.selectAll();
+				list = dao.selectAll();
 				//(뷰와) 데이터 공유 - request(forward 이동 시), session(forward 이동, redirect 이동 시)
 				request.setAttribute("emplist", list);
-
-				forward = mapping.findForward("success");
+				forward = mapping.findForward("selAll");
 				break;
 			case "info":// 직원 정보
-
+				String eNO = (String) request.getParameter("eNO");
+			System.out.println(eNO);
+				list = dao.selEmpInfo(eNO);
+				request.setAttribute("emplist", list);
+				forward = mapping.findForward("selInfo");
+				System.out.println("매핑진행!");
+				break;
 			case "upform": //수정폼요청
 				break;
 			case "update": //수정요청

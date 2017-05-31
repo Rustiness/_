@@ -6,13 +6,13 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<link href='admin/_css/employee.css' rel='stylesheet'/>
-<%--<script type="text/javascript" src="../_js/employee.js"/>--%>
+<link href="admin/_css/employee.css" rel="stylesheet" type="text/css"/>
+<script src="admin/_js/employee.js" rel="script" type="text/javascript"></script>
 <%-- ad_emp_list.jsp --%>
-&nbsp;<h3>::사원정보 목록::</h3>
+<h3>::사원정보 목록::</h3>
 <hr style="color: deeppink">
 <center>
-	<table border="1" cellpadding="5" id="empTable">
+	<table border="1" cellpadding="5" id="empList">
 		<tr id="tableHead">
 			<th>식별번호</th>
 			<th>아이디</th>

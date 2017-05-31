@@ -5,7 +5,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>JAVACHEF성형외과 :: ADMIN</title>
-	<link href='admin/_css/common.css' rel='stylesheet'/>
+	<link href="admin/_css/common.css" rel="stylesheet" type="text/css"/>
+	<script src="admin/_js/jquery-3.2.1.min.js" rel="script" type="text/javascript"></script>
+	<script src="admin/_js/ajax2.js" rel="script" type="text/javascript"></script>
 </head>
 <%-- admin/index.jsp --%>
 <body>

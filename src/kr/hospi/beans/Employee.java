@@ -6,7 +6,7 @@ import java.sql.Date;
  * Created
  * User: KJK
  * Date: 2017-05-29
- * Time: ¿ÀÀü 11:49
+ * Time: ì˜¤ì „ 11:49
  */
 public class Employee {
 	private String eNO;

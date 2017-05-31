@@ -11,23 +11,32 @@ import java.util.List;
  * Created
  * User: KJK
  * Date: 2017-05-30
- * Time: ¿ÀÀü 09:20
+ * Time: ì˜¤ì „ 09:20
  */
 public class EmployeeDAO {
 	SqlMapClient sqlMap;
 
 	public EmployeeDAO() {
 		sqlMap = ChefSqlMapClient.getSqlMapInstance();
-	}//»ı¼ºÀÚ
+	}//ìƒì„±ì
 
-	public List<Employee> selectAll() {//ÀüÃ¼ Á÷¿ø ¸®½ºÆ®
+	public List<Employee> selectAll() {//ì „ì²´ ì§ì› ë¦¬ìŠ¤íŠ¸
 		List<Employee> list = null;
 		try {
-			list = sqlMap.queryForList("emp.selectAll");
+			list = (List<Employee>) sqlMap.queryForList("emp.selectAll");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
 	}//selectAll
 
+	public List<Employee> selEmpInfo(String eNO) {//ì „ì²´ ì§ì› ë¦¬ìŠ¤íŠ¸
+		List<Employee> list = null;
+		try {
+			list = (List<Employee>) sqlMap.queryForList("emp.selEmpInfo",eNO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//selectAll
 }

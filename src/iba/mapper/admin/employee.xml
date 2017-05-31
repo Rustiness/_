@@ -8,7 +8,18 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <sqlMap namespace="emp">
 	<!-- employee.xml -->
-	<select id="selectAll" resultClass="kr.hospi.beans.Employee">
-		SELECT eNo, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state FROM employee
+	<typeAlias alias="EmpBeans" type="kr.hospi.beans.Employee"/>
+
+	<select id="selectAll" resultClass="EmpBeans">
+		SELECT eNO, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state
+		FROM employee
+		ORDER BY eNO
 	</select>
+
+	<select id="selEmpInfo" parameterClass="String" resultClass="EmpBeans">
+		SELECT eNO, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state
+		FROM employee
+		WHERE eNO=#eNO#
+	</select>
+
 </sqlMap>

@@ -112,8 +112,11 @@
 	</definition>
 
 	<!-- 어드민~~사원정보 -->
-	<definition name=".ad_menu_employee" extends=".admin_idx"><!-- 목록 -->
+	<definition name=".ad_emp_list" extends=".admin_idx"><!-- 목록 -->
 		<put name="a_main_body" value="/admin/employee/ad_emp_list.jsp"></put>
+	</definition>
+	<definition name=".ad_emp_info" extends=".admin_idx"><!-- 항목 상세 -->
+		<put name="a_main_body" value="/admin/employee/ad_emp_confirm.jsp"></put>
 	</definition>
 
 	<!-- 어드민~~성형타입:기준 -->

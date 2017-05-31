@@ -122,8 +122,12 @@
 
 		<!-- 어드민~~사원정보 -->
 		<action path="/ad_emp"
-		        type="kr.hospi.actions.EmpAction">
-			<forward name="success" path=".ad_menu_employee"></forward>
+				type="kr.hospi.actions.EmpAction"
+				scope="request"
+				validate="true"
+				input=".ad_emp_list">
+			<forward name="selAll" path=".ad_emp_list"></forward>
+			<forward name="selInfo" path=".ad_emp_info"></forward>
 		</action>
 
 		<!-- 어드민~~성형타입:기준 -->
