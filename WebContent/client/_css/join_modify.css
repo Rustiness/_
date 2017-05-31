@@ -1,0 +1,326 @@
+@CHARSET "UTF-8";
+<!-- 회원가입2의 스타일(CSS): 343번째 줄부터 회원정보 입력부 -->
+body, td, th, div, span, input, select, textarea {
+   font: 12px 'NanumGothic';
+   color: #7c7b7b;
+   margin: 0px;
+   line-height: 16px;
+}
+
+img, th, td {
+   border: 0;
+}
+
+li, ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+textarea {
+   border: 1px solid #d1d1d1;
+}
+
+input, select, label {
+   vertical-align: middle;
+}
+
+a:link {
+   color: #7c7b7b;
+   text-decoration: none;
+   line-height: 16px;
+}
+
+a:visited {
+   text-decoration: none;
+   color: #7c7b7b;
+}
+
+a:hover {
+   text-decoration: underline;
+   color: #7c7b7b;
+}
+
+a:active {
+   text-decoration: none;
+   ccolor: #7c7b7b;
+}
+
+#wrap {
+   width: 100%;
+}
+
+#header {
+   height: 82px;
+   border-bottom: 1px solid #e2e2e2
+}
+
+#login {
+   height: 15px;
+   padding-top: 8px;
+   text-align: right;
+   font-size: 11px;
+}
+
+#logo {
+   width: 130px;
+   padding-right: 120px;
+   float: left;
+}
+
+#container {
+   width: 100%;
+   height: 723px;
+}
+
+#main {
+   float: left;
+   width: 530px;
+   overflow: hidden;
+}
+
+#content {
+   float: left;
+   width: 474px;
+   overflow: hidden;
+}
+
+#footer {
+   clear: both;
+   border-top: 1px solid #e2e2e2;
+   width: 100%;
+   padding-top: 20px;
+}
+
+#left_menu {
+   float: left;
+   width: 200px;
+   padding-left: 25px;
+}
+
+#s_main {
+   width: 1005px;
+   padding-bottom: 30px;
+}
+
+.contents_w {
+   width: 100%;
+   background: url(/images/kor06-14-0122/sub/sub01_bg.gif) repeat-x;
+}
+
+.sub_cont {
+   float: left;
+   padding: 0 0 60px 33px;
+   width: 746px;
+   text-align: left;
+}
+
+.sub ul li {
+   margin-bottom: 10px;
+   line-height: 0;
+}
+
+.sub h2 {
+   margin: 0 0 10px 0;
+}
+
+.sub_menu {
+   padding: 20px 0 50px 0
+}
+
+.sub_menu h2 {
+   margin: 0 0 1px 0;
+}
+
+.bold_black {
+   color: #000;
+   font-weight: bold;
+}
+
+.gray_font_11 {
+   font-size: 11px;
+   color: #797979;
+}
+
+#navi {
+   width: 730px;
+   height: 25px;
+   text-align: left;
+   position: relative;
+}
+
+#navi .navi_main a.mgno {
+   margin-right: 0;
+}
+
+#navi .navi_sub_5 .pdno {
+   padding-right: 0;
+}
+
+.navi_main { 730px;
+   height: 25px;
+   position: absolute;
+}
+
+.navi_main a {
+   margin-right: 110px;
+}
+
+.contents {
+   width: 100%;
+   margin: 0 auto;
+   margin-bottom: 50px;
+}
+
+.contents .con_title {
+   width: 100%;
+   height: 58px;
+   overflow: hidden;
+   margin-bottom: 10px;
+   vertical-align: top;
+   border-bottom: none;
+}
+
+.contents .con_title h3 {
+   float: left;
+}
+
+.contents .con_title p {
+   float: right;
+   margin-right: 0;
+}
+
+.contents a img {
+   vertical-align: middle;
+}
+
+.con_h {
+   margin-top: 40px;
+}
+
+.con_h h4 {
+   font-size: 14px;
+   color: #262323;
+   font-weight: bold;
+   margin: 12px 0;
+}
+
+.title_txt {
+   border-top: 1px solid #7f7f7f;
+   border-bottom: 1px solid #dfdfdf;
+   padding: 15px 0;
+}
+
+.title_txt img {
+   padding-right: 3px;
+   vertical-align: middle;
+}
+
+a {
+   cursor: pointer;
+}
+
+.input_text {
+   border: 1px solid #e9e9e9;
+   height: 20px;
+   width: 200px;
+   background-color: #fafafa;
+}
+
+.input_text_half {
+   border: 1px solid #dfdfdf;
+   height: 21px;
+   width: 150px;
+   background-color: #fafafa;
+}
+
+.input_text_number {
+   border: 1px solid #dfdfdf;
+   height: 21px;
+   width: 70px;
+   background-color: #fafafa;
+}
+
+.contents table {
+   border-collapse: collapse;
+}
+
+.contents th {
+   border: 1px solid #d8d8d8;
+   padding: 8px;
+   width: 150px;
+   text-align: left;
+   font: bold 12px 'NanumGothic' #929292;
+   background: #f5f5f5;
+}
+
+.contents th img {
+   vertical-align: middle;
+}
+
+.contents td.line {
+   border: 1px solid #d8d8d8;
+   padding: 8px;
+   padding-left: 15px;
+}
+
+.red {
+   color: red;
+}
+
+/* 간격 */
+.mt35 {
+   margin-top: 35px;
+}
+
+.mt40 {
+   margin-top: 40px;
+}
+/* 정렬 */
+.taC {
+   text-align: center;
+}
+
+.taR {
+   text-align: right;
+}
+
+.c_red {
+   color: #f71e1e;
+   font-weight: bold;
+}
+
+#footer_info {
+   width: 985px;
+   padding-left: 20px;
+   position: relative;
+   float: left;
+}
+
+#footer_info table {
+   
+}
+
+.bgno {
+   margin-bottom: 10px;
+}
+
+.foot_info {
+   position: absolute;
+   right: 0;
+   top: 0;
+}
+
+.foot_info select {
+   background: #a1a1a1;
+   border: 1px solid #939393;
+   width: 130px;
+   height: 23px;
+   color: #fff
+}
+
+#footer_info td {
+   font: 11px 'NanumGothic';
+   color: #5e5e5e;
+   line-height: 18px;
+}

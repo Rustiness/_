@@ -13,6 +13,10 @@
     	<form-bean name="reserInsertForm" 
     			   type="kr.hospi.forms.ReserForm"></form-bean> 
 		<!-- reservation form등록 종료!! -->
+		
+		<!-- 로그인 액션폼(로그인 유효성 검사) -->
+       	<form-bean name="loginForm"
+       			  type="kr.hospi.actionforms.LoginActionForm"/>
 	</form-beans>
 
 	<!-- ========================================= Global Exception Definitions -->
@@ -35,16 +39,43 @@
 		        forward=".client_idx"/>
 
 		<!-- 클라이언트~~회원가입 -->
-		<action path="/join"
-		        forward=".menu_join"/>
-
+		<!-- 회원가입 액션 -->
+		    <action path="/join" type="kr.hospi.actions.JoinAction" scope="request">
+		        <forward name="success" path="/client/member/join_result.jsp" redirect="true"></forward>
+		        <forward name="fail" path="/client/member/join_fail.jsp"></forward>
+		    </action>
+   
 		<!-- 클라이언트~~로그인 -->
-		<action path="/login"
-		        forward=".menu_login"/>
+		<!-- 로그인 페이지 단순 포워딩 -->
+		<action path="/login/form" forward="/client/member/login_confirm.jsp" />
+
+		<!-- 로그인 액션 -->
+		<action path="/login/login" type="kr.hospi.actions.LoginAction"
+			name="loginForm" validate="true" scope="request"
+			input="/client/member/login_confirm.jsp">
+			<forward name="success" path="/client/member/login_success.jsp"
+				redirect="true"></forward>
+		</action>
 
 		<!-- 클라이언트~~회원정보 -->
-		<action path="/mem"
-		        forward=".menu_memberinfo"/>
+		<!-- 회원정보수정 페이지 단순 포워딩 -->
+		<action path="/mem/form" forward="/client/member/mem_modify.jsp" />
+
+		<!-- 회원정보수정 액션 -->
+		<action path="/mem/modify" type="kr.hospi.actions.ModifyAction"
+			scope="request">
+			<forward name="success" path="/client/member/mem_modify_result.jsp"
+				redirect="true"></forward>
+			<forward name="fail" path="/client/member/mem_modify_fail.jsp"></forward>
+		</action>
+
+		<!-- 아이디, 비밀번호 찾기 액션 -->
+		<action path="/mem/lost" type="kr.hospi.actions.LostAction"
+			scope="request">
+			<forward name="success" path="/client/member/pass_lost_confirm.jsp"
+				redirect="true"></forward>
+			<forward name="fail" path="/client/member/pass_lost_confirm.jsp"></forward>
+		</action>
 
 		<!-- 클라이언트~~성형정보 -->
 		<action path="/plaSur"
