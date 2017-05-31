@@ -39,15 +39,20 @@
 		        forward=".client_idx"/>
 
 		<!-- 클라이언트~~회원가입 -->
+		<!-- 회원가입 단순 포워딩 -->
+		<action path="/join" forward=".menu_join2" />
+
 		<!-- 회원가입 액션 -->
-		    <action path="/join" type="kr.hospi.actions.JoinAction" scope="request">
-		        <forward name="success" path="/client/member/join_result.jsp" redirect="true"></forward>
-		        <forward name="fail" path="/client/member/join_fail.jsp"></forward>
-		    </action>
-   
+		<action path="/join/join" type="kr.hospi.actions.JoinAction"
+			scope="request">
+			<forward name="success" path="/client/member/join_result.jsp"
+				redirect="true"></forward>
+			<forward name="fail" path="/client/member/join_fail.jsp"></forward>
+		</action>
+
 		<!-- 클라이언트~~로그인 -->
 		<!-- 로그인 페이지 단순 포워딩 -->
-		<action path="/login/form" forward="/client/member/login_confirm.jsp" />
+		<action path="/login" forward=".menu_login" />
 
 		<!-- 로그인 액션 -->
 		<action path="/login/login" type="kr.hospi.actions.LoginAction"
