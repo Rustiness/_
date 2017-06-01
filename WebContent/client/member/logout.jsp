@@ -7,6 +7,6 @@
  	
  	session.removeAttribute("user");
 	//user로 들어온 session을 제거
- 	response.sendRedirect("/JavaChefWeb/client/member/login_confirm.jsp");
+ 	response.sendRedirect("/JavaChefWeb/client.do");
 	// 페이지의 메인으로 이동
 %>

@@ -18,7 +18,7 @@
 			<div id="header_login">
 				<html:link action="/login">LOGIN</html:link>
 				/
-				<html:link action="/join">JOIN</html:link>
+				<html:link action="/join1">JOIN</html:link>
 				/
 				<html:link action="/mem">USERINFO</html:link>
 				/

@@ -18,7 +18,7 @@
 	}
 	
 	function moveModify(){//회원정보수정(mem_modify.jsp) 페이지로 이동
-		location.href="/JavaChefWeb/client/member/mem_modify.jsp";
+		location.href="/JavaChefWeb/mem_modify.do";
 	}
 	
 	function logout(){
@@ -33,7 +33,7 @@
 <h3>회원 로그인</h3>
 <hr>
 <center>
-<form action="/project02/login/login.do" method="post">
+<form>
 	<table width="400" bgcolor="#ffe4b5" cellpadding="5">
 		<tr align="center">
 			<td>${user.mID}님의 접속을 환영합니다.<td>

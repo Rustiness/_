@@ -13,9 +13,27 @@
 		<put name="main_body" value="/client/main_body.jsp"></put>
 	</definition>
 
-	<!-- 클라이언트~~회원가입 -->
+	<!-- 클라이언트~~회원가입(약관) -->
+	<definition name=".menu_join1" extends=".client_idx"> <!-- extends로 상속을 하여 화면 표시 가능 -->
+		<put name="main_body" value="/client/member/join_confirm1.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+	
+	<!-- 클라이언트~~회원가입(정보입력) -->
 	<definition name=".menu_join2" extends=".client_idx"> <!-- extends로 상속을 하여 화면 표시 가능 -->
 		<put name="main_body" value="/client/member/join_confirm2.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+	
+	<!-- 클라이언트~~회원가입 성공 -->
+	<definition name=".menu_join_success" extends=".client_idx"> <!-- extends로 상속을 하여 화면 표시 가능 -->
+		<put name="main_body" value="/client/member/join_result.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+	
+	<!-- 클라이언트~~회원가입 실패 -->
+	<definition name=".menu_join_fail" extends=".client_idx"> <!-- extends로 상속을 하여 화면 표시 가능 -->
+		<put name="main_body" value="/client/member/join_fail.jsp"></put>
 		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
 	</definition>
 
@@ -24,10 +42,40 @@
 		<put name="main_body" value="/client/member/login_confirm.jsp"></put>
 		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
 	</definition>
+	
+	<!-- 클라이언트~~로그인 성공 -->
+	<definition name=".menu_login_success" extends=".client_idx">
+		<put name="main_body" value="/client/member/login_success.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
 
 	<!-- 클라이언트~~회원정보 -->
 	<definition name=".menu_memberinfo" extends=".client_idx">
 		<put name="main_body" value="/client/member/mem_confirm.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+	
+	<!-- 클라이언트~~회원정보 수정-->
+	<definition name=".menu_memberinfo_modify" extends=".client_idx">
+		<put name="main_body" value="/client/member/mem_modify.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+	
+	<!-- 클라이언트~~회원정보 수정 성공-->
+	<definition name=".menu_memberinfo_modify_success" extends=".client_idx">
+		<put name="main_body" value="/client/member/mem_modify_result.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+	
+	<!-- 클라이언트~~회원정보 수정 실패-->
+	<definition name=".menu_memberinfo_modify_fail" extends=".client_idx">
+		<put name="main_body" value="/client/member/mem_modify_fail.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+	
+	<!-- 클라이언트~~아이디,비밀번호 찾기 -->
+	<definition name=".menu_pass_lost" extends=".client_idx">
+		<put name="main_body" value="/client/member/pass_lost_confirm.jsp"></put>
 		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
 	</definition>
 
@@ -80,7 +128,8 @@
 	</definition>
 
 	<!-- 어드민~~ 최초 인덱스 진입 -->
-	<definition name=".admin_idx" path="/admin/index.jsp"><!-- 타일의 네임을 struts-config에 액션등록해야 함-->
+	<definition name=".admin_idx" path="/admin/index.jsp"><!-- 타일의 네임을 struts-config에 
+			액션등록해야 함 -->
 		<!-- put태그의 value에는 definition의 path에 포함될 페이지들을 정의 -->
 		<put name="a_menu_left" value="/admin/menu/ad_menu_left.jsp"></put>
 		<put name="a_main_body" value="/admin/main_body.jsp"></put>

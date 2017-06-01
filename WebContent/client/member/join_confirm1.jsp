@@ -13,7 +13,7 @@
 <body>
 <script type="text/javascript">
 	function moveLogin(){//로그인 페이지(login_confirm.jsp)로 이동
-		location.href="/JavaChefWeb/client/member/login_confirm.jsp";
+		location.href="/JavaChefWeb/login.do";
 	}
 	
 	function confirm(){//약관 동의 여부를 체크
@@ -21,7 +21,7 @@
 		var term2=document.frm.term2.checked;//약관 1,2 동의 여부(boolean)
 		
 		if(term1==true&&term2==true){//약관에 모두 동의하면 회원가입2(join_confirm2.jsp) 페이지로 이동
-			location.href="/JavaChefWeb/client/member/join_confirm2.jsp"
+			location.href="/JavaChefWeb/join2.do"
 		}else{//하나라도 동의 안하면 알림창이 팝업
 			alert('회원가입을 하시려면 모든 약관에 동의하셔야 합니다!');
 		}

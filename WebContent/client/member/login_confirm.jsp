@@ -10,17 +10,17 @@
 --%>
 <script type="text/javascript">
 	function moveJoin(){//회원가입1(join_confirm1.jsp) 페이지로 이동
-		location.href="/JavaChefWeb/client/member/join_confirm1.jsp";
+		location.href="/JavaChefWeb/join1.do";
 	}
 	
 	function moveLost(){//아이디, 비밀번호 찾기(pass_lost_confirm.jsp) 페이지로 이동
-		location.href="/JavaChefWeb/client/member/pass_lost_confirm.jsp";
+		location.href="/JavaChefWeb/pass_lost.do";
 	}
 </script>
 <h3>회원 로그인</h3>
 <hr>
 <center>
-<form action="/JavaChefWeb/login/login.do" method="post">
+<form action="/JavaChefWeb/login_process.do" method="post">
 	<table width="400" bgcolor="#ffe4b5" cellpadding="5">
 		<tr align="center">
 			<td colspan="3">MEMBER LOGIN<td>

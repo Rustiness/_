@@ -12,7 +12,7 @@
 	<% 
 		String mID=(String)session.getAttribute("mID");
 		if(!(mID!=null&&mID.length()>=1)) {%>
-	<form name="conf1" method="POST" action="/JavaChefWeb/mem/lost.do">
+	<form name="conf1" method="POST" action="/JavaChefWeb/pass_lost_process.do">
 	<table width="400" bgcolor="#ffe4b5" cellpadding="5">
 		<tr>
 			<td colspan="2">아이디 찾기<hr></td>

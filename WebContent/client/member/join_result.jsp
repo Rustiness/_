@@ -10,7 +10,7 @@
 <body>
 	<script type="text/javascript">
 	function back(){
-		location.href="/JavaChefWeb/client/member/login_confirm.jsp";
+		location.href="/JavaChefWeb/login.do";
 	}
 </script>
 	<center>
