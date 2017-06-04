@@ -185,6 +185,7 @@
 				input=".ad_emp_list">
 			<forward name="selAll" path=".ad_emp_list"></forward>
 			<forward name="selInfo" path=".ad_emp_info"></forward>
+			<forward name="selModify" path=".ad_emp_modify"></forward>
 		</action>
 
 		<!-- 어드민~~성형타입:기준 -->

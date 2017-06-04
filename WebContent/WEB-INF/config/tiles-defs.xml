@@ -167,6 +167,9 @@
 	<definition name=".ad_emp_info" extends=".admin_idx"><!-- 항목 상세 -->
 		<put name="a_main_body" value="/admin/employee/ad_emp_confirm.jsp"></put>
 	</definition>
+	<definition name=".ad_emp_modify" extends=".admin_idx"><!-- 항목 수정 -->
+		<put name="a_main_body" value="/admin/employee/ad_emp_modify.jsp"></put>
+	</definition>
 
 	<!-- 어드민~~성형타입:기준 -->
 	<definition name=".ad_menu_plasType" extends=".admin_idx"><!-- 목록 -->

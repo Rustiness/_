@@ -36,9 +36,9 @@ NOCYCLE
 NOCACHE;
 
 -- 데이터 생성 (Foreign KEY 미포함)
-INSERT INTO employee VALUES ('EA'||LPAD(emp_seq.nextval,5,0),'hosp','qwer1234','김사원','1987-11-17','남성','010-3456-5567','hosp@naver.com','과장','1','2017-05-23','2016-12-25','2015-11-23','정상');
-INSERT INTO employee VALUES ('EA'||LPAD(emp_seq.nextval,5,0),'hoswp','qwer1234','이방원','1987-11-17','남성','010-3456-5567','hosp@naver.com','과장','1','2017-05-23','2016-12-25','2015-11-23','정상');
-INSERT INTO employee VALUES ('EA'||LPAD(emp_seq.nextval,5,0),'hosaap','qwer1234','길라임원','1987-11-17','남성','010-3456-5567','hosp@naver.com','과장','1','2017-05-23','2016-12-25','2015-11-23','정상');
+INSERT INTO employee VALUES ('EA'||LPAD(emp_seq.nextval,5,0),'hosp','qwer1234','김사원','1987-11-17','1','010-3456-5567','hosp@naver.com','1','1','2017-05-23','2016-12-25','2015-11-23','1');
+INSERT INTO employee VALUES ('EA'||LPAD(emp_seq.nextval,5,0),'hoswp','qwer1234','이방원','1987-11-17','2','010-3456-5567','hosp@naver.com','2','1','2017-05-23','2016-12-25','2015-11-23','2');
+INSERT INTO employee VALUES ('EA'||LPAD(emp_seq.nextval,5,0),'hosaap','qwer1234','길라임원','1987-11-17','3','010-3456-5567','hosp@naver.com','3','1','2017-05-23','2016-12-25','2015-11-23','3');
 
 -- 데이터 조회 (전체)
 SELECT * FROM employee;

@@ -31,12 +31,40 @@
 				<td>${empInfo.eID}</td>
 				<td>${empInfo.name}</td>
 				<td>${empInfo.birth}</td>
-				<td>${empInfo.sex}</td>
+				<td>
+						<%-- 성별 --%>
+					<c:choose>
+						<c:when test="${empInfo.sex eq '1'}">미지정</c:when>
+						<c:when test="${empInfo.sex eq '2'}">남성</c:when>
+						<c:when test="${empInfo.sex eq '3'}">여성</c:when>
+						<c:otherwise>???</c:otherwise>
+					</c:choose>
+				</td>
 				<td>${empInfo.tel}</td>
 				<td>${empInfo.email}</td>
-				<td>${empInfo.position}</td>
+				<td>
+						<%-- 직책 --%>
+					<c:choose>
+						<c:when test="${empInfo.position eq '1'}">미지정</c:when>
+						<c:when test="${empInfo.position eq '2'}">팀원</c:when>
+						<c:when test="${empInfo.position eq '3'}">팀장</c:when>
+						<c:when test="${empInfo.position eq '4'}">실장</c:when>
+						<c:when test="${empInfo.position eq '5'}">본부장</c:when>
+						<c:otherwise>???</c:otherwise>
+					</c:choose>
+				</td>
 				<td>${empInfo.latestDate}</td>
-				<td>${empInfo.state}</td>
+				<td>
+						<%-- 상태 --%>
+					<c:choose>
+						<c:when test="${empInfo.state eq '1'}">미지정</c:when>
+						<c:when test="${empInfo.state eq '2'}">정상</c:when>
+						<c:when test="${empInfo.state eq '3'}">휴식</c:when>
+						<c:when test="${empInfo.state eq '4'}">퇴사</c:when>
+						<c:when test="${empInfo.state eq '5'}">비활성</c:when>
+						<c:otherwise>???</c:otherwise>
+					</c:choose>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>

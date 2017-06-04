@@ -30,7 +30,7 @@ public class EmployeeDAO {
 		return list;
 	}//selectAll
 
-	public List<Employee> selEmpInfo(String eNO) {//전체 직원 리스트
+	public List<Employee> selEmpInfo(String eNO) {//직원 정보
 		List<Employee> list = null;
 		try {
 			list = (List<Employee>) sqlMap.queryForList("emp.selEmpInfo",eNO);
@@ -38,5 +38,15 @@ public class EmployeeDAO {
 			e.printStackTrace();
 		}
 		return list;
-	}//selectAll
+	}//selEmpInfo
+
+	public List<Employee> updEmpInfo(Employee employee) {//직원 정보 수정
+		List<Employee> list = null;
+		try {
+			list = (List<Employee>) sqlMap.queryForList("emp.updEmpInfo",employee);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//updEmpInfo
 }

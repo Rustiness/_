@@ -9,6 +9,8 @@ import org.apache.struts.action.ActionMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -35,6 +37,7 @@ public class EmpAction extends Action {
 		EmployeeDAO dao = new EmployeeDAO();
 		ActionForward forward = null; //이동할 페이지 저장
 		List<Employee> list = null;
+		String eNO = null; // 사원 식별번호
 
 		switch (action) {
 			case "list"://직원목록  if(action==null || action.equals("list"))
@@ -43,17 +46,23 @@ public class EmpAction extends Action {
 				request.setAttribute("emplist", list);
 				forward = mapping.findForward("selAll");
 				break;
-			case "info":// 직원 정보
-				String eNO = (String) request.getParameter("eNO");
-			System.out.println(eNO);
+			case "info":// 직원 상세정보폼
+			case "modify": //수정폼
+				eNO = (String) request.getParameter("eNO");
+				System.out.println(eNO);
 				list = dao.selEmpInfo(eNO);
 				request.setAttribute("emplist", list);
-				forward = mapping.findForward("selInfo");
-				System.out.println("매핑진행!");
-				break;
-			case "upform": //수정폼요청
+				if (action.equals("info")) {
+					forward = mapping.findForward("selInfo");
+				} else if (action.equals("modify")) {
+					forward = mapping.findForward("selModify");
+				}
 				break;
 			case "update": //수정요청
+				eNO = (String) request.getParameter("eNO");
+				//request.setAttribute("emplist", list);
+				forward = mapping.findForward("selInfo");
+
 				break;
 		}//switch
 

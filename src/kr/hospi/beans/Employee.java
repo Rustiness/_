@@ -18,7 +18,7 @@ public class Employee {
 	private String tel;
 	private String email;
 	private String position;
-	private int gNO;
+	private String  gNO;
 	private Date hireDate;
 	private Date latestDate;
 	private Date retireDate;
@@ -27,7 +27,7 @@ public class Employee {
 	public Employee() {
 	}
 
-	public Employee(String eNO, String eID, String pass, String name, Date birth, String sex, String tel, String email, String position, int gNO, Date hireDate, Date latestDate, Date retireDate, String state) {
+	public Employee(String eNO, String eID, String pass, String name, Date birth, String sex, String tel, String email, String position, String gNO, Date hireDate, Date latestDate, Date retireDate, String state) {
 		this.eNO = eNO;
 		this.eID = eID;
 		this.pass = pass;
@@ -116,11 +116,11 @@ public class Employee {
 		this.position = position;
 	}
 
-	public int getgNO() {
+	public String getgNO() {
 		return gNO;
 	}
 
-	public void setgNO(int gNO) {
+	public void setgNO(String gNO) {
 		this.gNO = gNO;
 	}
 
