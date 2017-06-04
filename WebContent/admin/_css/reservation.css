@@ -1,0 +1,41 @@
+.con_title { /* 예약신청 타이틀 스타일 */
+	padding-bottom:20px; 
+	margin:0 0 40px 0;
+}
+
+.reser_content { /* reser_body 스타일 */
+	width: 80%;
+    padding-top: 30px;
+    padding-left: 30px; 
+    padding-bottom: 25px; 
+}
+
+.ui-datepicker{ /* calendar 스타일 */
+	font-size: 22px; 
+	margin-bottom: 50px; 
+	margin-left: 15px; 
+	margin-top: 15px;
+}
+
+#rCate{ /* 진료과목선택 select 스타일 */
+	padding-top: 4px;
+	margin-left: 30px; 
+	padding-bottom: 5px;
+}
+
+#rTime{ /* 예약시간선택 select 스타일 */
+	padding-top: 4px;
+	margin-left: 15px; 
+	padding-bottom: 5px;
+}
+
+#btn{ /* 버튼 2개 위치 스타일  */
+	margin-left: 43%;
+	margin-top: 50px;
+	/* margin-left: 310px; */ 
+}
+
+.btSty{ /* 버튼 스타일 */
+	padding: 4px; 
+	font-size: 15px;
+}																	

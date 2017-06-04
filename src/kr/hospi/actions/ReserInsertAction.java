@@ -26,7 +26,7 @@ public class ReserInsertAction extends Action{
 		
 		//받아온 정보를 Reservation(beans)에 입력
 		Reservation reser = new Reservation();
-		reser.setmNO("이번");
+		reser.setmNO("일번");
 		reser.setpTypeNO(cate);
 		reser.setrDate(date);
 		reser.setrFTime(time[0]);

@@ -158,4 +158,6 @@ public class CounAction extends Action {
 			forward = mapping.findForward("fail");
 		}
 	    return forward;
+
+	}
 }

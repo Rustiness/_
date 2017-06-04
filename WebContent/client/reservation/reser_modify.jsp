@@ -26,7 +26,7 @@
 <%-- reser_modify.jsp(예약(rNO)당 수정 페이지) --%>
 <div class="reser_content">
 	<h3>예약수정</h3>
-	<form action="reserUAction.do" method="POST">
+	<form action="reserUAction.do?st=2" method="POST">
 		<table border="1" cellpadding="10">
 	    	<tr bgcolor="#FFB4B4" align=center>
 	        	<th>예약번호</th>
@@ -47,7 +47,7 @@
 	         </tr>
 	    </table><br>
 	    <input type="hidden" name="rNO" value="${reser.rNO}">
-	    <input type="hidden" name="rSate" value="${reser.rState}">
+	    <input type="hidden" name="rState" value="${reser.rState}">
 		<p>
 			<b>1. 진료과목 선택</b>
 		</p>

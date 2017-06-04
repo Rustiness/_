@@ -1,41 +1,41 @@
-.con_title { /* ¿¹¾à½ÅÃ» Å¸ÀÌÆ² ½ºÅ¸ÀÏ */
+.con_title { /* ì˜ˆì•½ì‹ ì²­ íƒ€ì´í‹€ ìŠ¤íƒ€ì¼ */
 	padding-bottom:20px; 
 	margin:0 0 40px 0;
 }
 
-.reser_content { /* reser_body ½ºÅ¸ÀÏ */
+.reser_content { /* reser_body ìŠ¤íƒ€ì¼ */
 	width: 80%;
     padding-top: 30px;
     padding-left: 30px; 
     padding-bottom: 25px; 
 }
 
-.ui-datepicker{ /* calendar ½ºÅ¸ÀÏ */
+.ui-datepicker{ /* calendar ìŠ¤íƒ€ì¼ */
 	font-size: 22px; 
 	margin-bottom: 50px; 
 	margin-left: 15px; 
 	margin-top: 15px;
 }
 
-#rCate{ /* Áø·á°ú¸ñ¼±ÅÃ select ½ºÅ¸ÀÏ */
+#rCate{ /* ì§„ë£Œê³¼ëª©ì„ íƒ select ìŠ¤íƒ€ì¼ */
 	padding-top: 4px;
 	margin-left: 30px; 
 	padding-bottom: 5px;
 }
 
-#rTime{ /* ¿¹¾à½Ã°£¼±ÅÃ select ½ºÅ¸ÀÏ */
+#rTime{ /* ì˜ˆì•½ì‹œê°„ì„ íƒ select ìŠ¤íƒ€ì¼ */
 	padding-top: 4px;
 	margin-left: 15px; 
 	padding-bottom: 5px;
 }
 
-#btn{ /* ¹öÆ° 2°³ À§Ä¡ ½ºÅ¸ÀÏ  */
+#btn{ /* ë²„íŠ¼ 2ê°œ ìœ„ì¹˜ ìŠ¤íƒ€ì¼  */
 	margin-left: 43%;
 	margin-top: 50px;
 	/* margin-left: 310px; */ 
 }
 
-.btSty{ /* ¹öÆ° ½ºÅ¸ÀÏ */
+.btSty{ /* ë²„íŠ¼ ìŠ¤íƒ€ì¼ */
 	padding: 4px; 
 	font-size: 15px;
 }

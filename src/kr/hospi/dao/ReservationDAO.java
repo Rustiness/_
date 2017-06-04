@@ -26,27 +26,65 @@ public class ReservationDAO {
 		return false;
 	}//insert
 
-	public List<Reservation2> selectmNO(String mNO){//고객용: 예약정보 출력 (mNO)
+	public List<Reservation2> selectAll(){//관리자용: 전체 예약목록 출력
 		List<Reservation2> list=null;
 		try {
-			list = sqlMap.queryForList("reser.selectmNO", mNO);
-			return list;
+			list = sqlMap.queryForList("ad_reser.selectAll");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
-	}//insert
+	}//selectAll
 	
-	public Reservation2 selectrNO(String rNO){//고객&관리자용: 예약정보 출력 (rNO)
+	public List<Reservation2> selectCate(String cate){//관리자용: 카테고리별 예약목록 출력
+		List<Reservation2> list=null;
+		try {
+			list = sqlMap.queryForList("ad_reser.selectCate",cate);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//selectCate
+	
+	public List<Reservation2> selectTime(String rFTime){//관리자용: 시간별 예약목록 출력
+		List<Reservation2> list=null;
+		try {
+			list = sqlMap.queryForList("ad_reser.selectTime",rFTime);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//selectTime
+	
+	public Reservation2 selectAdrNO(String rNO){//관리자용: 예약정보 출력 (rNO)
 		Reservation2 reser=null;
 		try {
-			reser = (Reservation2)sqlMap.queryForObject("reser.selectrNO", rNO);
-			return reser;
+			reser = (Reservation2)sqlMap.queryForObject("ad_reser.selectrNO", rNO);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return reser;
-	}//insert
+	}//selectrNO
+	
+	public List<Reservation2> selectmNO(String mNO){//고객용: 예약정보 출력 (mNO)
+		List<Reservation2> list=null;
+		try {
+			list = sqlMap.queryForList("reser.selectmNO", mNO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//selectmNO
+	
+	public Reservation2 selectrNO(String rNO){//고객용: 예약정보 출력 (rNO)
+		Reservation2 reser=null;
+		try {
+			reser = (Reservation2)sqlMap.queryForObject("reser.selectrNO", rNO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return reser;
+	}//selectrNO
 	
 	public boolean update(Reservation reser){//고객용: 예약정보 수정
 	    try {
@@ -56,5 +94,15 @@ public class ReservationDAO {
 	        e.printStackTrace();
 	    }
 	    return false;
+	}//update
+	
+	public boolean updateAd(Reservation reser){//관리자용: 예약정보 수정
+		try {
+			int t = sqlMap.update("ad_reser.update", reser);
+			if(t==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}//update
 }

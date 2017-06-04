@@ -165,9 +165,19 @@
 		<put name="a_main_body" value="/admin/counsel/ad_coun_list.jsp"></put>
 	</definition>
 
-	<!-- 어드민~~예약 -->
+	<!-- 어드민~~예약목록 -->
 	<definition name=".ad_menu_reservation" extends=".admin_idx"><!-- 목록 -->
 		<put name="a_main_body" value="/admin/reservation/ad_reser_list.jsp"></put>
+	</definition>
+
+	<!-- 어드민~~예약상세 -->
+	<definition name=".ad_menu_reservation_info" extends=".admin_idx"><!-- 목록 -->
+		<put name="a_main_body" value="/admin/reservation/ad_reser_info.jsp"></put>
+	</definition>
+
+	<!-- 어드민~~예약수정 -->
+	<definition name=".ad_menu_reservation_modify" extends=".admin_idx"><!-- 목록 -->
+		<put name="a_main_body" value="/admin/reservation/ad_reser_modify.jsp"></put>
 	</definition>
 
 	<!-- 어드민~~견적 -->

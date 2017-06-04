@@ -91,6 +91,4 @@ public class Reservation { //예약을 위한 Reservation Beans
 		this.rState = rState;
 	}
 	
-	
-	
 }

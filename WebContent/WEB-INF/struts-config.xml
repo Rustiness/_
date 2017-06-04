@@ -185,19 +185,18 @@
 		<action path="/ad_coun"
 		        forward=".ad_menu_counsel"/>
 
-		<!-- 어드민~~예약신청 -->
+		<!-- 어드민~~예약목록&예약상세 -->
 		<action path="/ad_reser"
-		        forward=".ad_menu_reservation"/>
-			
-		<!-- 어드민~~견적 -->    
-		<action path="/ad_esti" 
-			forward="/admin/estimate/ad_esti_list.jsp"/>
-			
-		<!-- 어드민~~견적 -->
-		<action path="/ad_input" type="kr.hospi.actions.EstiAction"
-		name ="EstiActionForm" scope="request" validate="true"  input="/admin/estimate/ad_esti_input.jsp">
-		<forward name="success" path=".ad_menu_estimate" redirect="true"></forward>
-		      </action>
+				type="kr.hospi.actions.ReserSelectAction">
+			<forward name="ad_reser" path=".ad_menu_reservation"></forward>
+			<forward name="ad_reser_info" path=".ad_menu_reservation_info"></forward>
+		</action>
+
+		<!-- 어드민~~예약수정 -->
+		<action path="/ad_reser_modify"
+				type="kr.hospi.actions.ReserSelectAction">
+			<forward name="ad_reser_modify" path=".ad_menu_reservation_modify"></forward>
+		</action>
 
 		<!-- 어드민~~사원정보 -->
 		<action path="/ad_emp"
@@ -236,11 +235,13 @@
     	  	<forward name="fail" path="/reser.do"></forward>
       	</action>
 
-		<!-- 고객용: 예약 Action(update) 등록 -->
+		<!-- 고객&관리자용: 예약 Action(update) 등록 -->
     	<action path="/reserUAction" 
       			type="kr.hospi.actions.ReserUpdateAction">
     	  	<forward name="success" path="/reser_info.do?reser=mInfo"></forward>
     	  	<forward name="fail" path="/reser_modify.do"></forward>
+    	  	<forward name="successAd" path="/ad_reser.do?reser=arInfo"></forward>
+    	  	<forward name="failAd" path="/ad_reser_modify.do?reser=arInfo"></forward>
       	</action>
 		<!-- reservation액션등록 종료!! -->
 
