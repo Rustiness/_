@@ -22,7 +22,7 @@
 		</dataSource>
 	</transactionManager>
 	<!-- sql문들이 저장되어 있는 XML을 등록 -->
-	<!--<sqlMap resource="./iba/mapper/client/counsel.xml"/>-->
+    <sqlMap resource="./iba/mapper/client/counsel.xml"/>
 	<sqlMap resource="./iba/mapper/client/estimate.xml"/>
 	<!--<sqlMap resource="./iba/mapper/client/etc.xml"/>-->
 	<sqlMap resource="./iba/mapper/client/member.xml"/>

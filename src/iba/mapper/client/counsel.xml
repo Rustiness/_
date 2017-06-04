@@ -1,13 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
-<sqlMap >
-	<!-- counsel.xml -->
-	<select id="selEname" resultClass="String">
-		SELECT ename FROM Emp
-		WHERE empno=7788
+<sqlMap namespace="counsel">
+  <!-- 등록폼에서 값 입력 후 등록하는 sql -->
+  <insert id="insert" parameterClass="kr.hospi.beans.Counsel">
+    insert into counsel (cNO,pTypeNO,mNO,cTitle,state,cContent,cCount,cDate)
+                values ('CA'||LPAD(counsel_seq.nextval,5,0),#pTypeNO#,#mNO#,#cTitle#,#state#,#cContent#,#cCount#,SYSDATE)
+  </insert> 
+  
+     <!-- 수정폼에서 저장된 값을 수정하는 sql -->
+   <update id="update" parameterClass="kr.hospi.beans.Counsel">
+    update counsel set  pTypeNO=#pTypeNO#, mNO=#mNO#, cTitle=#cTitle#,
+                        state=#state#
+      where cNO=#cNO#
+  </update>
+
+     <!-- 게시글 클릭 시 조회수 증가시키는 sql -->
+  <!-- 조회수 증가 -->
+  <update id="hitUpdate" parameterClass="kr.hospi.beans.Counsel">
+    UPDATE COUNSEL 
+    SET
+    	cCOUNT = #cCount# + 1
+    WHERE CNO = #cNO#
+  </update>
+  
+  <!-- String sql = "select no, name, age, job from person where name like'%"+search_name+"%'";
+    -->
+    <!-- 검색하기 설정 -->
+    <select id="selectName" resultClass="kr.hospi.beans.Counsel" parameterClass="String">
+      select cNO,pTypeNO,mNO,cTitle,state,cCount
+      from counsel where mNO like'%#search_name#%'  
+   </select>
+  
+    <select id="selectAll" resultClass="kr.hospi.beans.Counsel">
+      select cNO,pTypeNO,mNO,cTitle,state,cContent,cCount from counsel
+      order by cNO desc 
 	</select>
 
-	<select id="selectAll" resultClass="com.kosta.s0519.dto.Emp2">
-		SELECT empno,ename,hiredate FROM emp
-	</select>
+    <select id="select" resultClass="kr.hospi.beans.Counsel">
+     select cNO,pTypeNO,mNO,cTitle,state,cContent,cCount,cDate from counsel
+     where cNO=#cNO#
+  </select>
+  
+  <select id="counPage" resultClass="kr.hospi.beans.Counsel" parameterClass="java.util.Map"><![CDATA[
+     select cNO,pTypeNO,mNO,cTitle,state,cCount
+     from (select cNO,pTypeNO,mNO,cTitle,state,cCount, rownum rn
+           from (select cNO,pTypeNO,mNO,cTitle,state,cCount
+		         from counsel
+		         order by cNO desc)
+		  )
+     where rn between #start# and #end#
+  ]]></select>
+  
+  <select id="counCount" resultClass="int">
+   select count(*) from counsel
+  </select>
+  
 </sqlMap>
+

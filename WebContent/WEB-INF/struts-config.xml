@@ -107,9 +107,31 @@
 		<action path="/plaSur"
 		        forward=".menu_plasticSurgery"/>
 
-		<!-- 클라이언트~~온라인상담 -->
+<!-- 		 클라이언트~~온라인상담 
 		<action path="/coun"
-		        forward=".menu_counsel"/>
+		        forward=".menu_counsel"/> -->
+		        
+		<!--클라이언트~~온라인상담 리스트-->
+        <action path="/coun" 
+                type="kr.hospi.actions.CounAction">
+            <forward name="success" path=".menu_counsel"></forward>
+                </action>
+       
+       <!-- 클라이언트~~온라인상담 등록창 -->
+        <action path="/coun_con" 
+                forward=".menu_confirm">
+                </action>  
+      
+      <!-- 클라이언트~~온라인상담 상담정보 -->
+        <action path="/coun_info"
+                type="kr.hospi.actions.CounAction">
+            <forward name="success" path=".menu_info"></forward>
+                </action>
+                
+        <!-- 클라이언트~~온라인상담 수정창 -->        
+        <action path="/coun_mod"
+                forward=".menu_modify">
+                </action>      
 
 		<!-- 클라이언트~~예약신청 -->
 		<action path="/reser"
