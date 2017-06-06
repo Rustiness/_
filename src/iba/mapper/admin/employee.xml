@@ -10,16 +10,29 @@
 	<!-- employee.xml -->
 	<typeAlias alias="EmpBeans" type="kr.hospi.beans.Employee"/>
 
+	<!-- 사원 정보 검색 -->
 	<select id="selectAll" resultClass="EmpBeans">
 		SELECT eNO, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state
 		FROM employee
-		ORDER BY eNO
+		ORDER BY eNO DESC
 	</select>
 
+	<!--사원 정보 표시-->
 	<select id="selEmpInfo" parameterClass="String" resultClass="EmpBeans">
 		SELECT eNO, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state
 		FROM employee
 		WHERE eNO=#eNO#
 	</select>
 
+	<!--사원 정보 수정-->
+	<update id="updEmpInfo" parameterClass="EmpBeans">
+		UPDATE employee SET name=#name#,birth=#birth#,sex=#sex#,tel=#tel#,email=#email#,position=#position#,hireDate=#hireDate#,retireDate=#retireDate#,state=#state#
+		WHERE eNO=#eNO#
+	</update>
+
+	<!--사원 정보 추가-->
+	<insert id="insEmpInfo" parameterClass="EmpBeans">
+		INSERT INTO Employee (eNO, eID, pass, name, birth, sex, tel, email, position, hireDate, state)
+		VALUES('EA'||LPAD(emp_seq.nextval,5,0),#eID#, #pass#, #name#, #birth#, #sex#, #tel#, #email#, #position#, #hireDate#, #state#)
+	</insert>
 </sqlMap>

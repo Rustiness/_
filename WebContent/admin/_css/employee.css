@@ -9,10 +9,8 @@
 	/*background-color: #f4f7ff;*/
 /*}*/
 
-#empConfirm tbody tr:nth-child(even) {
-	background-color: #f4f7ff;
-}
-
+#empConfirm tbody tr:nth-child(even),
+#empInfo tbody tr:nth-child(even),
 #empModify tbody tr:nth-child(even) {
 	background-color: #f4f7ff;
 }
@@ -63,25 +61,31 @@
 }
 
 #empConfirm #tableHead th:nth-child(1),
+#empInfo #tableHead th:nth-child(1),
 #empModify #tableHead th:nth-child(1) {
 	width: 13vw;
 }
 
 #empConfirm #tableHead th:nth-child(2),
+#empInfo #tableHead th:nth-child(2),
 #empModify #tableHead th:nth-child(2) {
 	width: 20vw;
 }
 
-#empModify input,
-#tableData td,
 #empConfirm td,
+#empConfirm input,
+#empConfirm select,
+#tableData td,
+#empInfo td,
 #empModify td,
+#empModify input,
 #empModify select {
 	font-size: 1vw;
 	color: #797979;
 }
 
-#empModify #btnSet input{
+#empConfirm #btnSet input,
+#empModify #btnSet input {
 	font-size: 1.5vw;
 	color: #797979;
 }

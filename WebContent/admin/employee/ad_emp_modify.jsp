@@ -9,7 +9,7 @@
 <link href="admin/_css/employee.css" rel="stylesheet" type="text/css"/>
 <script src="admin/_js/employee.js" rel="script" type="text/javascript"></script>
 <%-- ad_emp_list.jsp --%>
-<h3>::사원 상세정보::</h3>
+<h3>::사원 정보 수정::</h3>
 <hr style="color: deeppink">
 <center>
 	<form id="empModForm" method="post">
@@ -29,32 +29,31 @@
 				</tr>
 				<tr>
 					<td>사원명</td>
-					<td><input id="name" type="text" value="${empInfo.name}"></td>
+					<td><input name="name" type="text" value="${empInfo.name}" maxlength="10"></td>
 				</tr>
 				<tr>
 					<td>생년월일</td>
-					<td><input id="birth" type="date" value="${empInfo.birth}"></td>
+					<td><input name="birth" type="date" value="${empInfo.birth}"></td>
 				</tr>
 				<tr>
 					<td>성별</td>
-					<td><select id="sex">
-						<option value="1" <c:if test="${empInfo.sex eq '1'}">selected</c:if>>미지정</option>
-						<option value="2" <c:if test="${empInfo.sex eq '2'}">selected</c:if>>남성</option>
-						<option value="3" <c:if test="${empInfo.sex eq '3'}">selected</c:if>>여성</option>
+					<td><select name="sex">
+						<option value="1" <c:if test="${empInfo.sex eq '1'}">selected</c:if>>남성</option>
+						<option value="2" <c:if test="${empInfo.sex eq '2'}">selected</c:if>>여성</option>
 					</select>
 					</td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
-					<td><input id="tel" type="tel" value="${empInfo.tel}"></td>
+					<td><input name="tel" type="tel" maxlength="13" value="${empInfo.tel}"></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td><input id="email" type="email" value="${empInfo.email}"></td>
+					<td><input name="email" type="email" maxlength="30" value="${empInfo.email}"></td>
 				</tr>
 				<tr>
 					<td>직책</td>
-					<td><select id="position">
+					<td><select name="position">
 						<option value="1" <c:if test="${empInfo.position eq '1'}">selected</c:if>>미지정</option>
 						<option value="2" <c:if test="${empInfo.position eq '2'}">selected</c:if>>팀원</option>
 						<option value="3" <c:if test="${empInfo.position eq '3'}">selected</c:if>>팀장</option>
@@ -63,12 +62,16 @@
 					</select></td>
 				</tr>
 				<tr>
+					<td>관리등급</td>
+					<td>${empInfo.gNO}</td>
+				</tr>
+				<tr>
 					<td>입사일</td>
-					<td><input id="hireDate" type="date" value="${empInfo.hireDate}"></td>
+					<td><input name="hireDate" type="date" value="${empInfo.hireDate}"></td>
 				</tr>
 				<tr>
 					<td>퇴사일</td>
-					<td><input id="retireDate" type="date" value="${empInfo.retireDate}"></td>
+					<td><input name="retireDate" type="date" value="${empInfo.retireDate}"></td>
 				</tr>
 				<tr>
 					<td>최근접속일</td>
@@ -76,12 +79,11 @@
 				</tr>
 				<tr>
 					<td>계정상태</td>
-					<td><select id="state">
-						<option value="1" <c:if test="${empInfo.state eq '1'}">selected</c:if>>미지정</option>
-						<option value="2" <c:if test="${empInfo.state eq '2'}">selected</c:if>>정상</option>
-						<option value="3" <c:if test="${empInfo.state eq '3'}">selected</c:if>>휴직</option>
-						<option value="4" <c:if test="${empInfo.state eq '4'}">selected</c:if>>퇴사</option>
-						<option value="5" <c:if test="${empInfo.state eq '5'}">selected</c:if>>비활성</option>
+					<td><select name="state">
+						<option value="1" <c:if test="${empInfo.state eq '1'}">selected</c:if>>정상</option>
+						<option value="2" <c:if test="${empInfo.state eq '2'}">selected</c:if>>휴직</option>
+						<option value="3" <c:if test="${empInfo.state eq '3'}">selected</c:if>>퇴사</option>
+						<option value="4" <c:if test="${empInfo.state eq '4'}">selected</c:if>>비활성</option>
 					</select>
 					</td>
 				</tr>
@@ -91,7 +93,7 @@
 					<input type="button" id="btnModifyON" value="수정완료">
 					<input type="reset" value="초기값 설정">
 					<input type="button" id="btnCancel" value="수정취소">
-					<input type="button" id="btnList" value="직원목록">
+					<input type="button" id="btnList" value="사원목록">
 				</td>
 			</tr>
 		</table>

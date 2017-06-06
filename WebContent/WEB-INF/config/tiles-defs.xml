@@ -186,14 +186,17 @@
 	</definition>
 
 	<!-- 어드민~~사원정보 -->
-	<definition name=".ad_emp_list" extends=".admin_idx"><!-- 목록 -->
+	<definition name=".ad_emp_list" extends=".admin_idx"><!-- 사원 목록 -->
 		<put name="a_main_body" value="/admin/employee/ad_emp_list.jsp"></put>
 	</definition>
-	<definition name=".ad_emp_info" extends=".admin_idx"><!-- 항목 상세 -->
+	<definition name=".ad_emp_confirm" extends=".admin_idx"><!-- 사원 정보 등록 -->
 		<put name="a_main_body" value="/admin/employee/ad_emp_confirm.jsp"></put>
 	</definition>
-	<definition name=".ad_emp_modify" extends=".admin_idx"><!-- 항목 수정 -->
+	<definition name=".ad_emp_modify" extends=".admin_idx"><!-- 사원 정보 수정 -->
 		<put name="a_main_body" value="/admin/employee/ad_emp_modify.jsp"></put>
+	</definition>
+	<definition name=".ad_emp_info" extends=".admin_idx"><!-- 사원 상세정보 -->
+		<put name="a_main_body" value="/admin/employee/ad_emp_info.jsp"></put>
 	</definition>
 
 	<!-- 어드민~~성형타입:기준 -->

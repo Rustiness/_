@@ -30,7 +30,7 @@
 	<sqlMap resource="./iba/mapper/client/reservation.xml"/><!-- 예약정보 -->
 
 	<!--<sqlMap resource="./iba/mapper/admin/counsel.xml"/>-->
-	<sqlMap resource="./iba/mapper/admin/employee.xml"/><!-- 관리자 직원정보 : KJK -->
+	<sqlMap resource="./iba/mapper/admin/employee.xml"/><!-- 관리자 사원정보 : KJK -->
 	<!--<sqlMap resource="./iba/mapper/admin/estimate.xml"/>-->
 	<!--<sqlMap resource="./iba/mapper/admin/member.xml"/>-->
 	<!--<sqlMap resource="./iba/mapper/admin/reservation.xml"/>-->

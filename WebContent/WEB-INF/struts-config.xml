@@ -205,6 +205,7 @@
 				validate="true"
 				input=".ad_emp_list">
 			<forward name="selAll" path=".ad_emp_list"></forward>
+			<forward name="selConfirm" path=".ad_emp_confirm"></forward>
 			<forward name="selInfo" path=".ad_emp_info"></forward>
 			<forward name="selModify" path=".ad_emp_modify"></forward>
 		</action>

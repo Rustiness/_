@@ -9,7 +9,7 @@
 <link href="admin/_css/employee.css" rel="stylesheet" type="text/css"/>
 <script src="admin/_js/employee.js" rel="script" type="text/javascript"></script>
 <%-- ad_emp_list.jsp --%>
-<h3>::사원정보 목록::</h3>
+<h3>::사원 목록::</h3>
 <hr style="color: deeppink">
 <center>
 	<table border="1" cellpadding="5" id="empList">
@@ -34,9 +34,8 @@
 				<td>
 						<%-- 성별 --%>
 					<c:choose>
-						<c:when test="${empInfo.sex eq '1'}">미지정</c:when>
-						<c:when test="${empInfo.sex eq '2'}">남성</c:when>
-						<c:when test="${empInfo.sex eq '3'}">여성</c:when>
+						<c:when test="${empInfo.sex eq '1'}">남성</c:when>
+						<c:when test="${empInfo.sex eq '2'}">여성</c:when>
 						<c:otherwise>???</c:otherwise>
 					</c:choose>
 				</td>
@@ -57,11 +56,10 @@
 				<td>
 						<%-- 상태 --%>
 					<c:choose>
-						<c:when test="${empInfo.state eq '1'}">미지정</c:when>
-						<c:when test="${empInfo.state eq '2'}">정상</c:when>
-						<c:when test="${empInfo.state eq '3'}">휴식</c:when>
-						<c:when test="${empInfo.state eq '4'}">퇴사</c:when>
-						<c:when test="${empInfo.state eq '5'}">비활성</c:when>
+						<c:when test="${empInfo.state eq '1'}">정상</c:when>
+						<c:when test="${empInfo.state eq '2'}">휴직</c:when>
+						<c:when test="${empInfo.state eq '3'}">퇴사</c:when>
+						<c:when test="${empInfo.state eq '4'}">비활성</c:when>
 						<c:otherwise>???</c:otherwise>
 					</c:choose>
 				</td>

@@ -10,7 +10,6 @@ import org.apache.struts.action.ActionMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -35,33 +34,92 @@ public class EmpAction extends Action {
 		}
 		System.out.println("발생한 action : " + action);
 		EmployeeDAO dao = new EmployeeDAO();
-		ActionForward forward = null; //이동할 페이지 저장
+		ActionForward forward = null; // 이동할 페이지 저장
 		List<Employee> list = null;
 		String eNO = null; // 사원 식별번호
+		Employee employee; // 사원 정보
 
 		switch (action) {
-			case "list"://직원목록  if(action==null || action.equals("list"))
+			case "list":// 사원 목록  if(action==null || action.equals("list"))
 				list = dao.selectAll();
 				//(뷰와) 데이터 공유 - request(forward 이동 시), session(forward 이동, redirect 이동 시)
 				request.setAttribute("emplist", list);
 				forward = mapping.findForward("selAll");
 				break;
-			case "info":// 직원 상세정보폼
-			case "modify": //수정폼
+			case "info":// 사원 상세정보폼
+			case "updForm": // 사원 정보 수정폼
 				eNO = (String) request.getParameter("eNO");
 				System.out.println(eNO);
 				list = dao.selEmpInfo(eNO);
 				request.setAttribute("emplist", list);
 				if (action.equals("info")) {
 					forward = mapping.findForward("selInfo");
-				} else if (action.equals("modify")) {
+				} else if (action.equals("updForm")) {
 					forward = mapping.findForward("selModify");
 				}
 				break;
 			case "update": //수정요청
-				eNO = (String) request.getParameter("eNO");
-				//request.setAttribute("emplist", list);
-				forward = mapping.findForward("selInfo");
+				eNO = request.getParameter("eNO");
+
+				String name = request.getParameter("name");//이름
+				Date birth = Date.valueOf(request.getParameter("birth"));//생일
+				String sex = request.getParameter("sex");//성별
+				String tel = request.getParameter("tel");//전화번호
+				String email = request.getParameter("email");//이메일
+				String position = request.getParameter("position");//직책
+				Date hireDate = Date.valueOf(request.getParameter("hireDate"));//입사일
+
+				Date retireDate = null;
+				String strRetireDate = request.getParameter("retireDate");
+				if (!(strRetireDate == null || strRetireDate.length() == 0)) {
+					retireDate = Date.valueOf(request.getParameter("retireDate"));//퇴사일
+				}
+
+				String state = request.getParameter("state");//계정상태
+
+				employee = new Employee();
+				employee.seteNO(eNO);
+				employee.setName(name);
+				employee.setBirth(birth);
+				employee.setSex(sex);
+				employee.setTel(tel);
+				employee.setEmail(email);
+				employee.setPosition(position);
+				employee.setHireDate(hireDate);
+				employee.setRetireDate(retireDate);
+				employee.setState(state);
+
+				; //TODO 업데이트작업!!
+				if (dao.updEmpInfo(employee)) {
+					list = dao.selEmpInfo(eNO);
+					request.setAttribute("emplist", list);
+					forward = mapping.findForward("selInfo");
+				} else {
+					forward = mapping.findForward("fail");
+				}
+				break;
+			case "insForm": //추가요청
+				forward = mapping.findForward("selConfirm");
+				break;
+			case "insert": //추가요청
+				employee = new Employee();
+				employee.seteID(request.getParameter("eID"));//아이디
+				employee.setPass(request.getParameter("pass"));//비밀번호
+				employee.setName(request.getParameter("name"));//이름
+				employee.setBirth(Date.valueOf(request.getParameter("birth")));//생일
+				employee.setSex(request.getParameter("sex"));//성별
+				employee.setTel(request.getParameter("tel"));//전화번호
+				employee.setEmail(request.getParameter("email"));//이메일
+				employee.setPosition(request.getParameter("position"));//직책
+				employee.setHireDate(Date.valueOf(request.getParameter("hireDate")));//입사일
+				employee.setState(request.getParameter("state"));//계정상태
+				if (dao.insEmpInfo(employee)) {
+					list = dao.selEmpInfo(eNO);
+					request.setAttribute("emplist", list);
+					forward = mapping.findForward("selInfo");
+				} else {
+					forward = mapping.findForward("fail");
+				}
 
 				break;
 		}//switch
