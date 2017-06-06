@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Created
+   User: KJK
+   Date: 2017-06-07
+   Time: 오전 12:03
+-->
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ad_member">
+	<!-- member.xml -->
+	<typeAlias alias="MemBeans" type="kr.hospi.beans.AdMember"/>
+
+	<!-- 회원 정보 검색 -->
+	<select id="selectAll" resultClass="MemBeans">
+		SELECT mNO,mID,pass,qNO,answer,name,birth,sex,tel,email,pTypeNO,latestDate,joinDate,mMemo,mMdate,rNO,pNO,state
+		FROM Member
+		ORDER BY mNO DESC
+	</select>
+
+	<!--회원 정보 표시-->
+	<select id="selMemInfo" parameterClass="String" resultClass="MemBeans">
+		SELECT mNO, mID, qNO, answer, name, birth, sex, tel, email, pTypeNO, latestDate, joinDate, mMemo, mMdate, rNO, pNO, state
+		FROM Member
+		WHERE mNO=#mNO#
+	</select>
+
+	<!--회원 정보 수정-->
+	<update id="updMemInfo" parameterClass="MemBeans">
+		UPDATE Member SET name=#name#,birth=#birth#,sex=#sex#,tel=#tel#,email=#email#,mMemo=#mMemo#,sysdate,state=#state#
+		WHERE mNO=#mNO#
+	</update>
+</sqlMap>

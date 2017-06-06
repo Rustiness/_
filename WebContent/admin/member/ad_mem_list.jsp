@@ -1,40 +1,63 @@
-<%@page import="kr.hospi.beans.Member"%>
-<%@page import="kr.hospi.dao.MemberDAO"%>
-<%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원목록</title>
-</head>
+<%--
+   Created
+   User: kosta
+   Date: 2017-06-06
+   Time: 오후 9:37
+--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<link href="admin/_css/member.css" rel="stylesheet" type="text/css"/>
+<script src="admin/_js/member.js" rel="script" type="text/javascript"></script>
 <%-- ad_mem_list.jsp --%>
-<body>
-<h3>회원정보리스트</h3>
-<hr color=cc99ff>
+<h3>::회원 목록::</h3>
+<hr style="color: deeppink">
 <center>
-<table border="1" cellpadding="5">
-       <tr bgcolor="cccccc"><th>번호</th><th>회원ID</th><th>이름</th><th>생년월일</th><th>성별</th><th>연락처</th><th>EMAIL</th><th>관심분야</th></tr>
-       <% 
-       		MemberDAO dao = new MemberDAO();
-   			List<Member> list = dao.selectAll();
-   			
-       		for(int i=0;i<list.size();i++) {
-       		session.setAttribute("user", list.get(i));%>
-       <tr>
-           <td><%=(i+1) %></td>
-           <td>${user.mID }</td>
-           <td>${user.name }</td>
-           <td>${user.birth }</td>
-           <td>${user.sex }</td>
-           <td>${user.tel }</td>
-           <td>${user.email }</td>
-           <td>${user.pTypeNO }</td>
-       </tr>              <%-- 최대 돌수있는만큼 !! --%>
-       <%} session.invalidate();%>
-    </table>
+	<table border="1" cellpadding="5" id="memList">
+		<tr id="tableHead">
+			<th>mNO</th>
+			<th>아이디</th>
+			<th>회원명</th>
+			<th>생년월일</th>
+			<th>성별</th>
+			<th>관심사</th>
+			<th>최근접속</th>
+			<th>가입일</th>
+			<th>회원메모</th>
+			<th>예약정보</th>
+			<th>견적정보</th>
+			<th>계정상태</th>
+		</tr>
+		<c:forEach items="${memlist}" var="memInfo">
+			<tr id="tableData">
+				<td>${memInfo.mNO}</td>
+				<td>${memInfo.mID}</td>
+				<td>${memInfo.name}</td>
+				<td>${memInfo.birth}</td>
+				<td>
+						<%-- 성별 --%>
+					<c:choose>
+						<c:when test="${memInfo.sex eq '1'}">남성</c:when>
+						<c:when test="${memInfo.sex eq '2'}">여성</c:when>
+						<c:otherwise>???</c:otherwise>
+					</c:choose>
+				</td>
+				<td>${memInfo.pTypeNO}</td>
+				<td>${memInfo.latestDate}</td>
+				<td>${memInfo.joinDate}</td>
+				<td>${memInfo.mMemo}</td>
+				<td>${memInfo.rNO}</td>
+				<td>${memInfo.pNO}</td>
+				<td>
+						<%-- 상태 --%>
+					<c:choose>
+						<c:when test="${memInfo.state eq '1'}">정상</c:when>
+						<c:when test="${memInfo.state eq '2'}">장기미접속</c:when>
+						<c:when test="${memInfo.state eq '3'}">탈퇴</c:when>
+						<c:when test="${memInfo.state eq '4'}">이용정지</c:when>
+						<c:otherwise>???</c:otherwise>
+					</c:choose>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
 </center>
-</body>
-</html>

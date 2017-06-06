@@ -193,7 +193,14 @@
 
 		<!-- 어드민~~회원정보 -->
 		<action path="/ad_mem"
-		        forward=".ad_menu_member"/>
+		        type="kr.hospi.actions.AdMemAction"
+		        scope="request"
+		        validate="true"
+		        input=".ad_mem_list">
+			<forward name="selAll" path=".ad_mem_list"></forward>
+			<forward name="selInfo" path=".ad_mem_info"></forward>
+			<forward name="selModify" path=".ad_mem_modify"></forward>
+		</action>
 
 		<!-- 어드민~~온라인상담 -->
 		<action path="/ad_coun"

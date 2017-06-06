@@ -1,0 +1,92 @@
+/**
+ * Created
+ * User: KJK
+ * Date: 2017-06-07
+ * Time: 오전 01:21
+ */
+/*tbody tr:nth-child(2n) {*/
+/*tbody tr:nth-child(even) {*/
+/*background-color: #f4f7ff;*/
+/*}*/
+
+#memInfo tbody tr:nth-child(even),
+#memModify tbody tr:nth-child(even) {
+	background-color: #f4f7ff;
+}
+
+#tableHead th {
+	background-color: #8744ff;
+	color: white;
+}
+
+#memList #tableHead th:nth-child(1) {
+	width: 4vw;
+}
+
+#memList #tableHead th:nth-child(2) {
+	width: 7vw;
+}
+
+#memList #tableHead th:nth-child(3) {
+	width: 6vw;
+}
+
+#memList #tableHead th:nth-child(4) {
+	width: 8vw;
+}
+
+#memList #tableHead th:nth-child(5) {
+	width: 4vw;
+}
+
+#memList #tableHead th:nth-child(6) {
+	width: 7vw;
+}
+
+#memList #tableHead th:nth-child(7) {
+	width: 8vw;
+}
+
+#memList #tableHead th:nth-child(8) {
+	width: 8vw;
+}
+
+#memList #tableHead th:nth-child(9) {
+	width: 9vw;
+}
+
+#memList #tableHead th:nth-child(10) {
+	width: 9vw;
+}
+
+#memList #tableHead th:nth-child(11) {
+	width: 9vw;
+}
+
+#memList #tableHead th:nth-child(12) {
+	width: 4vw;
+}
+
+#memInfo #tableHead th:nth-child(1),
+#memModify #tableHead th:nth-child(1) {
+	width: 13vw;
+}
+
+#memInfo #tableHead th:nth-child(2),
+#memModify #tableHead th:nth-child(2) {
+	width: 20vw;
+}
+
+#tableData td,
+#memInfo td,
+#memModify td,
+#memModify input,
+#memModify select {
+	font-size: 1vw;
+	color: #797979;
+}
+
+#memModify #btnSet input {
+	font-size: 1.5vw;
+	color: #797979;
+}

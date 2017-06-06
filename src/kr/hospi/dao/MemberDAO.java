@@ -6,6 +6,7 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import iba.conf.ChefSqlMapClient;
+import kr.hospi.beans.AdMember;
 import kr.hospi.beans.Member;
 
 /**
@@ -74,19 +75,16 @@ public class MemberDAO {
 		return mem_result;// 회원가입정보(joinInfo) 리턴
 	}
 
-	public List<Member> selectAll() {// 전체 회원정보 리스트 뽑아오기
-
-		List<Member> list = null;
+	//관리자
+	/* 전체 회원 목록 */
+	public List<AdMember> selectAll() {
+		List<AdMember> list = null;
 		try {
-
-			list = sqlMap.queryForList("member.selectAll");
+			list = sqlMap.queryForList("ad_member.selectAll");
 			// sql문 실행 + 모든 회원 정보를 list 리스트에 저장.
-
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
-
 		return list;// 회원정보가 저장된 list 리턴.
-	}
+	}//selectAll
 }

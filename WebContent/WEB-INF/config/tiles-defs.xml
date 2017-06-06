@@ -157,9 +157,16 @@
 	</definition>
 
 	<!-- 어드민~~회원정보 -->
-	<definition name=".ad_menu_member" extends=".admin_idx"><!-- 목록 -->
+	<definition name=".ad_mem_list" extends=".admin_idx"><!-- 회원 목록 -->
 		<put name="a_main_body" value="/admin/member/ad_mem_list.jsp"></put>
 	</definition>
+	<definition name=".ad_mem_modify" extends=".admin_idx"><!-- 회원 정보 수정 -->
+		<put name="a_main_body" value="/admin/member/ad_mem_modify.jsp"></put>
+	</definition>
+	<definition name=".ad_mem_info" extends=".admin_idx"><!-- 회원 상세정보 -->
+		<put name="a_main_body" value="/admin/member/ad_mem_info.jsp"></put>
+	</definition>
+
 
 	<!-- 어드민~~온라인상담 -->
 	<definition name=".ad_menu_counsel" extends=".admin_idx"><!-- 목록 -->
