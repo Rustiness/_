@@ -1,3 +1,4 @@
+<%@page import="kr.hospi.beans.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -5,136 +6,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href='css/common.css' rel='stylesheet' />
-<title>회원가입</title>
+<title>회원정보수정</title>
 
 <%-- 
-	join_confirm2.jsp
-	[회원가입2 - 정보입력]
- --%>
- 
+	mem_mod.jsp
+	[회원정보수정]
+--%>
+
 </head>
 
-<%-- 회원정보 입력부 --%>
+<%-- 회원정보수정 입력부 --%>
 <body>
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <%-- 함수를 정의하는 스크립트 --%>
 <script type="text/javascript">
-
-	function validCheck(){//유효성검사
-       
-       var f = document.join; //form을 f로 치환한다.
-       
-       
-    
-       var tel2Exp =/^[\d]{3,4}$/g;
-       var tel3Exp =/^[\d]{4}$/g;
-       var email1Exp = /^[a-zA-Z0-9]{6,15}$/;
-       var email2Exp = /^[a-zA-Z]+\.[a-zA-Z]$/g;
-	   var birth1Exp=/^[\d]{4}$/g;
-	   var birth2Exp=/^[\d]{2}$/g;
-	   var birth3Exp=/^[\d]{2}$/g;
-	   var id=f.mID.value;
-		/*
-		 telExmp=번호칸에 숫자만들어갈수있게.
-		 email1=숫자영어조합가능
-		 email2=영어만가능
-		 birth1=숫자만 4자리가능
-		 birth2=숫자만 2자리가능
-		 birth3=숫자만 2자리가능
-		*/
-	   if(f.mID.value==''){//아이디체크
-		   alert('아이디를 입력!!');
-		   
-	   }else if(f.mID.value.length < 6 || f.mID.value.length > 12){//id길이체크
-          	alert('아이디는 6~12자리!!');
-          	f.mID.focus();
-       }else if(f.pass.value == ''){//데이터내용 비교
-       	alert('비번입력!!');
-       	f.pass.focus();
-       }else if(f.pass_check.value === ''){//자료형 비교후 내용 비교
-       	alert('비번입력!!');
-       	f.pass2.focus();
-       }else if(f.pass.value!=f.pass_check.value){//비밀번호 ,비밀번호확인 체크
-           alert('비번이 일치하지 않습니다!!');
-           f.pass.value=''; f.pass2.value='';
-           f.pass.focus();
-       }else if(f.name.value==''){//이름값체크
-       	alert('이름입력!!');
-       	f.name.focus();
-       
-       }else if( !birth1Exp.test(f.birth1.value)){//생년체크
-       	alert('생년에 4자리 수를 입력!!');
-       	
-       	f.birth1.focus();
-       	
-       }else if(!birth2Exp.test(f.birth2.value)){//월수 값체크
-    		alert('월에 2자리 수를 입력!!');
-           	
-           	f.birth2.focus();
-    	   
-    	   
-       }else if(!birth3Exp.test(f.birth3.value)){//일수 값 체크
-    	   
-    	   alert('일에 2자리 수를 입력!!');
-          	
-          	f.birth3.focus();
-   	   
-    	   
-       }else if((!tel2Exp.test(f.tel2.value))||(!tel3Exp.test(f.tel3.value))){
-    	   
-    	   alert('핸드폰 번호 확인!!');
-    	   
-       
-       
-       
-       }else if(!email1Exp.test(f.email1.value)){
-    	   
-       	alert('첫번째칸 형식 오류');
-       	f.email1.focus();
-    	   
-       
-       
-       
-       }else if (email1Exp.test(f.email1.value)){
-    	   
-    	     	if(f.email2.value=='' && f.select_email.value=='직접입력'){
-    	    	 
-             	alert('둘다 null값안됨');
-    	    	 
-    	       }else if(!(f.email2.value=='')&&!(f.select_email.value=='직접입력')){
-             	alert('email2,select둘다 적으면 오류! ');
-    	    	 
-    	       }else if((f.email2.value=='')&&!(f.select_email.value=='직접입력')){
-    	    	 f.submit();
-    	       }else if(!f.email2.value==''&&f.select_email.value=='직접입력'){
-       	    	//폼내에 유효한 데이터가 입력 되었다면
-      	    	 f.submit();//<form>태그내의 action속성의 URL로 폼데이터 전송!!
-      	       }
-    	      	 
-       }
-      
-	}//validCheck
-
-	function openIdCheck(){//ID 중복확인 창(idcheck.jsp)을 새로 띄움
-		window.open("/JavaChefWeb/client/member/idcheck.jsp","idCheck","left=900,top=100,width=400,height=200,resizable=yes");
-	}
-	
 	function back(){//로그인 페이지로 이동
-		location.href="/JavaChefWeb/login.do";
+		location.href="/JavaChefWeb/login_res.do";
 	}
 </script>
 
-<%-- 회원정보 입력폼(join) 
-	<입력되는 정보>
-	mID(아이디), pass(비밀번호),
---%>
-  <form name=join method="POST" action="/JavaChefWeb/join_process.do">
+<%-- 회원정보 입력폼(join)--%>
+  <form name=join method="POST" action="/JavaChefWeb/mem_mod_process.do">
    <div class="contents">
       <div class="con_title">
-         <h3> 회원가입 </h3>
+         <h3> 회원정보수정 </h3>
          <p class="mt35 taR">
-            Home &gt; 회원가입 &gt; <strong>회원정보 입력</strong>
+            Home &gt; 회원정보수정 &gt; <strong>수정할 정보 입력</strong>
          </p>
       </div>
       
@@ -149,13 +47,11 @@
         <!-- 아이디 -->
         <tr>
            <th>
-                              아이디 <span class="c_red">*</span>
+                              아이디
            </th>
            <td class="line">
-           	 <%-- 아이디(mID) 입력 필드, 읽기만 가능. 중복확인을 해야만 입력된다.  --%>
-             <input name="mID" id="mID" type="text" readonly/>
-             <%-- 중복확인(idcheck.jsp) 창을 새로 띄우는 버튼 --%>
-             <input type="button" id="chk_id_exist2" value="중복확인" onclick="openIdCheck()"/>
+           	 <%-- 아이디(mID) 입력 필드, 읽기만 가능하며 수정은 불가. --%>
+             <input name="mID" id="mID" type="text" value="${user.mID }" readonly/>
            </td>
         </tr>
        </table>
@@ -183,6 +79,8 @@
            </td>
         </tr>
       </table>
+      
+      <!-- --------------------- -->
       <table cellpadding="0" cellspacing="0" width="100%">
         <!-- 비밀번호찾기질문 -->
         <tr>
@@ -191,20 +89,20 @@
            </th>
               <td class="line"><!--비밀번호 찾기  질문항목들  -->
               	 <select name="question">
-              	 		<option selected>선택</option>
-              	 		<option>기억에 남는 추억의 장소는?</option>
-              	 		<option>자신의 인생 좌우명은?</option>
-              	 		<option>가장 기억에 남는 선생님 성함은?</option>
-              	 		<option>타인이 모르는 자신만의 신체비밀이 있다면?</option>
-              	 		<option>추억하고 싶은 날짜가 있다면?</option>
-              	 		<option>받았던 선물 중 기억에 남는 독특한 선물은?</option>
-              	 		<option>유년시절 가장 생각나는 친구 이름은?</option>
-              	 		<option>인상 깊게 읽은 책 이름은?</option>
-              	 		<option>자신이제일 존경하는 인물은?</option>
-              	 		<option>친구들에게 공개하지 않은 어릴 적 별명이 있다면?</option>
-              	 		<option>초등학교때 기억에 남는 짝꿍 이름은?</option>
-              	 		<option>다시 태어나면 되고 싶은 것은?</option>
-              	 		<option>내가 좋아하는 캐릭터는?</option>
+              	 		<option value="1" selected>선택</option>
+              	 		<option value="2">기억에 남는 추억의 장소는?</option>
+              	 		<option value="3">자신의 인생 좌우명은?</option>
+              	 		<option value="4">가장 기억에 남는 선생님 성함은?</option>
+              	 		<option value="5">타인이 모르는 자신만의 신체비밀이 있다면?</option>
+              	 		<option value="6">추억하고 싶은 날짜가 있다면?</option>
+              	 		<option value="7">받았던 선물 중 기억에 남는 독특한 선물은?</option>
+              	 		<option value="8">유년시절 가장 생각나는 친구 이름은?</option>
+              	 		<option value="9">인상 깊게 읽은 책 이름은?</option>
+              	 		<option value="10">자신이제일 존경하는 인물은?</option>
+              	 		<option value="11">친구들에게 공개하지 않은 어릴 적 별명이 있다면?</option>
+              	 		<option value="12">초등학교때 기억에 남는 짝꿍 이름은?</option>
+              	 		<option value="13">다시 태어나면 되고 싶은 것은?</option>
+              	 		<option value="14">내가 좋아하는 캐릭터는?</option>
               	 </select>
               	       
               </td>
@@ -219,10 +117,11 @@
            </th>
               <td class="line">
               	 <%--비밀번호찾기답변 입력 --%>
-                 <input type="text" name="answer" value="" class="input_text_half" maxlength="10">
+                 <input type="text" name="answer" value="${user.answer}" class="input_text_half" maxlength="10">
               </td>
         </tr>
        </table>
+   
       <table cellpadding="0" cellspacing="0" width="100%">
         <!-- 이름 -->
         <tr>
@@ -231,7 +130,7 @@
            </th>
               <td class="line">
               	 <%--이름(name) 입력 필드 --%>
-                 <input type="text" name="name" value="" class="input_text_half" maxlength="6">
+                 <input type="text" name="name" value="${user.name }" class="input_text_half" maxlength="20" readonly>
               </td>
         </tr>
        </table>
@@ -244,9 +143,15 @@
            </th>
            <td class="line">
            	   <%-- 생일(birth) 입력 필드. birth1,2,3은 JoinAction.java(회원가입 액션)에서 합쳐져 birth가 된다. --%>
-               <input type="text1" name="birth1" value="" class="input_text_number" style="width: 40px;" maxlength="4">년 
-               <input type="text2" name="birth2" value="" class="input_text_number" style="width: 20px;" maxlength="2">월
-             <input type="text3" name="birth3" value="" class="input_text_number" style="width: 20px;" maxlength="2">일
+           	   <%
+           			Member user = (Member)session.getAttribute("user");
+           	   		String birth = user.getBirth();
+           	   		String bArr[]=birth.split("-");
+           	   		String bArr2[]=bArr[2].split(" ");
+           	   %>
+               <input type="text1" name="birth1" value="<%= bArr[0] %>" class="input_text_number" style="width: 40px;" maxlength="4">년 
+               <input type="text2" name="birth2" value="<%= bArr[1] %>" class="input_text_number" style="width: 20px;" maxlength="2">월
+             <input type="text3" name="birth3" value="<%= bArr2[0] %>" class="input_text_number" style="width: 20px;" maxlength="2">일
              &nbsp; 
            </td>
          </tr>
@@ -273,6 +178,9 @@
            		JoinAction.java(회원가입 액션)에서 합쳐져 tel이 된다.
            --%>
            <td class="line">
+           	   <% String tel = user.getTel();
+           	   	  String tArr[]=tel.split("-");
+           	   %>
                <select name="tel1">
                <option value="" selected>선택</option>
                <option value="010">010</option>
@@ -282,8 +190,8 @@
                <option value="018">018</option>
                <option value="019">019</option>
              </select> - 
-             <input type="text" name="tel2" class="input_text_number" maxlength="4" onkeyup="if(this.value.length==4){chkNum(this, form_user.user_mobile3);}" />
-              - <input type="text" name="tel3" class="input_text_number" maxlength="4" onkeyup="if(this.value.length==4){chkNum(this, '');}" /> 
+             <input type="text" name="tel2" value="<%= tArr[1] %>" class="input_text_number" maxlength="4" onkeyup="if(this.value.length==4){chkNum(this, form_user.user_mobile3);}" />
+              - <input type="text" name="tel3" value="<%= tArr[2] %>" class="input_text_number" maxlength="4" onkeyup="if(this.value.length==4){chkNum(this, '');}" /> 
              <%-- SMS 수신동의 여부 체크박스(작업 중) --%> 
              <input type="checkbox" name="user_sms_allow" value="1">
              <span class="gray_font_11">SMS 수신 동의</span>
@@ -303,7 +211,10 @@
             	JoinAction.java(회원가입 액션)에서 합쳐져 email이 된다.
             --%>
             <td class="line">
-               <input name="email1" type="text" id="email1" value="" style="ime-mode: disabled" class="input_text_half" maxlength="20" />
+               <%
+               		String email[]=user.getEmail().split("@");
+               %>
+               <input name="email1" type="text" id="email1" value="<%=email[0] %>" style="ime-mode: disabled" class="input_text_half" maxlength="20" />
                 @ <input name="email2" type="text" id="email2" value="" style="ime-mode: disabled" class="input_text_half" maxlength="20" />
                <%-- 선택창(select_email)에서 '직접입력'을 선택하면 email은 email1 + email2이 된다. --%>
                <select name="select_email">
@@ -350,8 +261,8 @@
        </table>
 
       <div class="taC mt40">
-      	  <%-- 회원가입 버튼. 유효한 정보가 입력되면 JoinAction.java으로 정보를 전송하여 회원가입을 함.--%>
-          <input type="button" id="btn_user_join" style="cursor: pointer;" value="가입" onclick="validCheck()"/>
+      	  <%-- 회원정보수정 버튼. 유효한 정보가 입력되면 JoinAction.java으로 정보를 전송하여 회원정보를 수정함.--%>
+          <input type="submit" id="btn_user_join" style="cursor: pointer;" value="수정"/>
           <%-- 취소버튼. 정보를 리셋하고 로그인(login_confirm.jsp) 페이지로 돌아감 --%>
           <input type="reset" id="btn_reload" style="cursor: pointer;" value="취소" onclick="back()"/>
        </div>

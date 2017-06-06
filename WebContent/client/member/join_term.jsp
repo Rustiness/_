@@ -7,8 +7,8 @@
 <title>회원가입약관</title>
 </head>
 <%-- 
-	join_confirm1.jsp 
-	[회원가입1 - 약관 동의]
+	join_term.jsp 
+	[회원가입 - 약관 동의]
 --%>
 <body>
 <script type="text/javascript">
@@ -21,7 +21,7 @@
 		var term2=document.frm.term2.checked;//약관 1,2 동의 여부(boolean)
 		
 		if(term1==true&&term2==true){//약관에 모두 동의하면 회원가입2(join_confirm2.jsp) 페이지로 이동
-			location.href="/JavaChefWeb/join2.do"
+			location.href="/JavaChefWeb/join.do"
 		}else{//하나라도 동의 안하면 알림창이 팝업
 			alert('회원가입을 하시려면 모든 약관에 동의하셔야 합니다!');
 		}
@@ -63,7 +63,7 @@
 			</tr>
 		</table>
 	<br>
-	<%-- 동의 버튼: 약관에 모두 동의하면 회원가입2(join_confirm2.jsp)로 이동, 아닐시 알림창 팝업 --%>
+	<%-- 동의 버튼: 약관에 모두 동의하면 회원가입 - 정보입력(join_confirm.jsp)으로 이동, 아닐시 알림창 팝업 --%>
 	<input type="button" value="동의합니다." onclick="confirm()">
 	<%-- 비동의 버튼: 현 페이지를 리셋하고 로그인(login_confirm.jsp) 페이지로 이동 --%>
 	<input type="reset" value="동의하지 않습니다." onclick="moveLogin()">

@@ -2,68 +2,48 @@
 <%@page import="java.util.List"%>
 <%@page import="kr.hospi.dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>아이디 체크</title>
+<title>아이디 중복 체크</title>
 </head>
-<%-- idcheck.jsp --%>
 <body>
-	<script type="text/javascript">
-	function dupId(){
-		var mID = document.getElementById("mID").value;
-		
-		var b=confirm("'"+mID+"'는 사용가능한 ID입니다. 사용하시겠습니까?");
-		if(b==true){
-			opener.document.getElementById("mID").value=mID;
-			window.close();
-		}
+<script type="text/javascript">
+	function clearID(){
+		opener.document.getElementById("mID").value="";
+		opener.document.getElementById("mID").focus();
+		window.close();
 	}
 </script>
-
-	<form name="frm">
-		<center>
-			<table width="300" bgcolor="#ffe4b5" cellpadding="5">
-				<tr>
-					<td>아이디 중복확인
-						<hr>
-					</td>
-				</tr>
-				<tr>
-					<td>아이디 입력: <input type="text" id="mID">
-					<hr></td>
-				</tr>
-				<tr align="center">
-					<td><input type="button" value="중복확인" onclick="dupId()">
-						<input type="reset" value="취소" onclick="window.close()"></td>
-				</tr>
-			</table>
-			<%-- <br>
-	<table width="300" bgcolor="#ffe4b5" cellpadding="5">
-		<tr><td>비밀번호 확인<hr></td></tr>
-		<tr><td>비밀번호 입력: <input type="text" name="pass"><hr></td></tr>
-		<tr align="center"><td><input type="submit" value="확인">
-	</table>
-	<br>
-	<table width="300" bgcolor="#ffe4b5" cellpadding="5">
-		<tr align="center"><td>입력하신 ID는 입니다. 이 ID를 사용하시겠습니까?<br><br>
-				<input type="button" value="사용하기"><hr></td></tr>
-		<tr><td>아이디 입력: <input type="text" name="id"><hr></td></tr>
-		<tr align="center"><td><input type="submit" value="중복확인">
-				<input type="reset" value="취소"></td></tr>
-	</table>
-	<br>
-	<table width="300" bgcolor="#ffe4b5" cellpadding="5">
-		<tr align="center"><td>입력하신 ID는 , 중복된 ID입니다. 다시 입력해주세요.<br><br>
-				<input type="button" value="사용하기"><hr></td></tr>
-		<tr><td>아이디 입력: <input type="text" name="id"><hr></td></tr>
-		<tr align="center"><td><input type="submit" value="중복확인">
-				<input type="reset" value="취소"></td></tr>
-	</table>
---%>
-		</center>
-	</form>
+<center>
+<% 
+	String mID = request.getParameter("mID");//아이디 입력란에서 받아온 아이디
+	
+	MemberDAO dao = new MemberDAO();
+	List<Member> list = dao.selectAll();
+	
+	boolean result = false;//중복 여부를 알려주는 boolean값 result.
+	
+	if(list!=null){
+	    for(int i=0;i<list.size();i++){
+	    	String mID_check=list.get(i).getmID();//데이터베이스에 존재하는 아이디
+	    	if(mID.equals(mID_check)){//중복이 존재할 경우
+	    		result = true;
+	    		break;
+	    	}
+	    }
+	}
+	
+	if(result){%>
+	<font color="red"><b>이미 존재하는 아이디입니다!</b></font><br><br>
+	<input type="reset" value="취소" onclick="clearID()">
+	<%}else{%>
+	<b>사용가능한 아이디입니다!</b><br><br>
+	<input type="button" value="사용" onclick="window.close()">
+	<input type="reset" value="취소" onclick="clearID()">
+	<%}%>
+</center>
 </body>
 </html>

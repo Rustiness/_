@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원정보수정 실패</title>
 </head>
-<%-- member_modify_fail.jsp --%>
+<%-- mem_fail.jsp --%>
 <body>
 	<h3>회원정보수정 실패!</h3>
 	<hr>

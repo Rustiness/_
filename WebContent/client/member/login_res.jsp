@@ -7,7 +7,7 @@
 <title>로그인 성공</title>
 </head>
 <%--
-	login_success.jsp
+	login_res.jsp
 	[로그인 성공 페이지]
 --%>
 <body>
@@ -17,16 +17,20 @@
 		location.href="/JavaChefWeb/client.do";
 	}
 	
-	function moveModify(){//회원정보수정(mem_modify.jsp) 페이지로 이동
-		location.href="/JavaChefWeb/mem_modify.do";
+	function moveInfo(){//회원정보 페이지로 이동
+		location.href="/JavaChefWeb/mem_info.do";
+	}
+	
+	function openPassCheck(){//비밀번호 확인 창(passcheck.jsp)을 새로 띄움
+		window.open("/JavaChefWeb/client/member/passcheck.jsp","passCheck","left=900,top=100,width=400,height=200,resizable=yes");
 	}
 	
 	function logout(){
 		 var con = confirm("접속을 종료하시겠습니까");
 		 if(con == true){
-		  location.href="/JavaChefWeb/client/member/logout.jsp";
+		  location.href="/JavaChefWeb/logout.do";
 		  //logout을 위해 세션을 제거하는 페이지 호출
-		 }else{}
+		 }
 	}
 </script>
 
@@ -42,8 +46,10 @@
 	<br><br>
 	<%-- 메인 페이지로 이동하는 버튼 --%>
 	<input type="button" value="메인화면 이동" onclick="moveMain()">
-	<%-- 회원정보수정(member_modify.jsp) 페이지로 이동하는 버튼 --%>
-	<input type="button" value="회원정보수정" onclick="moveModify()">
+	<%-- 회원정보(mem_confirm.jsp) 페이지로 이동하는 버튼 --%>
+	<input type="button" value="회원정보" onclick="moveInfo()">
+	<%-- 회원정보수정(mem_mod.jsp) 페이지로 이동하는 버튼 --%>
+	<input type="button" value="회원정보수정" onclick="openPassCheck()">
 	<input type="button" value="로그아웃" onclick="logout()">
 </form>
 </center>

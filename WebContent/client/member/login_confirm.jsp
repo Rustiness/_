@@ -9,8 +9,8 @@
 	[로그인 창]
 --%>
 <script type="text/javascript">
-	function moveJoin(){//회원가입1(join_confirm1.jsp) 페이지로 이동
-		location.href="/JavaChefWeb/join1.do";
+	function moveJoin(){//회원가입1(join_term.jsp) 페이지로 이동
+		location.href="/JavaChefWeb/join_term.do";
 	}
 	
 	function moveLost(){//아이디, 비밀번호 찾기(pass_lost_confirm.jsp) 페이지로 이동

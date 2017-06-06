@@ -39,14 +39,15 @@
 		        forward=".client_idx"/>
 
 		<!-- 클라이언트~~회원가입 -->
-		<!-- 회원가입1 단순 포워딩 -->
-		<action path="/join1" forward=".menu_join1" />
+		<!-- 회원가입(약관) 단순 포워딩 -->
+		<action path="/join_term" forward=".menu_join_term" />
+		<!--  -->
 		
-		<!-- 회원가입2 단순 포워딩 -->
-		<action path="/join2" forward=".menu_join2" />
+		<!-- 회원가입(정보입력) 단순 포워딩 -->
+		<action path="/join" forward=".menu_join" />
 
 		<!-- 회원가입 성공 단순 포워딩 -->
-		<action path="/join_success" forward=".menu_join_success"/>
+		<action path="/join_res" forward=".menu_join_res"/>
 		
 		<!-- 회원가입 실패 단순 포워딩 -->
 		<action path="/join_fail" forward=".menu_join_fail"/>
@@ -54,55 +55,68 @@
 		<!-- 회원가입 액션 -->
 		<action path="/join_process" type="kr.hospi.actions.JoinAction"
 			scope="request">
-			<forward name="success" path="/join_success.do"
+			<forward name="success" path="/join_res.do"
 				redirect="true"></forward>
 			<forward name="fail" path="/join_fail.do"></forward>
 		</action>
+		
+		<!-- 아이디 중복 체크 액션 -->
+		<action path="/join_idcheck" type="kr.hospi.actions.IdCheckAction" scope="request"/>
 
-		<!-- 클라이언트~~로그인 -->
+		<!-- 클라이언트~~로그인/로그아웃 -->
 		<!-- 로그인 페이지 단순 포워딩 -->
 		<action path="/login" forward=".menu_login" />
 		
 		<!-- 로그인 성공 페이지 단순 포워딩 -->
-		<action path="/login_success" forward=".menu_login_success" />
+		<action path="/login_res" forward=".menu_login_res" />
 
 		<!-- 로그인 액션 -->
 		<action path="/login_process" type="kr.hospi.actions.LoginAction"
 			name="loginForm" validate="true" scope="request"
-			input="/client/member/login_confirm.jsp">
-			<forward name="success" path="/login_success.do"
+			input="/login.do">
+			<forward name="success" path="/login_res.do"
 				redirect="true"></forward>
 		</action>
+		
+		<!-- 로그아웃 페이지 단순 포워딩 -->
+		<action path="/logout" forward="/client/member/logout.jsp" />
 
 		<!-- 클라이언트~~회원정보 -->
 		<!-- 회원정보수정 페이지 단순 포워딩 -->
-		<action path="/mem_modify" forward=".menu_memberinfo_modify" />
+		<action path="/mem_mod" forward=".menu_memberinfo_mod" />
 		
 		<!-- 회원정보수정 성공 페이지 단순 포워딩 -->
-		<action path="/mem_modify_success" forward=".menu_memberinfo_modify_success" />
+		<action path="/mem_res" forward=".menu_memberinfo_mod_res" />
 		
 		<!-- 회원정보수정 실패 페이지 단순 포워딩 -->
-		<action path="/mem_modify_fail" forward=".menu_memberinfo_modify_fail" />
+		<action path="/mem_fail" forward=".menu_memberinfo_mod_fail" />
 
 		<!-- 회원정보수정 액션 -->
-		<action path="/mem_modify_process" type="kr.hospi.actions.ModifyAction"
+		<action path="/mem_mod_process" type="kr.hospi.actions.ModifyAction"
 			scope="request">
-			<forward name="success" path="/mem_modify_success.do"
+			<forward name="success" path="/mem_res.do"
 				redirect="true"></forward>
-			<forward name="fail" path="/mem_modify_fail.do"></forward>
+			<forward name="fail" path="/mem_fail.do"></forward>
 		</action>
 		
 		<!-- 아이디, 비밀번호 찾기 단순 포워딩 -->
 		<action path="/pass_lost" forward=".menu_pass_lost" />
 		
-		<!-- 아이디, 비밀번호 찾기 액션 -->
-		<action path="/pass_lost_process" type="kr.hospi.actions.LostAction"
-			scope="request">
-			<forward name="success" path="/pass_lost.do"
-				redirect="true"></forward>
+		<!-- 아이디 찾기 액션 -->
+		<action path="/id_lost_process" type="kr.hospi.actions.LostAction" scope="request">
+			<forward name="success" path="/pass_lost.do" redirect="true"></forward>
 			<forward name="fail" path="/pass_lost.do"></forward>
 		</action>
-
+		
+		<!-- 비밀번호 찾기 액션 -->
+		<action path="/pass_lost_process" type="kr.hospi.actions.LostActionPass" scope="request">
+        	<forward name="success" path="/pass_lost.do" redirect="true"></forward>
+        	<forward name="fail" path="/pass_lost.do"></forward>
+        </action>
+		
+		<!-- 회원정보(파일명도 경로와 일치) -->
+		<action path="/mem_info" forward=".menu_mem_info" />
+		
 		<!-- 클라이언트~~성형정보 -->
 		<action path="/plaSur"
 		        forward=".menu_plasticSurgery"/>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입 결과</title>
 </head>
-<%-- join_result.jsp --%>
+<%-- join_res.jsp --%>
 <body>
 	<script type="text/javascript">
 	function back(){

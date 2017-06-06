@@ -16,7 +16,7 @@
 	
 	<!-- ※전체행검색 -->
 	<select id="selectAll" resultClass="mem">
-		select mNO,mID,pass,name,birth,sex,tel,email,pTypeNO,latestDate,joinDate,uMemo,uMdate,rNO,pNO,state
+		select mNO,mID,pass,question,answer,name,birth,sex,tel,email,pTypeNO,latestDate,joinDate,uMemo,uMdate,rNO,pNO,state
 		from member
 		order by mNO desc
 		<!-- 아이디로되있으면 resultclass는 int , name은 String 한번에는 다 받는건 beans!! -->

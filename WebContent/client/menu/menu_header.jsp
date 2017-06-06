@@ -16,13 +16,15 @@
 		<td>
 			<%-- 로그인, 가입, 회원정보, 로그아웃 구역 시작 --%>
 			<div id="header_login">
+				<%if (session.getAttribute("user")==null) {%>
 				<html:link action="/login">LOGIN</html:link>
 				/
-				<html:link action="/join1">JOIN</html:link>
-				/
-				<html:link action="/mem">USERINFO</html:link>
+				<html:link action="/join_term">JOIN</html:link>
+				<%} else {%>
+				<html:link action="/mem_info">USERINFO</html:link>
 				/
 				<html:link action="/logout">LOGOUT</html:link>
+				<%} %>
 			</div>
 			<%-- 로그인, 가입, 회원정보, 로그아웃 구역 종료 --%>
 		</td>

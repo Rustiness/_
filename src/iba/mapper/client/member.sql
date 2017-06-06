@@ -12,7 +12,7 @@ create table member( --테이블 생성
  sex		varchar2(10) not null,
  tel		varchar2(15) not null,
  email		varchar2(30) not null,
- pTypeNO    varchar2(20),
+ pTypeNO    varchar2(20), 
  latestDate	DATE		not null,
  joinDate	DATE		not null,
  uMemo		varchar2(200),
