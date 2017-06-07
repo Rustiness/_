@@ -17,6 +17,20 @@
 		<!-- 로그인 액션폼(로그인 유효성 검사) -->
        	<form-bean name="loginForm"
        			  type="kr.hospi.actionforms.LoginActionForm"/>
+			  	
+		<!-- pType form등록 시작!! -->
+		<!-- 관리자용: 예약(insert) ActionForm 등록 -->
+    	<form-bean name="ptypeInsertForm" 
+    			   type="kr.hospi.forms.PtypeForm"></form-bean> 
+    			   
+    			  <!-- pItem form등록 시작!! -->
+		<!-- 관리자용: 예약(insert) ActionForm 등록 -->
+    	<form-bean name="pitemInsertForm" 
+    			   type="kr.hospi.forms.PitemForm"></form-bean> 
+		<!-- 고객용: eyeItem, noseItem, faceItem,BodyItem,BreastItem ActionForm 등록 -->
+    	<form-bean name="estiClientForm" 
+    			   type="kr.hospi.forms.EstiClientActionForm"></form-bean> 
+		
 	</form-beans>
 
 	<!-- ========================================= Global Exception Definitions -->
@@ -168,12 +182,27 @@
 		        type="kr.hospi.actions.EstiUserAction">
 			<forward name="success" path=".menu_estimate"></forward>	
 		</action>
+		<!-- <action path="/esti" forward=".menu_estimate">
 
+		</action> -->
+		
+		<!-- 고객자용: 성형타입 Action(plasticItemsinsert) 등록 -->
 		<!-- 클라이언트~~견적결과보기 on processing-->
-		<action path="/esti_res" forward="/client/estimate/esti_result.jsp">
-			<!--  <forward name="success" path=".menu_estimate"></forward>	-->
-		</action>
-
+		<action path="/esti_res" 
+				type="kr.hospi.actions.EstiClientAction"
+				name="estiClientForm"
+				scope="request"
+      			validate="true"
+      			input="/esti_res.do">
+				<forward name="success" path=".menu_estimate_res"></forward>
+				<forward name="fail" path="/esti.do"></forward>
+			</action>
+		<!-- 클라이언트~~견적 완료Complete -->
+		<action path="/esti_con"
+		        type="kr.hospi.actions.EstiAction">
+			<forward name="success" path=".menu_estimate_res"></forward>	
+		</action>	
+	
 		<!-- 클라이언트~~병원소개 -->
 		<action path="/intro"
 		        forward=".menu_hospinfo"/>
@@ -233,12 +262,51 @@
 
 		<!-- 어드민~~성형타입:기준 -->
 		<action path="/ad_plasTy"
-		        forward=".ad_menu_plasType"/>
-
-		<!-- 어드민~~성형시술:기준 -->
+		        type="kr.hospi.actions.PlasticTyAction"
+		        scope="request"
+				validate="true"
+				input=".ad_plasType_list">
+			<forward name="selectAll" path=".ad_plasType_list"></forward>	
+			<forward name="selectInfo" path=".ad_plasType_info"></forward>	
+			<forward name="selectModify" path=".ad_plasType_modify"></forward>	
+		</action>
+		
+		<!-- 어드민~~성형시술 시작Complete-->
 		<action path="/ad_plasIt"
-		        forward=".ad_menu_plasItem"/>
-
+		        type="kr.hospi.actions.PlasticItAction"
+				scope="request"
+				validate="true"
+				input=".ad_plasItem_list">
+			<forward name="selectAll" path=".ad_plasItem_list"></forward>	
+			<forward name="selectInfo" path=".ad_plasItem_info"></forward>	
+			<forward name="selectModify" path=".ad_plasItem_modify"></forward>	
+		</action>
+		
+		<!-- 어드민~~성형타입:기준 -->
+		<!-- 관리자용: 성형타입 Action(insert) 등록 -->
+		<action path="/ad_plasTInsert"
+				type="kr.hospi.actions.PlasticTInsertAction"
+      			name="ptypeInsertForm"
+      			scope="request"
+      			validate="true"
+      			input="/ad_plasTInsert.do">
+      	<forward name="success" path="/ad_plasTy.do"></forward>
+    	 <forward name="fail" path="/ad_plasTInsert.do"></forward>
+      	</action>
+		        <!-- pTypeNO=EY&pTypeName=눈성형&state=1
+		        forward=".ad_menu_plasType"/> -->
+		<!-- 어드민~~성형시술:기준 -->
+		<!-- 관리자용: 성형시술 Action(insert) 등록 -->
+		<action path="/ad_plasIInsert"
+				type="kr.hospi.actions.PlasticItemInsertAction"
+      			name="pItemInsertForm"
+      			scope="request"
+      			validate="true"
+      			input="/ad_plasIInsert.do">
+      	<forward name="success" path="/ad_plasIt.do"></forward>
+    	 <forward name="fail" path="/ad_plasIInsert.do"></forward>
+      	</action>
+		
 		<!-- 어드민~~관리등급:기준 -->
 		<action path="/ad_grade"
 		        forward=".ad_menu_grade"/>

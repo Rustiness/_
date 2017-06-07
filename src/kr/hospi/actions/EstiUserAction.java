@@ -11,6 +11,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import kr.hospi.beans.Estimate;
+import kr.hospi.beans.PlasticItem;
 import kr.hospi.dao.EstimateDAO;
 
 /**
@@ -29,19 +30,19 @@ public class EstiUserAction extends Action {
 		EstimateDAO dao = new EstimateDAO();	
 		
 		//EYE 관련된 정보 출력 시작  --> list1
-	      List<Estimate> list1 = dao.selectType("EY");
+	     List<PlasticItem> list1 = dao.selectType("EY");
 	    request.setAttribute("list1", list1);
-		//NOSE 관련된 정보 출력  시작 --> list2
-	    List<Estimate> list2 = dao.selectType("NO");
+		//NOSE 관련된 정보 출력  시작 --> list2	
+	    List<PlasticItem> list2 = dao.selectType("NO");
 	    request.setAttribute("list2", list2);
 	  //FACE 관련된 정보 출력  시작  --> list3
-	    List<Estimate> list3 = dao.selectType("FA");
+	    List<PlasticItem> list3 = dao.selectType("FA");
 	    request.setAttribute("list3", list3);
 	  //BODY 관련된 정보 출력   시작 --> list4
-	    List<Estimate> list4 = dao.selectType("BO");
+	    List<PlasticItem> list4 = dao.selectType("BO");
 	    request.setAttribute("list4", list4);
 	  //BREAST 관련된 정보 출력   시작  --> list5
-	    List<Estimate> list5 = dao.selectType("BR");
+	    List<PlasticItem> list5 = dao.selectType("BR");
 	    request.setAttribute("list5", list5);
 	    
 		return mapping.findForward("success");
@@ -49,6 +50,4 @@ public class EstiUserAction extends Action {
 	}//execute
 		
 	
-	
-
 }

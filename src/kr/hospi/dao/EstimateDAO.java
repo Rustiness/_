@@ -8,12 +8,15 @@ package kr.hospi.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 
 import iba.conf.ChefSqlMapClient;
 import kr.hospi.beans.Estimate;
+import kr.hospi.beans.PlasticItem;
+import kr.hospi.forms.EstiClientActionForm;
 
 public class EstimateDAO {// 
 	
@@ -25,17 +28,43 @@ public class EstimateDAO {//
 		sqlMap=ChefSqlMapClient.getSqlMapInstance();
 	}
 	
-	public boolean insert(Estimate estivo) {//insert data
+	public boolean insert(Estimate estimate) {//insert data
 		try {
-			sqlMap.insert("insertEsti", estivo);
-			System.out.println("success");
+			sqlMap.insert("estimate.insertEstimate", estimate);
+			System.out.println("successInsert");
 			return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}//try-catch
 		return false;
 	}//insert
+	
+/*
+*/	
+	public boolean update(Estimate estimate) {//update data
+		try {
+			sqlMap.insert("estimate.update", estimate);
+			System.out.println("successUpdate");
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}//try-catch
+		return false;
+	}//update
+	
+	public Estimate selectEstimate(String pNO ){
+		Estimate esti= null;
+		try {
+			esti=(Estimate) sqlMap.queryForObject("estimate.selectEstimate", pNO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return esti;
+		
+	}//selectEstimate
+	
 	public ArrayList<Estimate> selectAll(){
 		ArrayList<Estimate> list= null;
 		try {
@@ -47,15 +76,40 @@ public class EstimateDAO {//
 		}
 		  return list;
 	}//selectAll
-	public ArrayList<Estimate> selectType(String pTypeNO){
-		ArrayList<Estimate> list= null;
+	
+
+	public ArrayList<PlasticItem> selectType(String pTypeNO){
+		ArrayList<PlasticItem> list= null;
 		try {
-		 list= (ArrayList<Estimate>) sqlMap.queryForList("estimate.selectType", pTypeNO);
+		 list= (ArrayList<PlasticItem>) sqlMap.queryForList("estimate.selectType", pTypeNO);
 			System.out.println("selectType:"+list.get(0));
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
 		}
 		  return list;
-	}//selectType
+	}//selectType fixed
+	
+	public List<String> selectpTypeName(){
+	List<String> list= null;
+	try {
+		list= sqlMap.queryForList("estimate.selectpTypeName");
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	}
+	
+	return list;
+	}//selectpTypeName
+	public List<String> selectpItemName(String pTypeName){
+		List<String> list= null;
+		
+	try {
+		list =sqlMap.queryForList("estimate.selectpItemName", pTypeName);
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	}	
+	return list;
+	}//selectpItemName
 }

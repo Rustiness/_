@@ -6,11 +6,11 @@
 	<h3>나의 성형예상비용</h3>
 <script type="text/javascript" src="../_js/jquery-3.2.1.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-    $("#su").click(function(){
-        $("#div").toggle();
-    });
-});
+//$(document).ready(function(){
+   // $("#div1").eq(0){
+     //   $("#div1").toggle();
+   // });
+//});
   	
  </script>
  	
@@ -32,7 +32,7 @@ $(document).ready(function(){
 		<img alt="눈성형 " />
 	</h4>
 		
-	<div id="div">
+	<div id="div1">
 	<table cellspacing='0' cellpadding='2' width=605 border="0">
 		<tr>
 			<td bgcolor='#D5C4E1' colspan='4' height='2'></td>
@@ -44,7 +44,7 @@ $(document).ready(function(){
 		 <tr>
 								
 				<td align='middle' width='30' bgcolor='#F5F0F9' height='30'><input
-					type='checkbox' value='${eye.pTypeNO }|${eye.pItemName }|${eye.pItemValue }' name='chkList'></td>
+					type='checkbox' value='${eye.pItemNO }|${eye.pItemName }|${eye.pItemValue }' name='pEyeItem'></td>
 				<td width='246'>${eye.pItemName }</td>
 				<td width='246'>${eye.pItemValue }</td>
 						
@@ -73,7 +73,7 @@ $(document).ready(function(){
 		 <tr>
 								
 				<td align='middle' width='30' bgcolor='#F5F0F9' height='30'><input
-					type='checkbox' value='${nose.pTypeNO }|${nose.pItemName }|${nose.pItemValue }' name='chkList'></td>
+					type='checkbox' value='${nose.pItemNO }|${nose.pItemName }|${nose.pItemValue }' name='pNoseItem'></td>
 				<td width='246'>${nose.pItemName }</td>
 				<td width='246'>${nose.pItemValue }</td>
 						
@@ -101,7 +101,7 @@ $(document).ready(function(){
 		 <tr>
 								
 				<td align='middle' width='30' bgcolor='#F5F0F9' height='30'><input
-					type='checkbox' value='${face.pTypeNO }|${face.pItemName }|${face.pItemValue }' name='chkList'></td>
+					type='checkbox' value='${face.pItemNO }|${face.pItemName }|${face.pItemValue }' name='pFaceItem'></td>
 				<td width='246'>${face.pItemName }</td>
 				<td width='246'>${face.pItemValue }</td>
 						
@@ -129,7 +129,7 @@ $(document).ready(function(){
 		 <tr>
 								
 				<td align='middle' width='30' bgcolor='#F5F0F9' height='30'><input
-					type='checkbox' value='${body.pTypeNO }|${body.pItemName }|${body.pItemValue }' name='chkList'></td>
+					type='checkbox' value='${body.pItemNO }|${body.pItemName }|${body.pItemValue }' name='pBodyItem'></td>
 				<td width='246'>${body.pItemName }</td>
 				<td width='246'>${body.pItemValue }</td>
 						
@@ -157,7 +157,7 @@ $(document).ready(function(){
 		 <tr>
 								
 				<td align='middle' width='30' bgcolor='#F5F0F9' height='30'><input
-					type='checkbox' value='${breast.pTypeNO }|${breast.pItemName }|${breast.pItemValue }' name='chkList'></td>
+					type='checkbox' value='${breast.pItemNO }|${breast.pItemName }|${breast.pItemValue }' name='pBreastItem'></td>
 				<td width='246'>${breast.pItemName }</td>
 				<td width='246'>${breast.pItemValue }</td>
 						

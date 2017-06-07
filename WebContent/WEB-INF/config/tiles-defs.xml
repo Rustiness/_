@@ -130,6 +130,17 @@
 		<put name="main_body" value="/client/estimate/esti_confirm.jsp"></put>
 		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
 	</definition>
+	
+	<!-- 클라이언트~~견적프로세스-->
+	<definition name=".menu_estimate_pcs" extends=".client_idx">
+		<put name="main_body" value="/client/estimate/esti_process.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
+	<!-- 클라이언트~~견적결과  minhaskim -->
+	<definition name=".menu_estimate_res" extends=".client_idx">
+		<put name="main_body" value="/client/estimate/esti_result.jsp"></put>
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
+	</definition>
 
 	<!-- 클라이언트~~병원소개 -->
 	<definition name=".menu_hospinfo" extends=".client_idx">
@@ -206,6 +217,12 @@
 	<definition name=".ad_emp_info" extends=".admin_idx"><!-- 사원 상세정보 -->
 		<put name="a_main_body" value="/admin/employee/ad_emp_info.jsp"></put>
 	</definition>
+	<definition name=".ad_plasType_info" extends=".admin_idx"><!-- 항목 상세 -->
+		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasTy_confirm.jsp"></put>
+	</definition>
+	<definition name=".ad_plasType_modify" extends=".admin_idx"><!-- 항목 수정 -->
+		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasTy_modify.jsp"></put>
+	</definition>
 
 	<!-- 어드민~~성형타입:기준 -->
 	<definition name=".ad_menu_plasType" extends=".admin_idx"><!-- 목록 -->
@@ -213,8 +230,14 @@
 	</definition>
 
 	<!-- 어드민~~성형시술:기준 -->
-	<definition name=".ad_menu_plasItem" extends=".admin_idx"><!-- 목록 -->
+	<definition name=".ad_plasItem_list" extends=".admin_idx"><!-- 목록 라스트-->
 		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasIt_list.jsp"></put>
+	</definition>
+	<definition name=".ad_plasItem_info" extends=".admin_idx"><!-- 목록 상세 -->
+		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasIt_confirm.jsp"></put>
+	</definition>
+	<definition name=".ad_plasItem_modify" extends=".admin_idx"><!-- 목록 수정-->
+		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasIt_modify.jsp"></put>
 	</definition>
 
 	<!-- 어드민~~관리자등급:기준 -->

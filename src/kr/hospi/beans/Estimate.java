@@ -1,73 +1,88 @@
 package kr.hospi.beans;
 
+import java.sql.Date;
+
 /**
  * Created by ${minhaskim} on ${2017-05-27}.
  * Estiamte Beans
  */
 public class Estimate {
 	
-	private int num;
-	private String pTypeNO;
-	private String pTypeName;
-	private String pItemNO;
-	private String pItemName;
-	private String pItemValue;
-	private String state;
+	private String pNO;
+	private Date pDate;
+	
+	private String pEyeItem; 
+	private String pNoseItem; 
+	private String pFaceItem; 
+	private String pBodyItem ;
+	private String pBreastItem ;
+	private double price;
 	public Estimate() {
-		
-	}//basic constructor
-	public Estimate(int num, String pTypeNO,String pTypeName, String pItemNO, String pItemName, String pItemValue, String state) {
 		super();
-		this.num = num;
-		this.pTypeNO = pTypeNO;
-		this.setpTypeName(pTypeName);
-		this.pItemNO = pItemNO;
-		this.pItemName = pItemName;
-		this.pItemValue = pItemValue;
-		this.state = state;
-	}//overriding constructor
-	public int getNum() {
-		return num;
+		// TODO Auto-generated constructor stub
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public Estimate(String pNO, Date pDate, String pEyeItem, String pNoseItem, String pFaceItem, String pBodyItem,
+			String pBreastItem, double price) {
+		super();
+		this.pNO = pNO;
+		this.pDate = pDate;
+		this.pEyeItem = pEyeItem;
+		this.pNoseItem = pNoseItem;
+		this.pFaceItem = pFaceItem;
+		this.pBodyItem = pBodyItem;
+		this.pBreastItem = pBreastItem;
+		this.price = price;
 	}
-	public String getpTypeNO() {
-		return pTypeNO;
+	public String getpNO() {
+		return pNO;
 	}
-	public void setpTypeNO(String pTypeNO) {
-		this.pTypeNO = pTypeNO;
+	public void setpNO(String pNO) {
+		this.pNO = pNO;
 	}
-	public String getpItemNO() {
-		return pItemNO;
+	public Date getpDate() {
+		return pDate;
 	}
-	public void setpItemNO(String pItemNO) {
-		this.pItemNO = pItemNO;
+	public void setpDate(Date pDate) {
+		this.pDate = pDate;
 	}
-	public String getpItemName() {
-		return pItemName;
+	public String getpEyeItem() {
+		return pEyeItem;
 	}
-	public void setpItemName(String pItemName) {
-		this.pItemName = pItemName;
+	public void setpEyeItem(String pEyeItem) {
+		this.pEyeItem = pEyeItem;
 	}
-	public String getpItemValue() {
-		return pItemValue;
+	public String getpNoseItem() {
+		return pNoseItem;
 	}
-	public void setpItemValue(String pItemValue) {
-		this.pItemValue = pItemValue;
+	public void setpNoseItem(String pNoseItem) {
+		this.pNoseItem = pNoseItem;
 	}
-	public String getState() {
-		return state;
+	public String getpFaceItem() {
+		return pFaceItem;
 	}
-	public void setState(String state) {
-		this.state = state;
+	public void setpFaceItem(String pFaceItem) {
+		this.pFaceItem = pFaceItem;
 	}
-	public String getpTypeName() {
-		return pTypeName;
+	public String getpBodyItem() {
+		return pBodyItem;
 	}
-	public void setpTypeName(String pTypeName) {
-		this.pTypeName = pTypeName;
+	public void setpBodyItem(String pBodyItem) {
+		this.pBodyItem = pBodyItem;
+	}
+	public String getpBreastItem() {
+		return pBreastItem;
+	}
+	public void setpBreastItem(String pBreastItem) {
+		this.pBreastItem = pBreastItem;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
 	}
 	
+	
+
 	
 }
