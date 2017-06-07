@@ -9,13 +9,14 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
+import kr.hospi.beans.AdMember;
 import kr.hospi.beans.Member;
 import kr.hospi.dao.MemberDAO;
 
 public class LoginActionForm extends ActionForm{
 	
-	private String mID;//·Î±×ÀÎÇÏ·ÁÇÑ ¾ÆÀÌµğ
-	private String pass;//·Î±×ÀÎÇÏ·ÁÇÑ ÆĞ½º¿öµå
+	private String mID;//ë¡œê·¸ì¸í•˜ë ¤í•œ ì•„ì´ë””
+	private String pass;//ë¡œê·¸ì¸í•˜ë ¤í•œ íŒ¨ìŠ¤ì›Œë“œ
 	
 	public String getmID() {
 		return mID;
@@ -36,22 +37,22 @@ public class LoginActionForm extends ActionForm{
 	@Override
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
 		System.out.println("validate()");
-		ActionErrors errors = new ActionErrors();//¿¡·¯¹Ù±¸´Ï »ı¼º(¿¡·¯¹ß»ı½Ã ¿¡·¯¸Ş¼¼Áö ´ã´Â´Ù.)
+		ActionErrors errors = new ActionErrors();//ì—ëŸ¬ë°”êµ¬ë‹ˆ ìƒì„±(ì—ëŸ¬ë°œìƒì‹œ ì—ëŸ¬ë©”ì„¸ì§€ ë‹´ëŠ”ë‹¤.)
 		
 		MemberDAO dao = new MemberDAO();
-		List<Member> list = dao.selectAll();
+		List<AdMember> list = dao.selectAll();
 		
-		boolean result_id = false;//¾ÆÀÌµğ Á¸Àç ¿©ºÎ¸¦ ¾Ë·ÁÁÖ´Â boolean°ª result_id.
-		boolean result_pass = false;//ºñ¹Ğ¹øÈ£ Á¸Àç ¿©ºÎ¸¦ ¾Ë·ÁÁÖ´Â boolean°ª result.
+		boolean result_id = false;//ì•„ì´ë”” ì¡´ì¬ ì—¬ë¶€ë¥¼ ì•Œë ¤ì£¼ëŠ” booleanê°’ result_id.
+		boolean result_pass = false;//ë¹„ë°€ë²ˆí˜¸ ì¡´ì¬ ì—¬ë¶€ë¥¼ ì•Œë ¤ì£¼ëŠ” booleanê°’ result.
 		
 		if(list!=null){
 		    for(int i=0;i<list.size();i++){
-		    	String mID_check=list.get(i).getmID();//µ¥ÀÌÅÍº£ÀÌ½º¿¡ Á¸ÀçÇÏ´Â ¾ÆÀÌµğ
-		    	String pass_check=list.get(i).getPass();//µ¥ÀÌÅÍº£ÀÌ½º¿¡ Á¸ÀçÇÏ´Â ºñ¹Ğ¹øÈ£
+		    	String mID_check=list.get(i).getmID();//ë°ì´í„°ë² ì´ìŠ¤ì— ì¡´ì¬í•˜ëŠ” ì•„ì´ë””
+		    	String pass_check=list.get(i).getPass();//ë°ì´í„°ë² ì´ìŠ¤ì— ì¡´ì¬í•˜ëŠ” ë¹„ë°€ë²ˆí˜¸
 		    	
-		    	if(mID.equals(mID_check)){//µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¾ÆÀÌµğ°¡ Á¸ÀçÇÒ °æ¿ì
+		    	if(mID.equals(mID_check)){//ë°ì´í„°ë² ì´ìŠ¤ì— ì•„ì´ë””ê°€ ì¡´ì¬í•  ê²½ìš°
 		    		result_id = true;
-		    		if(pass.equals(pass_check)){//µ¥ÀÌÅÍº£ÀÌ½ºÀÇ ¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÒ °æ¿ì
+		    		if(pass.equals(pass_check)){//ë°ì´í„°ë² ì´ìŠ¤ì˜ ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•  ê²½ìš°
 		    			result_pass=true;
 		    		}
 		    		break;
@@ -60,14 +61,14 @@ public class LoginActionForm extends ActionForm{
 		}
 		
 		if(mID==null || mID.length()<1){
-		    errors.add("errorid", new ActionMessage("invalidid", "¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ½Ê½Ã¿À."));//¿¡·¯¹Ù±¸´Ï¿¡ ¿¡·¯´ã´Â´Ù.
+		    errors.add("errorid", new ActionMessage("invalidid", "ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì‹­ì‹œì˜¤."));//ì—ëŸ¬ë°”êµ¬ë‹ˆì— ì—ëŸ¬ë‹´ëŠ”ë‹¤.
 		   // new ActionMessage("key", param1 {0}, param2 {1}, param3 {2}, param4 {3})
 		   
 		}else if(mID.indexOf(" ") > -1 ||
 				 mID.indexOf("\t") >= 0 ||
-				 mID.indexOf("\n") > -1){//°ø¹é,ÅÇ,¿£ÅÍ ¹èÁ¦
-			errors.add("errorid", new ActionMessage("invalidid", "°ø¹éÀ» Æ÷ÇÔÇÒ ¼ö ¾ø½À´Ï´Ù!!"));//¿¡·¯¹Ù±¸´Ï¿¡ ¿¡·¯´ã´Â´Ù.
-		}else if(!result_id){//¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì
+				 mID.indexOf("\n") > -1){//ê³µë°±,íƒ­,ì—”í„° ë°°ì œ
+			errors.add("errorid", new ActionMessage("invalidid", "ê³µë°±ì„ í¬í•¨í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤!!"));//ì—ëŸ¬ë°”êµ¬ë‹ˆì— ì—ëŸ¬ë‹´ëŠ”ë‹¤.
+		}else if(!result_id){//ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ ì•Šì„ ê²½ìš°
 			errors.add("errorid", new ActionMessage("invalidlogin"));
 		}else if(result_id&&!result_pass){
 			errors.add("errorpass", new ActionMessage("invalidlogin"));
@@ -77,6 +78,6 @@ public class LoginActionForm extends ActionForm{
 		    errors.add("errorpass", new ActionMessage("invalidpass"));
 		}
 		  
-		return errors;//ºó ¹Ù±¸´Ï³ª return nullÀº ¿¡·¯°¡ ¾øÀ½À» Ç¥½ÃÇÔ!!
+		return errors;//ë¹ˆ ë°”êµ¬ë‹ˆë‚˜ return nullì€ ì—ëŸ¬ê°€ ì—†ìŒì„ í‘œì‹œí•¨!!
 	}
 }

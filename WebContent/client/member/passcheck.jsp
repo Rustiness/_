@@ -18,7 +18,7 @@
 		if(pass_check!=pass)
 			alert('비밀번호가 일치하지 않습니다.');
 		else{
-			opener.document.location.href="/JavaChefWeb/join_term.do";
+			opener.document.location.href="/JavaChefWeb/mem_mod.do";
 			window.close();
 		}
 	}
@@ -33,7 +33,7 @@
 				</tr>
 				<tr>
 					<td>
-						비밀번호 입력: <input type="text" id="pass_check">
+						비밀번호 입력: <input type="password" id="pass_check">
 						<input type="hidden" id="pass" value="${user.pass}">
 					<hr>
 					</td>

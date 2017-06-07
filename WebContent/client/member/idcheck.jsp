@@ -1,3 +1,4 @@
+<%@page import="kr.hospi.beans.AdMember"%>
 <%@page import="kr.hospi.beans.Member"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.hospi.dao.MemberDAO"%>
@@ -16,13 +17,19 @@
 		opener.document.getElementById("mID").focus();
 		window.close();
 	}
+	
+	function verifyID(){
+		opener.document.getElementById("mID_verified").value
+			=opener.document.getElementById("mID").value;
+		window.close();
+	}
 </script>
 <center>
 <% 
 	String mID = request.getParameter("mID");//아이디 입력란에서 받아온 아이디
 	
 	MemberDAO dao = new MemberDAO();
-	List<Member> list = dao.selectAll();
+	List<AdMember> list = dao.selectAll();
 	
 	boolean result = false;//중복 여부를 알려주는 boolean값 result.
 	
@@ -41,7 +48,7 @@
 	<input type="reset" value="취소" onclick="clearID()">
 	<%}else{%>
 	<b>사용가능한 아이디입니다!</b><br><br>
-	<input type="button" value="사용" onclick="window.close()">
+	<input type="button" value="사용" onclick="verifyID()">
 	<input type="reset" value="취소" onclick="clearID()">
 	<%}%>
 </center>

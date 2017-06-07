@@ -1,5 +1,7 @@
 package kr.hospi.actions;
 
+import java.sql.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,60 +10,71 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import kr.hospi.beans.AdMember;
 import kr.hospi.beans.Member;
 import kr.hospi.dao.MemberDAO;
 
 public class ModifyAction extends Action{
-	ActionForward forward;//Æ÷¿öµå °´Ã¼ ¼±¾ğ
+	ActionForward forward;//í¬ì›Œë“œ ê°ì²´ ì„ ì–¸
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {//execute ¸Ş¼Òµå
+			HttpServletResponse response) throws Exception {//execute ë©”ì†Œë“œ
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String mID=request.getParameter("mID");//¾ÆÀÌµğ
-		String pass=request.getParameter("pass");//ºñ¹Ğ¹øÈ£
-		String question=request.getParameter("question");
-		String answer=request.getParameter("answer");
-		String name=request.getParameter("name");//ÀÌ¸§
-		String birth=request.getParameter("birth1")+"/"
-				+request.getParameter("birth2")+"/"
-				+request.getParameter("birth3");//»ıÀÏ
-		String sex=request.getParameter("sex");//¼ºº°
+		String mID=request.getParameter("mID");//ì•„ì´ë””
+		String pass=request.getParameter("pass");//ë¹„ë°€ë²ˆí˜¸
+		String qNO=request.getParameter("qNO");//ì§ˆë¬¸
+		String answer=request.getParameter("answer");//ë‹µ
+		String name=request.getParameter("name");//ì´ë¦„
+		Date birth = Date.valueOf(request.getParameter("birth1") + "-" + request.getParameter("birth2") + "-"
+				+ request.getParameter("birth3"));//ìƒì¼
+		String sex=request.getParameter("sex");//ì„±ë³„
 		String tel=request.getParameter("tel1")+"-"
 					+request.getParameter("tel2")+"-"
-					+request.getParameter("tel3");//ÀüÈ­¹øÈ£
+					+request.getParameter("tel3");//ì „í™”ë²ˆí˜¸
 		String email="";
 			if(request.getParameter("select_email")==""){
-				//'Á÷Á¢ ÀÔ·Â'À» ¼±ÅÃÇßÀ» ½Ã, ÀÌ¸ŞÀÏ µŞÀÚ¸®´Â Á÷Á¢ ÀÔ·ÂÇÑ °ÍÀ¸·Î,
+				//'ì§ì ‘ ì…ë ¥'ì„ ì„ íƒí–ˆì„ ì‹œ, ì´ë©”ì¼ ë’·ìë¦¬ëŠ” ì§ì ‘ ì…ë ¥í•œ ê²ƒìœ¼ë¡œ,
 				email=request.getParameter("email1")+"@"
 						+request.getParameter("email2");
-			}else{//¾Æ´Ò °æ¿ì ¿É¼Ç¿¡¼­ ¼±ÅÃÇÑ °ÍÀ¸·Î ¼³Á¤µÈ´Ù.
+			}else{//ì•„ë‹ ê²½ìš° ì˜µì…˜ì—ì„œ ì„ íƒí•œ ê²ƒìœ¼ë¡œ ì„¤ì •ëœë‹¤.
 				email=request.getParameter("email1")+"@"
-						+request.getParameter("select_email");//ÀÌ¸ŞÀÏ
+						+request.getParameter("select_email");//ì´ë©”ì¼
 			}
 			
-		String pTypeNO="";//°ü½É»ç
-			String[] pTypeNOs=request.getParameterValues("pTypeNO");//°ü½É»ç¸¦ Ã³À½¿£ ¹®ÀÚ¹è¿­·Î ¹ŞÀ½.
-			for(int i=0; i<pTypeNOs.length; i++){//Ã¼Å©¹Ú½º¿¡¼­ °í¸¥ ¿©·¯ °ü½É»ç¸¦ ¹è¿­·Î ¹ŞÀ½.
+		String pTypeNO="";//ê´€ì‹¬ì‚¬
+			String[] pTypeNOs=request.getParameterValues("pTypeNO");//ê´€ì‹¬ì‚¬ë¥¼ ì²˜ìŒì—” ë¬¸ìë°°ì—´ë¡œ ë°›ìŒ.
+			for(int i=0; i<pTypeNOs.length; i++){//ì²´í¬ë°•ìŠ¤ì—ì„œ ê³ ë¥¸ ì—¬ëŸ¬ ê´€ì‹¬ì‚¬ë¥¼ ë°°ì—´ë¡œ ë°›ìŒ.
 				if(i==0){
 					pTypeNO=pTypeNOs[i];
 				}else{
 					pTypeNO=pTypeNO+","+pTypeNOs[i];
-				}//µû¿ÈÇ¥´Â °ü½É»ç¿Í °ü½É»ç »çÀÌ¿¡¸¸ ºÙµµ·Ï Á¦¾î
-			}// --> ¹®ÀÚ¿­·Î ¹Ù²Ş.
+				}//ë”°ì˜´í‘œëŠ” ê´€ì‹¬ì‚¬ì™€ ê´€ì‹¬ì‚¬ ì‚¬ì´ì—ë§Œ ë¶™ë„ë¡ ì œì–´
+			}// --> ë¬¸ìì—´ë¡œ ë°”ê¿ˆ.
 		
-		Member mem = new Member(mID,pass,question,answer,name,birth,sex,tel,email,pTypeNO);
-		//ÀÌ»óÀÇ °ªµé·Î È¸¿ø(Member) ºóÀ» °´Ã¼ »ı¼ºÇÑ´Ù.
+		AdMember mem = new AdMember();
+		//set mID, pass, qNO, answer, name, birth, sex, tel, email, pTypeNO!
+			mem.setmID(mID);
+			mem.setPass(pass);
+			mem.setqNO(qNO);
+			mem.setAnswer(answer);
+			mem.setName(name);
+			mem.setBirth(birth);
+			mem.setSex(sex);
+			mem.setTel(tel);
+			mem.setEmail(email);
+			mem.setpTypeNO(pTypeNO);
+			//ì´ìƒì˜ ê°’ë“¤ë¡œ íšŒì›(Member) ë¹ˆì„ ê°ì²´ ìƒì„±í•œë‹¤.
 		
-		MemberDAO dao = new MemberDAO();//DAO °´Ã¼ »ı¼º
-		if(dao.update(mem)){//DAO¿¡¼­ È¸¿ø¼öÁ¤Á¤º¸¸¦ ÀÔ·ÂÇÏ´Â ¸Ş¼Òµå insert¸¦ È£ÃâÇÑ´Ù.(ÆÄ¶ó¹ÌÅÍ´Â È¸¿ø°¡ÀÔÁ¤º¸ ºó)
-			request.getSession().setAttribute("modifyMem", mem);//¼¼¼Ç¿¡ "modifyMem"¶ó´Â °ªÀ¸·Î ºó ÀúÀå
-			forward = mapping.findForward("success");//ÀÛ¾÷ ¼º°ø½Ã Æ÷¿öµå °´Ã¼¿¡ "success"¸¦ ¸ÅÇÎ.
+		MemberDAO dao = new MemberDAO();//DAO ê°ì²´ ìƒì„±
+		if(dao.update(mem)){//DAOì—ì„œ íšŒì›ìˆ˜ì •ì •ë³´ë¥¼ ì…ë ¥í•˜ëŠ” ë©”ì†Œë“œ insertë¥¼ í˜¸ì¶œí•œë‹¤.(íŒŒë¼ë¯¸í„°ëŠ” íšŒì›ê°€ì…ì •ë³´ ë¹ˆ)
+			request.getSession().setAttribute("modifyMem", mem);//ì„¸ì…˜ì— "modifyMem"ë¼ëŠ” ê°’ìœ¼ë¡œ ë¹ˆ ì €ì¥
+			forward = mapping.findForward("success");//ì‘ì—… ì„±ê³µì‹œ í¬ì›Œë“œ ê°ì²´ì— "success"ë¥¼ ë§¤í•‘.
 		}else{
-			forward = mapping.findForward("fail");//ÀÛ¾÷ ¼º°ø½Ã Æ÷¿öµå °´Ã¼¿¡ "fail"¸¦ ¸ÅÇÎ.
+			forward = mapping.findForward("fail");//ì‘ì—… ì„±ê³µì‹œ í¬ì›Œë“œ ê°ì²´ì— "fail"ë¥¼ ë§¤í•‘.
 		}
 		
-		return forward;//¸ğµç ÀÛ¾÷ÀÌ ³¡³ª¸é Æ÷¿öµå °´Ã¼¸¦ ¸®ÅÏ.
+		return forward;//ëª¨ë“  ì‘ì—…ì´ ëë‚˜ë©´ í¬ì›Œë“œ ê°ì²´ë¥¼ ë¦¬í„´.
 	}//execute
 }

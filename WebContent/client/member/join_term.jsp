@@ -39,8 +39,8 @@
 	}
 	
 	function confirm(){//약관 동의 여부를 체크
-		var term1=document.frm.term1.checked;
-		var term2=document.frm.term2.checked;//약관 1,2 동의 여부(boolean)
+		var term1=document.frm.check1.checked;
+		var term2=document.frm.check2.checked;//약관 1,2 동의 여부(boolean)
 		
 		if(term1==true&&term2==true){//약관에 모두 동의하면 회원가입2(join_confirm.jsp) 페이지로 이동
 			location.href="/JavaChefWeb/join.do"
@@ -65,7 +65,7 @@
 			<tr align="right">
 				<td>
 					<%-- 약관1의 체크박스 --%>
-					<input type="checkbox" name="term1">
+					<input type="checkbox" name="check1">
 					<font size="1">이용약관에 동의합니다.</font>
 				</td>
 			</tr>
@@ -79,7 +79,7 @@
 			<tr align="right">
 				<td>
 					<%-- 약관2의 체크박스 --%>
-					<input type="checkbox" name="term2">
+					<input type="checkbox" name="check2">
 					<font size="1">개인정보 취급 방식에 동의합니다.</font>
 				</td>
 			</tr>

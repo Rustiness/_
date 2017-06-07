@@ -1,7 +1,7 @@
 package kr.hospi.actions;
 
 import kr.hospi.actionforms.LoginActionForm;
-import kr.hospi.beans.Member;
+import kr.hospi.beans.AdMember;
 import kr.hospi.dao.MemberDAO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,31 +22,31 @@ public class LoginAction extends Action{
 		request.setCharacterEncoding("UTF-8");
 		LoginActionForm laf = (LoginActionForm) form;
 				
-		//À¯È¿¼º°Ë»ç°¡ ³¡³­ µ¥ÀÌÅÍ ¾ò¾î¿À±â
+		//ìœ íš¨ì„±ê²€ì‚¬ê°€ ëë‚œ ë°ì´í„° ì–»ì–´ì˜¤ê¸°
 		String mID = laf.getmID();
 		String pass = laf.getPass();
 
-		Member mem = new Member();//Memberºó mem »ı¼º
+		AdMember mem = new AdMember();//Memberë¹ˆ mem ìƒì„±
 			mem.setmID(mID);
 			mem.setPass(pass);
 		
-		MemberDAO dao = new MemberDAO();//DAO °´Ã¼ »ı¼º
+		MemberDAO dao = new MemberDAO();//DAO ê°ì²´ ìƒì„±
 		
-		Member user = dao.select(mem);//DAO¿¡¼­ È¸¿ø ÀüÃ¼Á¤º¸¸¦ °¡Á®¿Í user¿¡ ÀúÀå.
+		AdMember user = dao.select(mem);//DAOì—ì„œ íšŒì› ì „ì²´ì •ë³´ë¥¼ ê°€ì ¸ì™€ userì— ì €ì¥.
 		
 		ActionForward forward;	
-		if(user==null){//¾ÆÀÌµğX ¶Ç´Â ºñ¹øX
+		if(user==null){//ì•„ì´ë””X ë˜ëŠ” ë¹„ë²ˆX
 			ActionMessages msgs = new ActionMessages();	
 			msgs.add(ActionMessages.GLOBAL_MESSAGE, 
 					 new ActionMessage("invalidlogin"));
 			saveMessages(request, msgs);
-			forward = mapping.getInputForward();//input¼Ó¼ºÀÇ Á¤ÀÇµÈ ÆäÀÌÁö ÀÌµ¿
+			forward = mapping.getInputForward();//inputì†ì„±ì˜ ì •ì˜ëœ í˜ì´ì§€ ì´ë™
 		}else{
 			request.getSession().setAttribute("user",user);			
 			forward = mapping.findForward("success");
-			//<forward name="success">¿¡ Á¤ÀÇµÈ ÆäÀÌÁö ÀÌµ¿
+			//<forward name="success">ì— ì •ì˜ëœ í˜ì´ì§€ ì´ë™
 		}
 				
-		return forward;//ÀÌµ¿ÇÒ ÆäÀÌÁö
+		return forward;//ì´ë™í•  í˜ì´ì§€
 	}//execute
 }

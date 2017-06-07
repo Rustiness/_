@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href='css/common.css' rel='stylesheet' />
+<link rel="stylesheet" type="text/css" href="/JavaChefWeb/client/_css/join_modify.css" />
 <title>회원가입</title>
 
 <%-- 
@@ -25,7 +25,8 @@
        
        var f = document.join; //form을 f로 치환한다.
        
-       
+       var mID = f.mID.value;
+       var mID_verified = f.mID_verified.value;
     
        var tel2Exp =/^[\d]{3,4}$/g;
        var tel3Exp =/^[\d]{4}$/g;
@@ -49,12 +50,18 @@
 	   }else if(f.mID.value.length < 6 || f.mID.value.length > 12){//id길이체크
           	alert('아이디는 6~12자리!!');
           	f.mID.focus();
-       }else if(f.pass.value == ''){//데이터내용 비교
+       }else if(mID!=mID_verified){
+    	   alert('아이디 중복 체크를 하십시오!');
+		}else if(f.pass.value == ''){//데이터내용 비교
        	alert('비번입력!!');
        	f.pass.focus();
        }else if(f.pass_check.value === ''){//자료형 비교후 내용 비교
        	alert('비번입력!!');
        	f.pass2.focus();
+       }else if(f.qNO.value == "1"){
+    	   alert('질문선택!!');   
+       }else if(f.answer.value == ""){
+       	alert('답변 입력!');
        }else if(f.pass.value!=f.pass_check.value){//비밀번호 ,비밀번호확인 체크
            alert('비번이 일치하지 않습니다!!');
            f.pass.value=''; f.pass2.value='';
@@ -118,12 +125,13 @@
 
 	function openIdCheck(){//ID 중복확인 창(idcheck.jsp)을 새로 띄움
 		var mID=document.getElementById("mID").value;
+		var mIDExp=/^[a-zA-Z0-9]{3,16}$/;
 		
 		if(!mID){
         	alert("아이디를 입력하십시오!");
         	return false;
-   		}else if((mID < "0" || mID > "9") && (mID < "A" || mID > "Z") && (mID < "a" || mID > "z")){ 
-        	alert("영문과 숫자만으로 아이디를 만드십시오!");
+   		}else if(!mIDExp.test(mID)){ 
+        	alert("영문과 숫자의 조합으로 3~16자리의 아이디를 만드십시오!");
         	return false;
    		}
 	
@@ -149,7 +157,7 @@
       </div>
       
       <div class="title_txt">
-          !아래 해당 사항을 입력해 주세요. <span class="c_red">*</span>는 필수 입력 사항입니다.
+          	아래 해당 사항을 입력해 주세요. <span class="c_red">*</span>는 필수 입력 사항입니다.
       </div>
       <div class="con_h">
          <h4>회원정보 입력</h4>
@@ -158,24 +166,23 @@
       <table cellpadding="0" cellspacing="0" width="100%">
         <!-- 아이디 -->
         <tr>
-           <th>
+           <td>
                               아이디 <span class="c_red">*</span>
-           </th>
+           </td>
            <td class="line">
            	 <%-- 아이디(mID) 입력 필드, 읽기만 가능. 중복확인을 해야만 입력된다.  --%>
              <input name="mID" id="mID" type="text"/>
+             <input name="mID_verified" id="mID_verified" type="hidden"/>
              <%-- 중복확인(idcheck.jsp) 창을 새로 띄우는 버튼 --%>
              <input type="button" id="chk_id_exist2" value="중복확인" onclick="openIdCheck()"/>
            </td>
         </tr>
-       </table>
-       
-      <table cellpadding="0" cellspacing="0" width="100%">
+      
         <!-- 비밀번호 -->
         <tr>
-           <th>
+           <td>
                               비밀번호  <span class="c_red">*</span>
-           </th>
+           </td>
            <td class="line">
            	   <%-- 비밀번호(pass) 입력 필드 --%>
                <input name="pass" type="password" class="input_text_half" maxlength="20" /> 
@@ -184,23 +191,22 @@
         </tr>
         <!-- 비밀번호 확인 -->
         <tr>
-           <th>
+           <td>
                                비밀번호확인  <span class="c_red">*</span>
-           </th>
+           </td>
            <td class="line">
            		<%-- 비밀번호 확인(pass_check) 필드 --%>
                 <input name="pass_check" type="password" id="join_user_passwd_check" class="input_text_half" maxlength="20" />
            </td>
         </tr>
-      </table>
-      <table cellpadding="0" cellspacing="0" width="100%">
+      
         <!-- 비밀번호찾기질문 -->
         <tr>
-           <th>
+           <td>
                                비밀번호찾기질문  <span class="c_red">*</span>
-           </th>
+           </td>
               <td class="line"><!--비밀번호 찾기  질문항목들  -->
-              	 <select name="question">
+              	 <select name="qNO">
               	 		<option value="1" selected>선택</option>
               	 		<option value="2">기억에 남는 추억의 장소는?</option>
               	 		<option value="3">자신의 인생 좌우명은?</option>
@@ -219,39 +225,34 @@
               	       
               </td>
         </tr>
-       </table>
       
-      <table cellpadding="0" cellspacing="0" width="100%">
         <!-- 비밀번호찾기답변 -->
         <tr>
-           <th>
+           <td>
                                비밀번호찾기답변  <span class="c_red">*</span>
-           </th>
+           </td>
               <td class="line">
               	 <%--비밀번호찾기답변 입력 --%>
                  <input type="text" name="answer" value="" class="input_text_half" maxlength="10">
               </td>
         </tr>
-       </table>
-      <table cellpadding="0" cellspacing="0" width="100%">
+      
         <!-- 이름 -->
         <tr>
-           <th>
+           <td>
                                이름  <span class="c_red">*</span>
-           </th>
+           </td>
               <td class="line">
               	 <%--이름(name) 입력 필드 --%>
                  <input type="text" name="name" value="" class="input_text_half" maxlength="6">
               </td>
         </tr>
-       </table>
-       
-       <table cellpadding="0" cellspacing="0" width="100%">
+      
          <!-- 생일 -->
          <tr>
-           <th>
+           <td>
                  생년월일  <span class="c_red">*</span>
-           </th>
+           </td>
            <td class="line">
            	   <%-- 생일(birth) 입력 필드. birth1,2,3은 JoinAction.java(회원가입 액션)에서 합쳐져 birth가 된다. --%>
                <input type="text1" name="birth1" value="" class="input_text_number" style="width: 40px;" maxlength="4">년 
@@ -260,24 +261,20 @@
              &nbsp; 
            </td>
          </tr>
-        </table>
-                           
-        <table cellpadding="0" cellspacing="0" width="100%">
+       
          <!-- 성별 -->
          <tr>
-           <th>성별</th>
+           <td>성별</td>
            <td class="line">
            	   <%-- 성별(sex)을 체크하는 라디오 버튼 --%>
                <input type="radio" name="sex" value="남자" checked>남자 
                <input type="radio" name="sex" value="여자">여자
            </td>
          </tr>
-        </table>
-        
-        <table cellpadding="0" cellspacing="0" width="100%">
+       
          <!-- 핸드폰 -->
          <tr>
-           <th>휴대폰</th>
+           <td>휴대폰</td>
            <%-- 휴대폰 번호(tel)를 입력하는 부분.
            		tel1은 옵션, tel2, tel3는 필드에 입력.
            		JoinAction.java(회원가입 액션)에서 합쳐져 tel이 된다.
@@ -292,21 +289,19 @@
                <option value="018">018</option>
                <option value="019">019</option>
              </select> - 
-             <input type="text" name="tel2" class="input_text_number" maxlength="4" onkeyup="if(this.value.length==4){chkNum(this, form_user.user_mobile3);}" />
-              - <input type="text" name="tel3" class="input_text_number" maxlength="4" onkeyup="if(this.value.length==4){chkNum(this, '');}" /> 
+             <input type="text" name="tel2" class="input_text_number" maxlength="4"/>
+              - <input type="text" name="tel3" class="input_text_number" maxlength="4"/> 
              <%-- SMS 수신동의 여부 체크박스(작업 중) --%> 
              <input type="checkbox" name="user_sms_allow" value="1">
              <span class="gray_font_11">SMS 수신 동의</span>
            </td>
          </tr>
-        </table>
-                              
-        <table cellpadding="0" cellspacing="0" width="100%">
+        
           <!-- 이메일 -->
           <tr>
-            <th>
+            <td>
                                  이메일  <span class="c_red">*</span>
-            </th>
+            </td>
             <%-- 
             	이메일(email) 입력 필드.
             	email1, select_email, email2가 존재하며, email1 + email2, email1 + select_email로 조합.
@@ -346,12 +341,10 @@
                <span class="gray_font_11">메일수신동의</span>
             </td>
          </tr>
-       </table>
-                           
-       <table cellpadding="0" cellspacing="0" width="100%">
+       
          <!-- 관심사 -->
          <tr>
-            <th>관심사</th>
+            <td>관심사</td>
             <td class="line">
             	<%-- 관심사(pTypeNO)를 선택하는 체크박스 --%>
                <input type="checkbox" name="pTypeNO" value="눈" checked>눈<input type="checkbox" name="pTypeNO" value="코">코

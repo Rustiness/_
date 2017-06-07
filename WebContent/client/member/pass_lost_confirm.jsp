@@ -20,7 +20,7 @@
 
 <center>
 	<% /*
-		Member member=new Member();
+		AdMember member=new AdMember();
 		 MemberDAO dao=new MemberDAO();
 		 dao.
 		*/
@@ -72,7 +72,7 @@
 			<td align="left">※※※비밀번호찾기질문선택※※※</td>
 		</tr>
 		<tr><td>
-				 <select name="question">
+				 <select name="qNO">
               	        <option value="1">================선택===============</option>
               	 		<option value="2">기억에 남는 추억의 장소는?</option>
               	 		<option value="3">자신의 인생 좌우명은?</option>

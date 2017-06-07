@@ -10,11 +10,12 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import kr.hospi.beans.AdMember;
 import kr.hospi.beans.Member;
 import kr.hospi.dao.MemberDAO;
 
 public class LostActionPass extends Action{
-	//Áú¹®°ú ´äº¯À» ÀÔ·Â ¹Ş¾Æ ÆĞ½º¿öµå¸¦ Ã£¾ÆÁÖ´Â ¾×¼Ç
+	//ì§ˆë¬¸ê³¼ ë‹µë³€ì„ ì…ë ¥ ë°›ì•„ íŒ¨ìŠ¤ì›Œë“œë¥¼ ì°¾ì•„ì£¼ëŠ” ì•¡ì…˜
 	ActionForward forward;
 	
 	@Override
@@ -23,19 +24,19 @@ public class LostActionPass extends Action{
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String question=request.getParameter("question");
+		String qNO=request.getParameter("qNO");
 		String answer=request.getParameter("answer");
 		
-		System.out.println("question= "+question+", answer= "+answer);
+		System.out.println("qNO= "+qNO+", answer= "+answer);
 		MemberDAO dao=new MemberDAO();
-		List<Member> list=dao.selectAll();
+		List<AdMember> list=dao.selectAll();
 		
 		if(list!=null){
 			for(int i=0;i<list.size();i++){
-				Member mem=list.get(i);
+				AdMember mem=list.get(i);
 				
-				if(question.equals(mem.getQuestion())&&answer.equals(mem.getAnswer())){
-					System.out.println("ÆĞ½º¿öµå°¡ Á¸Àç!");
+				if(qNO.equals(mem.getqNO())&&answer.equals(mem.getAnswer())){
+					System.out.println("íŒ¨ìŠ¤ì›Œë“œê°€ ì¡´ì¬!");
 					request.getSession().setAttribute("pass", mem.getPass());
 					request.getSession().setAttribute("mID", mem.getmID());
 					forward=mapping.findForward("success");
@@ -46,7 +47,7 @@ public class LostActionPass extends Action{
 		}//outer if
 		
 		forward=mapping.findForward("fail");
-		System.out.println("ÆĞ½º¿öµå Á¶È¸ ½ÇÆĞ!");
+		System.out.println("íŒ¨ìŠ¤ì›Œë“œ ì¡°íšŒ ì‹¤íŒ¨!");
 		return forward;
 	}
-}//classºñ¹øÃ£±â
+}//classë¹„ë²ˆì°¾ê¸°

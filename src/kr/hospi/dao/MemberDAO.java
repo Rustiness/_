@@ -19,7 +19,7 @@ public class MemberDAO {
 		sqlMap = new ChefSqlMapClient().getSqlMapInstance();
 	}
 
-	public boolean insert(Member mem) {// 계정추가
+	public boolean insert(AdMember mem) {// 계정추가
 		try {
 			sqlMap.insert("member.insert", mem);// sql문실행.
 			return true;
@@ -31,7 +31,7 @@ public class MemberDAO {
 		return false;// 수정실패
 	}
 
-	public boolean update(Member mem) {// 회원정보수정, 패러미터는 회원가입정보가 저장된 빈(joinInfo)
+	public boolean update(AdMember mem) {// 회원정보수정, 패러미터는 회원가입정보가 저장된 빈(joinInfo)
 		try {
 
 			int t = sqlMap.update("member.update", mem);//// sql문실행
@@ -59,12 +59,12 @@ public class MemberDAO {
 		return false;// 실패하면 false리턴.
 	}
 
-	public Member select(Member mem) {// 한명의 회원가입정보(회원가입 페이지에 뿌릴 것) 조회
+	public AdMember select(AdMember mem) {// 한명의 회원가입정보(회원가입 페이지에 뿌릴 것) 조회
 
-		Member mem_result = null;
+		AdMember mem_result = null;
 		try {
 
-			mem_result = (Member) sqlMap.queryForObject("member.select", mem);
+			mem_result = (AdMember) sqlMap.queryForObject("member.select", mem);
 			// sql명령문 실행.
 
 		} catch (SQLException e) {

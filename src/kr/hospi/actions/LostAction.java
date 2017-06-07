@@ -10,6 +10,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import kr.hospi.beans.AdMember;
 import kr.hospi.beans.Member;
 import kr.hospi.dao.MemberDAO;
 
@@ -27,12 +28,12 @@ public class LostAction extends Action{
 		
 		System.out.println("name :"+name+", email: "+email);
 		MemberDAO dao=new MemberDAO();
-		List<Member> list=dao.selectAll();
+		List<AdMember> list=dao.selectAll();
 		
 		for(int i=0;i<list.size();i++){
-			Member mem = list.get(i);
+			AdMember mem = list.get(i);
 			if(name.equals(mem.getName())&&email.equals(mem.getEmail())){
-				System.out.println("¾ÆÀÌµð°¡ Á¸Àç!");
+				System.out.println("ì•„ì´ë””ê°€ ì¡´ìž¬!");
 				request.getSession().setAttribute("mID", mem.getmID());
 				forward = mapping.findForward("success");
 				return forward;
