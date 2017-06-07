@@ -10,13 +10,13 @@
 	<form-beans>
 		<!-- reservation form등록 시작!! -->
 		<!-- 고객용: 예약(insert) ActionForm 등록 -->
-    	<form-bean name="reserInsertForm" 
-    			   type="kr.hospi.forms.ReserForm"></form-bean> 
+		<form-bean name="reserInsertForm"
+		           type="kr.hospi.forms.ReserForm"></form-bean>
 		<!-- reservation form등록 종료!! -->
-		
+
 		<!-- 로그인 액션폼(로그인 유효성 검사) -->
-       	<form-bean name="loginForm"
-       			  type="kr.hospi.actionforms.LoginActionForm"/>
+		<form-bean name="loginForm"
+		           type="kr.hospi.actionforms.LoginActionForm"/>
 	</form-beans>
 
 	<!-- ========================================= Global Exception Definitions -->
@@ -40,112 +40,112 @@
 
 		<!-- 클라이언트~~회원가입 -->
 		<!-- 회원가입(약관) 단순 포워딩 -->
-		<action path="/join_term" forward=".menu_join_term" />
+		<action path="/join_term" forward=".menu_join_term"/>
 		<!--  -->
-		
+
 		<!-- 회원가입(정보입력) 단순 포워딩 -->
-		<action path="/join" forward=".menu_join" />
+		<action path="/join" forward=".menu_join"/>
 
 		<!-- 회원가입 성공 단순 포워딩 -->
 		<action path="/join_res" forward=".menu_join_res"/>
-		
+
 		<!-- 회원가입 실패 단순 포워딩 -->
 		<action path="/join_fail" forward=".menu_join_fail"/>
 
 		<!-- 회원가입 액션 -->
 		<action path="/join_process" type="kr.hospi.actions.JoinAction"
-			scope="request">
+		        scope="request">
 			<forward name="success" path="/join_res.do"
-				redirect="true"></forward>
+			         redirect="true"></forward>
 			<forward name="fail" path="/join_fail.do"></forward>
 		</action>
-		
+
 		<!-- 아이디 중복 체크 액션 -->
 		<action path="/join_idcheck" type="kr.hospi.actions.IdCheckAction" scope="request"/>
 
 		<!-- 클라이언트~~로그인/로그아웃 -->
 		<!-- 로그인 페이지 단순 포워딩 -->
-		<action path="/login" forward=".menu_login" />
-		
+		<action path="/login" forward=".menu_login"/>
+
 		<!-- 로그인 성공 페이지 단순 포워딩 -->
-		<action path="/login_res" forward=".menu_login_res" />
+		<action path="/login_res" forward=".menu_login_res"/>
 
 		<!-- 로그인 액션 -->
 		<action path="/login_process" type="kr.hospi.actions.LoginAction"
-			name="loginForm" validate="true" scope="request"
-			input="/login.do">
+		        name="loginForm" validate="true" scope="request"
+		        input="/login.do">
 			<forward name="success" path="/login_res.do"
-				redirect="true"></forward>
+			         redirect="true"></forward>
 		</action>
-		
+
 		<!-- 로그아웃 페이지 단순 포워딩 -->
-		<action path="/logout" forward="/client/member/logout.jsp" />
+		<action path="/logout" forward="/client/member/logout.jsp"/>
 
 		<!-- 클라이언트~~회원정보 -->
 		<!-- 회원정보수정 페이지 단순 포워딩 -->
-		<action path="/mem_mod" forward=".menu_memberinfo_mod" />
-		
+		<action path="/mem_mod" forward=".menu_memberinfo_mod"/>
+
 		<!-- 회원정보수정 성공 페이지 단순 포워딩 -->
-		<action path="/mem_res" forward=".menu_memberinfo_mod_res" />
-		
+		<action path="/mem_res" forward=".menu_memberinfo_mod_res"/>
+
 		<!-- 회원정보수정 실패 페이지 단순 포워딩 -->
-		<action path="/mem_fail" forward=".menu_memberinfo_mod_fail" />
+		<action path="/mem_fail" forward=".menu_memberinfo_mod_fail"/>
 
 		<!-- 회원정보수정 액션 -->
 		<action path="/mem_mod_process" type="kr.hospi.actions.ModifyAction"
-			scope="request">
+		        scope="request">
 			<forward name="success" path="/mem_res.do"
-				redirect="true"></forward>
+			         redirect="true"></forward>
 			<forward name="fail" path="/mem_fail.do"></forward>
 		</action>
-		
+
 		<!-- 아이디, 비밀번호 찾기 단순 포워딩 -->
-		<action path="/pass_lost" forward=".menu_pass_lost" />
-		
+		<action path="/pass_lost" forward=".menu_pass_lost"/>
+
 		<!-- 아이디 찾기 액션 -->
 		<action path="/id_lost_process" type="kr.hospi.actions.LostAction" scope="request">
 			<forward name="success" path="/pass_lost.do" redirect="true"></forward>
 			<forward name="fail" path="/pass_lost.do"></forward>
 		</action>
-		
+
 		<!-- 비밀번호 찾기 액션 -->
 		<action path="/pass_lost_process" type="kr.hospi.actions.LostActionPass" scope="request">
-        	<forward name="success" path="/pass_lost.do" redirect="true"></forward>
-        	<forward name="fail" path="/pass_lost.do"></forward>
-        </action>
-		
+			<forward name="success" path="/pass_lost.do" redirect="true"></forward>
+			<forward name="fail" path="/pass_lost.do"></forward>
+		</action>
+
 		<!-- 회원정보(파일명도 경로와 일치) -->
-		<action path="/mem_info" forward=".menu_mem_info" />
-		
+		<action path="/mem_info" forward=".menu_mem_info"/>
+
 		<!-- 클라이언트~~성형정보 -->
 		<action path="/plaSur"
 		        forward=".menu_plasticSurgery"/>
 
-<!-- 		 클라이언트~~온라인상담 
-		<action path="/coun"
-		        forward=".menu_counsel"/> -->
-		        
+		<!-- 		 클라이언트~~온라인상담
+				<action path="/coun"
+						forward=".menu_counsel"/> -->
+
 		<!--클라이언트~~온라인상담 리스트-->
-        <action path="/coun" 
-                type="kr.hospi.actions.CounAction">
-            <forward name="success" path=".menu_counsel"></forward>
-                </action>
-       
-       <!-- 클라이언트~~온라인상담 등록창 -->
-        <action path="/coun_con" 
-                forward=".menu_confirm">
-                </action>  
-      
-      <!-- 클라이언트~~온라인상담 상담정보 -->
-        <action path="/coun_info"
-                type="kr.hospi.actions.CounAction">
-            <forward name="success" path=".menu_info"></forward>
-                </action>
-                
-        <!-- 클라이언트~~온라인상담 수정창 -->        
-        <action path="/coun_mod"
-                forward=".menu_modify">
-                </action>      
+		<action path="/coun"
+		        type="kr.hospi.actions.CounAction">
+			<forward name="success" path=".menu_counsel"></forward>
+		</action>
+
+		<!-- 클라이언트~~온라인상담 등록창 -->
+		<action path="/coun_con"
+		        forward=".menu_confirm">
+		</action>
+
+		<!-- 클라이언트~~온라인상담 상담정보 -->
+		<action path="/coun_info"
+		        type="kr.hospi.actions.CounAction">
+			<forward name="success" path=".menu_info"></forward>
+		</action>
+
+		<!-- 클라이언트~~온라인상담 수정창 -->
+		<action path="/coun_mod"
+		        forward=".menu_modify">
+		</action>
 
 		<!-- 클라이언트~~예약신청 -->
 		<action path="/reser"
@@ -153,20 +153,20 @@
 
 		<!-- 클라이언트~~예약목록 -->
 		<action path="/reser_info"
-				type="kr.hospi.actions.ReserSelectAction">
+		        type="kr.hospi.actions.ReserSelectAction">
 			<forward name="reser_info" path=".menu_reservation_info"></forward>
 		</action>
 
 		<!-- 클라이언트~~예약수정 -->
 		<action path="/reser_modify"
-				type="kr.hospi.actions.ReserSelectAction">
+		        type="kr.hospi.actions.ReserSelectAction">
 			<forward name="reser_modify" path=".menu_reservation_modify"></forward>
 		</action>
 
 		<!-- 클라이언트~~견적 시작Complete-->
 		<action path="/esti"
 		        type="kr.hospi.actions.EstiUserAction">
-			<forward name="success" path=".menu_estimate"></forward>	
+			<forward name="success" path=".menu_estimate"></forward>
 		</action>
 
 		<!-- 클라이언트~~견적결과보기 on processing-->
@@ -204,27 +204,35 @@
 
 		<!-- 어드민~~온라인상담 -->
 		<action path="/ad_coun"
-		        forward=".ad_menu_counsel"/>
+		        type="kr.hospi.actions.AdCounAction"
+		        scope="request"
+		        validate="true"
+		        input=".ad_coun_list">
+			<forward name="selAll" path=".ad_coun_list"></forward>
+			<forward name="selComent" path=".ad_coun_coment"></forward>
+			<forward name="selInfo" path=".ad_coun_info"></forward>
+			<forward name="selModify" path=".ad_coun_modify"></forward>
+		</action>
 
 		<!-- 어드민~~예약목록&예약상세 -->
 		<action path="/ad_reser"
-				type="kr.hospi.actions.ReserSelectAction">
+		        type="kr.hospi.actions.ReserSelectAction">
 			<forward name="ad_reser" path=".ad_menu_reservation"></forward>
 			<forward name="ad_reser_info" path=".ad_menu_reservation_info"></forward>
 		</action>
 
 		<!-- 어드민~~예약수정 -->
 		<action path="/ad_reser_modify"
-				type="kr.hospi.actions.ReserSelectAction">
+		        type="kr.hospi.actions.ReserSelectAction">
 			<forward name="ad_reser_modify" path=".ad_menu_reservation_modify"></forward>
 		</action>
 
 		<!-- 어드민~~사원정보 -->
 		<action path="/ad_emp"
-				type="kr.hospi.actions.EmpAction"
-				scope="request"
-				validate="true"
-				input=".ad_emp_list">
+		        type="kr.hospi.actions.EmpAction"
+		        scope="request"
+		        validate="true"
+		        input=".ad_emp_list">
 			<forward name="selAll" path=".ad_emp_list"></forward>
 			<forward name="selConfirm" path=".ad_emp_confirm"></forward>
 			<forward name="selInfo" path=".ad_emp_info"></forward>
@@ -243,28 +251,28 @@
 		<action path="/ad_grade"
 		        forward=".ad_menu_grade"/>
 		<!-- Tiles 타일즈 액션 등록 종료!! -->
-		
-		
+
+
 		<!-- reservation액션등록 시작!! -->
 		<!-- 고객용: 예약 Action(insert) 등록 -->
-    	<action path="/reserIAction" 
-      			type="kr.hospi.actions.ReserInsertAction"
-      			name="reserInsertForm"
-      			scope="request"
-      			validate="true"
-      			input="/reser.do">
-    	  	<forward name="success" path="/reser_info.do?reser=mInfo"></forward>
-    	  	<forward name="fail" path="/reser.do"></forward>
-      	</action>
+		<action path="/reserIAction"
+		        type="kr.hospi.actions.ReserInsertAction"
+		        name="reserInsertForm"
+		        scope="request"
+		        validate="true"
+		        input="/reser.do">
+			<forward name="success" path="/reser_info.do?reser=mInfo"></forward>
+			<forward name="fail" path="/reser.do"></forward>
+		</action>
 
 		<!-- 고객&관리자용: 예약 Action(update) 등록 -->
-    	<action path="/reserUAction" 
-      			type="kr.hospi.actions.ReserUpdateAction">
-    	  	<forward name="success" path="/reser_info.do?reser=mInfo"></forward>
-    	  	<forward name="fail" path="/reser_modify.do"></forward>
-    	  	<forward name="successAd" path="/ad_reser.do?reser=arInfo"></forward>
-    	  	<forward name="failAd" path="/ad_reser_modify.do?reser=arInfo"></forward>
-      	</action>
+		<action path="/reserUAction"
+		        type="kr.hospi.actions.ReserUpdateAction">
+			<forward name="success" path="/reser_info.do?reser=mInfo"></forward>
+			<forward name="fail" path="/reser_modify.do"></forward>
+			<forward name="successAd" path="/ad_reser.do?reser=arInfo"></forward>
+			<forward name="failAd" path="/ad_reser_modify.do?reser=arInfo"></forward>
+		</action>
 		<!-- reservation액션등록 종료!! -->
 
 	</action-mappings>

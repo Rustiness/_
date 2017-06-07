@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Created
+   User: KJK
+   Date: 2017-06-07
+   Time: 오후 03:06
+-->
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ad_coun">
+	<!-- counloyee.xml -->
+	<typeAlias alias="CounBeans" type="kr.hospi.beans.Counsel"/>
+
+	<!-- 상담 정보 검색 -->
+	<select id="selCounAll" resultClass="CounBeans">
+		SELECT cNO, mNO, pTypeNO, cDate, cTitle, cContent, cCount, imageURL, eDate, eNO, eComent, state
+		FROM Counsel
+		ORDER BY cNO DESC
+	</select>
+
+	<!--상담 상세정보 표시-->
+	<select id="selCounInfo" parameterClass="String" resultClass="CounBeans">
+		SELECT cNO, mNO, pTypeNO, cDate, cTitle, cContent, cCount, imageURL, eDate, eNO, eComent, state
+		FROM Counsel
+		WHERE cNO=#cNO#
+	</select>
+
+	<!--상담 정보 수정-->
+	<update id="updCounInfo" parameterClass="CounBeans">
+		UPDATE Counsel SET pTypeNO=#pTypeNO#, cTitle=#cTitle#, cContent=#cContent#, imageURL=#imageURL#, state=#state#
+		WHERE cNO=#cNO#
+	</update>
+
+	<!--상담 답변 등록-->
+	<update id="updCounComent" parameterClass="CounBeans">
+		UPDATE Counsel SET eDate=#eDate#, eNO=#eNO#, eComent=#eComent#, state=#state#
+		WHERE cNO=#cNO#
+	</update>
+</sqlMap>

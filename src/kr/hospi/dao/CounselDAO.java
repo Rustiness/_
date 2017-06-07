@@ -116,5 +116,53 @@ public class CounselDAO {
 	         return rcount;
 	      }//reserCount
 	   
-		   //=====================페이징작업 끝    
+		   //=====================페이징작업 끝
+
+
+	//========== 상담 관리자 시작 : KJK ==========
+	/* 전체 상담 목록 */
+	public List<Counsel> selCounAll() {
+		List<Counsel> list = null;
+		try {
+			list = sqlMap.queryForList("ad_coun.selCounAll");
+			//list.get("eDate").toString().replaceAll("\\.\\d+", "")); Time
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//selCounAll
+
+	/* 상담 정보 표시 */
+	public List<Counsel> selCounInfo(String cNO) {
+		List<Counsel> list = null;
+		try {
+			list = (List<Counsel>) sqlMap.queryForList("ad_coun.selCounInfo",cNO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//selCounInfo
+
+	/* 상담 정보 수정 */
+	public boolean updCounInfo(Counsel counsel) {
+		try {
+			int t = sqlMap.update("ad_coun.updCounInfo",counsel);
+			if(t==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}//updCounInfo
+
+	/* 상담 답변 등록 */
+	public boolean updCounComent(Counsel counsel) {
+		try {
+			int t = sqlMap.update("ad_coun.updCounComent",counsel);
+			if(t==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}//updCounComent
+	//========== 상담 관리자 종료 : KJK ==========
 }
