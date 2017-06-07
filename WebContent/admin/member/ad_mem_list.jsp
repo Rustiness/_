@@ -44,7 +44,7 @@
 				<td>${memInfo.pTypeNO}</td>
 				<td>${memInfo.latestDate}</td>
 				<td>${memInfo.joinDate}</td>
-				<td>${memInfo.mMemo}</td>
+				<td id="mMemoText" title="${memInfo.mMemo}">${memInfo.mMemo}</td>
 				<td>${memInfo.rNO}</td>
 				<td>${memInfo.pNO}</td>
 				<td>

@@ -87,4 +87,26 @@ public class MemberDAO {
 		}
 		return list;// 회원정보가 저장된 list 리턴.
 	}//selectAll
+
+	/* 회원 정보 표시*/
+	public List<AdMember> selMemInfo(String mNO) {
+		List<AdMember> list = null;
+		try {
+			list = (List<AdMember>) sqlMap.queryForList("ad_member.selMemInfo",mNO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//selMemInfo
+
+	/* 회원 정보 수정 */
+	public boolean updMemInfo(AdMember member) {
+		try {
+			int t = sqlMap.update("ad_member.updMemInfo",member);
+			if(t==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}//updMemInfo
 }

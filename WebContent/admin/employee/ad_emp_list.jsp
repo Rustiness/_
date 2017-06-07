@@ -14,7 +14,7 @@
 <center>
 	<table border="1" cellpadding="5" id="empList">
 		<tr id="tableHead">
-			<th>식별번호</th>
+			<th>eNO</th>
 			<th>아이디</th>
 			<th>사원명</th>
 			<th>생년월일</th>

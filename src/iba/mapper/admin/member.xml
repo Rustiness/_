@@ -26,7 +26,7 @@
 
 	<!--회원 정보 수정-->
 	<update id="updMemInfo" parameterClass="MemBeans">
-		UPDATE Member SET name=#name#,birth=#birth#,sex=#sex#,tel=#tel#,email=#email#,mMemo=#mMemo#,sysdate,state=#state#
+		UPDATE Member SET name=#name#,birth=#birth#,sex=#sex#,tel=#tel#,email=#email#,mMemo=#mMemo#,state=#state#
 		WHERE mNO=#mNO#
 	</update>
 </sqlMap>

@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <link href="admin/_css/employee.css" rel="stylesheet" type="text/css"/>
 <script src="admin/_js/employee.js" rel="script" type="text/javascript"></script>
-<%-- ad_emp_list.jsp --%>
+<%-- ad_emp_modify.jsp --%>
 <h3>::사원 정보 수정::</h3>
 <hr style="color: deeppink">
 <center>

@@ -48,7 +48,7 @@ $(document).ready(function () {
 	//수정진행 버튼
 	$("#btnModifyON").click(function () {
 		var mNO = $('#memModify td:eq(1):nth-child(2)').text(); // mNO 가져오기
-		var dataString = $("#empModForm").serialize(); //name 집합
+		var dataString = $("#memModForm").serialize(); //name 집합
 		//console.log(dataString);
 
 		$.ajax({

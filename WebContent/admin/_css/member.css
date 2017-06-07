@@ -52,7 +52,7 @@
 }
 
 #memList #tableHead th:nth-child(9) {
-	width: 9vw;
+	width: 7vw;
 }
 
 #memList #tableHead th:nth-child(10) {
@@ -79,6 +79,7 @@
 
 #tableData td,
 #memInfo td,
+#memInfo td,
 #memModify td,
 #memModify input,
 #memModify select {
@@ -89,4 +90,12 @@
 #memModify #btnSet input {
 	font-size: 1.5vw;
 	color: #797979;
+}
+
+#mMemoText {
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 7vw;
 }
