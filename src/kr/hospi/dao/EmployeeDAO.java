@@ -58,5 +58,5 @@ public class EmployeeDAO {
 			e.printStackTrace();
 		}
 		return false;
-	}//updEmpInfo
+	}//insEmpInfo
 }
