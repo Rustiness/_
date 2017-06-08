@@ -25,7 +25,7 @@ public class PlasticItAction extends Action {
 				if (action == null) {
 						action = "list"; //액션이 NULL 이었을때 기본값을 리스트 지정.
 				}
-		System.out.println("executeItAction()");
+		//System.out.println("executeItAction()");
 		
 		PlasticItemDAO dao = new PlasticItemDAO();
 		ActionForward forward = null; //이동할 페이지 저장
@@ -39,32 +39,50 @@ public class PlasticItAction extends Action {
 			list = dao.selectAll();
 			//(뷰와) 데이터 공유 - request(forward 이동 시), session(forward 이동, redirect 이동 시)
 		request.setAttribute("listpItem", list);
-		System.out.println("list is"+list);
+		//System.out.println("list 성공"+list);
 		
 		forward= mapping.findForward("selectAll");
 		break;
 		case "info": //수정폼 이전 정보 페이지
 			pItemNO = (String) request.getParameter("pItemNO");
-			System.out.println(pItemNO);
+			//System.out.println(pItemNO);
 			pitem = dao.selectpItemNO(pItemNO);
-			System.out.println("pitem"+ pitem);
+			//System.out.println("pitem"+ pitem);
 			request.setAttribute("pItemInfolist", pitem);
 			forward = mapping.findForward("selectInfo");
 			break;
 		case "modify": //수정폼
 			pItemNO = (String) request.getParameter("pItemNO");
-			System.out.println("update:"+pItemNO);
+			//System.out.println("update:"+pItemNO);
 			pitem = dao.selectpItemNO(pItemNO);
+			//System.out.println("update 성공 확인여부:"+pitem);
 			request.setAttribute("pItemInfolist", pitem);
 			
 				forward = mapping.findForward("selectModify");
 			
 			break;
 		case "update": //수정요청
+			
 			pItemNO = (String) request.getParameter("pItemNO");
 			
-			forward = mapping.findForward("selectInfo");
-
+			
+			String pItemName = request.getParameter("pItemName");
+			String pItemValue = request.getParameter("pItemValue");
+			String state = request.getParameter("state");
+			//System.out.println("pItemName:"+pItemName);
+			//System.out.println("pItemValue:"+pItemValue);
+			//System.out.println("state:"+state);
+			
+			pitem.setpItemNO(pItemNO);
+			pitem.setpItemName(pItemName);
+			pitem.setpItemValue(pItemValue);
+			pitem.setState(state);
+			if(dao.update(pitem)){//update에 성공한다면
+				pitem=dao.selectpItemNO(pItemNO);
+				request.setAttribute("pItemInfolist", pitem);
+				
+				forward = mapping.findForward("selectInfo");
+			}//if
 			break;
 	}//switch
 

@@ -41,16 +41,15 @@ $(document).ready(function () {
 	//수정진행 버튼
 	$("#btnModifyON").click(function () {
 		var pTypeNO = $('[id=pTypeNO]').val(); // pTypeNO 가져오기
-		// $('[name=foo]').val() var pTypeNO = $('#plasModify td:eq(3):nth-child(2)').text(); // pTypeNO 가져오기
-		alert("ptypeNO:"+pTypeNO);
+		
 		var dataString = $("#plasModForm").serialize(); //name 집합
-		alert(dataString);
+		
 		$.ajax({
 			type: "POST",
 			url: "ad_plasTy.do?action=update&pTypeNO=" + pTypeNO,
 			data: dataString,
 			success: function () {
-				alert("성공");
+				alert("수정성공");
 				location.assign('ad_plasTy.do?action=info&pTypeNO=' + pTypeNO);
 			},
 			error: function () {

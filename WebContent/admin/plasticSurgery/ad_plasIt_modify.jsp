@@ -11,7 +11,7 @@
 <h3>::성형시술상세정보::</h3>
 <hr style="color: deeppink">
 <center>
-	<form id="plasModForm" method="post">
+	<form id="plasItModForm" method="post">
 		<table border="1" cellpadding="5" id="plasItModify">
 			<tr id="tableHead">
 				<th>항목</th>
@@ -24,24 +24,24 @@
 				</tr>
 				<tr>
 					<td>성형타입번호</td>
-					<td><input id="pTypeNO" type="text" value="${pItemInfolist.pTypeNO}" disabled></td>
+					<td><input name="pTypeNO" id="pTypeNO" type="text" value="${pItemInfolist.pTypeNO}" readonly></td>
 				</tr>
 				<tr>
 					<td>성형시술번호</td>
-					<td><input id="pItemNO" type="text" value="${pItemInfolist.pItemNO}" disabled></td>
+					<td><input name="pItemNO" id="pItemNO" type="text" value="${pItemInfolist.pItemNO}" disabled></td>
 				</tr>
 				<tr>
 					<td>성형시술명</td>
-					<td><input id="pItemName" type="text" value="${pItemInfolist.pItemName}"></td>
+					<td><input name="pItemName" id="pItemName" type="text" value="${pItemInfolist.pItemName}"></td>
 				</tr>
 				<tr>
 					<td>성형시술가격</td>
-					<td><input id="pItemValue" type="text" value="${pItemInfolist.pItemValue}"></td>
+					<td><input  name="pItemValue" id="pItemValue" type="text" value="${pItemInfolist.pItemValue}"></td>
 				</tr>
 				
 				<tr>
 					<td>Active/Inactive</td>
-					<td><select id="state">
+					<td><select name="state" id="state">
 						<option value="1" <c:if test="${pItemInfolist.state eq '1'}">selected</c:if>>Active</option>
 						<option value="0" <c:if test="${pItemInfolist.state eq '0'}">selected</c:if>>Inactive</option>
 		

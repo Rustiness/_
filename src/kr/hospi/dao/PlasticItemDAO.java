@@ -23,7 +23,7 @@ SqlMapClient sqlMap;
 	public boolean insert(PlasticItem pitem){//관리자용: 성형과목정보 입력
 		try {
 			sqlMap.insert("plastic.insertIt", pitem);
-			System.out.println("successInsertpItem");
+			//System.out.println("successInsertpItem");
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -44,7 +44,7 @@ SqlMapClient sqlMap;
 		List<PlasticItem> list=null;
 		try {
 			list = sqlMap.queryForList("plastic.selectpItem");
-			System.out.println("It has succeeded to download");
+			//System.out.println("It has succeeded to download");
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,7 +56,7 @@ SqlMapClient sqlMap;
 		PlasticItem pitem=null;
 		try {
 			pitem = (PlasticItem)sqlMap.queryForObject("plastic.selectpItemNO", pItemNO);
-			//return pitem;
+			//System.out.println("It has succeeded to update");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

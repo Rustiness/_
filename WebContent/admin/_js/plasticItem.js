@@ -32,23 +32,23 @@ $(document).ready(function() {
 	//수정시작 버튼
 	$("#btnModify").click(function() {
 		var pItemNO = $('#plasItConfirm td:eq(5):nth-child(2)').text(); // pItemNO 가져오기
+		
 		console.log('pItemNO : ' + pItemNO);
 		location.assign('ad_plasIt.do?action=modify&pItemNO=' + pItemNO);
 	});
 
 	//수정진행 버튼
 	$("#btnModifyON").click(function() {
-		var pItemNO = $('#plasItModify td:eq(5):nth-child(2)').text(); // pItemNO 가져오기
-
-		alert('pItemNO : ' + pItemNO);
-
-		var dataString = $("#plasItConfirm").serialize(); //name 집합
+		var pItemNO = $('[id=pItemNO]').val(); // pItemNO 가져오기
+		var dataString = $("#plasItModForm").serialize(); //name 집합
+		
 		$.ajax({
 			type : "POST",
 			url : "ad_plasIt.do?action=update&pItemNO=" + pItemNO,
 			data : dataString,
 			success : function() {
 				console.log('성공!!');
+				alert('update성공');
 				location.assign('ad_plasIt.do?action=info&pItemNO=' + pItemNO);
 			},
 			error : function() {
@@ -63,7 +63,9 @@ $(document).ready(function() {
 
 	//수정 취소 버튼
 	$("#btnCancel").click(function() {
-		var pItemNO = $('#plasItModify td:eq(3):nth-child(2)').text(); // pItemNO 가져오기
+		
+		var pItemNO =  $('[id=pItemNO]').val(); // pItemNO 가져오기
+		//var pItemNO = $('#plasItModify td:eq(3):nth-child(2)').text(); // pItemNO 가져오기
 		alert(pItemNO);
 		console.log('pItemNO : ' + pItemNO);
 		location.assign('ad_plasIt.do?action=info&pItemNO=' + pItemNO);
