@@ -1,0 +1,107 @@
+/**
+ * Created
+ * User: KJK
+ * Date: 2017-06-07
+ * Time: 오전 01:21
+ */
+/*tbody tr:nth-child(2n) {*/
+/*tbody tr:nth-child(even) {*/
+/*background-color: #f4f7ff;*/
+/*}*/
+
+#counInfo tbody tr:nth-child(even),
+#counComent tbody tr:nth-child(even),
+#counModify tbody tr:nth-child(even) {
+	background-color: #f4f7ff;
+}
+
+#tableHead th {
+	background-color: #aac0ff;
+	color: white;
+}
+
+#counList #tableHead th:nth-child(1) {
+	width: 4vw;
+}
+
+#counList #tableHead th:nth-child(2) {
+	width: 6vw;
+}
+
+#counList #tableHead th:nth-child(3) {
+	width: 7vw;
+}
+
+#counList #tableHead th:nth-child(4) {
+	width: 7vw;
+}
+
+#counList #tableHead th:nth-child(5) {
+	width: 8vw;
+}
+
+#counList #tableHead th:nth-child(6) {
+	width: 7vw;
+}
+
+#counList #tableHead th:nth-child(7) {
+	width: 7vw;
+}
+
+#counList #tableHead th:nth-child(8) {
+	width: 12vw;
+}
+
+#counList #tableHead th:nth-child(9) {
+	width: 3vw;
+}
+
+#counInfo #tableHead th:nth-child(1),
+#counComent #tableHead th:nth-child(1),
+#counModify #tableHead th:nth-child(1) {
+	width: 13vw;
+}
+
+#counInfo #tableHead th:nth-child(2),
+#counComent #tableHead th:nth-child(2),
+#counModify #tableHead th:nth-child(2) {
+	width: 20vw;
+}
+
+#tableData td,
+#counInfo td,
+#counInfo td,
+#counInfo textarea,
+#counComent td,
+#counComent input,
+#counComent select,
+#counComent textarea,
+#counModify td,
+#counModify input,
+#counModify select,
+#counModify textarea {
+	font-size: 1vw;
+	color: #797979;
+}
+
+#counComent #btnSet input,
+#counModify #btnSet input {
+	font-size: 1.5vw;
+	color: #797979;
+}
+
+#cTitleText {
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 8vw;
+}
+
+#eComentText {
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 12vw;
+}

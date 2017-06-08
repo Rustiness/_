@@ -29,8 +29,8 @@
 	<!--<sqlMap resource="./iba/mapper/client/plasticSurgery.xml"/>-->
 	<sqlMap resource="./iba/mapper/client/reservation.xml"/><!-- 예약정보 -->
 
-    <sqlMap resource="./iba/mapper/admin/plastic.xml"/><!--성형타입 정보: KMH  -->
-	<!--<sqlMap resource="./iba/mapper/admin/counsel.xml"/>-->
+	<sqlMap resource="./iba/mapper/admin/plastic.xml"/><!--성형타입 정보: KMH  -->
+	<sqlMap resource="./iba/mapper/admin/counsel.xml"/><!-- 관리자 상담정보 : KJK -->
 	<sqlMap resource="./iba/mapper/admin/employee.xml"/><!-- 관리자 사원정보 : KJK -->
 	<!--<sqlMap resource="./iba/mapper/admin/estimate.xml"/>-->
 	<sqlMap resource="./iba/mapper/admin/member.xml"/><!-- 관리자 회원정보 : KJK -->
