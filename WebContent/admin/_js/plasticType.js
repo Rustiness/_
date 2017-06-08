@@ -31,17 +31,18 @@ $(document).ready(function () {
 
 	//수정시작 버튼
 	$("#btnModify").click(function () {
-		alert("확인용");
+		
 		var pTypeNO = $('#ptypeNO').text(); // pTypeNO 가져오기
-		alert("pTypeNO"+pTypeNO);		
+		
 		console.log('pTypeNO : ' + pTypeNO);
 		location.assign('ad_plasTy.do?action=modify&pTypeNO=' + pTypeNO);
 	});
 
 	//수정진행 버튼
 	$("#btnModifyON").click(function () {
-		var pTypeNO = $('#plasModify td:eq(3):nth-child(2)').text(); // pTypeNO 가져오기
-		alert("ptypeNOXXXX"+pTypeNO);
+		var pTypeNO = $('[id=pTypeNO]').val(); // pTypeNO 가져오기
+		// $('[name=foo]').val() var pTypeNO = $('#plasModify td:eq(3):nth-child(2)').text(); // pTypeNO 가져오기
+		alert("ptypeNO:"+pTypeNO);
 		var dataString = $("#plasModForm").serialize(); //name 집합
 		alert(dataString);
 		$.ajax({

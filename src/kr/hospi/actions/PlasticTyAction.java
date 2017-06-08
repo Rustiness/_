@@ -70,9 +70,10 @@ public class PlasticTyAction extends Action {
 		case "update": //수정요청
 			pTypeNO = (String) request.getParameter("pTypeNO");
 			//request.setAttribute("emplist", list);
-			
+			System.out.println("pTypeNO:"+pTypeNO);
 			String pTypeName = request.getParameter("pTypeName");
 			String state = request.getParameter("state");
+			System.out.println("pTypeName:"+pTypeName);
 			System.out.println("state:"+state);
 			ptype.setpTypeNO(pTypeNO);
 			ptype.setpTypeName(pTypeName); 

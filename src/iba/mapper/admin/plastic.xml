@@ -22,15 +22,16 @@
 	<!-- 1.관리자용: pType -->
 	<!-- 관리자용: 정보 수정 -->
 	<update id="updateTy" parameterClass="plasticType">
-    	update plasticType set #pTypeName#, #state#
+    	update plasticType set pTypeNO=#pTypeNO#, pTypeName=#pTypeName#, state=#state#
     	where pTypeNO=#pTypeNO#
     </update>
     <!-- 2.관리자용: pItem -->
      <!-- 관리자용: 정보 수정 -->
 	<update id="updateIt" parameterClass="plasticItem">
-		update plasticItem set pItemName=#pItemName#, pItemValue=#pItemValue#
+		update plasticItem set pItemName=#pItemName#, pItemValue=#pItemValue#, state=#state#
 		 where pItemNO= #pItemNO#
 	</update>
+	
 	
     
     <!-- 1.관리자용: pType -->

@@ -16,15 +16,15 @@
 			<%-- <c:forEach items="${plaslist}" var="plasTyInfo"> --%>
 				<tr>
 					<td>번호</td>
-					<td value="${pTypeInfolist.num}" disabled>${pTypeInfolist.num}</td>
+					<td value="${pTypeInfolist.num}" readonly>${pTypeInfolist.num}</td>
 				</tr>
 				<tr>
 					<td>성형시술번호</td>
-					<td>${pTypeInfolist.pTypeNO}</td>
+					<td><input  name="pTypeNO" id="pTypeNO" type="text" value="${pTypeInfolist.pTypeNO}"></td>
 				</tr>
 				<tr>
 					<td>성형시술명</td>
-					<td><input id="pTypeName" type="text" value="${pTypeInfolist.pTypeName}"></td>
+					<td><input  name="pTypeName" id="pTypeName" type="text" value="${pTypeInfolist.pTypeName}"></td>
 				</tr>
 				
 				<tr>
