@@ -1,31 +1,41 @@
 package kr.hospi.beans;
 
+import java.sql.Date;
+
 /**
- * Created by ${Kosta} on ${2017-05-15}.
+ * Created
+ * User: KJK
+ * Date: 2017-06-07
+ * Time: 오전 12:29
  */
-//회원가입정보 및 회원정보수정 빈
 public class Member {
+	private String mNO; //식별번호
 	private String mID;//아이디
 	private String pass;//비밀번호
-	private String question;//회원가입 질문
+	private String qNO;//회원가입 질문
 	private String answer;//회원가입 답변
 	private String name;//이름
-	private String birth;//생일
+	private Date birth;//생일
 	private String sex;//성별
 	private String tel;//전화번호
 	private String email;//이메일
-	private String pTypeNO;//관심사
+	private String pTypeNO;//관심
+	private Date latestDate;//최근접속일
+	private Date joinDate;//가입일
+	private String mMemo;//회원메모
+	private Date mMdate;//회원메모수정일
 	
-	public Member() {
+	private String pNO;//견적정보
+	private String state;//계정상태
 
+	public Member() {
 	}
 
-	public Member(String mID, String pass, String question, String answer, String name, String birth, String sex,
-			String tel, String email, String pTypeNO) {
-		super();
+	public Member(String mNO, String mID, String pass, String qNO, String answer, String name, Date birth, String sex, String tel, String email, String pTypeNO, Date latestDate, Date joinDate, String mMemo, Date mMdate, String pNO, String state) {
+		this.mNO = mNO;
 		this.mID = mID;
 		this.pass = pass;
-		this.question = question;
+		this.qNO = qNO;
 		this.answer = answer;
 		this.name = name;
 		this.birth = birth;
@@ -33,6 +43,20 @@ public class Member {
 		this.tel = tel;
 		this.email = email;
 		this.pTypeNO = pTypeNO;
+		this.latestDate = latestDate;
+		this.joinDate = joinDate;
+		this.mMemo = mMemo;
+		this.mMdate = mMdate;
+		this.pNO = pNO;
+		this.state = state;
+	}
+
+	public String getmNO() {
+		return mNO;
+	}
+
+	public void setmNO(String mNO) {
+		this.mNO = mNO;
 	}
 
 	public String getmID() {
@@ -51,12 +75,12 @@ public class Member {
 		this.pass = pass;
 	}
 
-	public String getQuestion() {
-		return question;
+	public String getqNO() {
+		return qNO;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setqNO(String qNO) {
+		this.qNO = qNO;
 	}
 
 	public String getAnswer() {
@@ -75,11 +99,11 @@ public class Member {
 		this.name = name;
 	}
 
-	public String getBirth() {
+	public Date getBirth() {
 		return birth;
 	}
 
-	public void setBirth(String birth) {
+	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
 
@@ -114,5 +138,52 @@ public class Member {
 	public void setpTypeNO(String pTypeNO) {
 		this.pTypeNO = pTypeNO;
 	}
-	
+
+	public Date getlatestDate() {
+		return latestDate;
+	}
+
+	public void setlatestDate(Date latestDate) {
+		this.latestDate = latestDate;
+	}
+
+	public Date getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = joinDate;
+	}
+
+	public String getmMemo() {
+		return mMemo;
+	}
+
+	public void setmMemo(String mMemo) {
+		this.mMemo = mMemo;
+	}
+
+	public Date getmMdate() {
+		return mMdate;
+	}
+
+	public void setmMdate(Date mMdate) {
+		this.mMdate = mMdate;
+	}
+
+	public String getpNO() {
+		return pNO;
+	}
+
+	public void setpNO(String pNO) {
+		this.pNO = pNO;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
 }
