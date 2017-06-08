@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<!--plastic.xml -->
+<sqlMap namespace="plastic">
+	<typeAlias alias="plasticType" type="kr.hospi.beans.PlasticType"/>
+	<typeAlias alias="plasticItem" type="kr.hospi.beans.PlasticItem"/>
+	<!-- 1.관리자용: pType -->
+	<!-- 관리자용: 정보 입력 -->
+	<insert id="insertTy" parameterClass="plasticType">
+		insert into plasticType
+		values (plasticType_seq.nextval, #pTypeNO#, #pTypeName#, #state#)
+	</insert>
+	<!-- 2.관리자용: pItem -->
+    <!-- 관리자용: 정보 입력 -->
+	<insert id="insertIt" parameterClass="plasticItem">
+		insert into plasticItem
+		values (plasticItem_seq.nextval, #pTypeNO#, #pItemNO#,#pItemName#, #pItemValue#,#state#)
+	</insert>
+	
+	
+	
+	<!-- 1.관리자용: pType -->
+	<!-- 관리자용: 정보 수정 -->
+	<update id="updateTy" parameterClass="plasticType">
+    	update plasticType set #pTypeName#, #state#
+    	where pTypeNO=#pTypeNO#
+    </update>
+    <!-- 2.관리자용: pItem -->
+     <!-- 관리자용: 정보 수정 -->
+	<update id="updateIt" parameterClass="plasticItem">
+		update plasticItem set pItemName=#pItemName#, pItemValue=#pItemValue#
+		 where pItemNO= #pItemNO#
+	</update>
+	
+    
+    <!-- 1.관리자용: pType -->
+    <!-- 관리자용: 정보 출력 -->
+	<!-- plasticType 1.EY 2. NO 3. FA 4. BO 5. BR 
+	성형 진료과목 1.눈성형 2. 코성형 3. 안면윤곽성형 4. 체형성형 5. 가슴성형-->
+	<select id="selectpType"  resultClass="plasticType">
+     select * from plasticType
+  	</select> 
+  	<!-- 1.관리자용: pTypeInfo -->
+   
+	<select id="selectpTypeInfo"  parameterClass="String" resultClass="plasticType">
+     select * from plasticType where pTypeNO=#pTypeNO#
+  	</select> 
+    
+	<!-- 2.관리자용: pItem -->
+	 <!-- 관리자용: 정보 출력 -->
+    <!--  성형 견적 전체 내용(num,성형타입번호, 성형타입명, 성형시술번호, 성형시술명, 성형시술가격) -->
+	<select id="selectpItem"  resultClass="plasticItem">
+	select  i.num, i.pTypeNO, t.pTypeName, i.pItemNO, i.pItemName, i.pItemValue, i.state 
+	from plasticItem i left outer join plasticType t on i.pTypeNO =t.pTypeNO
+	</select>
+   <!-- 관리자용: 정보 출력 -->
+     <!--  성형 견적 pItemNO 내용(num,성형타입번호, 성형타입명, 성형시술번호, 성형시술명, 성형시술가격) -->
+     <select id="selectpItemNO"  resultClass="plasticItem" parameterClass="String">
+	select * from plasticItem where pItemNO= #pItemNO#
+	</select>
+     
+     
+     <!-- 등록된 성형시술의 개수  -->
+	<select id="selectCount" resultClass="int">
+		select count(*) from plasticItem
+	</select>
+	
+     
+     
+     <!-- ////////////////////////////////////////////////////////////////////////////////// -->
+     
+     
+  
+	
+	
+	
+	
+  
+ 	 <!--admin-update (comboBox Name) plasticType eg)-->
+   <select id="selectpItemName"  resultClass="String" parameterClass="String" >
+     select distinct pItemName from plasticItem where pTypeNO = (select pTypeNO from plasticType where pTypeName = #pTypeName#)
+  </select> 
+  
+  	<!-- admin-update (AFTER SELECTING COMBOBOX, pItemName , pItemValue, status) -->
+ 	<select id="selectInfo"  resultClass="kr.hospi.beans.PlasticItem" parameterClass="String">
+	select num, pTypeNO, pItemNO, pItemName, pItemValue, state from plasticItem 
+	where pItemNO = (select pItemNO from plasticItem where pItemName = #pItemName#)
+	</select>
+	
+    
+ </sqlMap>

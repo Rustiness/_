@@ -58,8 +58,7 @@
 	<!-- 클라이언트~~회원정보 수정-->
 	<definition name=".menu_memberinfo_mod" extends=".client_idx">
 		<put name="main_body" value="/client/member/mem_mod.jsp"></put>
-		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! 
-		-->
+		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
 	</definition>
 	
 	<!-- 클라이언트~~회원정보 수정 성공-->
@@ -217,16 +216,17 @@
 	<definition name=".ad_emp_info" extends=".admin_idx"><!-- 사원 상세정보 -->
 		<put name="a_main_body" value="/admin/employee/ad_emp_info.jsp"></put>
 	</definition>
+	
+	
+	<!-- 어드민~~성형타입:기준 -->
+	<definition name=".ad_plasType_list" extends=".admin_idx"><!-- 항목 상세 -->
+		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasTy_list.jsp"></put>
+	</definition>
 	<definition name=".ad_plasType_info" extends=".admin_idx"><!-- 항목 상세 -->
 		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasTy_confirm.jsp"></put>
 	</definition>
 	<definition name=".ad_plasType_modify" extends=".admin_idx"><!-- 항목 수정 -->
 		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasTy_modify.jsp"></put>
-	</definition>
-
-	<!-- 어드민~~성형타입:기준 -->
-	<definition name=".ad_menu_plasType" extends=".admin_idx"><!-- 목록 -->
-		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasTy_list.jsp"></put>
 	</definition>
 
 	<!-- 어드민~~성형시술:기준 -->
