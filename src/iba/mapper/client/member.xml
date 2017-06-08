@@ -1,58 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
-<sqlMap namespace="member"> <!-- member.xml의 모든 sql문의 namespace를 member로 지정. 호출시 member.sql이름 실행 -->
 
-<typeAlias alias="MemBeans" type="kr.hospi.beans.AdMember"/>
+<sqlMap namespace="member"> <!-- member.xml의 모든 sql문의 namespace를 member로 지정. 호출시 member.sql이름 실행 -->
+	<typeAlias alias="MemBeans2" type="kr.hospi.beans.Member"/>
 <!-- kr.hospi.beans.Member 타입 별명을  mem으로 요약 -->
 
-<!-- ※회원가입  -->
-	<insert id="insert" parameterClass="MemBeans">
+    <!-- ※회원가입  -->
+	<insert id="insert" parameterClass="MemBeans2">
 		insert into member (mNO,mID,pass,qNO,answer,name,birth,sex,tel,email,pTypeNO,latestdate,joinDate,state)
 					values(mem_seq.nextval,#mID#,#pass#,#qNO#,#answer#,#name#,#birth#,#sex#,#tel#,
 					#email#,#pTypeNO#,sysdate,sysdate,'1')
 					<!-- ##.nextval,#name#,#pass#,#email#,#tel#,#contents#,##: ##는디폴트를 의미!!! -->
 	</insert>
 	
-	<!-- ※전체행검색 -->
-	<select id="selectAll" resultClass="MemBeans">
-		select mNO,mID,pass,qNO,answer,name,birth,sex,tel,email,pTypeNO,latestDate,joinDate,mMemo,mMdate,rNO,pNO,state
-		from member
-		order by mNO desc
-		<!-- 아이디로되있으면 resultclass는 int , name은 String 한번에는 다 받는건 beans!! -->
-	</select>
+	
+	<!--회원 정보 수정-->
+	
+	<update id="update" parameterClass="MemBeans2">
+		update member set pass=#pass#,qNO=#qNO#,answer=#answer#,name=#name#,birth=#birth#,sex=#sex#,tel=#tel#,email=#email#,pTypeNO=#pTypeNO#
+		where mID=#mID#
+	</update>
+	
+	<!-- ※특정행 삭제! -->
+	<delete id="delete" parameterClass="MemBeans2">
+		delete from member
+		where mID=#mID#
+	</delete>
+	
+	
+	
 	
 	<!-- ※로그인시 필요한 정보조회 -->
-	<select id="login" resultClass="MemBeans">
+	<select id="login" resultClass="MemBeans2">
 		select mID,pass from member
 		where mID=#mID#
 		<!-- 아이디로되있으면 resultclass는 int , name은 String 한번에는 다 받는건 beans!! -->
 	</select>
 	
 	<!-- ※수정폼에 출력될 데이터 조회 -->
-	<select id="select" parameterClass="MemBeans" resultClass="MemBeans" >
-		select mNO,mID,pass,qNO,answer,name,birth,sex,tel,email,pTypeNO,latestDate,joinDate,mMemo,mMdate,rNO,pNO,state
+	<select id="select" parameterClass="MemBeans2" resultClass="MemBeans2" >
+		select mNO,mID,pass,qNO,answer,name,birth,sex,tel,email,pTypeNO,latestDate,joinDate,mMemo,mMdate,pNO,state
 		from member
 		where mID=#mID# and pass=#pass#
 		<!-- ? = preparestatement -->
 	</select>
-		
-		
-	<!-- ※수정폼에 변경된 데이터를 update -->
-	<update id="update" parameterClass="MemBeans">
-		update member set pass=#pass#,qNO=#qNO#,answer=#answer#,name=#name#,birth=#birth#,sex=#sex#,tel=#tel#,email=#email#,pTypeNO=#pTypeNO#
-		where mID=#mID#
-	</update>	 
 	
-	<!-- ※특정행 삭제! -->
-	<delete id="delete" parameterClass="MemBeans">
-		delete from member
-		where mID=#mID#
-	</delete>
+   <!-- 회원 전체정보 검색 -->
+	<select id="selectAll" resultClass="MemBeans2">
+		SELECT mNO,mID,pass,qNO,answer,name,birth,sex,tel,email,pTypeNO,latestDate,joinDate,mMemo,mMdate,pNO,state
+		FROM member
+		ORDER BY mNO DESC
+	</select>
+
 	
-	<!-- ※전체 행 수 출력 -->
-	<select id="count" resultClass="int">
+	
+	
+	<!--회원 정보 표시-->
+	<select id="selMemInfo" parameterClass="String" resultClass="MemBeans2">
+		SELECT mNO, mID, qNO, answer, name, birth, sex, tel, email, pTypeNO, latestDate, joinDate, mMemo, mMdate, pNO, state
+		FROM Member
+		WHERE mNO=#mNO#
+	</select>
+	<!--  -->
+	<select id="dpcheck" parameterClass="String" resultClass="int">
 		select count(*) from member
+				where mID=
+				#id#
+	
 	</select>
 	
 	

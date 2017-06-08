@@ -12,7 +12,7 @@ CREATE TABLE Member (
  mNO VARCHAR2(7) primary key,
  mID VARCHAR2(30) unique,
  pass VARCHAR2(30) not null,
- qNO VARCHAR2(7) not null,
+ qNO VARCHAR2(85) not null,
  answer VARCHAR2(30) not null,
  name VARCHAR2(20) not null,
  birth DATE 		not null,

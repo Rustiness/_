@@ -1,7 +1,7 @@
 package kr.hospi.actions;
 
 import kr.hospi.actionforms.LoginActionForm;
-import kr.hospi.beans.AdMember;
+import kr.hospi.beans.Member;
 import kr.hospi.dao.MemberDAO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,13 +26,13 @@ public class LoginAction extends Action{
 		String mID = laf.getmID();
 		String pass = laf.getPass();
 
-		AdMember mem = new AdMember();//Member빈 mem 생성
+		Member mem = new Member();//Member빈 mem 생성
 			mem.setmID(mID);
 			mem.setPass(pass);
 		
 		MemberDAO dao = new MemberDAO();//DAO 객체 생성
 		
-		AdMember user = dao.select(mem);//DAO에서 회원 전체정보를 가져와 user에 저장.
+		Member user = dao.select(mem);//DAO에서 회원 전체정보를 가져와 user에 저장.
 		
 		ActionForward forward;	
 		if(user==null){//아이디X 또는 비번X

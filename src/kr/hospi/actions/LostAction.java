@@ -10,7 +10,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import kr.hospi.beans.AdMember;
+
 import kr.hospi.beans.Member;
 import kr.hospi.dao.MemberDAO;
 
@@ -28,10 +28,10 @@ public class LostAction extends Action{
 		
 		System.out.println("name :"+name+", email: "+email);
 		MemberDAO dao=new MemberDAO();
-		List<AdMember> list=dao.selectAll();
+		List<Member> list=dao.selectAll();
 		
 		for(int i=0;i<list.size();i++){
-			AdMember mem = list.get(i);
+			Member mem = list.get(i);
 			if(name.equals(mem.getName())&&email.equals(mem.getEmail())){
 				System.out.println("아이디가 존재!");
 				request.getSession().setAttribute("mID", mem.getmID());

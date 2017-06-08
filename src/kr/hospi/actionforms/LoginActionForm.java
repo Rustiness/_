@@ -9,7 +9,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
-import kr.hospi.beans.AdMember;
+
 import kr.hospi.beans.Member;
 import kr.hospi.dao.MemberDAO;
 
@@ -40,7 +40,7 @@ public class LoginActionForm extends ActionForm{
 		ActionErrors errors = new ActionErrors();//에러바구니 생성(에러발생시 에러메세지 담는다.)
 		
 		MemberDAO dao = new MemberDAO();
-		List<AdMember> list = dao.selectAll();
+		List<Member> list = dao.selectAll();
 		
 		boolean result_id = false;//아이디 존재 여부를 알려주는 boolean값 result_id.
 		boolean result_pass = false;//비밀번호 존재 여부를 알려주는 boolean값 result.

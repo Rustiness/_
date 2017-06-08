@@ -10,7 +10,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import kr.hospi.beans.AdMember;
+
 import kr.hospi.beans.Member;
 import kr.hospi.dao.MemberDAO;
 
@@ -29,11 +29,11 @@ public class LostActionPass extends Action{
 		
 		System.out.println("qNO= "+qNO+", answer= "+answer);
 		MemberDAO dao=new MemberDAO();
-		List<AdMember> list=dao.selectAll();
+		List<Member> list=dao.selectAll();
 		
 		if(list!=null){
 			for(int i=0;i<list.size();i++){
-				AdMember mem=list.get(i);
+				Member mem=list.get(i);
 				
 				if(qNO.equals(mem.getqNO())&&answer.equals(mem.getAnswer())){
 					System.out.println("패스워드가 존재!");

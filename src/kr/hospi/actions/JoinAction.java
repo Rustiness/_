@@ -10,7 +10,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import kr.hospi.beans.AdMember;
+import kr.hospi.beans.Member;
 import kr.hospi.dao.MemberDAO;
 
 //회원가입 액션 클래스
@@ -51,7 +51,7 @@ public class JoinAction extends Action {
 			} // 따옴표는 관심사와 관심사 사이에만 붙도록 제어
 		} // --> 문자열로 바꿈.
 
-		AdMember mem = new AdMember();
+		Member mem = new Member();
 		//set mID, pass, qNO, answer, name, birth, sex, tel, email, pTypeNO!
 			mem.setmID(mID);
 			mem.setPass(pass);

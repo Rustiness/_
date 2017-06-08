@@ -6,7 +6,7 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import iba.conf.ChefSqlMapClient;
-import kr.hospi.beans.AdMember;
+
 import kr.hospi.beans.Member;
 
 /**
@@ -16,12 +16,13 @@ public class MemberDAO {
 	SqlMapClient sqlMap;
 
 	public MemberDAO() {
-		sqlMap = new ChefSqlMapClient().getSqlMapInstance();
+		
+		sqlMap = ChefSqlMapClient.getSqlMapInstance();
 	}
 
-	public boolean insert(AdMember mem) {// 계정추가
+	public boolean insert(Member mem) {// 계정추가
 		try {
-			sqlMap.insert("member.insert", mem);// sql문실행.
+			sqlMap.insert("member.insert",mem);// sql문실행.
 			return true;
 		} catch (SQLException e) {
 
@@ -31,7 +32,7 @@ public class MemberDAO {
 		return false;// 수정실패
 	}
 
-	public boolean update(AdMember mem) {// 회원정보수정, 패러미터는 회원가입정보가 저장된 빈(joinInfo)
+	public boolean update(Member mem) {// 회원정보수정, 패러미터는 회원가입정보가 저장된 빈(joinInfo)
 		try {
 
 			int t = sqlMap.update("member.update", mem);//// sql문실행
@@ -59,12 +60,12 @@ public class MemberDAO {
 		return false;// 실패하면 false리턴.
 	}
 
-	public AdMember select(AdMember mem) {// 한명의 회원가입정보(회원가입 페이지에 뿌릴 것) 조회
+	public Member select(Member mem) {// 한명의 회원가입정보(회원가입 페이지에 뿌릴 것) 조회
 
-		AdMember mem_result = null;
+		Member mem_result = null;
 		try {
 
-			mem_result = (AdMember) sqlMap.queryForObject("member.select", mem);
+			mem_result = (Member) sqlMap.queryForObject("member.select", mem);
 			// sql명령문 실행.
 
 		} catch (SQLException e) {
@@ -77,10 +78,10 @@ public class MemberDAO {
 
 	//관리자
 	/* 전체 회원 목록 */
-	public List<AdMember> selectAll() {
-		List<AdMember> list = null;
+	public List<Member> selectAll() {
+		List<Member> list = null;
 		try {
-			list = sqlMap.queryForList("ad_member.selectAll");
+			list = (List<Member>)sqlMap.queryForList("member.selectAll");
 			// sql문 실행 + 모든 회원 정보를 list 리스트에 저장.
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -89,24 +90,35 @@ public class MemberDAO {
 	}//selectAll
 
 	/* 회원 정보 표시*/
-	public List<AdMember> selMemInfo(String mNO) {
-		List<AdMember> list = null;
+	public Member selMemInfo(String mNO) {
+		Member member=null;
 		try {
-			list = (List<AdMember>) sqlMap.queryForList("ad_member.selMemInfo",mNO);
+			member = (Member) sqlMap.queryForObject("member.selMemInfo",mNO);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return list;
+		return member;
 	}//selMemInfo
 
 	/* 회원 정보 수정 */
-	public boolean updMemInfo(AdMember member) {
+	public boolean updMemInfo(Member member) {
 		try {
-			int t = sqlMap.update("ad_member.updMemInfo",member);
+			int t = sqlMap.update("member.updMemInfo",member);
 			if(t==1) return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
 	}//updMemInfo
+	/* 아이디 중복 확인 */
+	public int dpCheck(String id) {
+		int t=0;
+		try {
+			t = (int) sqlMap.queryForObject("member.dpcheck",id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			t=-1;
+		}
+		return t;
+	}//selMemInfo
 }
