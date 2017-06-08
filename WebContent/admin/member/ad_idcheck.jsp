@@ -1,4 +1,3 @@
-<%@page import="kr.hospi.beans.AdMember"%>
 <%@page import="kr.hospi.beans.Member"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.hospi.dao.MemberDAO"%>
@@ -29,7 +28,7 @@
 	String mID = request.getParameter("mID");//아이디 입력란에서 받아온 아이디
 	
 	MemberDAO dao = new MemberDAO();
-	List<AdMember> list = dao.selectAll();
+	List<Member> list = dao.selectAll();
 	
 	boolean result = false;//아이디 존재여부를 알려주는 boolean
 	

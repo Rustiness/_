@@ -20,7 +20,7 @@
 
 <center>
 	<% /*
-		AdMember member=new AdMember();
+		Member member=new Member();
 		 MemberDAO dao=new MemberDAO();
 		 dao.
 		*/

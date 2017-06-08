@@ -8,7 +8,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import kr.hospi.beans.AdMember;
+import kr.hospi.beans.Member;
 import kr.hospi.beans.Reservation;
 import kr.hospi.dao.MemberDAO;
 import kr.hospi.dao.ReservationDAO;
@@ -56,7 +56,7 @@ public class ReserInsertAction extends Action{
 			
 		}else{
 			//로그인되어있는 회원의 정보 가져오기
-			AdMember user = (AdMember)request.getSession().getAttribute("user");
+			Member user = (Member)request.getSession().getAttribute("user");
 			String mNO = user.getmNO();
 			
 			//insert할 예약 정보들 받아오기

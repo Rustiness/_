@@ -11,7 +11,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import kr.hospi.beans.AdMember;
+import kr.hospi.beans.Member;
 import kr.hospi.beans.Reservation2;
 import kr.hospi.dao.ReservationDAO;
 
@@ -27,7 +27,7 @@ public class ReserSelectAction extends Action{
 		if(reser==null) reser="all";
 		if(reser.equals("mInfo")){//고객용: ID당 예약목록보기 요청이 들어왔을 때
 			//로그인되어있는 회원의 정보 가져오기
-			AdMember user = (AdMember)request.getSession().getAttribute("user");
+			Member user = (Member)request.getSession().getAttribute("user");
 			String mNO = user.getmNO();
 			
 			ReservationDAO dao = new ReservationDAO();

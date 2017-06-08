@@ -8,7 +8,7 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <sqlMap namespace="ad_member">
 	<!-- member.xml -->
-	<typeAlias alias="MemBeans" type="kr.hospi.beans.AdMember"/>
+	<typeAlias alias="MemBeans" type="kr.hospi.beans.Member"/>
 
 	<!-- 회원 정보 검색 -->
 	<select id="selectAll" resultClass="MemBeans">

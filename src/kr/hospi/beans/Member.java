@@ -24,7 +24,6 @@ public class Member {
 	private Date joinDate;//가입일
 	private String mMemo;//회원메모
 	private Date mMdate;//회원메모수정일
-	
 	private String pNO;//견적정보
 	private String state;//계정상태
 

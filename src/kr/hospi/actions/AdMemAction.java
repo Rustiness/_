@@ -1,6 +1,6 @@
 package kr.hospi.actions;
 
-import kr.hospi.beans.AdMember;
+import kr.hospi.beans.Member;
 import kr.hospi.dao.MemberDAO;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -32,9 +32,9 @@ public class AdMemAction extends Action {
 		}
 		MemberDAO dao = new MemberDAO();
 		ActionForward forward = null; // 이동할 페이지 저장
-		List<AdMember> list = null;
+		List<Member> list = null;
 		String mNO = null; // 회원 식별번호
-		AdMember member; // 회원 정보
+		Member member; // 회원 정보
 
 		switch (action) {
 			case "list":
@@ -45,7 +45,7 @@ public class AdMemAction extends Action {
 			case "info":
 			case "updForm":
 				mNO = request.getParameter("mNO");
-				list = dao.selMemInfo(mNO);
+				list = (List<Member>) dao.selMemInfo(mNO);
 				request.setAttribute("memlist", list);
 				if (action.equals("info")) {
 					forward = mapping.findForward("selInfo");
@@ -55,7 +55,7 @@ public class AdMemAction extends Action {
 				break;
 			case "update":
 				mNO = request.getParameter("mNO");
-				member = new AdMember();
+				member = new Member();
 				member.setmNO(mNO);
 				member.setName(request.getParameter("name"));//이름
 				member.setBirth(Date.valueOf(request.getParameter("birth")));//생일
@@ -66,7 +66,7 @@ public class AdMemAction extends Action {
 				member.setState(request.getParameter("state"));//계정상태
 
 				if(dao.updMemInfo(member)){
-					list = dao.selMemInfo(mNO);
+					list = (List<Member>) dao.selMemInfo(mNO);
 					request.setAttribute("memlist", list);
 					forward = mapping.findForward("selInfo");
 				} else {
