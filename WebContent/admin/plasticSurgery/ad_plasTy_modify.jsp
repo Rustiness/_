@@ -16,11 +16,11 @@
 			<%-- <c:forEach items="${plaslist}" var="plasTyInfo"> --%>
 				<tr>
 					<td>번호</td>
-					<td disabled>${pTypeInfolist.num}</td>
+					<td value="${pTypeInfolist.num}" disabled>${pTypeInfolist.num}</td>
 				</tr>
 				<tr>
 					<td>성형시술번호</td>
-					<td><input id="pTypeNO" type="text" value="${pTypeInfolist.pTypeNO}" disabled></td>
+					<td>${pTypeInfolist.pTypeNO}</td>
 				</tr>
 				<tr>
 					<td>성형시술명</td>
@@ -29,7 +29,7 @@
 				
 				<tr>
 					<td>Active/Inactive</td>
-					<td><select id="state">
+					<td><select name="state" id="state">
 						<option value="1" <c:if test="${pTypeInfolist.state eq '1'}">selected</c:if>>Active</option>
 						<option value="0" <c:if test="${pTypeInfolist.state eq '0'}">selected</c:if>>Inactive</option>
 		

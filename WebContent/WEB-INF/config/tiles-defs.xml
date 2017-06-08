@@ -239,22 +239,28 @@
 	<definition name=".ad_plasType_list" extends=".admin_idx"><!-- 항목 상세 -->
 		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasTy_list.jsp"></put>
 	</definition>
-	<definition name=".ad_plasType_info" extends=".admin_idx"><!-- 항목 상세 -->
+	<definition name=".ad_plasType_confirm" extends=".admin_idx"><!-- 항목 상세 -->
 		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasTy_confirm.jsp"></put>
 	</definition>
 	<definition name=".ad_plasType_modify" extends=".admin_idx"><!-- 항목 수정 -->
 		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasTy_modify.jsp"></put>
+	</definition>
+	<definition name=".ad_plasType_info" extends=".admin_idx"><!-- plasTy 상세정보 -->
+		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasTy_info.jsp"></put>
 	</definition>
 
 	<!-- 어드민~~성형시술:기준 -->
 	<definition name=".ad_plasItem_list" extends=".admin_idx"><!-- 목록 라스트-->
 		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasIt_list.jsp"></put>
 	</definition>
-	<definition name=".ad_plasItem_info" extends=".admin_idx"><!-- 목록 상세 -->
+	<definition name=".ad_plasItem_confirm" extends=".admin_idx"><!-- 목록 상세 -->
 		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasIt_confirm.jsp"></put>
 	</definition>
 	<definition name=".ad_plasItem_modify" extends=".admin_idx"><!-- 목록 수정-->
 		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasIt_modify.jsp"></put>
+	</definition>
+	<definition name=".ad_plasItem_info" extends=".admin_idx"><!-- info 상세정보-->
+		<put name="a_main_body" value="/admin/plasticSurgery/ad_plasIt_info.jsp"></put>
 	</definition>
 
 	<!-- 어드민~~관리자등급:기준 -->

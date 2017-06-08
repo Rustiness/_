@@ -50,19 +50,19 @@ public class PlasticTyAction extends Action {
 			break;
 		case "info": //수정폼
 			pTypeNO = (String) request.getParameter("pTypeNO");
-			System.out.println("요기서나라오는1 pTypeNO  : "+pTypeNO);
+			
 			ptype = dao.selectTyInfo(pTypeNO);
-			System.out.println("ptype2"+ ptype.getpTypeName());
+			
 			request.setAttribute("pTypeInfolist", ptype); //pTypeInfolist
-			System.out.println("ptype 3값은 "+ ptype.getNum()+"," +ptype.getpTypeName()+","+ptype.getState());
+			
 			if (action.equals("info")) {
 				forward = mapping.findForward("selectInfo");
 			} break;
 		case "modify": //else if (action.equals("modify")) {
 			pTypeNO = (String) request.getParameter("pTypeNO");
-			System.out.println("요기서나라오는1 pTypeNO  : "+pTypeNO);
+			
 			ptype = dao.selectTyInfo(pTypeNO);
-			System.out.println("ptype2"+ ptype.getpTypeName());
+			
 			request.setAttribute("pTypeInfolist", ptype); //pTypeInfolist
 				forward = mapping.findForward("selectModify");
 			
@@ -70,8 +70,21 @@ public class PlasticTyAction extends Action {
 		case "update": //수정요청
 			pTypeNO = (String) request.getParameter("pTypeNO");
 			//request.setAttribute("emplist", list);
+			
+			String pTypeName = request.getParameter("pTypeName");
+			String state = request.getParameter("state");
+			System.out.println("state:"+state);
+			ptype.setpTypeNO(pTypeNO);
+			ptype.setpTypeName(pTypeName); 
+			ptype.setState(state);
+			//update작업
+			if(dao.update(ptype)){//update에 성공한다면
+				ptype = dao.selectTyInfo(pTypeNO);
+				System.out.println("pTypeNO :"+pTypeNO);
+				request.setAttribute("pTypeInfolist", ptype); //pTypeInfolist
+				
 			forward = mapping.findForward("selectInfo");
-
+			}//if
 			break;
 	}//switch
 

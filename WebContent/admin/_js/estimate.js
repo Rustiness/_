@@ -43,6 +43,7 @@ $(document).ready(function () {
 		console.log('pNO : ' + pNO);
 		//location.assign('ad_emp.do?action=update&eNO=' + eNO);
 	});
+	
 	//수정 취소 버튼
 	$("#btnCancel").click(function () {
 		var pNO = $('#plasItModify td:eq(3):nth-child(2)').text(); // pItemNO 가져오기

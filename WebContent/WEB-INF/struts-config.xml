@@ -303,6 +303,7 @@
 		        validate="true"
 		        input=".ad_plasType_list">
 			<forward name="selectAll" path=".ad_plasType_list"></forward>
+			<forward name="selectConfirm" path=".ad_plasType_Confirm"></forward>
 			<forward name="selectInfo" path=".ad_plasType_info"></forward>
 			<forward name="selectModify" path=".ad_plasType_modify"></forward>
 		</action>
@@ -314,6 +315,7 @@
 		        validate="true"
 		        input=".ad_plasItem_list">
 			<forward name="selectAll" path=".ad_plasItem_list"></forward>
+			<forward name="selectConfirm" path=".ad_plasItem_Confirm"></forward>
 			<forward name="selectInfo" path=".ad_plasItem_info"></forward>
 			<forward name="selectModify" path=".ad_plasItem_modify"></forward>
 		</action>

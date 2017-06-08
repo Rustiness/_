@@ -10,6 +10,7 @@
 <h3>::환자성형시술정보 목록::</h3>
 <hr style="color: green">
 <center>
+	<font color="blue">환자번호::</font>
 	<table border="1" cellpadding="5" id="plasItTable">
 		<tr id="tableHead">
 			<!-- <th>환자번호</th> -->

@@ -14,22 +14,16 @@
 		<tr id="tableHead">
 			<th>환자번호</th>
 			<th>신청날짜</th>
-			<th>눈성형</th>
-			<th>코성형</th>
-			<th>안면윤곽성형</th>
-			<th>체형성형</th>
-			<th>가슴성형</th>
+			<th>환자이름</th>
+			
+			
 		</tr>
 		<c:forEach items="${listAll }" var="estimate">
 			<tr id="tableData">
 				<td>${estimate.pNO}</td>
 				<td>${estimate.pDate}</td>
-				<td>${estimate.pEyeItem}</td>
-				<td>${estimate.pNoseItem}</td>
-				<td>${estimate.pFaceItem}</td>
-				<td>${estimate.pBodyItem}</td>
-				<td>${estimate.pBreastItem}</td>
-
+				<td>names</td>
+			
 			</tr>
 		</c:forEach>
 	</table>

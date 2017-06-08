@@ -31,18 +31,36 @@ $(document).ready(function () {
 
 	//수정시작 버튼
 	$("#btnModify").click(function () {
-		var pTypeNO = $('#plasTyConfirm td:eq(3):nth-child(2)').text(); // pTypeNO 가져오기
+		alert("확인용");
+		var pTypeNO = $('#ptypeNO').text(); // pTypeNO 가져오기
+		alert("pTypeNO"+pTypeNO);		
 		console.log('pTypeNO : ' + pTypeNO);
 		location.assign('ad_plasTy.do?action=modify&pTypeNO=' + pTypeNO);
 	});
 
 	//수정진행 버튼
 	$("#btnModifyON").click(function () {
-		var pTypeNO = $('#plasTyModify td:eq(2):nth-child(2)').text(); // pTypeNO 가져오기
-
-		console.log('pTypeNO : ' + pTypeNO);
-		//location.assign('ad_emp.do?action=update&eNO=' + eNO);
+		var pTypeNO = $('#plasModify td:eq(3):nth-child(2)').text(); // pTypeNO 가져오기
+		alert("ptypeNOXXXX"+pTypeNO);
+		var dataString = $("#plasModForm").serialize(); //name 집합
+		alert(dataString);
+		$.ajax({
+			type: "POST",
+			url: "ad_plasTy.do?action=update&pTypeNO=" + pTypeNO,
+			data: dataString,
+			success: function () {
+				alert("성공");
+				location.assign('ad_plasTy.do?action=info&pTypeNO=' + pTypeNO);
+			},
+			error: function () {
+				console.log('실패');
+				alert('수정에 실패하였습니다.');
+			}
+		})
 	});
+	
+
+		
 
 	//수정 취소 버튼
 	$("#btnCancel").click(function () {
