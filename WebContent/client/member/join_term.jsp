@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="client/_css/member.css" rel="stylesheet" type="text/css"/>
 <title>회원가입약관</title>
+
 </head>
 <%-- 
 	join_term.jsp 
