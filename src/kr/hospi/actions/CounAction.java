@@ -102,7 +102,7 @@ public class CounAction extends Action {
 			
 		}else if(action.equals("writer")){
 			String search_name = request.getParameter("word");//검색
-			
+		//	System.out.println(search_name);
 			//글 검색 부분
 			String field = request.getParameter("field");
 			//System.out.println("field: "+field);
@@ -110,7 +110,7 @@ public class CounAction extends Action {
 			
 				List<Counsel> searchlist =  dao.selectName(search_name);
 				 
-				 System.out.println("list2: "+searchlist);
+				 System.out.println("검색리스트: "+searchlist);
 				session.setAttribute("list2",searchlist);
 				
 			

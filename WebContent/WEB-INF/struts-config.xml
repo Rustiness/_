@@ -153,6 +153,12 @@
 		        type="kr.hospi.actions.CounAction">
 			<forward name="success" path=".menu_counsel"></forward>
 		</action>
+		
+		<!--클라이언트~~온라인상담 검색창-->
+		<action path="/coun_search"
+		        type="kr.hospi.actions.CounAction">
+			<forward name="success" path=".menu_counsel_search"></forward>
+		</action>
 
 		<!-- 클라이언트~~온라인상담 등록창 -->
 		<action path="/coun_con"

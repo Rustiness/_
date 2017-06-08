@@ -6,6 +6,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>   
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<link href="client/_css/counsel.css" rel="stylesheet" type="text/css"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -21,7 +22,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<form action="/JavaChefWeb/counsearch.do" name="frm" method="POST">
+<form action="coun_search.do" name="frm" method="POST">
  <input type="hidden" name="action" value="writer"/>
 <select name="col">
  <option value="wirter">글쓴이</option>
@@ -32,19 +33,25 @@
 <button type="submit">검색</button>
    </form>
 
-    <table border="1" cellpadding="5" >
-       <tr bgcolor="hotpink"><th>번호</th><th>관심분야</th><th>작성자</th><th>제목</th>
-                             <th>공개여부</th><th>조회</th></tr>      
+    <table border="1" cellpadding="5" id="listtable">
+       <tr bgcolor="hotpink" id="tableHead">
+         <th>번호</th>
+         <th>관심분야</th>
+         <th>작성자</th>
+         <th>제목</th>
+         <th>공개여부</th>
+         <th>조회</th>
+       </tr>      
    
  		   <c:forEach items="${list2 }" var="search">
 		 <tr>
-	           <td>${search.cNO }</td>
-	           <td>${search.pTypeNO }</td>
-	           <td>${search.mNO }</td>
+	           <td align="center">${search.cNO }</td>
+	           <td align="center">${search.pTypeNO }</td>
+	           <td align="center">${search.mNO }</td>
 	            <td><a href="coun_info.do?action=select&cNO=${search.cNO }">${search.cTitle }</a></td>
-	         <c:if test="${search.state eq '1'}"><td>공개</td></c:if>
-	         <c:if test="${search.state eq '2'}"><td>비공개</td></c:if> 	
-	   			<td>${search.cCount }</td>
+	         <c:if test="${search.state eq '1'}"><td align="center">공개</td></c:if>
+	         <c:if test="${search.state eq '2'}"><td align="center">비공개</td></c:if> 	
+	   			<td align="center">${search.cCount }</td>
 	       </tr>    
 		</c:forEach> 
        

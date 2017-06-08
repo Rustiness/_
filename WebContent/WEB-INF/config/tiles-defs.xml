@@ -92,7 +92,7 @@
 	</definition>
 
 	<!-- 클라이언트~~온라인상담 검색정보창-->
-	<definition name=".menu_counselSearch" extends=".client_idx">
+	<definition name=".menu_counsel_search" extends=".client_idx">
 		<put name="main_body" value="/client/counsel/coun_list_search.jsp"></put>
 		<put name="menu_left" value="/client/menu/menu_left.jsp"></put><!-- 액션필요!! -->
 	</definition>

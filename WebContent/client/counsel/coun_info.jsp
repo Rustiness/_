@@ -39,7 +39,7 @@
 		<div>
 			<table border="1" cellpadding="5">
 				<tr>
-					<td width="80">상담분야</td>
+					<td id="pTypeNO">상담분야</td>
 				<!-- 	<td><input type="text" value="${choice.pTypeNO }" disabled>  -->
 			        <td>
 				<c:if test="${choice.pTypeNO eq 'EY'}"><td>눈성형</td></c:if>
