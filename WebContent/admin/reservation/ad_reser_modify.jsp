@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
 <!-- reser_confirm 스타일 -->
 <link href='admin/_css/reservation.css' rel='stylesheet' />
 <link href='admin/_css/common.css' rel='stylesheet' />
@@ -11,8 +10,8 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="//code.jquery.com/jquery-2.2.4.js"></script>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- Calendar불러오는 Script -->
-<script src="admin/_js/reserCalendar.js"></script>
+<!-- Datepicker불러오는 Script -->
+<script src="admin/_js/reservation_Datepicker.js" rel="script" type="text/javascript"></script>
 
 <script type="text/javascript"> 
 	//원래 예약정보를 선택 해 놓기위한 jQuery
@@ -26,7 +25,9 @@
 
 <%-- reser_modify.jsp(예약(rNO)당 수정 페이지) --%>
 <div class="reser_content">
-	<h3>예약수정</h3>
+	<h3 class="con_title">
+		<p><img alt="예약수정" src="admin/_images/ad_reser_modify.PNG"></p>
+	</h3>
 	<form action="reserUAction.do?st=1" method="POST">
 		<table border="1" cellpadding="10">
 	    	<tr bgcolor="#FFB4B4" align=center>
@@ -43,9 +44,9 @@
 	            <td>${reser.email}</td>
 	            <td>
 	            	<select name="rState" id="rState">
-	            		<option class="예약대기">예약대기</option>
-	            		<option class="예약완료">예약완료</option>
-	            		<option class="예약취소">예약취소</option>
+	            		<option class="1" value="1">예약대기</option>
+	            		<option class="2" value="2">예약완료</option>
+	            		<option class="3" value="3">예약취소</option>
 	            	</select>
 	            </td>
 	         </tr>

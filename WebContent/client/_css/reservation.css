@@ -39,3 +39,9 @@
 	padding: 4px; 
 	font-size: 15px;
 }
+
+#reserList{ /* 예약목록 테이블 스타일 */
+	border: 1px;
+	cellpadding: 10px;
+	margin: 25px 0px 25px 40px;
+}

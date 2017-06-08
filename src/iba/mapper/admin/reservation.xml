@@ -5,30 +5,48 @@
 	<typeAlias alias="reservation" type="kr.hospi.beans.Reservation"/>
 	<typeAlias alias="reservation2" type="kr.hospi.beans.Reservation2"/>
 	
+	<!-- 관리자용: 예약정보 입력 -->
+	<insert id="insert" parameterClass="reservation">
+		insert into reservation
+		values ('RA'||LPAD(reservation_rNOseq.nextval,5,0), #mNO#, #pTypeNO#, #rDate#, #rFTime#, #rLTime#, #rContent#, #rState#)
+	</insert>
+	
 	<!-- 관리자용: 모든 예약정보 출력 -->
 	<select id="selectAll" resultClass="reservation2" parameterClass="String">
 		select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState
-		from member natural join reservation natural join plasticType
+		from Member inner join reservation natural join PLASTICTYPE
+		using (mNO)
 	</select>
 	
 	<!-- 관리자용: 카테고리별 예약정보 출력 -->
 	<select id="selectCate" resultClass="reservation2" parameterClass="String">
 		select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState
-		from member natural join reservation natural join plasticType
+		from Member inner join reservation natural join PLASTICTYPE
+		using (mNO)
 		where pTypeName=#pTypeName#
+	</select>
+	
+	<!-- 관리자용: 예약상태별 예약정보 출력 -->
+	<select id="selectState" resultClass="reservation2" parameterClass="String">
+		select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState
+		from Member inner join reservation natural join PLASTICTYPE
+		using (mNO)
+		where rState=#rState#
 	</select>
 	
 	<!-- 관리자용: 시간별 예약정보 출력 -->
 	<select id="selectTime" resultClass="reservation2" parameterClass="String">
 		select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState
-		from member natural join reservation natural join plasticType
+		from Member inner join reservation natural join PLASTICTYPE
+		using (mNO)
 		where rFTime=#rFTime#
 	</select>
 	
 	<!-- 관리자용: 예약정보 출력 (rNO) -->
 	<select id="selectrNO" resultClass="reservation2" parameterClass="String">
 		select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState
-		from member natural join reservation natural join plasticType
+		from Member inner join reservation natural join PLASTICTYPE
+		using (mNO)
 		where rNO=#rNO#
 	</select>
 	

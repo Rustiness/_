@@ -4,45 +4,63 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <link href='admin/_css/common.css' rel='stylesheet' />
-<%-- ad_reser_info.jsp(¿¹¾à »ó¼¼ÆäÀÌÁö) --%>
+<link href='admin/_css/reservation.css' rel='stylesheet' />
+<script src="admin/_js/jquery-3.2.1.min.js" rel="script" type="text/javascript"></script>
+<script src="admin/_js/reservation.js" rel="script" type="text/javascript"></script>
+<style>
+	hr{
+		width: 90%;
+	}	
+</style>
+<%-- ad_reser_info.jsp(ì˜ˆì•½ ìƒì„¸í˜ì´ì§€) --%>
    <center>
    	<h3 class="con_title">
-		¿¹¾à»ó¼¼
-		<!-- <img alt="¿¹¾à½ÅÃ»" src="client/_images/title_reser.gif"> -->
-	</h3>
-         <table border="1" cellpadding="10" style="margin: 30px 20px 0 20px;">
-           
-            <tr bgcolor="#fcffb0">
-            <th>¿¹¾à¹øÈ£</th>
-            <th>¿¹¾àÀÚ<br>(ID)</th>
-            <th>ÀüÈ­¹øÈ£</th>
-            <th>Email</th>
-            <th>¿¹¾à³¯Â¥</th>
-            <th>¿¹¾à½Ã°£</th>
-            <th>Áø·á°ú¸ñ</th>
+		<p><img alt="ì˜ˆì•½ìƒì„¸" src="admin/_images/ad_reser_info.PNG"></p>
+	</h3><br>
+	<p><b>1. ì˜ˆì•½ì ì •ë³´</b></p>
+	<hr size="2" color="#747474">
+	<p style="padding-left: 40px;">
+		ì˜ˆì•½ì(ID)&nbsp;&nbsp;:&nbsp;&nbsp;${reser.name}(${reser.mID})<br><br>
+		ì „í™”ë²ˆí˜¸&nbsp;&nbsp;:&nbsp;&nbsp;${reser.tel}<br><br>
+		Email&nbsp;&nbsp;:&nbsp;&nbsp;${reser.email}
+	</p>
+	<hr size="0.5" color="#D5D5D5" style="margin-bottom: 50px;">
+	
+	<p><b>2. ì˜ˆì•½ì •ë³´</b></p>
+	<hr size="2" color="#747474">
+	<table id="reserList" border="1" cellpadding="10" style="margin: 25px 0px 25px 0px;">
+		<tr bgcolor="#fcffb0">
+            <th>ì˜ˆì•½ë²ˆí˜¸</th>
+            <th>ì˜ˆì•½ë‚ ì§œ</th>
+            <th>ì˜ˆì•½ì‹œê°„</th>
+            <th>ì§„ë£Œê³¼ëª©</th>
             <th>memo</th>
-            <th>¿¹¾à»óÅÂ</th>
-            </tr>
+            <th>ì˜ˆì•½ìƒíƒœ</th>
+        </tr>
             
-            <tr align=center >
-            <td><html:link action="ad_reser_modify.do?reser=arInfo&rNO=re${reser.rNO}">${reser.rNO}</html:link></td>
-            <td>${reser.name}(${reser.mID})</td>
-            <td>${reser.tel}</td>
-            <td>${reser.email}</td>
+        <tr id="tableData" align=center>
+            <td>${reser.rNO}</td>
             <td>${reser.rDate}</td>
             <c:if test="${fn:substring(reser.rFTime,0,2)<12}">
-	            <td>(¿ÀÀü¿¹¾à) ${reser.rFTime}-${reser.rLTime}</td>
+	            <td>(ì˜¤ì „ì˜ˆì•½) ${reser.rFTime}-${reser.rLTime}</td>
             </c:if>
             <c:if test="${fn:substring(reser.rFTime,0,2)>12}">
-	            <td>(¿ÀÈÄ¿¹¾à) ${reser.rFTime}-${reser.rLTime}</td>
+	            <td>(ì˜¤í›„ì˜ˆì•½) ${reser.rFTime}-${reser.rLTime}</td>
             </c:if>
             <td>${reser.pTypeName}</td>
             <td>${reser.rContent}</td>
-            <td>${reser.rState}</td>
-            </tr>
-         </table>
+           	<td>
+           		<c:choose>
+					<c:when test="${reser.rState eq '1'}">ì˜ˆì•½ëŒ€ê¸°</c:when>
+					<c:when test="${reser.rState eq '2'}"><font color="blue"><b>ì˜ˆì•½ì™„ë£Œ</b></font></c:when>
+					<c:when test="${reser.rState eq '3'}"><font color="red">ì˜ˆì•½ì·¨ì†Œ</font></c:when>
+					<c:otherwise>???</c:otherwise>
+				</c:choose>
+           	</td>
+        </tr>
+	 </table>
+	 <hr size="0.5" color="#D5D5D5" style="margin-bottom: 50px;">
          
-         <br><br>
-         <button onclick="location.href='ad_reser.do'">ÀüÃ¼¸ñ·Ïº¸±â</button>
+     <button onclick="location.href='ad_reser.do'" class="btSty" style="margin-bottom: 20px;">ì „ì²´ëª©ë¡ë³´ê¸°</button>
          
    </center>

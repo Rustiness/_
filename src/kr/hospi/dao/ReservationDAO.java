@@ -25,6 +25,16 @@ public class ReservationDAO {
 		}
 		return false;
 	}//insert
+	
+	public boolean insertAd(Reservation reser){//관리자용: 예약정보 입력
+		try {
+			sqlMap.insert("ad_reser.insert", reser);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}//insert
 
 	public List<Reservation2> selectAll(){//관리자용: 전체 예약목록 출력
 		List<Reservation2> list=null;
@@ -45,6 +55,16 @@ public class ReservationDAO {
 		}
 		return list;
 	}//selectCate
+	
+	public List<Reservation2> selectState(String State){//관리자용: 예약상태별 예약목록 출력
+		List<Reservation2> list=null;
+		try {
+			list = sqlMap.queryForList("ad_reser.selectState",State);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//selectState
 	
 	public List<Reservation2> selectTime(String rFTime){//관리자용: 시간별 예약목록 출력
 		List<Reservation2> list=null;
@@ -84,6 +104,16 @@ public class ReservationDAO {
 			e.printStackTrace();
 		}
 		return reser;
+	}//selectrNO
+	
+	public List<String> selectDate(String date){//고객용: 날짜별 예약불가 시간 출력
+		List<String> timeList=null;
+		try {
+			timeList = (List<String>)sqlMap.queryForList("reser.selectDate", date);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return timeList;
 	}//selectrNO
 	
 	public boolean update(Reservation reser){//고객용: 예약정보 수정

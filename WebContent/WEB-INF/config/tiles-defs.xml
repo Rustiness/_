@@ -198,6 +198,12 @@
 		<put name="a_main_body" value="/admin/counsel/ad_coun_coment.jsp"></put>
 	</definition>
 
+
+	<!-- 어드민~~예약등록 -->
+	<definition name=".ad_menu_reservation_confirm" extends=".admin_idx"><!-- 목록 -->
+		<put name="a_main_body" value="/admin/reservation/ad_reser_confirm.jsp"></put>
+	</definition>
+
 	<!-- 어드민~~예약목록 -->
 	<definition name=".ad_menu_reservation" extends=".admin_idx"><!-- 목록 -->
 		<put name="a_main_body" value="/admin/reservation/ad_reser_list.jsp"></put>

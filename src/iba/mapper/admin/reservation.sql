@@ -13,5 +13,5 @@ create table reservation(
 );
 
 update reservation set rState='예약대기';
-select * from RESERVATION;
-delete reservation;
+select rNO, rDate, rState from RESERVATION order by rDate;
+delete reservation where rNO='RA00009';

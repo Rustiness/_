@@ -24,6 +24,13 @@
 		WHERE mNO=#mNO#
 	</select>
 
+	<!--회원아이디로 mNO가져오기-->
+	<select id="selmNO" parameterClass="String" resultClass="String">
+		SELECT mNO
+		FROM Member
+		WHERE mID=#mID#
+	</select>
+
 	<!--회원 정보 수정-->
 	<update id="updMemInfo" parameterClass="MemBeans">
 		UPDATE Member SET name=#name#,birth=#birth#,sex=#sex#,tel=#tel#,email=#email#,mMemo=#mMemo#,state=#state#

@@ -41,7 +41,7 @@ public class ReserUpdateAction extends Action{
 			reser.setrContent(rContent);
 			reser.setrState(rState);
 			
-			request.setAttribute("rNO", rNO);
+			request.getSession().setAttribute("rNO", rNO);
 
 			//update실행
 			if(dao.updateAd(reser)){			

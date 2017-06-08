@@ -3,17 +3,14 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
 <!-- reser_confirm 스타일 -->
-<link href='client/_css/reservation.css' rel='stylesheet' />
 <link href='client/_css/common.css' rel='stylesheet' />
+<link href='client/_css/reservation.css' rel='stylesheet' />
 <!-- datepicker관련 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="//code.jquery.com/jquery-2.2.4.js"></script>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- Calendar불러오는 Script -->
-<script src="client/_js/reserCalendar.js"></script>
-
+<script src="client/_js/reservation_Datepicker.js" rel="script" type="text/javascript"></script>
 <script type="text/javascript"> 
 	//원래 예약정보를 선택 해 놓기위한 jQuery
 	$(function(){
@@ -25,7 +22,9 @@
 
 <%-- reser_modify.jsp(예약(rNO)당 수정 페이지) --%>
 <div class="reser_content">
-	<h3>예약수정</h3>
+	<h3 class="con_title">
+		<img alt="예약수정" src="client/_images/reser_modify.PNG">
+	</h3>
 	<form action="reserUAction.do?st=2" method="POST">
 		<table border="1" cellpadding="10">
 	    	<tr bgcolor="#FFB4B4" align=center>
@@ -33,17 +32,21 @@
 	        	<th>예약자<br>(ID)</th>
 	            <th>전화번호</th>
 	            <th>Email</th>
-	            <!-- <th>예약날짜</th>
-	            <th>예약시간</th>
-	            <th>진료과목</th>
-	            <th>memo</th>
-	            <th>예약상태</th> -->
+	            <th>예약상태</th>
 	        </tr>
 	        <tr align="center">
 	            <td>${reser.rNO}</td>
 	            <td>${reser.name}(${reser.mID})</td>
 	            <td>${reser.tel}</td>
 	            <td>${reser.email}</td>
+	            <td>
+	            	<c:choose>
+						<c:when test="${reser.rState eq '1'}">예약대기</c:when>
+						<c:when test="${reser.rState eq '2'}"><font color="blue"><b>예약완료</b></font></c:when>
+						<c:when test="${reser.rState eq '3'}"><font color="red">예약취소</font></c:when>
+						<c:otherwise>???</c:otherwise>
+					</c:choose>
+	            </td>
 	         </tr>
 	    </table><br>
 	    <input type="hidden" name="rNO" value="${reser.rNO}">

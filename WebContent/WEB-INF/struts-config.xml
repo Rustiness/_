@@ -10,8 +10,8 @@
 	<form-beans>
 		<!-- reservation form등록 시작!! -->
 		<!-- 고객용: 예약(insert) ActionForm 등록 -->
-		<form-bean name="reserInsertForm"
-		           type="kr.hospi.forms.ReserForm"></form-bean>
+    	<form-bean name="reserInsertForm" 
+    			   type="kr.hospi.forms.ReserActionForm"></form-bean> 
 		<!-- reservation form등록 종료!! -->
 
 		<!-- 로그인 액션폼(로그인 유효성 검사) -->
@@ -193,9 +193,9 @@
 		</action>
 
 		<!-- 클라이언트~~예약수정 -->
-		<action path="/reser_modify"
-		        type="kr.hospi.actions.ReserSelectAction">
-			<forward name="reser_modify" path=".menu_reservation_modify"></forward>
+		<action path="/reser_mod"
+				type="kr.hospi.actions.ReserSelectAction">
+			<forward name="reser_mod" path=".menu_reservation_modify"></forward>
 		</action>
 
 		<!-- 클라이언트~~견적 시작Complete-->
@@ -261,6 +261,11 @@
 			<forward name="selModify" path=".ad_coun_modify"></forward>
 		</action>
 
+
+		<!-- 어드민~~예약등록 -->
+		<action path="/ad_reser_con"
+				forward=".ad_menu_reservation_confirm"/>
+
 		<!-- 어드민~~예약목록&예약상세 -->
 		<action path="/ad_reser"
 		        type="kr.hospi.actions.ReserSelectAction">
@@ -269,9 +274,9 @@
 		</action>
 
 		<!-- 어드민~~예약수정 -->
-		<action path="/ad_reser_modify"
-		        type="kr.hospi.actions.ReserSelectAction">
-			<forward name="ad_reser_modify" path=".ad_menu_reservation_modify"></forward>
+		<action path="/ad_reser_mod"
+				type="kr.hospi.actions.ReserSelectAction">
+			<forward name="ad_reser_mod" path=".ad_menu_reservation_modify"></forward>
 		</action>
 
 		<!-- 어드민~~견적 완료  출력  -->
@@ -359,18 +364,20 @@
 		        scope="request"
 		        validate="true"
 		        input="/reser.do">
-			<forward name="success" path="/reser_info.do?reser=mInfo"></forward>
-			<forward name="fail" path="/reser.do"></forward>
-		</action>
+    	  	<forward name="successAd" path="/ad_reser.do" redirect="true"></forward>
+    	  	<forward name="failAd" path="/ad_reser_con.do" redirect="true"></forward>
+    	  	<forward name="success" path="/reser_info.do?reser=mInfo" redirect="true"></forward>
+    	  	<forward name="fail" path="/reser.do" redirect="true"></forward>
+      	</action>
 
 		<!-- 고객&관리자용: 예약 Action(update) 등록 -->
-		<action path="/reserUAction"
-		        type="kr.hospi.actions.ReserUpdateAction">
-			<forward name="success" path="/reser_info.do?reser=mInfo"></forward>
-			<forward name="fail" path="/reser_modify.do"></forward>
-			<forward name="successAd" path="/ad_reser.do?reser=arInfo"></forward>
-			<forward name="failAd" path="/ad_reser_modify.do?reser=arInfo"></forward>
-		</action>
+    	<action path="/reserUAction" 
+      			type="kr.hospi.actions.ReserUpdateAction">
+    	  	<forward name="success" path="/reser_info.do?reser=mInfo" redirect="true"></forward>
+    	  	<forward name="fail" path="/reser_mod.do" redirect="true"></forward>
+    	  	<forward name="successAd" path="/ad_reser.do?reser=arInfo" redirect="true"></forward>
+    	  	<forward name="failAd" path="/ad_reser_mod.do?reser=arInfo" redirect="true"></forward>
+      	</action>
 		<!-- reservation액션등록 종료!! -->
 
 	</action-mappings>

@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+#error { /* 에러메시지 스타일 */
+	background-color: #FFCCCC;
+	border: 1px solid #CC0000;
+	width: 220px;
+	padding: 4px;
+	margin-left: 10px;
+}

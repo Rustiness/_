@@ -14,16 +14,25 @@
 	<!-- 고객용: 예약정보 출력 (mNO) -->
 	<select id="selectmNO" resultClass="reservation2" parameterClass="String">
 		select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState
-		from member natural join reservation natural join plasticType
+		from Member inner join reservation natural join PLASTICTYPE
+		using (mNO)
 		where mNO=#mNO#
-		order by rNO desc
+		order by rDate desc
 	</select>
 	
 	<!-- 고객용: 예약정보 출력 (rNO) -->
 	<select id="selectrNO" resultClass="reservation2" parameterClass="String">
 		select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState
-		from member natural join reservation natural join plasticType
+		from Member inner join reservation natural join PLASTICTYPE
+		using (mNO)
 		where rNO=#rNO#
+	</select>
+	
+	<!-- 고객용: 날짜별 예약불가 시간 출력 -->
+	<select id="selectDate" resultClass="String" parameterClass="String">
+		select rFTime
+		from reservation
+		where rDate=#rDate#
 	</select>
 	
 	<!-- 고객용: 예약정보 수정 -->

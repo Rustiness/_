@@ -99,6 +99,17 @@ public class MemberDAO {
 		}
 		return member;
 	}//selMemInfo
+	
+		/* 회원아이디로 mNO가져오기 */
+	public String selmNO(String mID) {
+		String mNO = null;
+		try {
+			mNO = (String) sqlMap.queryForObject("ad_member.selmNO",mID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return mNO;
+	}//selmNO
 
 	/* 회원 정보 수정 */
 	public boolean updMemInfo(Member member) {
