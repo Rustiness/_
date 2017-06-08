@@ -28,7 +28,7 @@
 			</tr>
 			<tr>
 				<td>회원가입질문</td>
-				<td>${memInfo.qNO}</td>
+				<td>${memInfo.qContent}</td>
 			</tr>
 			<tr>
 				<td>회원가입답변</td>
@@ -80,10 +80,6 @@
 			<tr>
 				<td>회원메모수정일</td>
 				<td><c:if test="${memInfo.mMdate eq null}">미등록</c:if>${memInfo.mMdate}</td>
-			</tr>
-			<tr>
-				<td>예약정보</td>
-				<td>${memInfo.rNO}</td>
 			</tr>
 			<tr>
 				<td>견적정보</td>

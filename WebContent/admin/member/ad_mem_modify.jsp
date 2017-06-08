@@ -29,7 +29,7 @@
 				</tr>
 				<tr>
 					<td>가입시 선택 질문</td>
-					<td>${memInfo.qNO}</td>
+					<td>${memInfo.qContent}</td>
 				</tr>
 				<tr>
 					<td>가입시 작성 답변</td>
@@ -70,10 +70,6 @@
 				<tr>
 					<td>마지막 메모작성일</td>
 					<td><c:if test="${memInfo.mMdate eq null}">미등록</c:if>${memInfo.mMdate}</td>
-				</tr>
-				<tr>
-					<td>예약정보</td>
-					<td>${memInfo.rNO}</td>
 				</tr>
 				<tr>
 					<td>견적정보</td>

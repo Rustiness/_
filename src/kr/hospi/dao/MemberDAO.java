@@ -16,72 +16,57 @@ public class MemberDAO {
 	SqlMapClient sqlMap;
 
 	public MemberDAO() {
-		
 		sqlMap = ChefSqlMapClient.getSqlMapInstance();
 	}
 
 	public boolean insert(Member mem) {// 계정추가
 		try {
-			sqlMap.insert("member.insert",mem);// sql문실행.
+			sqlMap.insert("member.insert", mem);// sql문실행.
 			return true;
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
-
 		return false;// 수정실패
 	}
 
 	public boolean update(Member mem) {// 회원정보수정, 패러미터는 회원가입정보가 저장된 빈(joinInfo)
 		try {
-
 			int t = sqlMap.update("member.update", mem);//// sql문실행
 			if (t == 1)
 				return true;// 성공하면 true,
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
-
 		return false;// 실패하면 false리턴.
 	}
 
 	public boolean delete(String mID) {// 회원정보 삭제
 		try {
-
 			int t = sqlMap.delete("member.delete", mID);// sql명령문 실행.
 			if (t == 1)
 				return true;// 성공하면 true,
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
-
 		return false;// 실패하면 false리턴.
 	}
 
 	public Member select(Member mem) {// 한명의 회원가입정보(회원가입 페이지에 뿌릴 것) 조회
-
 		Member mem_result = null;
 		try {
-
 			mem_result = (Member) sqlMap.queryForObject("member.select", mem);
 			// sql명령문 실행.
-
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
-
 		return mem_result;// 회원가입정보(joinInfo) 리턴
 	}
 
-	//관리자
 	/* 전체 회원 목록 */
 	public List<Member> selectAll() {
 		List<Member> list = null;
 		try {
-			list = (List<Member>)sqlMap.queryForList("member.selectAll");
+			list = (List<Member>) sqlMap.queryForList("member.selectAll");
 			// sql문 실행 + 모든 회원 정보를 list 리스트에 저장.
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -91,20 +76,20 @@ public class MemberDAO {
 
 	/* 회원 정보 표시*/
 	public Member selMemInfo(String mNO) {
-		Member member=null;
+		Member member = null;
 		try {
-			member = (Member) sqlMap.queryForObject("member.selMemInfo",mNO);
+			member = (Member) sqlMap.queryForObject("member.selMemInfo", mNO);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return member;
 	}//selMemInfo
-	
-		/* 회원아이디로 mNO가져오기 */
+
+	/* 회원아이디로 mNO가져오기 */
 	public String selmNO(String mID) {
 		String mNO = null;
 		try {
-			mNO = (String) sqlMap.queryForObject("ad_member.selmNO",mID);
+			mNO = (String) sqlMap.queryForObject("member.selmNO", mID);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -114,21 +99,22 @@ public class MemberDAO {
 	/* 회원 정보 수정 */
 	public boolean updMemInfo(Member member) {
 		try {
-			int t = sqlMap.update("member.updMemInfo",member);
-			if(t==1) return true;
+			int t = sqlMap.update("member.updMemInfo", member);
+			if (t == 1) return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
 	}//updMemInfo
+
 	/* 아이디 중복 확인 */
 	public int dpCheck(String id) {
-		int t=0;
+		int t = 0;
 		try {
-			t = (int) sqlMap.queryForObject("member.dpcheck",id);
+			t = (int) sqlMap.queryForObject("member.dpcheck", id);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			t=-1;
+			t = -1;
 		}
 		return t;
 	}//selMemInfo

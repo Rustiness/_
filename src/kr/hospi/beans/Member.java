@@ -9,10 +9,10 @@ import java.sql.Date;
  * Time: 오전 12:29
  */
 public class Member {
-	private String mNO; //식별번호
+	private String mNO; //멤버 식별번호
 	private String mID;//아이디
 	private String pass;//비밀번호
-	private String qNO;//회원가입 질문
+	private String qNO;//질문 식별번호
 	private String answer;//회원가입 답변
 	private String name;//이름
 	private Date birth;//생일
@@ -26,11 +26,12 @@ public class Member {
 	private Date mMdate;//회원메모수정일
 	private String pNO;//견적정보
 	private String state;//계정상태
+	private String qContent;//질문 항목
 
 	public Member() {
 	}
 
-	public Member(String mNO, String mID, String pass, String qNO, String answer, String name, Date birth, String sex, String tel, String email, String pTypeNO, Date latestDate, Date joinDate, String mMemo, Date mMdate, String pNO, String state) {
+	public Member(String mNO, String mID, String pass, String qNO, String answer, String name, Date birth, String sex, String tel, String email, String pTypeNO, Date latestDate, Date joinDate, String mMemo, Date mMdate, String pNO, String state, String qContent) {
 		this.mNO = mNO;
 		this.mID = mID;
 		this.pass = pass;
@@ -48,6 +49,7 @@ public class Member {
 		this.mMdate = mMdate;
 		this.pNO = pNO;
 		this.state = state;
+		this.qContent = qContent;
 	}
 
 	public String getmNO() {
@@ -138,11 +140,11 @@ public class Member {
 		this.pTypeNO = pTypeNO;
 	}
 
-	public Date getlatestDate() {
+	public Date getLatestDate() {
 		return latestDate;
 	}
 
-	public void setlatestDate(Date latestDate) {
+	public void setLatestDate(Date latestDate) {
 		this.latestDate = latestDate;
 	}
 
@@ -184,5 +186,13 @@ public class Member {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public String getqContent() {
+		return qContent;
+	}
+
+	public void setqContent(String qContent) {
+		this.qContent = qContent;
 	}
 }

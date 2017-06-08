@@ -12,23 +12,18 @@
 
 	<!-- 회원 정보 검색 -->
 	<select id="selectAll" resultClass="MemBeans">
-		SELECT mNO,mID,pass,qNO,answer,name,birth,sex,tel,email,pTypeNO,latestDate,joinDate,mMemo,mMdate,rNO,pNO,state
-		FROM Member
+		SELECT mNO, mID, pass, qNO, answer, name, birth, sex, tel, email, pTypeNO, latestDate, joinDate, mMemo, mMdate, pNO, state, qContent
+		FROM Member INNER JOIN Question
+		USING (qNO)
 		ORDER BY mNO DESC
 	</select>
 
 	<!--회원 정보 표시-->
 	<select id="selMemInfo" parameterClass="String" resultClass="MemBeans">
-		SELECT mNO, mID, qNO, answer, name, birth, sex, tel, email, pTypeNO, latestDate, joinDate, mMemo, mMdate, rNO, pNO, state
-		FROM Member
+		SELECT mNO, mID, qNO, answer, name, birth, sex, tel, email, pTypeNO, latestDate, joinDate, mMemo, mMdate, pNO, state, qContent
+		FROM Member INNER JOIN Question
+		USING (qNO)
 		WHERE mNO=#mNO#
-	</select>
-
-	<!--회원아이디로 mNO가져오기-->
-	<select id="selmNO" parameterClass="String" resultClass="String">
-		SELECT mNO
-		FROM Member
-		WHERE mID=#mID#
 	</select>
 
 	<!--회원 정보 수정-->

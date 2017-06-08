@@ -23,7 +23,6 @@
 			<th>최근접속</th>
 			<th>가입일</th>
 			<th>회원메모</th>
-			<th>예약정보</th>
 			<th>견적정보</th>
 			<th>계정상태</th>
 		</tr>
@@ -45,7 +44,6 @@
 				<td>${memInfo.latestDate}</td>
 				<td>${memInfo.joinDate}</td>
 				<td id="mMemoText" title="${memInfo.mMemo}">${memInfo.mMemo}</td>
-				<td>${memInfo.rNO}</td>
 				<td>${memInfo.pNO}</td>
 				<td>
 						<%-- 상태 --%>
