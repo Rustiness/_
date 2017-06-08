@@ -3,6 +3,7 @@
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link href='client/_css/common.css' rel='stylesheet' />
 <link href='client/_css/reservation.css' rel='stylesheet' />
 <script src="client/_js/jquery-3.2.1.js" rel="script" type="text/javascript"></script>
@@ -24,7 +25,7 @@
 	
 	<p><b>2. 예약목록</b></p>
 	<hr size="2" color="#747474">
-	<table id="reserList" border="1" cellpadding="10" style="margin: 25px 0px 25px 40px;">
+	<table id="reserList" border="1" cellpadding="10" style="margin: 25px 0px 10px 40px;">
 		<tr bgcolor="#fcffb0">
 	       	<th>예약날짜</th>
 	        <th>예약시간</th>
@@ -56,5 +57,27 @@
 	    </tr>
 	   </c:forEach>
 	</table>
+	
+	<div align="center" style="margin-bottom: 25px;">
+	<c:if test="${rCurrentPage>=rPageRange+1 }">
+         <a href ="/JavaChefWeb/reser_info.do?reser=mInfo&rpage=${tPrev }">◀</a>
+      </c:if>
+      
+      <c:forEach begin="${rStartPageRange }" end="${rStartPageRange+rPageRange-1 }" var="i">
+         <c:if test="${i<=totalPage }">
+            <c:if test="${rCurrentPage==i }">
+               [${i }]
+            </c:if>
+            <c:if test="${rCurrentPage!=i }">
+               <a href ="/JavaChefWeb/reser_info.do?reser=mInfo&rpage=${i }">[${i }]</a>
+            </c:if>
+         </c:if>
+      </c:forEach>
+         
+      <fmt:parseNumber var="pages" integerOnly="true" value="${totalPage/rPageRange}" />
+      <c:if test="${rPageRangeGroup-1 < pages }">
+         <a href ="/JavaChefWeb/reser_info.do?reser=mInfo&rpage=${tNext }">▶</a>
+      </c:if>
+	  </div>
 	<hr size="0.5" color="#D5D5D5" style="margin-bottom: 50px;">
 </div>

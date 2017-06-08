@@ -12,7 +12,7 @@
 				<li><html:link action="/ad_mem">회원목록</html:link></li>
 				<li><html:link action="/ad_coun">상담목록</html:link></li>
 				<li><html:link action="/ad_reser">예약목록</html:link></li>
-				<li><html:link action="/ad_reser">예약등록</html:link></li>
+				<li><html:link action="/ad_reser_con">예약등록</html:link></li>
 				<li><html:link action="/ad_esti">견적목록</html:link></li>
 			</ul>
 			<hr>

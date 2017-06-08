@@ -1,6 +1,5 @@
 package kr.hospi.actions;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,10 +27,54 @@ public class ReserSelectAction extends Action{
 		if(reser.equals("mInfo")){//고객용: ID당 예약목록보기 요청이 들어왔을 때
 			//로그인되어있는 회원의 정보 가져오기
 			Member user = (Member)request.getSession().getAttribute("user");
+			if(user==null) return mapping.findForward("login");
+			String mNO = user.getmNO();
+			
+			//페이징에 필요한 것들
+			String cPage = request.getParameter("rpage");
+	        int rCurrentPage;
+	        int rPageSize=3;
+	        if(cPage==null) rCurrentPage=1;
+	        else rCurrentPage = Integer.parseInt(cPage);
+	         
+	        int rPageRange=5;
+	        int rPageRangeGroup=0;
+	        int rStartPageRange=1;
+	         
+	        if(rCurrentPage%rPageRange==0) rPageRangeGroup = rCurrentPage/rPageRange;
+	        else rPageRangeGroup = rCurrentPage/rPageRange+1;
+	         
+	        rStartPageRange = (rPageRangeGroup-1)*rPageRange+1;
+	        int tPrev = rStartPageRange -1;
+	        int tNext = rStartPageRange + rPageRange;
+	         
+	        ReservationDAO dao = new ReservationDAO();
+	        int totalRecord = dao.reserCount();
+	        int totalPage=totalRecord/rPageSize;
+	        if(totalRecord%rPageSize>0){
+	           totalPage++;
+	        }
+	        List<Reservation2> list = dao.selectmNO(mNO, rCurrentPage, rPageSize);
+	         
+	        request.setAttribute("reser",list);
+	        request.setAttribute("rCurrentPage", rCurrentPage);
+	        request.setAttribute("totalPage", totalPage);
+	        request.setAttribute("rStartPageRange", rStartPageRange);
+	        request.setAttribute("rPageRangeGroup", rPageRangeGroup);
+	        request.setAttribute("tPrev", tPrev);
+	        request.setAttribute("tNext", tNext);
+	        request.setAttribute("rPageRange", rPageRange);
+			
+			/*//로그인되어있는 회원의 정보 가져오기
+			Member user = (Member)request.getSession().getAttribute("user");
+			if(user==null) {
+				//response.getWriter().print("<html><head><script>alert('로그인 후 이용해주세요.')</script></head></html>");
+				return mapping.findForward("login");
+			}
 			String mNO = user.getmNO();
 			
 			ReservationDAO dao = new ReservationDAO();
-			request.setAttribute("reser", dao.selectmNO(mNO));
+			request.setAttribute("reser", dao.selectmNO(mNO));*/
 			
 			//예약목록 페이지로 이동
 			forward = mapping.findForward("reser_info");	

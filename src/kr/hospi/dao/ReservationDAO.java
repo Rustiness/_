@@ -1,7 +1,9 @@
 package kr.hospi.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -86,10 +88,26 @@ public class ReservationDAO {
 		return reser;
 	}//selectrNO
 	
-	public List<Reservation2> selectmNO(String mNO){//고객용: 예약정보 출력 (mNO)
+	public int reserCount(){//페이징을 위한 행의 갯수 출력
+        int rcount=0;
+        try {
+           rcount = (Integer)sqlMap.queryForObject("reser.rCount");
+        } catch (SQLException e) {
+           e.printStackTrace();
+        }
+        return rcount;
+     }//reserCount
+	
+	public List<Reservation2> selectmNO(String mNO, int rCurrentPage, int rPageSize){//고객용: 예약정보 출력 (mNO)
+		int end = rCurrentPage*rPageSize;
+        int start = end-(rPageSize-1);
 		List<Reservation2> list=null;
 		try {
-			list = sqlMap.queryForList("reser.selectmNO", mNO);
+			 Map<String, Object> map = new HashMap<>();
+			 map.put("mNO", mNO);
+             map.put("start", start);
+             map.put("end", end);
+			list = sqlMap.queryForList("reser.selectmNO", map);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -114,7 +132,7 @@ public class ReservationDAO {
 			e.printStackTrace();
 		}
 		return timeList;
-	}//selectrNO
+	}//selectDate
 	
 	public boolean update(Reservation reser){//고객용: 예약정보 수정
 	    try {
@@ -134,5 +152,5 @@ public class ReservationDAO {
 			e.printStackTrace();
 		}
 		return false;
-	}//update
+	}//updateAd
 }

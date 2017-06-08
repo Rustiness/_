@@ -11,13 +11,27 @@
 		values ('RA'||LPAD(reservation_rNOseq.nextval,5,0), #mNO#, #pTypeNO#, #rDate#, #rFTime#, #rLTime#, #rContent#, #rState#)
 	</insert>
 	
+	<!-- 페이징을 위한 행의 갯수 출력 -->
+	<select id="rCount" resultClass="int">
+   		select count(*) from reservation
+  	</select>
+	
 	<!-- 고객용: 예약정보 출력 (mNO) -->
-	<select id="selectmNO" resultClass="reservation2" parameterClass="String">
+	<select id="selectmNO" resultClass="reservation2" parameterClass="java.util.Map">
 		select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState
+     	from (select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState, rownum rn
+           	  from (select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState
+		            from Member inner join reservation natural join PLASTICTYPE
+		            using (mNO)
+				    where mNO=#mNO#
+					order by rDate desc)
+		      )
+        where rn between #start# and #end#
+		<!-- select rNO, mID, name, tel, email, rDate, rFTime, rLTime, pTypeName, rContent, rState
 		from Member inner join reservation natural join PLASTICTYPE
 		using (mNO)
 		where mNO=#mNO#
-		order by rDate desc
+		order by rDate desc -->
 	</select>
 	
 	<!-- 고객용: 예약정보 출력 (rNO) -->

@@ -14,9 +14,13 @@
     			   type="kr.hospi.forms.ReserActionForm"></form-bean> 
 		<!-- reservation form등록 종료!! -->
 
-		<!-- 로그인 액션폼(로그인 유효성 검사) -->
+		<!-- 고객용: 로그인 액션폼(로그인 유효성 검사) -->
 		<form-bean name="loginForm"
 		           type="kr.hospi.actionforms.LoginActionForm"/>
+
+		<!-- 관리자용: 로그인 액션폼(로그인 유효성 검사) -->
+		<form-bean name="adLoginForm"
+		           type="kr.hospi.forms.EmpActionForm"/>
 
 		<!-- pType form등록 시작!! -->
 		<!-- 관리자용: 예약(insert) ActionForm 등록 -->
@@ -189,6 +193,7 @@
 		<!-- 클라이언트~~예약목록 -->
 		<action path="/reser_info"
 		        type="kr.hospi.actions.ReserSelectAction">
+		    <forward name="login" path="/login.do" redirect="true"></forward>
 			<forward name="reser_info" path=".menu_reservation_info"></forward>
 		</action>
 
@@ -230,13 +235,20 @@
 		        forward=".menu_map"/>
 
 		<!-- TODO Tiles 액션등록 !! ADMIN -->
-		<!-- 어드민~~최초 인덱스 진입 -->
+		<!-- 어드민~~최초 인덱스 진입(로그인페이지로 진입) -->
 		<action path="/admin"
-		        forward=".admin_idx"/>
+		        forward="/admin/employee/ad_login_confirm.jsp"/>
 
 		<!-- 어드민~~로그인 -->
 		<action path="/ad_login"
-		        forward=".ad_menu_login"/>
+		        type="kr.hospi.actions.EmpLoginAction"
+		        name="adLoginForm"
+		        scope="request"
+		        validate="true"
+		        input="/admin.do">
+			<forward name="loginOK" path="/ad_coun.do"></forward>
+			<forward name="loginNO" path="/admin.do"></forward>
+		</action>
 
 		<!-- 어드민~~회원정보 -->
 		<action path="/ad_mem"
@@ -364,6 +376,7 @@
 		        scope="request"
 		        validate="true"
 		        input="/reser.do">
+		    <forward name="login" path="/login.do" redirect="true"></forward>
     	  	<forward name="successAd" path="/ad_reser.do" redirect="true"></forward>
     	  	<forward name="failAd" path="/ad_reser_con.do" redirect="true"></forward>
     	  	<forward name="success" path="/reser_info.do?reser=mInfo" redirect="true"></forward>

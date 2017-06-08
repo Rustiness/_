@@ -7,6 +7,8 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
+import kr.hospi.beans.Member;
+
 public class ReserActionForm extends ActionForm{//예약신청페이지에서의 유효성 검사 form
 	private String rCate;
 	private String rTime;
@@ -22,7 +24,6 @@ public class ReserActionForm extends ActionForm{//예약신청페이지에서의
 			errors.add("rDateTime", new ActionMessage("rDateTime", "예약일"));
 		else if(rTime.equals("=== 예약시간 선택 ===")) //예약시간을 선택안할 시
 			errors.add("rDateTime", new ActionMessage("rDateTime", "예약시간"));
-		
 		return errors;
 	}
 	

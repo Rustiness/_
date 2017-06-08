@@ -19,7 +19,7 @@ public class EstiClientAction extends Action{//Controller: EstiClientAction
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		Estimate estimate = new Estimate();//ë°›ì•„ì˜¨ ì •ë³´ë¥¼Estiamte(beans)ì— ì…ë ¥
+		Estimate estimate = new Estimate();//¹Ş¾Æ¿Â Á¤º¸¸¦Estiamte(beans)¿¡ ÀÔ·Â
 		String[] pEyeItem = request.getParameterValues("pEyeItem");
 		if(pEyeItem != null){
 		String pEyeItem_str="";
@@ -88,7 +88,7 @@ public class EstiClientAction extends Action{//Controller: EstiClientAction
 		estimate.setpBreastItem(pBreastItem_str);
 		}else//if EyeItem
 			estimate.setpBreastItem("0");
-		//ê²¬ì ê²°ê³¼_ê³ ê°ìš© esti_res.do sessionì„ í†µí•´ì„œ ê²°ê³¼ê°’ ì „ë‹¬
+		//°ßÀû°á°ú_°í°´¿ë esti_res.do sessionÀ» ÅëÇØ¼­ °á°ú°ª Àü´Ş
 		request.getSession().setAttribute("estimate", estimate);
 		EstimateDAO dao = new EstimateDAO();
 		//estimate.setPrice(totalPrice);
