@@ -5,10 +5,10 @@
 -- employee DB생성 SQL문
 
 -- 테이블 삭제
-DROP TABLE employee;
+DROP TABLE Employee;
 
--- 테이블 생성 (Foreign KEY 미포함)
-CREATE TABLE employee(
+-- 테이블 생성
+CREATE TABLE Employee(
   eNO VARCHAR2(7) PRIMARY KEY,
   eID VARCHAR2(30) UNIQUE,
   pass VARCHAR2(30) NOT NULL,
@@ -18,11 +18,12 @@ CREATE TABLE employee(
   tel VARCHAR2(15) NOT NULL,
   email VARCHAR2(50) NOT NULL,
   position VARCHAR2(20),
-  gNO VARCHAR2(7),
+  gNO VARCHAR2(7) DEFAULT 1,
   hireDate DATE DEFAULT SYSDATE,
   latestDate DATE,
   retireDate DATE,
-  state VARCHAR2(20) DEFAULT 4
+  state VARCHAR2(20) DEFAULT 4,
+  FOREIGN KEY (gNO) REFERENCES Grade(gNO) -- 등급 식별번호와 연결
 );
 
 -- 시퀸스 삭제
@@ -50,7 +51,7 @@ INSERT INTO Employee (eNO, eID, pass, name, birth, sex, tel, email, position, hi
 VALUES ('EA'||LPAD(emp_seq.nextval,5,0),'hosaap','qwer1234','길라임원','1987-11-17','3','010-3456-5567','hosp@naver.com','1','2015-11-23','3');
 
 -- 데이터 조회 (전체)
-SELECT * FROM employee;
+SELECT * FROM Employee;
 
 -- 데이터 조회 (컬럼명 기입)
 SELECT eNo, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state FROM employee;
@@ -59,3 +60,32 @@ SELECT eNo, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, la
 UPDATE employee SET eNO, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state
 WHERE eNo = #eNO
 
+
+
+-- 등급 테이블 삭제
+DROP TABLE Grade;
+
+-- 등급 테이블 생성
+CREATE TABLE Grade (
+  gNO VARCHAR2(7) PRIMARY KEY,
+  gName VARCHAR2(50),
+  gMemo VARCHAR2(200)
+);
+
+-- 등급 시퀸스 삭제
+DROP SEQUENCE grade_seq;
+
+-- 등급 시퀸스 생성
+CREATE SEQUENCE grade_seq
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE;
+
+SELECT * FROM Grade;
+
+-- 등급 기본 생성 데이터
+INSERT INTO Grade (gNO, gName, gMemo) VALUES (grade_seq.nextval, '미지정', '관리등급 미지정');
+INSERT INTO Grade (gNO, gName, gMemo) VALUES (grade_seq.nextval, '상담원', '상담만 가능한 관리등급입니다.');
+INSERT INTO Grade (gNO, gName, gMemo) VALUES (grade_seq.nextval, '서비스담당자', '인사수정을 제외한 모든 업무가 가능합니다.');
+INSERT INTO Grade (gNO, gName, gMemo) VALUES (grade_seq.nextval, '최고관리자', '모든 권한을 가진 관리등급 입니다.');

@@ -18,16 +18,17 @@ public class Employee {
 	private String tel;
 	private String email;
 	private String position;
-	private String  gNO;
+	private String gNO;
 	private Date hireDate;
 	private Date latestDate;
 	private Date retireDate;
 	private String state;
+	private String gName;
 
 	public Employee() {
 	}
 
-	public Employee(String eNO, String eID, String pass, String name, Date birth, String sex, String tel, String email, String position, String gNO, Date hireDate, Date latestDate, Date retireDate, String state) {
+	public Employee(String eNO, String eID, String pass, String name, Date birth, String sex, String tel, String email, String position, String gNO, Date hireDate, Date latestDate, Date retireDate, String state, String gName) {
 		this.eNO = eNO;
 		this.eID = eID;
 		this.pass = pass;
@@ -42,6 +43,7 @@ public class Employee {
 		this.latestDate = latestDate;
 		this.retireDate = retireDate;
 		this.state = state;
+		this.gName = gName;
 	}
 
 	public String geteNO() {
@@ -154,5 +156,13 @@ public class Employee {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public String getgName() {
+		return gName;
+	}
+
+	public void setgName(String gName) {
+		this.gName = gName;
 	}
 }

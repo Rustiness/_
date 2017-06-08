@@ -12,15 +12,17 @@
 
 	<!-- 사원 정보 검색 -->
 	<select id="selectAll" resultClass="EmpBeans">
-		SELECT eNO, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state
-		FROM employee
+		SELECT eNO, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state, gName
+		FROM employee INNER JOIN Grade
+		USING (gNO)
 		ORDER BY eNO DESC
 	</select>
 
 	<!--사원 정보 표시-->
 	<select id="selEmpInfo" parameterClass="String" resultClass="EmpBeans">
-		SELECT eNO, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state
-		FROM employee
+		SELECT eNO, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state, gName
+		FROM employee INNER JOIN Grade
+		USING (gNO)
 		WHERE eNO=#eNO#
 	</select>
 

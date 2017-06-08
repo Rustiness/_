@@ -69,7 +69,7 @@
 			</tr>
 			<tr>
 				<td>관리등급</td>
-				<td>${empInfo.gNO}</td>
+				<td>${empInfo.gName}</td>
 			</tr>
 			<tr>
 				<td>입사일</td>
