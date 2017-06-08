@@ -4,18 +4,18 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Counsel {
-	  private String cNO;//»ó´ã°Ç¿¡ ´ëÇÑ ½Äº°¹øÈ£
-	  private String mNO;//È¸¿ø¾ÆÀÌµğ
-	  private String pTypeNO;//È¸¿øÀÌ ¼±ÅÃÇÑ °ü½ÉºĞ¾ß
-	  private Date cDate;//±Û ÀÛ¼º ³¯Â¥
-	  private String cTitle;//È¸¿øÀÌ ÀÛ¼ºÇÑ ±Û Á¦¸ñ
-	  private String cContent;//È¸¿øÀÌ ÀÛ¼ºÇÑ ±Û ³»¿ë
-	  private int cCount;//±ÛÀ» ÀĞÀº Á¶È¸¼ö
-	  private String imageURL;//ÀÛ¼º±Û¿¡ Ã·ºÎµÈ ÀÌ¹ÌÁö ÁÖ¼Ò
-	  private Timestamp eDate;//´äº¯ ÀÛ¼º ³¯Â¥
-	  private String eNO;//´äº¯ ÀÛ¼ºÇÑ Á÷¿ø¾ÆÀÌµğ
-	  private String eComent;//´äº¯ ³»¿ë
-	  private String state;//±ÛÀÇ È°¼ºÈ­ À¯¹«
+	  private String cNO;//ìƒë‹´ê±´ì— ëŒ€í•œ ì‹ë³„ë²ˆí˜¸
+	  private String mNO;//íšŒì›ì•„ì´ë””
+	  private String pTypeNO;//íšŒì›ì´ ì„ íƒí•œ ê´€ì‹¬ë¶„ì•¼
+	  private Timestamp cDate;//ê¸€ ì‘ì„± ë‚ ì§œ
+	  private String cTitle;//íšŒì›ì´ ì‘ì„±í•œ ê¸€ ì œëª©
+	  private String cContent;//íšŒì›ì´ ì‘ì„±í•œ ê¸€ ë‚´ìš©
+	  private int cCount;//ê¸€ì„ ì½ì€ ì¡°íšŒìˆ˜
+	  private String imageURL;//ì‘ì„±ê¸€ì— ì²¨ë¶€ëœ ì´ë¯¸ì§€ ì£¼ì†Œ
+	  private Timestamp eDate;//ë‹µë³€ ì‘ì„± ë‚ ì§œ
+	  private String eNO;//ë‹µë³€ ì‘ì„±í•œ ì§ì›ì•„ì´ë””
+	  private String eComent;//ë‹µë³€ ë‚´ìš©
+	  private String state;//ê¸€ì˜ í™œì„±í™” ìœ ë¬´
 	  
 
 	public String getcNO() {
@@ -42,11 +42,11 @@ public class Counsel {
 		this.pTypeNO = pTypeNO;
 	}
 
-	public Date getcDate() {
+	public Timestamp getcDate() {
 		return cDate;
 	}
 
-	public void setcDate(Date cDate) {
+	public void setcDate(Timestamp cDate) {
 		this.cDate = cDate;
 	}
 

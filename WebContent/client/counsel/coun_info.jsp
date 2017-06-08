@@ -5,6 +5,7 @@
 <html>
 <head>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="/JavaChefWeb/client/_js/jquery-3.2.1.js"></script>
 
@@ -53,7 +54,8 @@
 					<td>작성자</td>
 					<td colspan="3">${choice.mNO }</td>
 					<td>날짜</td>
-					<td colspan="3">${choice.cDate }</td>
+					<td colspan="3">${fn:substring(choice.cDate,0,19)}</td> 
+					<!-- ${fn:substring(choice.cDate,0,19)} 19는 2017-06-05 15:20:35 의 전체 자릿수를 의미함.  -->
 					<td>조회</td>
 					<td colspan="3">${choice.cCount }</td>
 				
