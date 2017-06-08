@@ -93,71 +93,60 @@ public class CounAction extends Action {
 		}else if(action.equals("select")){
 			//조회수 증가전 bean
 			Counsel bean = dao.select(request.getParameter("cNO"));	
-			
-			//System.out.println(request.getParameter("cNO"));
-			dao.hitUpdate(bean);//조회수 증가
+			 dao.hitUpdate(bean);//조회수 증가
 
 			//조회수 증가후 bean
 			Counsel bean2 = dao.select(request.getParameter("cNO"));	
-			//bean.setcCount(cCount);
-			
-		//	System.out.println("getcCount: "+bean.getcCount());
+		    
 			session.setAttribute("choice",bean2);
 			
-	         // String search = request.getParameter("search");
-	         //System.out.println("search: "+search);
-			
-			//검색하는 부분
 		}else if(action.equals("writer")){
-	         String search_name = request.getParameter("search");
-	         System.out.println("search: "+search_name);
-	         //여기까지 넘어옴
-	         List<Counsel> list2 = dao.selectName(search_name);
-	         session.setAttribute("search", list2);
-	         System.out.println("list2: "+list2);
+			String search_name = request.getParameter("word");//검색
+			
+			//글 검색 부분
+			String field = request.getParameter("field");
+			//System.out.println("field: "+field);
+		
+			
+				List<Counsel> searchlist =  dao.selectName(search_name);
+				 
+				 System.out.println("list2: "+searchlist);
+				session.setAttribute("list2",searchlist);
+				
 			
 		}else if(action.equals("insert")){
 			Counsel bean = new Counsel();
 			
 			bean.setpTypeNO(request.getParameter("pTypeNO"));
-			bean.setmID(request.getParameter("mNO"));
+			bean.setmNO(request.getParameter("mNO"));
 			bean.setcTitle(request.getParameter("cTitle"));
 			bean.setcContent(request.getParameter("cContent"));
 			bean.setState(request.getParameter("state"));
 			bean.setcCount(0);
 			
 			System.out.println("state: "+request.getParameter("state"));
-			
-			/* String state = request.getParameter("state");
-				if(state.equals("공개")){//공개여부가 공개라면
-					bean.setState("1");//bean에 데이터 값을 공개 대신 '1'로 치환해서 보내라.
-				}else if(state.equals("비공개")){ //공개여부가 비공개라면
-					bean.setState("2"); //bean에 데이터 값을 공개 대신 '2'로 치환해서 보내라.
-				}else{
-					bean.setState("3");
-				}*/
+				
 			 
 			if (dao.insert(bean)){//dao에 bean값이 insert 됐다면
 				List<Counsel> list2 = dao.counPage(rCurrentPage, rPageSize);
-		    
 			
 			//list.add(bean);
 				
-				System.out.println("list"+list2);
+				//System.out.println("list"+list2);
 				session.setAttribute("list",list2);
 			
 				status = true;
 			}else{
 				status = false;
 			}
-		}//(action.equals("insert")){
-		
+			}//(action.equals("insert")){
+	
 		if(status){
 			forward = mapping.findForward("success");//액션포워드 객체에 success문자열을 넣는다.
 		}else{
 			forward = mapping.findForward("fail");
 		}
 	    return forward;
-
-	}
+}
+		
 }

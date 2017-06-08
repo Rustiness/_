@@ -39,32 +39,46 @@ public class CounModifyAction extends Action {
 		String action = request.getParameter("action");
 		ActionForward forward = null;
 		boolean status = true;
-		
+		System.out.println("modify action:: "+ action);
 		System.out.println("1 :"+request.getParameter("pTypeNO"));
-		//여기까지 들어옴.
 		
 	    if(action.equals("update")){//수정요청
 	      Counsel bean = new Counsel();
 	    	System.out.println("2 :"+request.getParameter("pTypeNO"));
 	    	
+	    	String pTypeNO = request.getParameter("pTypeNO");
+	    	System.out.println("wowWow");
+	    	
+	    	if(pTypeNO.equals("눈성형")){//브라우저에 보여지는 관심분야를 DB에 넣을때는 알파벳으로 바꾸기.
+	    		bean.setpTypeNO("EY");
+	    	}else if(pTypeNO.equals("코성형")){
+	    		bean.setpTypeNO("NO");
+	    	}else if(pTypeNO.equals("얼굴성형")){
+	    		bean.setpTypeNO("FA");
+	    	}else if(pTypeNO.equals("체형성형")){
+	    		bean.setpTypeNO("BO");
+	    	}else if(pTypeNO.equals("가슴성형")){
+	    		bean.setpTypeNO("BR");
+	    	}
+	    	System.out.println(bean);
+	    		System.out.println(">>>>>>>>>>>>>>"+request.getParameter("mNO"));
+	    	
+	    	System.out.println("=====================");	
 	    	bean.setcNO(request.getParameter("cNO"));
-		  	bean.setpTypeNO(request.getParameter("pTypeNO"));
-			bean.setmID(request.getParameter("mID"));
+			bean.setmNO(request.getParameter("mNO"));
 			bean.setcTitle(request.getParameter("cTitle"));
 			bean.setcContent(request.getParameter("cContent"));
 			
-		//	System.out.println(request.getParameter("cNO"));
-		//여기까지 들어옴.
+			System.out.println("cNO: "+request.getParameter("cNO"));
+			System.out.println("pTypeNO: "+request.getParameter("pTypeNO"));
+			System.out.println("mNO: "+request.getParameter("mNO"));
+			System.out.println("cTitle: "+request.getParameter("cTitle"));
+			System.out.println("cContent: "+request.getParameter("cContent"));
 			
-			 String state = request.getParameter("state");
-			 
-			if(state.equals("공개")){//공개여부가 공개라면
-				bean.setState("1");//bean에 데이터 값을 공개 대신 '1'로 치환해서 보내라.
-			}else{ //공개여부가 비공개라면
-				bean.setState("2"); //bean에 데이터 값을 공개 대신 '2'로 치환해서 보내라.
-			}
-			
+			String state = request.getParameter("state");
+			System.out.println("state: "+state);
 		    
+			
 			System.out.println("확인:"+dao.update(bean));
 		   if(dao.update(bean)){//수정 성공
 			   List<Counsel> list = dao.selectAll();
@@ -76,6 +90,16 @@ public class CounModifyAction extends Action {
 			}else{
 				status = false;
 			}
+		}else if(action.equals("remove")){//삭제요청 (DB state ---> 3)변경해서 삭제된것처럼 보이게
+			String cNO = request.getParameter("cNO");
+			System.out.println("삭제할 cNO="+ cNO);
+			if(dao.removecNO(cNO)){
+				status = true;
+				System.out.println("#온라인 상담목록 삭제성공");
+			}else{
+				status = false;
+				System.out.println("#온라인 상담목록 삭제실패");
+			}
 		}
 		
 		if(status){
@@ -83,6 +107,8 @@ public class CounModifyAction extends Action {
 		}else{
 			forward = mapping.findForward("fail");
 		}
+
+
 	    return forward;
-}
+	}
 }

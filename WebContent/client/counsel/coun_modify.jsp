@@ -6,29 +6,64 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <title>counsel_info.jsp</title>
+<script type="text/javascript">
+
+function validcheck(){
+	var f = document.form;
+	if(f.pTypeNO.value=='======'){
+		alert('상담분야를 선택하세요~!');
+	}else if(f.cTitle.value==''){
+		alert('글 제목을 입력하세요~!');
+		f.cTitle.focus();
+	}else if(f.cContent.value==''){
+		alert('내용을 입력하세요~!');
+		f.cContent.focus();
+	}else if(f.state.value=='======'){
+		alert('공개여부를 선택하세요~!');
+	}
+	f.submit();
+} 
+</script>
+
 </head>
 
 <body>
 	<h3>온라인 상담정보</h3>
 	<hr>
-	<form action="/JavaChefWeb/coun.do" method="POST">
-		<input type="hidden" name="cNO" value="${choice.cNO }" />
+	<form action="coun_modcheck.do" method="POST" name="form">
+		<input type="hidden" name="action" value="update" />
 		<!-- <input type="hidden" name="id" value="${guest.id }"> -->
+		<input type="hidden" name="cNO" value="${choice.cNO }" />
 		<div>
 			<table border="1" cellpadding="5">
 				<tr>
 					<td width="80">상담분야</td>
-					<td><input type="text" name="pTypeNO"
-						value="${choice.pTypeNO }"></td>
-
+					<td>
+					    <select name="pTypeNO" onchange="validcheck()">
+    						 <option>
+    						 <c:if test="${choice.pTypeNO eq 'EY'}">눈성형</c:if>
+	                         <c:if test="${choice.pTypeNO eq 'NO'}">코성형</c:if>
+	           			     <c:if test="${choice.pTypeNO eq 'FA'}">얼굴성형</c:if>
+	           	   			 <c:if test="${choice.pTypeNO eq 'BO'}">체형성형</c:if>
+	           				 <c:if test="${choice.pTypeNO eq 'BR'}">가슴성형</c:if>
+	           				 </option>
+	           				 <option>======</option>
+	           				 <option value="EY">눈성형</option> 
+    						 <option value="NO">코성형</option>
+     						 <option value="FA">얼굴성형</option>
+    						 <option value="BO">체형성형</option>
+    						 <option value="BR">가슴성형</option>
+    						
+  					   </select>
+ 					</td>
 				</tr>
 
 				<tr>
 					<td>작성자</td>
 					<td colspan="3"><input type="text" name="mNO"
-						value="${choice.mNO }" disabled> 날짜 <input type="text"
-						value="${choice.cDate }" disabled>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 조회 <input type="text" size="5" value="${choice.cContent }">
+						value="${choice.mNO }" readonly> 날짜 <input type="text"
+						value="${choice.cDate }" readonly>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 조회 <input type="text" size="5" value="${choice.cCount }" readonly>
 					</td>
 				</tr>
 
@@ -46,9 +81,17 @@
 				
 				<tr>
 					<td>공개여부</td>
-				 <c:if test="${choice.state eq '1'}"><td colspan="9">공개</td></c:if>
-				  <c:if test="${choice.state eq '2'}"><td colspan="9">비공개</td></c:if>
-				  <c:if test="${choice.state eq '3'}"><td colspan="9">유저 비공개</td></c:if>
+					 <td>
+					  <select name="state"> 
+						 <option>
+    						 <c:if test="${choice.state eq '1'}">공개</c:if>
+	                         <c:if test="${choice.state eq '2'}">비공개</c:if>
+	           				 </option>
+	           				 <option>======</option>
+	           				<option>공개</option>
+	           				<option>비공개</option>
+  					   </select>
+					 </td>
 				</tr>
 
 				<tr>
@@ -58,12 +101,13 @@
 				</tr>
 			</table>
 
-			<br> &nbsp;&nbsp; <input type="submit" value="수정 확인"> 
+			<br> &nbsp;&nbsp; 
+			<button value="수정 확인" onclick="validcheck()">수정 확인</button> 
 			<input type="button" value="삭제" onclick="">
 
 
 			<a href=coun.do><input type="button" value="목록"
-				style="float: right; margin-right: 100px;"> </a>
+				style="float: right; margin-right: 150px;"> </a>
 		</div>
 	</form>
 </body>

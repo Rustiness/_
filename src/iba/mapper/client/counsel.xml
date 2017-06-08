@@ -9,10 +9,14 @@
   
      <!-- 수정폼에서 저장된 값을 수정하는 sql -->
    <update id="update" parameterClass="kr.hospi.beans.Counsel">
-    update counsel set  pTypeNO=#pTypeNO#, mNO=#mNO#, cTitle=#cTitle#,
-                        state=#state#
+    update counsel set  pTypeNO=#pTypeNO#, mNO=#mNO#, cTitle=#cTitle#,cContent=#cContent#,state=#state#
       where cNO=#cNO#
-  </update>
+   </update>
+   
+   <update id="removecNO" parameterClass="String">
+   update counsel set state='3'
+                  where  cNO=#cNO#   
+   </update>
 
      <!-- 게시글 클릭 시 조회수 증가시키는 sql -->
   <!-- 조회수 증가 -->
@@ -28,11 +32,12 @@
     <!-- 검색하기 설정 -->
     <select id="selectName" resultClass="kr.hospi.beans.Counsel" parameterClass="String">
       select cNO,pTypeNO,mNO,cTitle,state,cCount
-      from counsel where mNO like'%#search_name#%'  
+      from counsel where mNO LIKE '%'|| #search_name# ||'%' or cTitle LIKE '%'|| #search_name# ||'%'
    </select>
   
     <select id="selectAll" resultClass="kr.hospi.beans.Counsel">
       select cNO,pTypeNO,mNO,cTitle,state,cContent,cCount from counsel
+      where state != '3'
       order by cNO desc 
 	</select>
 
@@ -46,6 +51,7 @@
      from (select cNO,pTypeNO,mNO,cTitle,state,cCount, rownum rn
            from (select cNO,pTypeNO,mNO,cTitle,state,cCount
 		         from counsel
+		         where state != '3'
 		         order by cNO desc)
 		  )
      where rn between #start# and #end#

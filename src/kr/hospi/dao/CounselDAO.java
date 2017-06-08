@@ -47,6 +47,16 @@ public class CounselDAO {
 		}
 		 return false;  
 	   }//delete
+	   
+	   public boolean removecNO(String cNO){
+		   try {
+			   int t = sqlMap.update("counsel.removecNO",cNO);
+			   if(t==1) return true;
+		   } catch (SQLException e) {
+			   e.printStackTrace();
+		   }
+		   return false;  
+	   }//delete
 	  
 	   
 	   public Counsel select(String cNO){
@@ -60,6 +70,7 @@ public class CounselDAO {
 	   }//select
 	   
 	   public List<Counsel> selectAll(){//list에 출력할 데이터
+		   System.out.println("DAO::selectAll");
 		  List<Counsel> list=null;
 		try {
 			list = sqlMap.queryForList("counsel.selectAll");
@@ -80,14 +91,14 @@ public class CounselDAO {
 	   }//update
 	   
 	   public List<Counsel> selectName(String search_name){//특정 행 이름 검색 행 출력
-	         List<Counsel> list2 = null;
+	         List<Counsel> searchlist = null;
 	            
 	            try {
-	               list2 = (List<Counsel>)sqlMap.queryForList("counsel.selectName",search_name);
+	               searchlist = (List<Counsel>)sqlMap.queryForList("counsel.selectName",search_name);
 	            } catch (SQLException e) {
 	               e.printStackTrace();
 	            }
-	            return list2;
+	            return searchlist;
 	      }
 
 	   //=====================페이징작업 시작
@@ -116,5 +127,53 @@ public class CounselDAO {
 	         return rcount;
 	      }//reserCount
 	   
-		   //=====================페이징작업 끝    
+		   //=====================페이징작업 끝
+
+
+	//========== 상담 관리자 시작 : KJK ==========
+	/* 전체 상담 목록 */
+	public List<Counsel> selCounAll() {
+		List<Counsel> list = null;
+		try {
+			list = sqlMap.queryForList("ad_coun.selCounAll");
+			//list.get("eDate").toString().replaceAll("\\.\\d+", "")); Time
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//selCounAll
+
+	/* 상담 정보 표시 */
+	public List<Counsel> selCounInfo(String cNO) {
+		List<Counsel> list = null;
+		try {
+			list = (List<Counsel>) sqlMap.queryForList("ad_coun.selCounInfo",cNO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//selCounInfo
+
+	/* 상담 정보 수정 */
+	public boolean updCounInfo(Counsel counsel) {
+		try {
+			int t = sqlMap.update("ad_coun.updCounInfo",counsel);
+			if(t==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}//updCounInfo
+
+	/* 상담 답변 등록 */
+	public boolean updCounComent(Counsel counsel) {
+		try {
+			int t = sqlMap.update("ad_coun.updCounComent",counsel);
+			if(t==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}//updCounComent
+	//========== 상담 관리자 종료 : KJK ==========
 }

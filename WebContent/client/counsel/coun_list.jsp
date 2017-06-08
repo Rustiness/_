@@ -21,34 +21,38 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<form action="/struts/coun_list.do?action=writer" method="POST">
-<select>
- <option value="wirter">글쓴이</option>
- <option>내용</option>
- <option>제목</option>
+<form action="/JavaChefWeb/counsearch.do" name="frm" method="POST">
+ <input type="hidden" name="action" value="writer"/>
+<select name="field">
+ <option value="writer">글쓴이</option>
+ <option value="title">제목</option>
 </select>
-<input type="text" name="search" size="10">
-<input type="submit" name="research" value="검색"><br>
-
+<input type="text" name="word" size="10">
+<button type="submit">검색</button>
    </form>
 
     <table border="1" cellpadding="5" >
        <tr bgcolor="hotpink"><th>번호</th><th>관심분야</th><th>작성자</th><th>제목</th>
                              <th>공개여부</th><th>조회</th></tr>      
-
-        <c:forEach items="${list }" var="bean">
+	
+         <c:forEach items="${list }" var="bean">
 	       <tr>
 	           <td>${bean.cNO }</td>
-	           <td>${bean.pTypeNO }</td>
+	            <c:if test="${bean.pTypeNO eq 'EY'}"><td>눈성형</td></c:if>
+	            <c:if test="${bean.pTypeNO eq 'NO'}"><td>코성형</td></c:if>
+	            <c:if test="${bean.pTypeNO eq 'FA'}"><td>얼굴성형</td></c:if>
+	            <c:if test="${bean.pTypeNO eq 'BO'}"><td>체형성형</td></c:if>
+	            <c:if test="${bean.pTypeNO eq 'BR'}"><td>가슴성형</td></c:if>
+
 	           <td>${bean.mNO }</td>
 	            <td><a href="coun_info.do?action=select&cNO=${bean.cNO }">${bean.cTitle }</a></td>
 	         <c:if test="${bean.state eq '1'}"><td>공개</td></c:if>
 	         <c:if test="${bean.state eq '2'}"><td>비공개</td></c:if> 	
-	         <c:if test="${bean.state eq '3'}"><td>유저 비공개</td></c:if>
 	   			<td>${bean.cCount }</td>
 	       </tr>    
 	            
-       </c:forEach> 
+       </c:forEach>    
+  
    </table>
    
    <!-- 페이징 코드 작업 부분 -->

@@ -8,12 +8,36 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+ function validcheck(){
+	var f = document.form;
+	
+	 if(f.pTypeNO.value=='==선택=='){
+		alert('상담분야를 선택하세요~!');
+		f.pTypeNO.focus();
+		return false;
+	}else if(f.mNO.value==''){
+		alert('작성자를 입력하세요~!');
+		f.mNO.focus();
+		return false;
+	}else if(f.cTitle.value==''){
+		alert('글 제목을 입력하세요~!');
+	}else if(f.state.value=='==선택=='){
+		alert('공개여부를 선택하세요~!');
+	}else if(f.cContent.value==''){
+		alert('내용을 입력하세요~!');
+		f.cContent.focus(); 
+	}
+	f.submit();
+	
+} 
 
+</script>
 </head>
 <body>
 <h3>온라인 상담등록</h3>
 <hr>
-<form action="/JavaChefWeb/coun.do" method="POST" name="form">
+<form  method="POST" name="form"> <!-- action="coun.do" -->
 	<input type="hidden" name="action" value="insert"/>
 <table border="1" cellpadding="5">
   <tr>
@@ -44,16 +68,13 @@
   <tr>
  <td>공개여부</td>
   <td><select name="state">
-       <option value="1" <c:if test="${bean.state eq '1'}">selected</c:if>>공개</option>
-       <option value="2" <c:if test="${bean.state eq '2'}">selected</c:if>>비공개</option>
-       <option value="3" <c:if test="${bean.state eq '3'}">selected</c:if>>유저 비공개</option>
+  	   <option>==선택==</option>
+       <option value="1" >공개</option>
+       <option value="2" >비공개</option>
      </select>
    </td>
   </tr>
 
-  
-  
-  
   <tr>
   <td>내용</td>
      <td colspan="2"><textarea rows="5" cols="50" name="cContent" maxlength="160"></textarea><br>
@@ -66,7 +87,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="submit" value="등록" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" value="등록" onclick="validcheck()">
 <input type="reset" value="초기화">
 <a href="coun.do"><input type="button" value="나가기"/></a>
 </form>

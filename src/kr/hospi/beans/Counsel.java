@@ -1,6 +1,7 @@
 package kr.hospi.beans;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Counsel {
 	  private String cNO;//상담건에 대한 식별번호
@@ -11,10 +12,10 @@ public class Counsel {
 	  private String cContent;//회원이 작성한 글 내용
 	  private int cCount;//글을 읽은 조회수
 	  private String imageURL;//작성글에 첨부된 이미지 주소
-	  private Date eDate;//답변 작성 날짜
+	  private Timestamp eDate;//답변 작성 날짜
 	  private String eNO;//답변 작성한 직원아이디
 	  private String eComent;//답변 내용
-	  private String state;//글의 활성화 유무??
+	  private String state;//글의 활성화 유무
 	  
 
 	public String getcNO() {
@@ -29,7 +30,7 @@ public class Counsel {
 		return mNO;
 	}
 
-	public void setmID(String mNO) {
+	public void setmNO(String mNO) {
 		this.mNO = mNO;
 	}
 
@@ -81,11 +82,11 @@ public class Counsel {
 		this.imageURL = imageURL;
 	}
 
-	public Date geteDate() {
+	public Timestamp geteDate() {
 		return eDate;
 	}
 
-	public void seteDate(Date eDate) {
+	public void seteDate(Timestamp eDate) {
 		this.eDate = eDate;
 	}
 
@@ -93,7 +94,7 @@ public class Counsel {
 		return eNO;
 	}
 
-	public void seteID(String eNO) {
+	public void seteNO(String eNO) {
 		this.eNO = eNO;
 	}
 

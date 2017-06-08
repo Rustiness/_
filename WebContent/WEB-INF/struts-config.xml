@@ -135,10 +135,19 @@
 		<action path="/plaSur"
 		        forward=".menu_plasticSurgery"/>
 
-<!-- 		 클라이언트~~온라인상담 
-		<action path="/coun"
-		        forward=".menu_counsel"/> -->
 		        
+			<!-- Counsel 액션등록 시작!! -->
+		<!-- 고객용: 상담 등록 -->
+    	<action path="/CounAction" 
+      			type="kr.hospi.actions.CounAction"
+      			name="Counform"
+      			scope="request"
+      			validate="true"
+      			input="/coun_con.do">
+    	  	<forward name="success" path="/coun.do"></forward>
+    	  	<forward name="fail" path="/coun_con.do"></forward>
+      	</action>	
+			
 		<!--클라이언트~~온라인상담 리스트-->
         <action path="/coun" 
                 type="kr.hospi.actions.CounAction">
@@ -149,6 +158,12 @@
         <action path="/coun_con" 
                 forward=".menu_confirm">
                 </action>  
+
+       <!-- 클라이언트~~온라인상담 수정 확인창   --> 
+        <action path="/coun_modcheck"
+                type="kr.hospi.actions.CounModifyAction">
+               <forward name="success" path=".menu_counsel"></forward>
+        </action>      
       
       <!-- 클라이언트~~온라인상담 상담정보 -->
         <action path="/coun_info"
