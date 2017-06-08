@@ -1,5 +1,3 @@
-<%@page import="kr.hospi.beans.AdMember"%>
-<%@page import="kr.hospi.beans.Member"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.hospi.dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -29,24 +27,19 @@
 	String mID = request.getParameter("mID");//아이디 입력란에서 받아온 아이디
 	
 	MemberDAO dao = new MemberDAO();
-	List<AdMember> list = dao.selectAll();
+	int t = dao.dpCheck(mID);
 	
-	boolean result = false;//중복 여부를 알려주는 boolean값 result.
 	
-	if(list!=null){
-	    for(int i=0;i<list.size();i++){
-	    	String mID_check=list.get(i).getmID();//데이터베이스에 존재하는 아이디
-	    	if(mID.equals(mID_check)){//중복이 존재할 경우
-	    		result = true;
-	    		break;
-	    	}
-	    }
-	}
-	
-	if(result){%>
+	if(t>0){%>
 	<font color="red"><b>이미 존재하는 아이디입니다!</b></font><br><br>
 	<input type="reset" value="취소" onclick="clearID()">
-	<%}else{%>
+	<%}
+	else if(t==-1)
+	{%>
+		<font color="red"><b>에러</b></font><br><br>
+		<input type="reset" value="취소" onclick="clearID()">
+	<%}
+	else{%>
 	<b>사용가능한 아이디입니다!</b><br><br>
 	<input type="button" value="사용" onclick="verifyID()">
 	<input type="reset" value="취소" onclick="clearID()">

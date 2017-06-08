@@ -75,7 +75,12 @@ function validCheck(){//유효성검사
     }else if(!nameExp.test(f.name.value)){//이름값체크
     	alert('한글로 이름을 입력해주세요.');
     	f.name.focus();
+    	
     
+    }else if(f.qNO.value == '선택'){
+     	    alert('질문선택!!');   
+    }else if(f.answer.value == ""){
+        	alert('답변 입력!');
     }else if( !birth1Exp.test(f.birth1.value)){//생년체크
     	alert('생년에 4자리 수를 입력!!');
     	
@@ -291,9 +296,7 @@ function validCheck(){//유효성검사
              </select> - 
              <input type="text" name="tel2" value="" class="input_text_number" maxlength="4"  />
               - <input type="text" name="tel3" value="" class="input_text_number" maxlength="4"  /> 
-             <%-- SMS 수신동의 여부 체크박스(작업 중) --%> 
-             <input type="checkbox" name="user_sms_allow" value="1">
-             <span class="gray_font_11">SMS 수신 동의</span>
+            
            </td>
          </tr>
         
@@ -335,11 +338,7 @@ function validCheck(){//유효성검사
                   <option value="yahoo.co.kr">yahoo.co.kr</option>
                </select>
                <%-- 이메일 중복체크와 수신동의(작업 중) --%>
-               <a href="#" id="chk_email_exist">
-               <input type="button" id="chk_id_exist2" value="중복확인"/>
-               </a>
-               <input type="checkbox" name="user_email_allow" value="1">
-               <span class="gray_font_11">메일수신동의</span>
+               
             </td>
          </tr>
        

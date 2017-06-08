@@ -140,7 +140,7 @@
            	  
                <input type="text" name="tel" value="${user.tel }" class="input_text_half"  size="10" readonly>
              
-             <%-- SMS 수신동의 여부 체크박스(작업 중) --%> 
+             
              
            </td>
          </tr>
@@ -159,10 +159,7 @@
             
                <input type="text" name="email" value="${user.email }" class="input_text_half"  size="20" readonly>
                
-               <%-- 이메일 중복체크와 수신동의(작업 중) --%>
-               <a href="#" id="chk_email_exist">
-               
-               </a>
+              
               
             </td>
          </tr>

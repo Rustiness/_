@@ -27,11 +27,11 @@
        
        var mID = f.mID.value;
        var mID_verified = f.mID_verified.value;
-    
+       
        var tel2Exp =/^[\d]{3,4}$/g;
        var tel3Exp =/^[\d]{4}$/g;
        var email1Exp = /^[a-zA-Z0-9]{6,15}$/;
-       var email2Exp = /^[a-zA-Z]+\.[a-zA-Z]$/g;
+       var email2Exp =/^[a-z0-9-]+\.+[a-z0-9]{2,4}$/;
 	   var birth1Exp=/^[\d]{4}$/g;
 	   var birth2Exp=/^[\d]{2}$/g;
 	   var birth3Exp=/^[\d]{2}$/g;
@@ -44,6 +44,8 @@
 		 birth2=숫자만 2자리가능
 		 birth3=숫자만 2자리가능
 		*/
+		
+		
 	   if(f.mID.value==''){//아이디체크
 		   alert('아이디를 입력!!');
 		   
@@ -58,7 +60,7 @@
        }else if(f.pass_check.value === ''){//자료형 비교후 내용 비교
        	alert('비번입력!!');
        	f.pass2.focus();
-       }else if(f.qNO.value == "1"){
+       }else if(f.qNO.value == '선택'){
     	   alert('질문선택!!');   
        }else if(f.answer.value == ""){
        	alert('답변 입력!');
@@ -113,8 +115,15 @@
              	alert('email2,select둘다 적으면 오류! ');
     	    	 
     	       }else if((f.email2.value=='')&&!(f.select_email.value=='직접입력')){
-    	    	 f.submit();
-    	       }else if(!f.email2.value==''&&f.select_email.value=='직접입력'){
+    	    	 
+    	    	   if(email2Exp.test(f.email2.value)){
+    	    	   f.submit();
+    	    		   
+    	    		   
+    	    	   }else{
+    	    		   alert('email 두번째칸 형식 오류!')
+    	    	   }
+    	       }else if(!(f.email2.value=='')&&f.select_email.value=='직접입력'){
        	    	//폼내에 유효한 데이터가 입력 되었다면
       	    	 f.submit();//<form>태그내의 action속성의 URL로 폼데이터 전송!!
       	       }
@@ -255,9 +264,9 @@
            </td>
            <td class="line">
            	   <%-- 생일(birth) 입력 필드. birth1,2,3은 JoinAction.java(회원가입 액션)에서 합쳐져 birth가 된다. --%>
-               <input type="text1" name="birth1" value="" class="input_text_number" style="width: 40px;" maxlength="4">년 
-               <input type="text2" name="birth2" value="" class="input_text_number" style="width: 20px;" maxlength="2">월
-             <input type="text3" name="birth3" value="" class="input_text_number" style="width: 20px;" maxlength="2">일
+               <input type="text" name="birth1" value="" class="input_text_number" style="width: 40px;" maxlength="4">년 
+               <input type="text" name="birth2" value="" class="input_text_number" style="width: 20px;" maxlength="2">월
+             <input type="text" name="birth3" value="" class="input_text_number" style="width: 20px;" maxlength="2">일
              &nbsp; 
            </td>
          </tr>
@@ -281,7 +290,7 @@
            --%>
            <td class="line">
                <select name="tel1">
-               <option value="" selected>선택</option>
+               <option value="선택" selected>선택</option>
                <option value="010">010</option>
                <option value="011">011</option>
                <option value="016">016</option>
@@ -291,9 +300,7 @@
              </select> - 
              <input type="text" name="tel2" class="input_text_number" maxlength="4"/>
               - <input type="text" name="tel3" class="input_text_number" maxlength="4"/> 
-             <%-- SMS 수신동의 여부 체크박스(작업 중) --%> 
-             <input type="checkbox" name="user_sms_allow" value="1">
-             <span class="gray_font_11">SMS 수신 동의</span>
+            
            </td>
          </tr>
         
@@ -312,7 +319,7 @@
                 @ <input name="email2" type="text" id="email2" value="" style="ime-mode: disabled" class="input_text_half" maxlength="20" />
                <%-- 선택창(select_email)에서 '직접입력'을 선택하면 email은 email1 + email2이 된다. --%>
                <select name="select_email">
-                  <option value="" selected>직접입력</option>
+                  <option value="직접입력" selected>직접입력</option>
                   <option value="hanmail.net">hanmail.net</option>
                   <option value="naver.com">naver.com</option>
                   <option value="nate.com">nate.com</option>
@@ -333,12 +340,7 @@
                   <option value="yahoo.com">yahoo.com</option>
                   <option value="yahoo.co.kr">yahoo.co.kr</option>
                </select>
-               <%-- 이메일 중복체크와 수신동의(작업 중) --%>
-               <a href="#" id="chk_email_exist">
-               <input type="button" id="chk_id_exist2" value="중복확인"/>
-               </a>
-               <input type="checkbox" name="user_email_allow" value="1">
-               <span class="gray_font_11">메일수신동의</span>
+             
             </td>
          </tr>
        

@@ -10,10 +10,11 @@
 	join_term.jsp 
 	[회원가입 - 약관 동의]
 --%>
-<body onload="loadTerms()">
+
 <script type="text/javascript">
 
 	function loadTerms() {
+
 	  var xhttp1 = new XMLHttpRequest();
 	  var xhttp2 = new XMLHttpRequest();
 	  
@@ -49,7 +50,7 @@
 		}
 	}
 </script>
-
+<body onload="loadTerms()">
 <form name="frm" method="post">
 	<h3>회원가입약관</h3>
 	<hr>
