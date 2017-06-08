@@ -16,12 +16,13 @@
 <body>
 	<h3>나의 성형 견적서</h3>
 	<hr>
+
 	<table cellspacing='0' cellpadding='2' width="70%" border="0">
 		<tr>
 			<td bgcolor='#D5C4E1' colspan='4' height='2'></td>
 		</tr>
 		<tr>
-		<tr><!-- TODO  --> 
+			<!-- TODO  -->
 			<td colspan='4' height='40'>
 				<table border=0 cellpadding='2' cellspacing='0' width="70%"
 					style='color: #0164b4'>
@@ -45,10 +46,14 @@
 								String[] chkBreast = request.getParameterValues("chkBreast");
 					%>
 					<tr>
-						<td id="line_l"><%=surgeryTypes%></td>
-						<td id="line_l"><%=surgeryNames%></td>
-						<td id="line_r"><%=price%></td>
-					</tr>
+					<c:forEach items="${list }" var ="pitem">
+						<td id="line_l">${pitem.pTypeName}</td>
+						<td id="line_l">${pitem.pItemName}</td>
+						<td id="line_r">${pitem.pItemValue}</td>
+						</c:forEach>
+					</tr>	
+			
+			
 					<tr>
 						<td height='1' bgcolor='#dadada' colspan='4'></td>
 					</tr>

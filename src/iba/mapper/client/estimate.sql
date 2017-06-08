@@ -14,6 +14,8 @@ pBreastItem varchar2(300),
 price double precision
 );
 
+select * from estimate ;
+
 create sequence patient_seq
 start with 1
 increment by 1
@@ -23,7 +25,10 @@ nocache;
 insert into estimate values 
 ('PA'||LPAD(patient_seq.nextval,5,0), SYSDATE, #pEyeItem#,#pNoseItem#,#pFaceItem#,#pBodyItem#,#pBreastItem#,#price#)
 
-select pEyeItem from estimate;
+select * from estimate where pNO='PA00001';
+select * from estimate;
+select pbreastitem, length(pbreastitem) from estimate;
 
+update estimate set pbreastitem=rtrim(pbreastitem);
 
-
+delete ESTIMATE;

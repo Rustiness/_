@@ -27,7 +27,7 @@ import kr.hospi.dao.PlasticItemDAO;
  * admin에서 input 새로운 정보 입력
  * Struts EstiAction  insert(estimate)를 select를 통해서 값을 불러옴
  */
-public class EstiAction extends Action {
+public class EstiResultAction extends Action {
 	
 	
 	@Override
@@ -36,11 +36,6 @@ public class EstiAction extends Action {
 		List<PlasticItem> list = new ArrayList<>();
 		
 		
-		String action = request.getParameter("action");//요청 분석
-
-		if (action == null) {
-				action = "list"; //액션이 NULL 이었을때 기본값을 리스트 지정.
-		}
 		PlasticItem pitem;
 		String pNO;
 		EstimateDAO dao = new EstimateDAO();
@@ -50,20 +45,10 @@ public class EstiAction extends Action {
 		
 		
 		// 각 환자에 대한 성형시술 상세 기술
-		
-		List<Estimate> listAll = new ArrayList<>();
-		switch (action) {
-		case "list"://직원목록  if(action==null || action.equals("list"))
-			 listAll= dao.selectAll();
-			//(뷰와) 데이터 공유 - request(forward 이동 시), session(forward 이동, redirect 이동 시)
-			request.setAttribute("listAll", listAll);
-			forward = mapping.findForward("selectAll");
-			break;
 	
-		case "info": //수정폼
 			pNO = (String) request.getParameter("pNO");
-			Estimate esti_result = dao.selectEstimate(pNO);
-			//request.setAttribute("estimate", esti_result); //estimate 견적  창
+			Estimate esti_result = dao.selectEstimate("PA00004");//pNO집어넣어야 함
+			request.setAttribute("estimate", esti_result); //estimate 견적  창
 			
 			// EyeSurgery ptypeCode
 			if(!esti_result.getpEyeItem().equals("0")){
@@ -138,10 +123,10 @@ public class EstiAction extends Action {
 		} // if
 		}//if
 		request.setAttribute("list", list);
-		forward = mapping.findForward("selectInfo");
-		break;
+		forward = mapping.findForward("success");
+		
 
-		}//switch
+		
 		return forward;
 
 	}// execute

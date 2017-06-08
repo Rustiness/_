@@ -27,8 +27,11 @@
 	select * from estimate  where pNO = #pNO#
 	</select>
 	
-	
-	
+
+	<!-- 관리자용 견적 all -->
+	<select id="selectAll" resultClass="estimatepdt">
+	select * from estimate
+	</select>
 	
 	
 		<!-- print-out page1 -->

@@ -45,6 +45,8 @@ pItemValue double precision,
 state varchar2(3)
 );
 
+select * from plasticItem where pItemNO='BR0001';
+select * from plasticItem where pItemNO= #pItemNO#
 
 drop sequence plasticItem_seq;
 create sequence plasticItem_seq

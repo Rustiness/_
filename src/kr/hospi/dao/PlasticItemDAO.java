@@ -56,7 +56,7 @@ SqlMapClient sqlMap;
 		PlasticItem pitem=null;
 		try {
 			pitem = (PlasticItem)sqlMap.queryForObject("plastic.selectpItemNO", pItemNO);
-			return pitem;
+			//return pitem;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -213,9 +213,12 @@
 		<put name="a_main_body" value="/admin/reservation/ad_reser_modify.jsp"></put>
 	</definition>
 
-	<!-- 어드민~~견적 -->
-	<definition name=".ad_menu_estimate" extends=".admin_idx"><!-- 목록 -->
+	<!-- 어드민~~견적정보 -->
+	<definition name=".ad_estimate_list" extends=".admin_idx"><!-- 견적 전체목록 -->
 		<put name="a_main_body" value="/admin/estimate/ad_esti_list.jsp"></put>
+	</definition>
+	<definition name=".ad_estimate_info" extends=".admin_idx"><!-- 견적 상세목록 -->
+		<put name="a_main_body" value="/admin/estimate/ad_esti_confirm.jsp"></put>
 	</definition>
 
 	<!-- 어드민~~사원정보 -->

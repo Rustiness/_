@@ -31,8 +31,9 @@ public class EstiClientAction extends Action{//Controller: EstiClientAction
 			}
 		}//for
 		estimate.setpEyeItem(pEyeItem_str);
-		}//if EyeItem
-		
+		}else//if EyeItem
+			estimate.setpEyeItem("0");
+	
 		
 		String[] pNoseItem = request.getParameterValues("pNoseItem");
 		if(pNoseItem != null){
@@ -45,7 +46,8 @@ public class EstiClientAction extends Action{//Controller: EstiClientAction
 			}
 		}//for
 		estimate.setpNoseItem(pNoseItem_str);
-		}//if 
+		}else//if EyeItem
+			estimate.setpNoseItem("0");
 		
 		String[] pFaceItem = request.getParameterValues("pFaceItem");
 		if(pFaceItem != null){
@@ -58,7 +60,8 @@ public class EstiClientAction extends Action{//Controller: EstiClientAction
 			}
 		}//for
 		estimate.setpFaceItem(pFaceItem_str);
-		}//if
+		}else//if EyeItem
+			estimate.setpFaceItem("0");
 		String[] pBodyItem = request.getParameterValues("pBodyItem");
 		if(pBodyItem != null){
 		String pBodyItem_str="";
@@ -70,7 +73,8 @@ public class EstiClientAction extends Action{//Controller: EstiClientAction
 			}
 		}//for
 		estimate.setpBodyItem(pBodyItem_str);
-		}//if
+		}else//if EyeItem
+			estimate.setpBodyItem("0");
 		String[] pBreastItem = request.getParameterValues("pBreastItem");
 		if(pBreastItem!=null){
 		String pBreastItem_str="";
@@ -82,7 +86,8 @@ public class EstiClientAction extends Action{//Controller: EstiClientAction
 			}
 		}//for
 		estimate.setpBreastItem(pBreastItem_str);
-		}//if
+		}else//if EyeItem
+			estimate.setpBreastItem("0");
 		//견적결과_고객용 esti_res.do session을 통해서 결과값 전달
 		request.getSession().setAttribute("estimate", estimate);
 		EstimateDAO dao = new EstimateDAO();

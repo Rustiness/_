@@ -44,7 +44,7 @@
 		 <tr>
 								
 				<td align='middle' width='30' bgcolor='#F5F0F9' height='30'><input
-					type='checkbox' value='${eye.pItemNO }|${eye.pItemName }|${eye.pItemValue }' name='pEyeItem'></td>
+					type='checkbox' value='${eye.pItemNO }' name='pEyeItem'></td>
 				<td width='246'>${eye.pItemName }</td>
 				<td width='246'>${eye.pItemValue }</td>
 						
@@ -73,7 +73,7 @@
 		 <tr>
 								
 				<td align='middle' width='30' bgcolor='#F5F0F9' height='30'><input
-					type='checkbox' value='${nose.pItemNO }|${nose.pItemName }|${nose.pItemValue }' name='pNoseItem'></td>
+					type='checkbox' value='${nose.pItemNO }' name='pNoseItem'></td>
 				<td width='246'>${nose.pItemName }</td>
 				<td width='246'>${nose.pItemValue }</td>
 						
@@ -101,7 +101,7 @@
 		 <tr>
 								
 				<td align='middle' width='30' bgcolor='#F5F0F9' height='30'><input
-					type='checkbox' value='${face.pItemNO }|${face.pItemName }|${face.pItemValue }' name='pFaceItem'></td>
+					type='checkbox' value='${face.pItemNO }' name='pFaceItem'></td>
 				<td width='246'>${face.pItemName }</td>
 				<td width='246'>${face.pItemValue }</td>
 						
@@ -129,7 +129,7 @@
 		 <tr>
 								
 				<td align='middle' width='30' bgcolor='#F5F0F9' height='30'><input
-					type='checkbox' value='${body.pItemNO }|${body.pItemName }|${body.pItemValue }' name='pBodyItem'></td>
+					type='checkbox' value='${body.pItemNO }' name='pBodyItem'></td>
 				<td width='246'>${body.pItemName }</td>
 				<td width='246'>${body.pItemValue }</td>
 						
@@ -157,7 +157,7 @@
 		 <tr>
 								
 				<td align='middle' width='30' bgcolor='#F5F0F9' height='30'><input
-					type='checkbox' value='${breast.pItemNO }|${breast.pItemName }|${breast.pItemValue }' name='pBreastItem'></td>
+					type='checkbox' value='${breast.pItemNO }' name='pBreastItem'></td>
 				<td width='246'>${breast.pItemName }</td>
 				<td width='246'>${breast.pItemValue }</td>
 						

@@ -205,22 +205,22 @@
 		</action>
 
 		<!-- 고객자용: 성형타입 Action(plasticItemsinsert) 등록 -->
-		<!-- 클라이언트~~견적결과보기 on processing-->
-		<action path="/esti_res"
-		        type="kr.hospi.actions.EstiClientAction"
-		        name="estiClientForm"
-		        scope="request"
-		        validate="true"
-		        input="/esti_res.do">
-			<forward name="success" path=".menu_estimate_res"></forward>
-			<forward name="fail" path="/esti.do"></forward>
-		</action>
-		<!-- 클라이언트~~견적 완료Complete -->
+		<!-- 클라이언트~~견적결과보기 -->
+		<action path="/esti_res" 
+				type="kr.hospi.actions.EstiClientAction"
+				name="estiClientForm"
+				scope="request"
+      			validate="true"
+      			input="/esti_res.do">
+				<forward name="success" path="/esti_con.do"></forward>
+				<forward name="fail" path="/esti.do"></forward>
+			</action>
+		<!-- 클라이언트~~견적 완료 후 관리자 창에서 출력Complete .ad_menu_estimate -->
 		<action path="/esti_con"
-		        type="kr.hospi.actions.EstiAction">
-			<forward name="success" path=".menu_estimate_res"></forward>
-		</action>
-
+		        type="kr.hospi.actions.EstiResultAction">
+			<forward name="success" path=".menu_estimate_pcs"></forward>	
+		</action>	
+	
 		<!-- 클라이언트~~병원소개 -->
 		<action path="/intro"
 		        forward=".menu_hospinfo"/>
@@ -274,6 +274,16 @@
 			<forward name="ad_reser_modify" path=".ad_menu_reservation_modify"></forward>
 		</action>
 
+		<!-- 어드민~~견적 완료  출력  -->
+		<action path="/ad_esti" 
+			 	type="kr.hospi.actions.EstiAction"
+		   		scope="request"
+				validate="true"
+				input=".ad_estimate_list">
+			<forward name="selectAll" path=".ad_estimate_list"></forward>	
+			<forward name="selectInfo" path=".ad_estimate_info"></forward>	
+		</action>	
+			
 		<!-- 어드민~~사원정보 -->
 		<action path="/ad_emp"
 		        type="kr.hospi.actions.EmpAction"
