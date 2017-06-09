@@ -121,3 +121,11 @@ insert into plasticItem values
 (plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '����Ż��', 120,'1');
 
 select * from plasticItem;
+
+select num, pTypeNO, pTypeName, pItemNO, pItemName, pItemValue, state 
+     from (select num, pTypeNO, pTypeName, pItemNO, pItemName, pItemValue, state, rownum rn
+           from (select i.num, i.pTypeNO, t.pTypeName, i.pItemNO, i.pItemName, i.pItemValue, i.state 
+	from plasticItem i left outer join plasticType t on i.pTypeNO =t.pTypeNO
+		                order by i.pItemNO desc)
+		  );
+    -- where rn between 0 and 12;

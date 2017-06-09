@@ -2,48 +2,65 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <!-- estimate.xml -->
 <sqlMap namespace="estimate">
-<typeAlias alias="plasticItem" type="kr.hospi.beans.PlasticItem"/>
-<typeAlias alias="estimatepdt" type="kr.hospi.beans.Estimate"/>
-	<!--  성형 견적 정보 입력 시작 -->
-	 <insert id="insertEstimate" parameterClass="estimatepdt">
-		insert into estimate 
-		values ('PA'||LPAD(patient_seq.nextval,5,0), SYSDATE, #pEyeItem#, #pNoseItem#, #pFaceItem#, #pBodyItem#, #pBreastItem#,#price#)
+	<typeAlias alias="plasticItem" type="kr.hospi.beans.PlasticItem" />
+	<typeAlias alias="estimatepdt" type="kr.hospi.beans.Estimate" />
+	<!-- 성형 견적 정보 입력 시작 -->
+	<insert id="insertEstimate" parameterClass="estimatepdt">
+		insert into estimate
+		values ('PA'||LPAD(patient_seq.nextval,5,0), SYSDATE, #pEyeItem#,
+		#pNoseItem#, #pFaceItem#, #pBodyItem#, #pBreastItem#,#price#)
 	</insert>
-	
-	<!-- 눈 성형시술 정보 입력 #PTypeNO#_seq.nextval--> 
+
+	<!-- 눈 성형시술 정보 입력 #PTypeNO#_seq.nextval -->
 	<insert id="insert" parameterClass="plasticItem">
-		insert into plasticItem (num, pTypeNO ,pItemNO, pItemName, pItemValue)
-		values (#num#, #pTypeNO# ,#pItemNO# ,#pItemName#, #pItemValue#)
+		insert into plasticItem (num,
+		pTypeNO ,pItemNO, pItemName, pItemValue)
+		values (#num#, #pTypeNO#
+		,#pItemNO# ,#pItemName#, #pItemValue#)
 	</insert>
-	
-	<!--  1. 고객용 정보 out -->
-	<!--  성형과목별견적 전체 내용(num,성형타입번호, 성형타입명, 성형시술번호, 성형시술명, 성형시술가격) for 관리자 Page-->
-	<select id="selectType"  resultClass="PlasticItem" parameterClass="String">
-	select num, pTypeNO, pItemNO, pItemName, pItemValue, state from plasticItem where pTypeNO= #pTypeNO#
+
+	<!-- 1. 고객용 정보 out -->
+	<!-- 성형과목별견적 전체 내용(num,성형타입번호, 성형타입명, 성형시술번호, 성형시술명, 성형시술가격) for 관리자 Page -->
+	<select id="selectType" resultClass="PlasticItem"
+		parameterClass="String">
+		select num, pTypeNO, pItemNO, pItemName, pItemValue, state from plasticItem
+		where pTypeNO= #pTypeNO#
 	</select>
-	
-	<!--  고객용 견적 결과 -->
+
+	<!-- 고객용 견적 결과 -->
 	<select id="selectEstimate" parameterClass="String" resultClass="estimatepdt">
-	select * from estimate  where pNO = #pNO#
+		select * from estimate where pNO = #pNO#
 	</select>
-	
+
 
 	<!-- 관리자용 견적 all -->
 	<select id="selectAll" resultClass="estimatepdt">
-	select * from estimate
+		select * from estimate
 	</select>
-	
-	
-		<!-- print-out page1 -->
-		<!-- page를 나누어서 볼때 활용할 뷰 
-	<select id="selectPage" resultClass="plasticItem" parameterClass="java.util.Map"><![CDATA[
-		select num, pTypeNO, pItemNO, pItemName, pItemValue, state 
-		from (select pTypeNO, pTypeName, pItemNO, pItemName, pItemValue ,rownum rn
-		from (select pTypeNO, pTypeName, pItemNO, pItemName, pItemValue
-		from plasticItem natural join plasticType order by pItemNO desc)
-		)
-		where rn between #start# and #end#
-		]]></select>-->
-	
-	
+
+
+	<!-- 페이징 -->
+	<select id="selectPage" resultClass="estimatepdt"
+		parameterClass="java.util.Map"><![CDATA[
+     select pNO, pEyeItem,pNoseItem,pFaceItem, pBodyItem,pBreastItem
+     from (select pNO, pEyeItem,pNoseItem,pFaceItem, pBodyItem,pBreastItem, rownum rn
+           from (select pNO, pEyeItem,pNoseItem,pFaceItem, pBodyItem,pBreastItem
+		         from estimate
+		          order by num desc)
+		  )
+     where rn between #start# and #end#
+  ]]></select>
+
+	<select id="selectCount" resultClass="int">
+		select count(*) from estimate
+	</select>
+
+	<!-- page를 나누어서 볼때 활용할 뷰 <select id="selectPage" resultClass="plasticItem" 
+		parameterClass="java.util.Map"><![CDATA[ select num, pTypeNO, pItemNO, pItemName, 
+		pItemValue, state from (select pTypeNO, pTypeName, pItemNO, pItemName, pItemValue 
+		,rownum rn from (select pTypeNO, pTypeName, pItemNO, pItemName, pItemValue 
+		from plasticItem natural join plasticType order by pItemNO desc) ) where 
+		rn between #start# and #end# ]]></select> -->
+
+
 </sqlMap>

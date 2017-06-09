@@ -8,7 +8,7 @@
 	<!-- ※회원가입  -->
 	<insert id="insert" parameterClass="MemBeans2">
 		insert into member (mNO,mID,pass,qNO,answer,name,birth,sex,tel,email,pTypeNO,latestdate,joinDate,state)
-		values (mem_seq.nextval,#mID#,#pass#,#qNO#,#answer#,#name#,#birth#,#sex#,#tel#,
+		values ('MA'||LPAD(mem_seq.nextval,5,0),#mID#,#pass#,#qNO#,#answer#,#name#,#birth#,#sex#,#tel#,
 		#email#,#pTypeNO#,sysdate,sysdate,'1')
 		<!-- ##.nextval,#name#,#pass#,#email#,#tel#,#contents#,##: ##는디폴트를 의미!!! -->
 	</insert>
