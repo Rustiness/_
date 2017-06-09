@@ -49,7 +49,8 @@
 	            	<c:choose>
 						<c:when test="${reser.rState eq '1'}">예약대기</c:when>
 						<c:when test="${reser.rState eq '2'}"><font color="blue"><b>예약완료</b></font></c:when>
-						<c:when test="${reser.rState eq '3'}"><font color="red">예약취소</font></c:when>
+						<c:when test="${reser.rState eq '3'}"><font color="red"><b>예약취소</b></font></c:when>
+						<c:when test="${reser.rState eq '4'}"><font color="purple"><b>진료완료</b></font></c:when>
 						<c:otherwise>???</c:otherwise>
 					</c:choose>
 	            </td>

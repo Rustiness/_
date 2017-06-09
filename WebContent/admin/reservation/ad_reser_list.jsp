@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- fullCalendar 스타일 -->
 <link href='admin/_css/fullcalendar.min.css' rel='stylesheet'/>
@@ -11,6 +12,13 @@
 <script src="admin/_js/reservation_fullCalendar.js" rel="script" type="text/javascript"></script>
 
 <%-- ad_reser_list.jsp(관리자용: 예약목록출력 - 달력) --%>
+<c:if test="${admin==null}">
+	<script>
+		alert("관리자 로그인 후 이용가능합니다.");
+		location.href='admin.do';
+	</script>
+</c:if>
+<c:if test="${admin!=null}">
 <center>
 	<p><img alt="예약목록" src="admin/_images/ad_reser_list.PNG"></p>
 	
@@ -39,7 +47,9 @@
 		<option value="1">예약대기</option>
 		<option value="2">예약완료</option>
 		<option value="3">예약취소</option>
+		<option value="4">진료완료</option>
 	</select>
 	
 	<div id='calendar'></div>
 </center>
+</c:if>

@@ -24,6 +24,13 @@
 </script>
 
 <%-- reser_modify.jsp(예약(rNO)당 수정 페이지) --%>
+<c:if test="${admin==null}">
+	<script>
+		alert("관리자 로그인 후 이용가능합니다.");
+		location.href='admin.do';
+	</script>
+</c:if>
+<c:if test="${admin!=null}">
 <div class="reser_content">
 	<h3 class="con_title">
 		<p><img alt="예약수정" src="admin/_images/ad_reser_modify.PNG"></p>
@@ -47,6 +54,7 @@
 	            		<option class="1" value="1">예약대기</option>
 	            		<option class="2" value="2">예약완료</option>
 	            		<option class="3" value="3">예약취소</option>
+	            		<option class="4" value="4">진료완료</option>
 	            	</select>
 	            </td>
 	         </tr>
@@ -110,3 +118,4 @@
 		</p>
 	</form>
 </div>
+</c:if>

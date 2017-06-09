@@ -13,6 +13,13 @@
 	}	
 </style>
 <%-- ad_reser_info.jsp(예약 상세페이지) --%>
+<c:if test="${admin==null}">
+	<script>
+		alert("관리자 로그인 후 이용가능합니다.");
+		location.href='admin.do';
+	</script>
+</c:if>
+<c:if test="${admin!=null}">
    <center>
    	<h3 class="con_title">
 		<p><img alt="예약상세" src="admin/_images/ad_reser_info.PNG"></p>
@@ -53,7 +60,8 @@
            		<c:choose>
 					<c:when test="${reser.rState eq '1'}">예약대기</c:when>
 					<c:when test="${reser.rState eq '2'}"><font color="blue"><b>예약완료</b></font></c:when>
-					<c:when test="${reser.rState eq '3'}"><font color="red">예약취소</font></c:when>
+					<c:when test="${reser.rState eq '3'}"><font color="red"><b>예약취소</b></font></c:when>
+					<c:when test="${reser.rState eq '4'}"><font color="purple"><b>진료완료</b></font></c:when>
 					<c:otherwise>???</c:otherwise>
 				</c:choose>
            	</td>
@@ -64,3 +72,4 @@
      <button onclick="location.href='ad_reser.do'" class="btSty" style="margin-bottom: 20px;">전체목록보기</button>
          
    </center>
+   </c:if>
