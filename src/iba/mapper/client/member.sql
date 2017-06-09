@@ -20,7 +20,7 @@ CREATE TABLE Member (
  sex VARCHAR2(10) not null,
  tel VARCHAR2(15) not null,
  email VARCHAR2(50) not null,
- pTypeNO VARCHAR2(7),
+ pNO VARCHAR2(7),
  latestDate DATE,
  joinDate DATE not null,
  mMemo VARCHAR2(200),

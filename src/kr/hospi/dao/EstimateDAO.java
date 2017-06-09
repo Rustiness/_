@@ -33,7 +33,8 @@ public class EstimateDAO {//
 	public boolean insert(Estimate estimate) {//insert data
 		try {
 			sqlMap.insert("estimate.insertEstimate", estimate);
-			System.out.println("successInsert");
+			
+			
 			return true;
 		} catch (SQLException e) {
 			
@@ -67,6 +68,16 @@ public class EstimateDAO {//
 		
 	}//selectEstimate
 	
+	public String selectpNO (String mID){
+		String pNO= null;
+		try {
+			pNO=(String) sqlMap.queryForObject("estimate.selectpNO", mID);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pNO;
+	}//mid
 	public ArrayList<Estimate> selectAll(){
 		ArrayList<Estimate> list= null;
 		try {

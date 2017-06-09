@@ -10,6 +10,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import kr.hospi.beans.Estimate;
+import kr.hospi.beans.Member;
 import kr.hospi.dao.EstimateDAO;
 import kr.hospi.forms.EstiClientActionForm;
 
@@ -94,8 +95,9 @@ public class EstiClientAction extends Action{//Controller: EstiClientAction
 		//estimate.setPrice(totalPrice);
 		Boolean insertCheck = dao.insert(estimate);
 		System.out.println("t="+insertCheck);
-		
+		//String pNO = ;pNO!=null
 		if(insertCheck){
+			//request.setAttribute("pNO", pNO);
 			return mapping.findForward("success")	;
 		}else{
 			return mapping.findForward("fail");

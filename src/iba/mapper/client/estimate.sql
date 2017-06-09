@@ -4,7 +4,7 @@ drop table estimate;
 -- after completing the process of estimate in the client section, 
 -- Insert the surgeryNames for each customer.
 create table estimate(
-pNO varchar2(7),
+pNO varchar2(7) primary key,
 pDate date default SYSDATE,
 pEyeItem varchar2(300),
 pNoseItem varchar2(300),

@@ -37,7 +37,10 @@
 	<select id="selectAll" resultClass="estimatepdt">
 		select * from estimate
 	</select>
-
+	<!-- 관리자용 mid = pno -->
+	<select id="selectpNO" resultClass="String" parameterClass="String">
+	select pNO from  member where mID=#mID#
+	</select>
 
 	<!-- 페이징 -->
 	<select id="selectPage" resultClass="estimatepdt"

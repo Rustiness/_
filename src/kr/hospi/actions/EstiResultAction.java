@@ -35,7 +35,7 @@ public class EstiResultAction extends Action {
 			HttpServletResponse response) throws Exception {
 		List<PlasticItem> list = new ArrayList<>();
 		
-		
+		Member men;
 		PlasticItem pitem;
 		String pNO;
 		EstimateDAO dao = new EstimateDAO();
@@ -46,8 +46,13 @@ public class EstiResultAction extends Action {
 		
 		// 각 환자에 대한 성형시술 상세 기술
 	
-			pNO = (String) request.getParameter("pNO");
-			Estimate esti_result = dao.selectEstimate("PA00070");//pNO집어넣어야 함
+			//pNO = (String) request.getAttribute("pNO");
+			
+		/*	Member mem =  (Member)request.getSession().getAttribute("user");
+			String mID=mem.getmID();*/
+			//String pNO=dao.selectpNO("hosp");
+			//System.out.println("pNOXXXX"+ pNO);
+			Estimate esti_result = dao.selectEstimate("PA00084");//pNO집어넣어야 함
 			request.setAttribute("estimate", esti_result); //estimate 견적  창
 			
 			// EyeSurgery ptypeCode
