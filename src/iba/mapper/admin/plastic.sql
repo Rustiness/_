@@ -88,37 +88,37 @@ NOCACHE;
 --select plasticItem_seq.currval from dual;
 
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '�Ÿ����ֲ�Ǯ', 120 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '매몰법쌍꺼풀', 120 ,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '�������ֲ�Ǯ', 160 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '절개법쌍꺼풀', 160 ,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '��Ʈ��', 80 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '안트임', 80 ,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '�ٱ�Ʈ��', 80 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '바깥트임', 80 ,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '�����������ż�', 100 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '눈밑지방제거술', 100 ,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '�����ָ�����', 160 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '눈위주름제거',160,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '�����ָ����ų���', 200 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '눈위주름제거남자', 200 ,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '�����ָ�����', 160 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '눈밑주름제거',160,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '�����ָ����ų���', 200 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '눈밑주름제거남자', 200 ,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '���ؾֱ�����', 200 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '눈밑애교수술',200,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '�Ȱ��ϼ�����', 250 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '안검하수교정', 250 ,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '�ֲ�Ǯ �����', 250 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '쌍꺼풀 재수술', 250 ,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '�ܾȰ� ������', 140 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '외안각 교정술', 140 ,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '���� ���ε� �����̽�', 100 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '꺼진 눈두덩 지방이식', 100 ,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '���������ű���', 140 ,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '비절개눈매교정', 140 ,'1');
 insert into plasticItem values 
-(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '����Ż��', 120,'1');
+(plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '눈썹거상술', 120,'1');
 
 select * from plasticItem;
 
