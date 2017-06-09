@@ -54,9 +54,12 @@ public class EstiAction extends Action {
 		List<Estimate> listAll = new ArrayList<>();
 		switch (action) {
 		case "list"://직원목록  if(action==null || action.equals("list"))
-			 listAll= dao.selectAll();
+		 listAll= dao.selectAll();
 			//(뷰와) 데이터 공유 - request(forward 이동 시), session(forward 이동, redirect 이동 시)
-			request.setAttribute("listAll", listAll);
+			request.setAttribute("listAll", listAll);	
+			
+	
+			
 			forward = mapping.findForward("selectAll");
 			break;
 	

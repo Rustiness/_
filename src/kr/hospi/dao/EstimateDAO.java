@@ -115,15 +115,15 @@ public class EstimateDAO {//
 	return list;
 	}//selectpItemName
 	
-	public List<Estimate> selectPage(int page, int recordCount){//list에 출력할 데이터
-	    int end = page*recordCount;//page = 1, recordCount(한 페이지 행 갯수) = 5 ==> int end = 5;
+	public List<Estimate> selectPage(int page, int recordCount){//list
+	    int end = page*recordCount;//page = 1, recordCount() = 5 ==> int end = 5;
 	    int start = end-(recordCount-1);// end=5, recordCount = 5 ==> int start = 5-(5-1) = 1;
 	   
 	   /*    page    start     end
-	      1페이지 :    1       10
-	      2페이지 :   11       20
-	      3페이지 :   21       30
-	      4페이지 :   31       40
+	      1page :    1       10
+	      2page  :   11       20
+	      3page  :   21       30
+	      4page  :   31       40
 	               end-9    page*10	      */
 	    
 	   List<Estimate> list=null;
