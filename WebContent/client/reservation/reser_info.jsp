@@ -10,6 +10,13 @@
 <script src="client/_js/reservation.js" rel="script" type="text/javascript"></script>
 
 <%-- reser_info.jsp(회원(ID)당 예약목록 확인하는 페이지) --%>
+<c:if test="${user==null}">
+	<script>
+		alert("로그인 후 이용가능합니다.");
+		location.href='login.do';
+	</script>
+</c:if>
+<c:if test="${reser!=null}">  
 <div class="reser_content">
    	<h3 class="con_title">
 		<img alt="예약목록" src="client/_images/reser_info.PNG">
@@ -33,7 +40,7 @@
 	       	<th>memo</th>
 	        <th>예약상태</th>
 	    </tr>
-	            
+	         
 	   <c:forEach items="${reser}" var="info">
 	    <tr id="tableData" align="center">
 	    	<td style="display:none;">${info.rNO}</td>
@@ -56,6 +63,7 @@
 	        </td>
 	    </tr>
 	   </c:forEach>
+	  
 	</table>
 	
 	<div align="center" style="margin-bottom: 25px;">
@@ -81,3 +89,5 @@
 	  </div>
 	<hr size="0.5" color="#D5D5D5" style="margin-bottom: 50px;">
 </div>
+
+</c:if>

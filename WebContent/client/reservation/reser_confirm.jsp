@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href='client/_css/common.css' rel='stylesheet' />
 <link href='client/_css/reservation.css' rel='stylesheet' />
@@ -13,6 +14,16 @@
 <script src="client/_js/reservation_Datepicker.js" rel="script" type="text/javascript"></script>
 
 <%-- reser_confirm.jsp(예약신청페이지) --%>
+<%-- <%if (session.getAttribute("user")==null) {
+	
+}%> --%>
+<c:if test="${user==null}">
+	<script>
+		alert("로그인 후 이용가능합니다.");
+		location.href='login.do';
+	</script>
+</c:if>
+<c:if test="${user!=null}">
 <div class="reser_content">
 	<h3 class="con_title">
 		<img alt="예약신청" src="client/_images/reser_confirm.PNG">
@@ -84,3 +95,4 @@
 		</p>
 	</form>
 </div>
+</c:if>

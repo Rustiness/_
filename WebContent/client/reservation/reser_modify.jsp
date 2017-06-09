@@ -21,6 +21,12 @@
 </script>
 
 <%-- reser_modify.jsp(예약(rNO)당 수정 페이지) --%>
+<c:if test="${user==null}">
+	<script>
+		alert("로그인 후 이용가능합니다.");
+		location.href='login.do';
+	</script>
+</c:if>
 <div class="reser_content">
 	<h3 class="con_title">
 		<img alt="예약수정" src="client/_images/reser_modify.PNG">
