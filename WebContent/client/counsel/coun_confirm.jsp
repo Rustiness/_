@@ -38,7 +38,7 @@
 </script>
 <h3>온라인 상담등록</h3>
 <hr>
-<form  method="POST" name="form"> <!-- action="coun.do" -->
+<form action="coun.do?page=1"  method="POST" name="form">
 	<input type="hidden" name="action" value="insert"/>
 <table border="1" cellpadding="5">
   <tr>
