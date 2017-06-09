@@ -155,10 +155,10 @@ public class CounAction extends Action {
 			Counsel bean = new Counsel();
 			
 			bean.setpTypeNO(request.getParameter("pTypeNO"));
-			
+System.out.println("red");
 			Member mem = (Member)request.getSession().getAttribute("user");
-			String mNO = mem.getmNO();
-			bean.setmNO(mNO);
+			//String mNO = mem.getmNO();
+			//bean.setmNO(mNO);
 			bean.setcTitle(request.getParameter("cTitle"));
 			bean.setcContent(request.getParameter("cContent"));
 			bean.setState(request.getParameter("state"));
