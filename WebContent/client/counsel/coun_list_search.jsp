@@ -12,7 +12,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<script type="text/javascript">
+function search(){
+	if(document.frm.word.value=='')
+		{
+			alert('검색어를 입력하세요!!');
+			location.href='coun_search.do'
+		}	
+	else
+		document.frm.submit(); 
+}
+</script>
 <title>온라인 상담 목록 조회</title>
 </head>
 <%-- counsel_list.jsp --%>
@@ -30,7 +40,7 @@
  <option value="title">제목</option>
 </select>
 <input type="text" name="word" size="10">
-<button type="submit">검색</button>
+<input type="button" onclick="search()" value="검색">
    </form>
 
     <table border="1" cellpadding="5" id="listtable">
@@ -57,26 +67,31 @@
        
    </table>
    
-   <!-- 페이징 코드 작업 부분 -->
-    <c:if test="${rCurrentPage>=rPageRange+1 }">
-         <a href ="/JavaChefWeb/counsearch.do?rpage=${tPrev }">◀</a>
+ <!-- ================================페이징 코드 시작 ============================================== --> 
+    <!-- switch == choose , when == case, otherwise == default 이렇게 같다고 생각하면 됨. -->
+    <c:forEach begin="${startPage }" end="${endPage }" var="i"> <!-- totalPage = 전체 리스트 행의 갯수 / 한 페이지에 보여질 행의 갯수  == 32;-->
+      [<a href="coun_search.do?page=${i}" >${i }</a>] <!-- [1] 누르면 1페이지로 이동하고 [2] 누르면 2페이지로 이동 이런식으로 쭉~ -->
+    </c:forEach>
+    
+    <br>
+      <c:choose>  
+        <c:when test="${page==1 }"> <!-- page값이 1일때  '이전'이라는 문자는 나오지만 클릭이 되지 않게 비활성화 되는거고-->
+                이전
+        </c:when>
+        <c:otherwise>
+         <a href="coun_search.do?page=${page-1 }">이전</a> <!-- '이전'버튼이 클릭된다는건 page값이 2이상이라는거. -->
+        </c:otherwise>
+      </c:choose>
+            
+      <c:if test="${page==totalPage }"><!-- 만약 page값이 totalPage와 같다면 '다음' 문자열이 생기고 -->
+              다음
       </c:if>
       
-      <c:forEach begin="${rStartPageRange }" end="${rStartPageRange+rPageRange-1 }" var="i">
-         <c:if test="${i<=totalPage }">
-            <c:if test="${rCurrentPage==i }">
-               [${i }]
-            </c:if>
-            <c:if test="${rCurrentPage!=i }">
-               <a href ="/JavaChefWeb/counsearch.do?rpage=${i }">[${i }]</a>
-            </c:if>
-         </c:if>
-      </c:forEach>
-         
-      <fmt:parseNumber var="pages" integerOnly="true" value="${totalPage/rPageRange}" />
-      <c:if test="${rPageRangeGroup-1 < pages }">
-         <a href ="/JavaChefWeb/counsearch.do?rpage=${tNext }">▶</a>
+      <c:if test="${page<totalPage }"> <!-- page값보다 totalPage값이 크다면 -->
+        <a href="coun_search.do?page=${page+1 }">다음</a> <!-- '다음 '문자열을 눌러서 다음 페이지로 이동할 수 있음. -->
       </c:if>
+	
+  <!-- ================================페이징 코드 시작 ============================================== -->  
  
 <a href="coun_con.do"><input type="button" value="쓰기"></a>
 
