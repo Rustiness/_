@@ -1,7 +1,9 @@
 package kr.hospi.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -63,4 +65,38 @@ SqlMapClient sqlMap;
 		return pitem;
 	}//PlasticItem
 	
+	 public List<PlasticItem> selectPage(int page, int recordCount){//list에 출력할 데이터
+		    int end = page*recordCount;//page = 1, recordCount(한 페이지 행 갯수) = 5 ==> int end = 5;
+		    int start = end-(recordCount-1);// end=5, recordCount = 5 ==> int start = 5-(5-1) = 1;
+		   
+		   /*    page    start     end
+		      1페이지 :    1       10
+		      2페이지 :   11       20
+		      3페이지 :   21       30
+		      4페이지 :   31       40
+		               end-9    page*10	      */
+		    
+		   List<PlasticItem> list=null;
+		   try {
+			   Map<String, Integer> map = new HashMap<>();
+			      map.put("start", start); //start = 1
+			      map.put("end", end); // end = 5      
+			      
+			   list = sqlMap.queryForList("plastic.selectPage", map);
+		   } catch (SQLException e) {
+			   e.printStackTrace();
+		   }	  
+		   return list;
+	   }//selectPage
+	   
+	   public int selectCount(){
+		  int count=0; 
+		   try {
+			count = (Integer)sqlMap.queryForObject("plastic.selectCount");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		  return count;
+	   
+	   }
 }

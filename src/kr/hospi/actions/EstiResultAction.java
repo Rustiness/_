@@ -47,7 +47,7 @@ public class EstiResultAction extends Action {
 		// 각 환자에 대한 성형시술 상세 기술
 	
 			pNO = (String) request.getParameter("pNO");
-			Estimate esti_result = dao.selectEstimate("PA00004");//pNO집어넣어야 함
+			Estimate esti_result = dao.selectEstimate("PA00070");//pNO집어넣어야 함
 			request.setAttribute("estimate", esti_result); //estimate 견적  창
 			
 			// EyeSurgery ptypeCode

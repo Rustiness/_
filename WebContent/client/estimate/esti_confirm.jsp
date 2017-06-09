@@ -6,12 +6,16 @@
 	<h3>나의 성형예상비용</h3>
 <script type="text/javascript" src="../_js/jquery-3.2.1.js"></script>
 <script type="text/javascript">
-//$(document).ready(function(){
-   // $("#div1").eq(0){
-     //   $("#div1").toggle();
-   // });
-//});
-  	
+ function myEye() {
+    var x = document.getElementById('eye');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+} 
+
+
  </script>
  	
  									
@@ -27,12 +31,11 @@
 <form action="esti_res.do" method="post">
 
 <a name='1'></a>
-	<button id="su">Toggle between hide() and show()</button>	
-	<h4 class="title_01_s pat30">
+<input type="button" onclick="myEye()">Eye</input><h4 class="title_01_s pat30">
 		<img alt="눈성형 " />
 	</h4>
-		
-	<div id="div1">
+
+	<div id="eye">
 	<table cellspacing='0' cellpadding='2' width=605 border="0">
 		<tr>
 			<td bgcolor='#D5C4E1' colspan='4' height='2'></td>
