@@ -1,3 +1,15 @@
+#main_info {
+	text-align: center;
+}
+
+.main_time {
+	width: 11vw;
+}
+
+.main_top{
+	width: 68vw;
+}
+
 .main_banner {
-	width: 34vw;
+	width: 39vw;
 }

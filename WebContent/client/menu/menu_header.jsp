@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
+<link href='client/_css/menu/menu.css' rel='stylesheet'/>
 <%-- menu_header.jsp --%>
 <table cellpadding="0" cellspacing="0">
 	<tr>
@@ -16,7 +17,7 @@
 		<td>
 			<%-- 로그인, 가입, 회원정보, 로그아웃 구역 시작 --%>
 			<div id="header_login">
-				<%if (session.getAttribute("user")==null) {%>
+				<%if (session.getAttribute("user") == null) {%>
 				<html:link action="/login">LOGIN</html:link>
 				/
 				<html:link action="/join_term">JOIN</html:link>
@@ -33,13 +34,21 @@
 		<td>
 			<!-- 메뉴 구역 시작-->
 			<div id="header_navi">
-				<b><html:link action="/intro">병원안내</html:link></b>
+				<b><html:link action="/intro">
+					<img class="menu_img" src="client/_images/menu/navi_1.gif"">
+				</html:link></b>
 				&nbsp;&nbsp;
-				<b><html:link action="/plaSur">성형정보</html:link></b>
+				<b><html:link action="/plaSur">
+					<img class="menu_img" src="client/_images/menu/navi_2.gif">
+				</html:link></b>
 				&nbsp;&nbsp;
-				<b><html:link action="/reser">진료예약</html:link></b>
+				<b><html:link action="/reser">
+					<img class="menu_img" src="client/_images/menu/navi_3.gif">
+				</html:link></b>
 				&nbsp;&nbsp;
-				<b><html:link action="/coun">온라인상담</html:link></b>
+				<b><html:link action="/coun">
+					<img class="menu_img" src="client/_images/menu/navi_4.gif">
+				</html:link></b>
 			</div>
 			<!-- 메뉴 구역 종료-->
 		</td><!-- navi -->
