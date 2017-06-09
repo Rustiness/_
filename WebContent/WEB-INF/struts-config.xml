@@ -96,7 +96,7 @@
 			         redirect="true"></forward>
 		</action>
 
-		<!-- 로그아웃 페이지 단순 포워딩 -->
+		<!-- 클라이언트~~로그아웃 페이지 단순 포워딩 -->
 		<action path="/logout" forward="/client/member/logout.jsp"/>
 
 		<!-- 클라이언트~~회원정보 -->
@@ -249,6 +249,9 @@
 			<forward name="loginOK" path="/ad_reser.do" redirect="true"></forward>
 			<forward name="loginNO" path="/admin.do"></forward>
 		</action>
+		
+		<!-- 어드민~~로그아웃 페이지 단순 포워딩 -->
+		<action path="/ad_logout" forward="/admin/employee/logout.jsp"/>
 
 		<!-- 어드민~~회원정보 -->
 		<action path="/ad_mem"

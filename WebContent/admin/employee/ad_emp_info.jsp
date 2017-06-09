@@ -9,6 +9,13 @@
 <link href="admin/_css/employee.css" rel="stylesheet" type="text/css"/>
 <script src="admin/_js/employee.js" rel="script" type="text/javascript"></script>
 <%-- ad_emp_info.jsp --%>
+<c:if test="${admin==null}">
+	<script>
+		alert("관리자 로그인 후 이용가능합니다.");
+		location.href='admin.do';
+	</script>
+</c:if>
+<c:if test="${admin!=null}">
 <h3>::사원 상세정보::</h3>
 <hr style="color: deeppink">
 <center>
@@ -105,3 +112,4 @@
 		</tr>
 	</table>
 </center>
+</c:if>
