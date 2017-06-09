@@ -27,6 +27,7 @@
 				<li><html:link action="/ad_plasIt">성형시술:기준</html:link></li>
 				<li><html:link action="/ad_grade">관리등급:기준</html:link></li>
 			</ul>
+			<h3><html:link action="/ad_logout">로그아웃</html:link></h3>
 		</div>
 	</div>
 </center>
