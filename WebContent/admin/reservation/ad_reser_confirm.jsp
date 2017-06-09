@@ -3,94 +3,94 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- reser_confirm ½ºÅ¸ÀÏ -->
+<!-- reser_confirm ìŠ¤íƒ€ì¼ -->
 <link href='admin/_css/common.css' rel='stylesheet' />
 <link href='admin/_css/reservation.css' rel='stylesheet' />
 <link href='admin/_css/reservation_error.css' rel='stylesheet' />
-<!-- datepicker°ü·Ã -->
+<!-- datepickerê´€ë ¨ -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="//code.jquery.com/jquery-2.2.4.js"></script>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- datepicker°ü·Ã Script -->
+<!-- datepickerê´€ë ¨ Script -->
 <script src="admin/_js/reservation_Datepicker.js" rel="script" type="text/javascript"></script>
 <script>
-	function openIdCheck(){//ID Á¸Àç¿©ºÎ È®ÀÎ
+	function openIdCheck(){//ID ì¡´ìž¬ì—¬ë¶€ í™•ì¸
 		var mID=document.getElementById("mID").value;
 		window.open("/JavaChefWeb/admin/member/ad_idcheck.jsp?mID="+mID,"idCheck","left=400,top=200,width=300,height=100,resizable=yes");
 	}
 </script>
 
-<%-- reser_confirm.jsp(¿¹¾à½ÅÃ»ÆäÀÌÁö) --%>
+<%-- reser_confirm.jsp(ì˜ˆì•½ì‹ ì²­íŽ˜ì´ì§€) --%>
 <div class="reser_content">
 	<h3 class="con_title">
-		<img alt="¿¹¾àµî·Ï" src="admin/_images/ad_reser_confirm.PNG">
+		<img alt="ì˜ˆì•½ë“±ë¡" src="admin/_images/ad_reser_confirm.PNG">
 	</h3>
 	<form action="reserIAction.do?st=1" method="POST">
 	
-	 <!-- ###############################È¸¿ø ¼±ÅÃ°ø°£################################# -->
+	 <!-- ###############################íšŒì› ì„ íƒê³µê°„################################# -->
 		<p>
-			<b>1. È¸¿ø¼±ÅÃ</b>
+			<b>1. íšŒì›ì„ íƒ</b>
 		</p>
 		<hr size="2" color="#747474">
 		<p style="padding-left: 40px;">
-			È¸¿øID <input type="text" name="mID" id="mID">
+			íšŒì›ID <input type="text" name="mID" id="mID">
 			<!-- <input name="mID_verified" id="mID_verified" type="hidden"/> -->
-			 <input type="button" value="È¸¿øÈ®ÀÎ" class="btSty" onclick="openIdCheck()">
+			 <input type="button" value="íšŒì›í™•ì¸" class="btSty" onclick="openIdCheck()">
 		</p>
 		<hr size="0.5" color="#D5D5D5" style="margin-bottom: 50px;">
-	 <!-- ###############################È¸¿ø ¼±ÅÃ°ø°£################################# -->
+	 <!-- ###############################íšŒì› ì„ íƒê³µê°„################################# -->
 
-	 <!-- ###############################Áø·á°ú¸ñ ¼±ÅÃ°ø°£################################# -->
+	 <!-- ###############################ì§„ë£Œê³¼ëª© ì„ íƒê³µê°„################################# -->
 		<p>
-			<b>2. Áø·á°ú¸ñ ¼±ÅÃ</b>
+			<b>2. ì§„ë£Œê³¼ëª© ì„ íƒ</b>
 		<hr size="2" color="#747474">
 		<p style="padding-left: 40px;">
-			Áø·á°ú¸ñ <select name="rCate" id="rCate">
-				<option>=== Áø·á°ú¸ñ ¼±ÅÃ ===</option>
-				<option value="1">´«¼ºÇü</option>
-				<option value="2">ÄÚ¼ºÇü</option>
-				<option value="3">¾È¸éÀ±°û¼ºÇü</option>
-				<option value="4">°¡½¿¼ºÇü</option>
-				<option value="5">Ã¼Çü¼ºÇü</option>
+			ì§„ë£Œê³¼ëª© <select name="rCate" id="rCate">
+				<option>=== ì§„ë£Œê³¼ëª© ì„ íƒ ===</option>
+				<option value="1">ëˆˆì„±í˜•</option>
+				<option value="2">ì½”ì„±í˜•</option>
+				<option value="3">ì•ˆë©´ìœ¤ê³½ì„±í˜•</option>
+				<option value="4">ê°€ìŠ´ì„±í˜•</option>
+				<option value="5">ì²´í˜•ì„±í˜•</option>
 			</select>
 		</p>
 		<hr size="0.5" color="#D5D5D5" style="margin-bottom: 50px;">
-	 <!-- ###############################Áø·á°ú¸ñ ¼±ÅÃ°ø°£################################# -->
+	 <!-- ###############################ì§„ë£Œê³¼ëª© ì„ íƒê³µê°„################################# -->
 
-	 <!-- ###############################¿¹¾àÀÏ ¹× ½Ã°£ ¼±ÅÃ°ø°£################################# -->
+	 <!-- ###############################ì˜ˆì•½ì¼ ë° ì‹œê°„ ì„ íƒê³µê°„################################# -->
 		<p>
-			<b>3. ¿¹¾àÀÏ ¹× ½Ã°£ ¼±ÅÃ</b>
+			<b>3. ì˜ˆì•½ì¼ ë° ì‹œê°„ ì„ íƒ</b>
 		</p>
 		<hr size="2" color="#747474">
 		
 		<div id="timepicker" style="display: none;">
-			<!-- ³¯Â¥ ¼±ÅÃ½Ã¸¸ º¸ÀÌ±â -->
+			<!-- ë‚ ì§œ ì„ íƒì‹œë§Œ ë³´ì´ê¸° -->
 			<input type="hidden" id="rDate" name="rDate">
 			<p style="margin-left: 29px;">
-				¿¹¾à½Ã°£ <select name="rTime" id="rTime">
+				ì˜ˆì•½ì‹œê°„ <select name="rTime" id="rTime">
 					<!-- disabled="disabled" -->
-					<!-- DB¿¡ ¿¹¾àµÈ ½Ã°£ ÀÖ´ÂÁö È®ÀÎÈÄ Ãâ·Â 
-										 javascript¶û DB¶û ¿¬°á½Ã ¾²´Â°Å Ajax-->
-					<option>=== ¿¹¾à½Ã°£ ¼±ÅÃ ===</option>
-					<option value="09:30-10:00" class="09">(¿ÀÀü¿¹¾à) 09:30-10:00</option>
-					<option value="10:30-11:00" class="10">(¿ÀÀü¿¹¾à) 10:30-11:00</option>
-					<option value="11:30-12:00" class="11">(¿ÀÀü¿¹¾à) 11:30-12:00</option>
-					<option value="13:30-14:00" class="13">(¿ÀÈÄ¿¹¾à) 13:30-14:00</option>
-					<option value="14:30-15:00" class="14">(¿ÀÈÄ¿¹¾à) 14:30-15:00</option>
-					<option value="15:30-16:00" class="15">(¿ÀÈÄ¿¹¾à) 15:30-16:00</option>
-					<option value="16:30-17:00" class="16">(¿ÀÈÄ¿¹¾à) 16:30-17:00</option>
-					<option value="17:30-18:00" class="17">(¿ÀÈÄ¿¹¾à) 17:30-18:00</option>
+					<!-- DBì— ì˜ˆì•½ëœ ì‹œê°„ ìžˆëŠ”ì§€ í™•ì¸í›„ ì¶œë ¥ 
+										 javascriptëž‘ DBëž‘ ì—°ê²°ì‹œ ì“°ëŠ”ê±° Ajax-->
+					<option>=== ì˜ˆì•½ì‹œê°„ ì„ íƒ ===</option>
+					<option value="09:30-10:00" class="09">(ì˜¤ì „ì˜ˆì•½) 09:30-10:00</option>
+					<option value="10:30-11:00" class="10">(ì˜¤ì „ì˜ˆì•½) 10:30-11:00</option>
+					<option value="11:30-12:00" class="11">(ì˜¤ì „ì˜ˆì•½) 11:30-12:00</option>
+					<option value="13:30-14:00" class="13">(ì˜¤í›„ì˜ˆì•½) 13:30-14:00</option>
+					<option value="14:30-15:00" class="14">(ì˜¤í›„ì˜ˆì•½) 14:30-15:00</option>
+					<option value="15:30-16:00" class="15">(ì˜¤í›„ì˜ˆì•½) 15:30-16:00</option>
+					<option value="16:30-17:00" class="16">(ì˜¤í›„ì˜ˆì•½) 16:30-17:00</option>
+					<option value="17:30-18:00" class="17">(ì˜¤í›„ì˜ˆì•½) 17:30-18:00</option>
 				</select>
 			</p>
 		</div>
 		
 		<div id="datepicker">
 		</div>
-	 <!-- ###############################¿¹¾àÀÏ ¹× ½Ã°£ ¼±ÅÃ°ø°£################################# -->
+	 <!-- ###############################ì˜ˆì•½ì¼ ë° ì‹œê°„ ì„ íƒê³µê°„################################# -->
 		
 		<p id="btn">
-			<input type="submit" value="¿¹¾àÇÏ±â" class="btSty"/>
-			<input type="reset" value="Ãë¼ÒÇÏ±â" class="btSty"/>
+			<input type="submit" value="ì˜ˆì•½í•˜ê¸°" class="btSty"/>
+			<input type="reset" value="ì·¨ì†Œí•˜ê¸°" class="btSty"/>
 		</p>
 	</form>
 </div>

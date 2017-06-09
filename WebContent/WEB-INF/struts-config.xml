@@ -246,7 +246,7 @@
 		        scope="request"
 		        validate="true"
 		        input="/admin.do">
-			<forward name="loginOK" path="/ad_coun.do"></forward>
+			<forward name="loginOK" path="/ad_reser.do" redirect="true"></forward>
 			<forward name="loginNO" path="/admin.do"></forward>
 		</action>
 
