@@ -2,12 +2,15 @@
 <%-- coun_confirm.jsp --%>
 
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<c:if test="${user==null}">
+	<script>
+		alert("로그인 후 이용가능합니다.");
+		location.href='login.do';
+	</script>
+</c:if>
+<c:if test="${user!=null}">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <script type="text/javascript">
  function validcheck(){
 	var f = document.form;
@@ -33,8 +36,6 @@
 } 
 
 </script>
-</head>
-<body>
 <h3>온라인 상담등록</h3>
 <hr>
 <form  method="POST" name="form"> <!-- action="coun.do" -->
@@ -91,5 +92,4 @@
 <input type="reset" value="초기화">
 <a href="coun.do"><input type="button" value="나가기"/></a>
 </form>
-</body>
-</html>
+</c:if>

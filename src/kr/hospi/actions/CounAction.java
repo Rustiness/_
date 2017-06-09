@@ -12,11 +12,10 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import kr.hospi.beans.Counsel;
+import kr.hospi.beans.Member;
 import kr.hospi.dao.CounselDAO;
 
 public class CounAction extends Action {
-	int rCurrentPage;
-	int rPageSize=5;
 
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
@@ -46,59 +45,59 @@ public class CounAction extends Action {
 /*		List<Counsel> list = dao.selectAll();	
 			session.setAttribute("list",list);*/
 			
-	//=====================페이징 작업 코드 부분		
+	//=====================검색 시 실행할 페이징 작업 코드 부분		
 		   
-		         String cPage = request.getParameter("rpage");
-		         
-		         
-		         if(cPage==null){
-		            rCurrentPage=1;
-		         }else{
-		            rCurrentPage = Integer.parseInt(cPage);
-		         }
-		         
-		         int rPageRange=5;
-		         int rPageRangeGroup=0;
-		         int rStartPageRange=1;
-		         
-		         if(rCurrentPage%rPageRange==0){
-		            rPageRangeGroup = rCurrentPage/rPageRange;
-		         }else{
-		            rPageRangeGroup = rCurrentPage/rPageRange+1;
-		         }
-		         
-		         rStartPageRange = (rPageRangeGroup-1)*rPageRange+1;
-		         
-		         int tPrev = rStartPageRange -1;
-		         int tNext = rStartPageRange + rPageRange;
-		         
-		         int totalRecord = dao.counCount();
-		         int totalPage=totalRecord/rPageSize;
-		         if(totalRecord%rPageSize>0){
-		            totalPage++;
-		         }
-		         List<Counsel> list2 = dao.counPage(rCurrentPage, rPageSize);
-		         
-		         session.setAttribute("list",list2);
-		         session.setAttribute("rCurrentPage", rCurrentPage);
-		         session.setAttribute("totalPage", totalPage);
-		         session.setAttribute("rStartPageRange", rStartPageRange);
-		         session.setAttribute("rPageRangeGroup", rPageRangeGroup);
-		         session.setAttribute("tPrev", tPrev);
-		         session.setAttribute("tNext", tNext);
-		         session.setAttribute("rPageRange", rPageRange);
-		         
-		         //forward = mapping.findForward("rlist");
-	//=====================페이징 작업 코드 부분 끝		
+			  String pageStr = request.getParameter("page"); //이건 어디서 값을 얻어오는건지 잘;;
+			   
+			  int page; 
+			  if(pageStr==null){
+				  page=1;
+			  }else{
+			      page= Integer.parseInt(pageStr);
+			  }
+			  System.out.println("2");
+			  
+			  int startPage = (page - (page-1)%5);
+			  int endPage = startPage + 4;
+			  int recordCount = 5; // 한 페이지에 보여질 리스트 행의 갯수
+			  int totalRecord= dao.selectCount(); // 전체 리스트 행의 갯수 , 현재 DB에 저장되어있어서 불러올때 나올 selectAll 갯수 같은 개념.
+			  int totalPage=totalRecord/recordCount; // 전체페이지 = 전체 리스트 행의 갯수 / 한 페이지에 보여질 행의 갯수  ==> 전체 리스트 행 갯수 32개이면 / 5 
+			  if(totalRecord%recordCount>0){ //전체 행 갯수 % 한 페이지 행 갯수 > 0 = 즉, 전체 갯수는 3개인데 한 페이지 행 갯수가 5개이면 페이징이 필요 없다. [1][2] 이런식으로 필요가 없지.
+				  totalPage++; //그런데 전체 행 갯수가 한 페이지 행 갯수보다 크면 페이징 코드 [1] 생성되도록. 
+			  }
+			  System.out.println("totalRecord :"+totalRecord);
+			  //DB에서 전체 검색(조회)
+			  List<Counsel> pagelist = dao.selectPage(page,recordCount); //page= 1, recordCount(한페이지 행갯수)=5
+			  
+			  System.out.println("3");
+			  
+			  
+			  session.setAttribute("startPage", startPage);	
+			  session.setAttribute("endPage", endPage);	
+			  session.setAttribute("list", pagelist);	
+			  session.setAttribute("page", page);  //"/client/counsel/coun_list.jsp"
+			  session.setAttribute("totalPage", totalPage); //totalPage = 전체 리스트 행의 갯수 / 한 페이지에 보여질 행의 갯수 로써 행 갯수가 증가하면 페이징[1][2][3] 이런식으로 증가하도록 값을 보내주는것.
+			  System.out.println("dao.selectPage : "+pagelist);
+			  System.out.println("4");
+			  System.out.println("page :"+page);
+			  System.out.println("totalPage :"+totalPage);
+			  
+	//=====================검색 시 실행할 페이징 작업 코드 부분 끝		
 		}else if(action.equals("select")){
+			//Counsel bean = new Counsel();
+			//String mID_check=bean.getmID();
+			//String mID = (Member)request.getSession().getAttribute("user").getmNO();
+			//if(mID=mID_check){
+			//	게시글열림
+				
 			//조회수 증가전 bean
-			Counsel bean = dao.select(request.getParameter("cNO"));	
-			 dao.hitUpdate(bean);//조회수 증가
-
-			//조회수 증가후 bean
-			Counsel bean2 = dao.select(request.getParameter("cNO"));	
-		    
-			session.setAttribute("choice",bean2);
+				Counsel bean = dao.select(request.getParameter("cNO"));	
+				dao.hitUpdate(bean);//조회수 증가
+				
+				//조회수 증가후 bean
+				Counsel bean2 = dao.select(request.getParameter("cNO"));	
+				
+				session.setAttribute("choice",bean2);
 			
 		}else if(action.equals("writer")){
 			String search_name = request.getParameter("word");//검색
@@ -106,19 +105,60 @@ public class CounAction extends Action {
 			//글 검색 부분
 			String field = request.getParameter("field");
 			//System.out.println("field: "+field);
-		
-			
+
 				List<Counsel> searchlist =  dao.selectName(search_name);
 				 
 				 System.out.println("검색리스트: "+searchlist);
 				session.setAttribute("list2",searchlist);
+				
+				//=====================검색 시 실행할 페이징 작업 코드 부분		
+				   
+				  String pageStr = request.getParameter("page"); //이건 어디서 값을 얻어오는건지 잘;;
+				   
+				  int page; 
+				  if(pageStr==null){
+					  page=1;
+				  }else{
+				      page= Integer.parseInt(pageStr);
+				  }
+				  System.out.println("2");
+				  
+				  int startPage = (page - (page-1)%5);
+				  int endPage = startPage + 4;
+				  int recordCount = 5; // 한 페이지에 보여질 리스트 행의 갯수
+				  int totalRecord= dao.selectCount(); // 전체 리스트 행의 갯수 , 현재 DB에 저장되어있어서 불러올때 나올 selectAll 갯수 같은 개념.
+				  int totalPage=totalRecord/recordCount; // 전체페이지 = 전체 리스트 행의 갯수 / 한 페이지에 보여질 행의 갯수  ==> 전체 리스트 행 갯수 32개이면 / 5 
+				  if(totalRecord%recordCount>0){ //전체 행 갯수 % 한 페이지 행 갯수 > 0 = 즉, 전체 갯수는 3개인데 한 페이지 행 갯수가 5개이면 페이징이 필요 없다. [1][2] 이런식으로 필요가 없지.
+					  totalPage++; //그런데 전체 행 갯수가 한 페이지 행 갯수보다 크면 페이징 코드 [1] 생성되도록. 
+				  }
+				  System.out.println("totalRecord :"+totalRecord);
+				  //DB에서 전체 검색(조회)
+				  List<Counsel> pagelist = dao.selectPage(page,recordCount); //page= 1, recordCount(한페이지 행갯수)=5
+				  
+				  System.out.println("3");
+				  
+				  
+				  session.setAttribute("startPage", startPage);	
+				  session.setAttribute("endPage", endPage);	
+				  session.setAttribute("list", pagelist);	
+				  session.setAttribute("page", page);  //"/client/counsel/coun_list.jsp"
+				  session.setAttribute("totalPage", totalPage); //totalPage = 전체 리스트 행의 갯수 / 한 페이지에 보여질 행의 갯수 로써 행 갯수가 증가하면 페이징[1][2][3] 이런식으로 증가하도록 값을 보내주는것.
+				  System.out.println("dao.selectPage : "+pagelist);
+				  System.out.println("4");
+				  System.out.println("page :"+page);
+				  System.out.println("totalPage :"+totalPage);
+				  
+		//=====================검색 시 실행할 페이징 작업 코드 부분 끝				
 				
 			
 		}else if(action.equals("insert")){
 			Counsel bean = new Counsel();
 			
 			bean.setpTypeNO(request.getParameter("pTypeNO"));
-			bean.setmNO(request.getParameter("mNO"));
+			
+			Member mem = (Member)request.getSession().getAttribute("user");
+			String mNO = mem.getmNO();
+			bean.setmNO(mNO);
 			bean.setcTitle(request.getParameter("cTitle"));
 			bean.setcContent(request.getParameter("cContent"));
 			bean.setState(request.getParameter("state"));
@@ -128,7 +168,7 @@ public class CounAction extends Action {
 				
 			 
 			if (dao.insert(bean)){//dao에 bean값이 insert 됐다면
-				List<Counsel> list2 = dao.counPage(rCurrentPage, rPageSize);
+		          List<Counsel> list2 = dao.selectAll();
 			
 			//list.add(bean);
 				

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html"%>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- reser_confirm 스타일 -->
 <link href='admin/_css/common.css' rel='stylesheet' />
@@ -21,6 +22,13 @@
 </script>
 
 <%-- reser_confirm.jsp(예약신청페이지) --%>
+<c:if test="${admin==null}">
+	<script>
+		alert("관리자 로그인 후 이용가능합니다.");
+		location.href='admin.do';
+	</script>
+</c:if>
+<c:if test="${admin!=null}">
 <div class="reser_content">
 	<h3 class="con_title">
 		<img alt="예약등록" src="admin/_images/ad_reser_confirm.PNG">
@@ -94,3 +102,4 @@
 		</p>
 	</form>
 </div>
+</c:if>
