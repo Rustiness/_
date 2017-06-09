@@ -31,7 +31,9 @@
 		var tel2Exp = /^[\d]{3,4}$/g;
 		var tel3Exp = /^[\d]{4}$/g;
 		var email1Exp = /^[a-zA-Z0-9]{6,15}$/;
-		var email2Exp = /^[a-z0-9-]+\.+[a-z0-9]{2,4}$/;
+		var email2Exp =/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+
+
 		var birth1Exp = /^[\d]{4}$/g;
 		var birth2Exp = /^[\d]{2}$/g;
 		var birth3Exp = /^[\d]{2}$/g;
@@ -45,7 +47,7 @@
 		 birth3=숫자만 2자리가능
 		 */
 
-
+/*
 		if (f.mID.value == '') {//아이디체크
 			alert('아이디를 입력!!');
 
@@ -96,7 +98,7 @@
 			alert('핸드폰 번호 확인!!');
 
 
-		} else if (!email1Exp.test(f.email1.value)) {
+		} else */if (!email1Exp.test(f.email1.value)) {
 
 			alert('첫번째칸 형식 오류');
 			f.email1.focus();
@@ -104,7 +106,7 @@
 
 		} else if (email1Exp.test(f.email1.value)) {
 
-			if (f.email2.value == '' && f.select_email.value == '직접입력') {
+			if (f.email2.value=='' && f.select_email.value=='직접입력') {
 
 				alert('둘다 null값안됨');
 
@@ -113,16 +115,13 @@
 
 			} else if ((f.email2.value == '') && !(f.select_email.value == '직접입력')) {
 
-				if (email2Exp.test(f.email2.value)) {
 					f.submit();
 
-
-				} else {
-					alert('email 두번째칸 형식 오류!')
-				}
 			} else if (!(f.email2.value == '') && f.select_email.value == '직접입력') {
 				//폼내에 유효한 데이터가 입력 되었다면
+				if(email2.text(f.email2.value)){
 				f.submit();//<form>태그내의 action속성의 URL로 폼데이터 전송!!
+				}
 			}
 
 		}
