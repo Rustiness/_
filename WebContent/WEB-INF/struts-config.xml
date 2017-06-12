@@ -10,8 +10,8 @@
 	<form-beans>
 		<!-- reservation form등록 시작!! -->
 		<!-- 고객용: 예약(insert) ActionForm 등록 -->
-    	<form-bean name="reserInsertForm" 
-    			   type="kr.hospi.forms.ReserActionForm"></form-bean> 
+		<form-bean name="reserInsertForm"
+		           type="kr.hospi.forms.ReserActionForm"></form-bean>
 		<!-- reservation form등록 종료!! -->
 
 		<!-- 고객용: 로그인 액션폼(로그인 유효성 검사) -->
@@ -96,7 +96,7 @@
 			         redirect="true"></forward>
 		</action>
 
-		<!-- 클라이언트~~로그아웃 페이지 단순 포워딩 -->
+		<!-- 로그아웃 페이지 단순 포워딩 -->
 		<action path="/logout" forward="/client/member/logout.jsp"/>
 
 		<!-- 클라이언트~~회원정보 -->
@@ -157,7 +157,7 @@
 		        type="kr.hospi.actions.CounAction">
 			<forward name="success" path=".menu_counsel"></forward>
 		</action>
-		
+
 		<!--클라이언트~~온라인상담 검색창-->
 		<action path="/coun_search"
 		        type="kr.hospi.actions.CounAction">
@@ -193,13 +193,13 @@
 		<!-- 클라이언트~~예약목록 -->
 		<action path="/reser_info"
 		        type="kr.hospi.actions.ReserSelectAction">
-		    <forward name="login" path="/login.do" redirect="true"></forward>
+			<forward name="login" path="/login.do" redirect="true"></forward>
 			<forward name="reser_info" path=".menu_reservation_info"></forward>
 		</action>
 
 		<!-- 클라이언트~~예약수정 -->
 		<action path="/reser_mod"
-				type="kr.hospi.actions.ReserSelectAction">
+		        type="kr.hospi.actions.ReserSelectAction">
 			<forward name="reser_mod" path=".menu_reservation_modify"></forward>
 		</action>
 
@@ -211,21 +211,21 @@
 
 		<!-- 고객자용: 성형타입 Action(plasticItemsinsert) 등록 -->
 		<!-- 클라이언트~~견적결과보기 -->
-		<action path="/esti_res" 
-				type="kr.hospi.actions.EstiClientAction"
-				name="estiClientForm"
-				scope="request"
-      			validate="true"
-      			input="/esti_res.do">
-				<forward name="success" path="/esti_con.do"></forward>
-				<forward name="fail" path="/esti.do"></forward>
-			</action>
+		<action path="/esti_res"
+		        type="kr.hospi.actions.EstiClientAction"
+		        name="estiClientForm"
+		        scope="request"
+		        validate="true"
+		        input="/esti_res.do">
+			<forward name="success" path="/esti_con.do"></forward>
+			<forward name="fail" path="/esti.do"></forward>
+		</action>
 		<!-- 클라이언트~~견적 완료 후 관리자 창에서 출력Complete .ad_menu_estimate -->
 		<action path="/esti_con"
 		        type="kr.hospi.actions.EstiResultAction">
-			<forward name="success" path=".menu_estimate_pcs"></forward>	
-		</action>	
-	
+			<forward name="success" path=".menu_estimate_pcs"></forward>
+		</action>
+
 		<!-- 클라이언트~~병원소개 -->
 		<action path="/intro"
 		        forward=".menu_hospinfo"/>
@@ -279,7 +279,7 @@
 
 		<!-- 어드민~~예약등록 -->
 		<action path="/ad_reser_con"
-				forward=".ad_menu_reservation_confirm"/>
+		        forward=".ad_menu_reservation_confirm"/>
 
 		<!-- 어드민~~예약목록&예약상세 -->
 		<action path="/ad_reser"
@@ -290,20 +290,20 @@
 
 		<!-- 어드민~~예약수정 -->
 		<action path="/ad_reser_mod"
-				type="kr.hospi.actions.ReserSelectAction">
+		        type="kr.hospi.actions.ReserSelectAction">
 			<forward name="ad_reser_mod" path=".ad_menu_reservation_modify"></forward>
 		</action>
 
 		<!-- 어드민~~견적 완료  출력  -->
-		<action path="/ad_esti" 
-			 	type="kr.hospi.actions.EstiAction"
-		   		scope="request"
-				validate="true"
-				input=".ad_estimate_list">
-			<forward name="selectAll" path=".ad_estimate_list"></forward>	
-			<forward name="selectInfo" path=".ad_estimate_info"></forward>	
-		</action>	
-			
+		<action path="/ad_esti"
+		        type="kr.hospi.actions.EstiAction"
+		        scope="request"
+		        validate="true"
+		        input=".ad_estimate_list">
+			<forward name="selectAll" path=".ad_estimate_list"></forward>
+			<forward name="selectInfo" path=".ad_estimate_info"></forward>
+		</action>
+
 		<!-- 어드민~~사원정보 -->
 		<action path="/ad_emp"
 		        type="kr.hospi.actions.EmpAction"
@@ -367,7 +367,12 @@
 
 		<!-- 어드민~~관리등급:기준 -->
 		<action path="/ad_grade"
-		        forward=".ad_menu_grade"/>
+		        type="kr.hospi.actions.EmpAction"
+		        scope="request"
+		        validate="true"
+		        input=".ad_menu_grade">
+			<forward name="selGradeAll" path=".ad_menu_grade"></forward>
+		</action>
 		<!-- Tiles 타일즈 액션 등록 종료!! -->
 
 
@@ -379,21 +384,21 @@
 		        scope="request"
 		        validate="true"
 		        input="/reser.do">
-		    <forward name="login" path="/login.do" redirect="true"></forward>
-    	  	<forward name="successAd" path="/ad_reser.do" redirect="true"></forward>
-    	  	<forward name="failAd" path="/ad_reser_con.do" redirect="true"></forward>
-    	  	<forward name="success" path="/reser_info.do?reser=mInfo" redirect="true"></forward>
-    	  	<forward name="fail" path="/reser.do" redirect="true"></forward>
-      	</action>
+			<forward name="login" path="/login.do" redirect="true"></forward>
+			<forward name="successAd" path="/ad_reser.do" redirect="true"></forward>
+			<forward name="failAd" path="/ad_reser_con.do" redirect="true"></forward>
+			<forward name="success" path="/reser_info.do?reser=mInfo" redirect="true"></forward>
+			<forward name="fail" path="/reser.do" redirect="true"></forward>
+		</action>
 
 		<!-- 고객&관리자용: 예약 Action(update) 등록 -->
-    	<action path="/reserUAction" 
-      			type="kr.hospi.actions.ReserUpdateAction">
-    	  	<forward name="success" path="/reser_info.do?reser=mInfo" redirect="true"></forward>
-    	  	<forward name="fail" path="/reser_mod.do" redirect="true"></forward>
-    	  	<forward name="successAd" path="/ad_reser.do?reser=arInfo" redirect="true"></forward>
-    	  	<forward name="failAd" path="/ad_reser_mod.do?reser=arInfo" redirect="true"></forward>
-      	</action>
+		<action path="/reserUAction"
+		        type="kr.hospi.actions.ReserUpdateAction">
+			<forward name="success" path="/reser_info.do?reser=mInfo" redirect="true"></forward>
+			<forward name="fail" path="/reser_mod.do" redirect="true"></forward>
+			<forward name="successAd" path="/ad_reser.do?reser=arInfo" redirect="true"></forward>
+			<forward name="failAd" path="/ad_reser_mod.do?reser=arInfo" redirect="true"></forward>
+		</action>
 		<!-- reservation액션등록 종료!! -->
 
 	</action-mappings>

@@ -8,7 +8,7 @@
 			<%-- 로고 이미지 시작 --%>
 			<html:link action="/client">
 				<div id="logo">
-					로고이미지
+					<img class="main_logo" src="client/_images/main/main_javachef.png"">
 				</div>
 			</html:link>
 			<%-- 로고 이미지 종료 --%>

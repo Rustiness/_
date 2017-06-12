@@ -8,6 +8,7 @@
 	<link href="admin/_css/common.css" rel="stylesheet" type="text/css"/>
 	<script src="admin/_js/jquery-3.2.1.min.js" rel="script" type="text/javascript"></script>
 	<script src="admin/_js/ajax2.js" rel="script" type="text/javascript"></script>
+	<script src="admin/_js/index.js" rel="script" type="text/javascript"></script>
 </head>
 <%-- admin/index.jsp --%>
 <body>

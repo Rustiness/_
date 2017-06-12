@@ -56,9 +56,13 @@ SELECT * FROM Employee;
 -- 데이터 조회 (컬럼명 기입)
 SELECT eNo, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state FROM employee;
 
+-- SELECT eNO, gName
+-- FROM Employee INNER JOIN Grade
+-- USING (gNO);
+
 -- 데이터 변경
-UPDATE employee SET eNO, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state
-WHERE eNo = #eNO
+-- UPDATE Employee SET eNO, eID, pass, name, birth, sex, tel, email, position, gNO, hireDate, latestDate, retireDate, state
+-- WHERE eNo = eNO
 
 
 

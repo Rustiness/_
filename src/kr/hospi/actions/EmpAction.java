@@ -1,6 +1,7 @@
 package kr.hospi.actions;
 
 import kr.hospi.beans.Employee;
+import kr.hospi.beans.Grade;
 import kr.hospi.dao.EmployeeDAO;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -36,6 +37,7 @@ public class EmpAction extends Action {
 		EmployeeDAO dao = new EmployeeDAO();
 		ActionForward forward = null; // 이동할 페이지 저장
 		List<Employee> list = null;
+		List<Grade> glist = null;
 		String eNO = null; // 사원 식별번호
 		Employee employee; // 사원 정보
 
@@ -120,7 +122,11 @@ public class EmpAction extends Action {
 				} else {
 					forward = mapping.findForward("fail");
 				}
-
+				break;
+			case "glist":
+				glist = dao.selGradeAll();
+				request.setAttribute("gradelist", glist);
+				forward = mapping.findForward("selGradeAll");
 				break;
 		}//switch
 

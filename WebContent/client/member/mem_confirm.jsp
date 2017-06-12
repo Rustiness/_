@@ -79,7 +79,7 @@
                                비밀번호찾기질문  <span class="c_red">*</span>
            </td>
               <td class="line"><!--비밀번호 찾기  질문항목들  -->
-              	 <input type="text" name="qNO" value="${user.qNO }" size="40" readonly>
+              	 <input type="text" name="qNO" value="${user.qContent }" size="40" readonly>
               	 
               	       
               </td>

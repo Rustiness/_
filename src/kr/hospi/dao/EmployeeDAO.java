@@ -3,6 +3,7 @@ package kr.hospi.dao;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import iba.conf.ChefSqlMapClient;
 import kr.hospi.beans.Employee;
+import kr.hospi.beans.Grade;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -59,4 +60,14 @@ public class EmployeeDAO {
 		}
 		return false;
 	}//insEmpInfo
+
+	public List<Grade> selGradeAll() {//전체 관리등급 리스트
+		List<Grade> list = null;
+		try {
+			list = (List<Grade>) sqlMap.queryForList("emp.selGradeAll");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//selGradeAll
 }

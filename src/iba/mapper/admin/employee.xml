@@ -9,6 +9,7 @@
 <sqlMap namespace="emp">
 	<!-- employee.xml -->
 	<typeAlias alias="EmpBeans" type="kr.hospi.beans.Employee"/>
+	<typeAlias alias="GradeBeans" type="kr.hospi.beans.Grade"/>
 
 	<!-- 사원 정보 검색 -->
 	<select id="selectAll" resultClass="EmpBeans">
@@ -37,4 +38,11 @@
 		INSERT INTO Employee (eNO, eID, pass, name, birth, sex, tel, email, position, hireDate, state)
 		VALUES('EA'||LPAD(emp_seq.nextval,5,0),#eID#, #pass#, #name#, #birth#, #sex#, #tel#, #email#, #position#, #hireDate#, #state#)
 	</insert>
+
+	<!-- 관리등급 검색 -->
+	<select id="selGradeAll" resultClass="GradeBeans">
+		SELECT gNO, gName, gMemo
+		FROM Grade
+		ORDER BY gNO ASC
+	</select>
 </sqlMap>

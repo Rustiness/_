@@ -6,6 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>JAVACHEF성형외과</title>
 	<link href='client/_css/common.css' rel='stylesheet'/>
+	<script src="admin/_js/index.js" rel="script" type="text/javascript"></script>
 </head>
 <%-- client/index.jsp --%>
 <body>
