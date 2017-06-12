@@ -14,6 +14,7 @@ import org.apache.struts.action.ActionMapping;
 
 
 import kr.hospi.beans.Estimate;
+import kr.hospi.beans.Member;
 import kr.hospi.beans.PlasticItem;
 import kr.hospi.dao.EstimateDAO;
 import kr.hospi.dao.PlasticItemDAO;
