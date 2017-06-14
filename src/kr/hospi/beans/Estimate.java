@@ -9,6 +9,7 @@ import java.sql.Date;
 public class Estimate {
 	
 	private String pNO;
+	private String mNO;
 	private Date pDate;
 	
 	private String pEyeItem; 
@@ -21,10 +22,11 @@ public class Estimate {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Estimate(String pNO, Date pDate, String pEyeItem, String pNoseItem, String pFaceItem, String pBodyItem,
-			String pBreastItem, double price) {
+	public Estimate(String pNO, String mNO, Date pDate, String pEyeItem, String pNoseItem, String pFaceItem,
+			String pBodyItem, String pBreastItem, double price) {
 		super();
 		this.pNO = pNO;
+		this.mNO = mNO;
 		this.pDate = pDate;
 		this.pEyeItem = pEyeItem;
 		this.pNoseItem = pNoseItem;
@@ -38,6 +40,12 @@ public class Estimate {
 	}
 	public void setpNO(String pNO) {
 		this.pNO = pNO;
+	}
+	public String getmNO() {
+		return mNO;
+	}
+	public void setmNO(String mNO) {
+		this.mNO = mNO;
 	}
 	public Date getpDate() {
 		return pDate;

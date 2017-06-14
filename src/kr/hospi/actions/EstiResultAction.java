@@ -49,11 +49,11 @@ public class EstiResultAction extends Action {
 	
 			//pNO = (String) request.getAttribute("pNO");
 			
-		/*	Member mem =  (Member)request.getSession().getAttribute("user");
-			String mID=mem.getmID();*/
-			//String pNO=dao.selectpNO("hosp");
-			//System.out.println("pNOXXXX"+ pNO);
-			Estimate esti_result = dao.selectEstimate("PA00084");//pNO집어넣어야 함
+			Member mem =  (Member)request.getSession().getAttribute("user");
+			String mNO=mem.getmNO();
+			pNO=dao.selectpNO(mNO);
+			System.out.println("The confirmation of pNO  "+ pNO);
+			Estimate esti_result = dao.selectEstimate(pNO);//pNO집어넣어야 함
 			request.setAttribute("estimate", esti_result); //estimate 견적  창
 			
 			// EyeSurgery ptypeCode

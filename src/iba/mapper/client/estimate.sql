@@ -27,6 +27,13 @@ insert into estimate values
 
 select * from estimate where pNO='PA00001';
 select * from estimate;
+
+--pNO number Á¤º¸ output
+select pNO from estimate
+select * from estimate
+SELECT pNO FROM estimate WHERE pNO='PA'||LPAD(currval('patient_seq'),5,0)
+SELECT patient_seq.currval from dual
+
 select pbreastitem, length(pbreastitem) from estimate;
 
 update estimate set pbreastitem=rtrim(pbreastitem);

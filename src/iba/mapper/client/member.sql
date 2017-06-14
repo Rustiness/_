@@ -49,6 +49,10 @@ VALUES ('MA'||LPAD(mem_seq.nextval,5,0),'hosp2','qwer1234','2','서울초등학�
 INSERT INTO Member (mNO, mID, pass, qNO, answer, name, birth, sex, tel, email, pTypeNO, joinDate, state)
 VALUES ('MA'||LPAD(mem_seq.nextval,5,0),'chuchu','qwer1234','3','자전거','추사랑','1997-11-17','1','010-3456-5567','hosp@naver.com','1,2,3','2017-05-23','1');
 
+--Update pNO (mNO 통한 pNO update) 
+Update Member set pNO=#pNO#  where mNO=#mNO#
+
+
 -- 데이터 조회 (전체)
 SELECT * FROM Member
 

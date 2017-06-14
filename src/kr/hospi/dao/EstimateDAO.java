@@ -32,8 +32,8 @@ public class EstimateDAO {//
 	
 	public boolean insert(Estimate estimate) {//insert data
 		try {
-			sqlMap.insert("estimate.insertEstimate", estimate);
-			
+			String pNO=(String) sqlMap.insert("estimate.insertEstimate", estimate);
+			System.out.println("pNO" + pNO);
 			
 			return true;
 		} catch (SQLException e) {
@@ -55,6 +55,18 @@ public class EstimateDAO {//
 		}//try-catch
 		return false;
 	}//update
+	
+	public int updatepNO(String mNO){
+		try {
+			int pNO=sqlMap.update("member.updatepNO",mNO);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("fail to update pNO");
+		}
+		return 0;
+	}//updatemNO
+	
 	
 	public Estimate selectEstimate(String pNO ){
 		Estimate esti= null;

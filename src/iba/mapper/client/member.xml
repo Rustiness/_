@@ -18,6 +18,11 @@
 		update member set pass=#pass#,qNO=#qNO#,answer=#answer#,name=#name#,birth=#birth#,sex=#sex#,tel=#tel#,email=#email#,pTypeNO=#pTypeNO#
 		where mID=#mID#
 	</update>
+	
+	<!-- pNO 정보 업데이트  -->
+	<update id="updatepNO" parameterClass="String">
+		update member set pNO= #pNO# where mNO= #mNO#
+	</update>
 
 	<!-- ※특정행 삭제! -->
 	<delete id="delete" parameterClass="MemBeans2">

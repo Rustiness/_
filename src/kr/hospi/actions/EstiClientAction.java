@@ -94,7 +94,8 @@ public class EstiClientAction extends Action{//Controller: EstiClientAction
 		EstimateDAO dao = new EstimateDAO();
 		//estimate.setPrice(totalPrice);
 		Boolean insertCheck = dao.insert(estimate);
-		System.out.println("t="+insertCheck);
+		System.out.println("insertConfirmation="+insertCheck);
+		
 		//String pNO = ;pNO!=null
 		if(insertCheck){
 			//request.setAttribute("pNO", pNO);

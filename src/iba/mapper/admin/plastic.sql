@@ -119,6 +119,106 @@ insert into plasticItem values
 (plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '비절개눈매교정', 140 ,'1');
 insert into plasticItem values 
 (plasticItem_seq.nextval, 'EY', 'EY'||LPAD(eye_seq.nextval,4,0), '눈썹거상술', 120,'1');
+--nose plasticItem
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'NO', 'NO'||LPAD(nose_seq.nextval,4,0), '코높이기', 250,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'NO', 'NO'||LPAD(nose_seq.nextval,4,0), '코낮추기', 250,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'NO', 'NO'||LPAD(nose_seq.nextval,4,0), '코끝성형', 180,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'NO', 'NO'||LPAD(nose_seq.nextval,4,0), '콧등교정', 250,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'NO', 'NO'||LPAD(nose_seq.nextval,4,0), '휜코교정', 300,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'NO', 'NO'||LPAD(nose_seq.nextval,4,0), '매부리코교정', 300,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'NO', 'NO'||LPAD(nose_seq.nextval,4,0), '짧은코교정', 250,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'NO', 'NO'||LPAD(nose_seq.nextval,4,0), '콧망울축소', 100,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'NO', 'NO'||LPAD(nose_seq.nextval,4,0), '코재수술', 300,'1');
+--face plasticItem
+ 
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'FA', 'FA'||LPAD(face_seq.nextval,4,0), '사각턱교정', 450,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'FA', 'FA'||LPAD(face_seq.nextval,4,0), '광대뼈축소', 450,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'FA', 'FA'||LPAD(face_seq.nextval,4,0), '주걱턱교정', 1000,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'FA', 'FA'||LPAD(face_seq.nextval,4,0), '튀어나온입교정', 1000,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'FA', 'FA'||LPAD(face_seq.nextval,4,0), '무턱교정절골술', 450,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'FA', 'FA'||LPAD(face_seq.nextval,4,0), '무턱교정보형물', 300,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'FA', 'FA'||LPAD(face_seq.nextval,4,0), '이마성형', 400,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'FA', 'FA'||LPAD(face_seq.nextval,4,0), '귀족수술', 250,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'FA', 'FA'||LPAD(face_seq.nextval,4,0), '사각턱축소', 200,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'FA', 'FA'||LPAD(face_seq.nextval,4,0), 'v라인턱끝수술', 500,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'FA', 'FA'||LPAD(face_seq.nextval,4,0), '양악수술', 1500,'1');
+
+--body plasticItem
+
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BO', 'BO'||LPAD(body_seq.nextval,4,0), '유방확대_생리식염수백', 500,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BO', 'BO'||LPAD(body_seq.nextval,4,0), '유방확대_미세지방이식', 500,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BO', 'BO'||LPAD(body_seq.nextval,4,0), '유방확대_실리콘백', 750,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BO', 'BO'||LPAD(body_seq.nextval,4,0), '유방축소', 800,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BO', 'BO'||LPAD(body_seq.nextval,4,0), '함몰유두교정', 150,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BO', 'BO'||LPAD(body_seq.nextval,4,0), '처진유방교정', 500,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BO', 'BO'||LPAD(body_seq.nextval,4,0), '유방재건', 1000,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BO', 'BO'||LPAD(body_seq.nextval,4,0), '여성형유방교정', 300,'1');
+
+-- breast plasticItem
+
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '허벅지', 500,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '힙', 250,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '종아리', 250,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '종아리축소', 300,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '종아리신경차단술', 250,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '하복부', 200,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '상_하복부', 400,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '등', 200,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '팔', 250,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '얼굴', 100,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '종아리근육퇴축술', 300,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '복부성형술', 800,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '배꼽성형술', 150,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '엉덩이성형술', 800,'1');
+insert into plasticItem values 
+(plasticItem_seq.nextval, 'BR', 'BR'||LPAD(breast_seq.nextval,4,0), '어코니아레이저지방용해술', 25,'1');
+ 
+
+
+
+
 
 select * from plasticItem;
 

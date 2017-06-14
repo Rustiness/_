@@ -6,9 +6,11 @@
 	<typeAlias alias="estimatepdt" type="kr.hospi.beans.Estimate" />
 	<!-- 성형 견적 정보 입력 시작 -->
 	<insert id="insertEstimate" parameterClass="estimatepdt">
-		insert into estimate
-		values ('PA'||LPAD(patient_seq.nextval,5,0), SYSDATE, #pEyeItem#,
-		#pNoseItem#, #pFaceItem#, #pBodyItem#, #pBreastItem#,#price#)
+		<selectKey keyProperty="pNO" resultClass="String">
+			SELECT('PA'||LPAD(patient_seq.nextval,5,0) FROM DUAL
+		</selectKey>
+		insert into estimate (pNO, pDate, pEyeItem, pNoseItem, pFaceItem, pBodyItem, pBreastItem, price)
+		values #pNO#, SYSDATE, #pEyeItem#, #pNoseItem#, #pFaceItem#, #pBodyItem#, #pBreastItem#,#price#)
 	</insert>
 
 	<!-- 눈 성형시술 정보 입력 #PTypeNO#_seq.nextval -->
@@ -23,11 +25,15 @@
 	<!-- 성형과목별견적 전체 내용(num,성형타입번호, 성형타입명, 성형시술번호, 성형시술명, 성형시술가격) for 관리자 Page -->
 	<select id="selectType" resultClass="PlasticItem"
 		parameterClass="String">
-		select num, pTypeNO, pItemNO, pItemName, pItemValue, state from plasticItem
+		select num, pTypeNO, pItemNO, pItemName, pItemValue,
+		state from plasticItem
 		where pTypeNO= #pTypeNO#
 	</select>
+	<!-- select pNO 구하는 방법 through currval <select id="selectpNO" resultClass="String"> 
+		select pNO from estimate where pNO= </select> -->
 
-	<!-- 고객용 견적 결과 -->
+
+	<!-- 관리자용 견적 결과 -->
 	<select id="selectEstimate" parameterClass="String" resultClass="estimatepdt">
 		select * from estimate where pNO = #pNO#
 	</select>
@@ -38,8 +44,8 @@
 		select * from estimate
 	</select>
 	<!-- 관리자용 mid = pno -->
-	<select id="selectpNO" resultClass="String" parameterClass="String">
-	select pNO from  member where mID=#mID#
+	<select id="selectmID" resultClass="String" parameterClass="String">
+		select pNO from member where mID=#mID#
 	</select>
 
 	<!-- 페이징 -->
@@ -55,7 +61,8 @@
   ]]></select>
 
 	<select id="selectCount" resultClass="int">
-		select count(*) from estimate
+		select count(*) from
+		estimate
 	</select>
 
 	<!-- page를 나누어서 볼때 활용할 뷰 <select id="selectPage" resultClass="plasticItem" 
