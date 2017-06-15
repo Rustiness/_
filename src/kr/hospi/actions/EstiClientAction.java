@@ -2,7 +2,6 @@ package kr.hospi.actions;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.Session;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;

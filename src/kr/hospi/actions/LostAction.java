@@ -29,14 +29,16 @@ public class LostAction extends Action{
 		System.out.println("name :"+name+", email: "+email);
 		MemberDAO dao=new MemberDAO();
 		List<Member> list=dao.selectAll();
+		System.out.println("list="+list);
 		
-		for(int i=0;i<list.size();i++){
-			Member mem = list.get(i);
-			if(name.equals(mem.getName())&&email.equals(mem.getEmail())){
-				System.out.println("아이디가 존재!");
-				request.getSession().setAttribute("mID", mem.getmID());
-				forward = mapping.findForward("success");
-				return forward;
+		if(list!=null){
+			for(int i=0;i<list.size();i++){
+				Member mem = list.get(i);
+				if(name.equals(mem.getName())&&email.equals(mem.getEmail())){
+					request.getSession().setAttribute("mID", mem.getmID());
+					forward = mapping.findForward("success");
+					return forward;
+				}
 			}
 		}
 		forward = mapping.findForward("fail");

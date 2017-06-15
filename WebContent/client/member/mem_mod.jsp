@@ -286,7 +286,7 @@
 					@ <input name="email2" type="text" id="email2" value="" style="ime-mode: disabled" class="input_text_half" maxlength="20"/>
 					<%-- 선택창(select_email)에서 '직접입력'을 선택하면 email은 email1 + email2이 된다. --%>
 					<select name="select_email">
-						<option value="" selected>직접입력</option>
+						<option value="직접입력" selected>직접입력</option>
 						<option value="hanmail.net">hanmail.net</option>
 						<option value="naver.com">naver.com</option>
 						<option value="nate.com">nate.com</option>
