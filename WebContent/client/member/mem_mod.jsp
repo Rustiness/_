@@ -12,15 +12,49 @@
 		mem_mod.jsp
 		[회원정보수정]
 	--%>
-
+	
+	<script type="text/javascript">
+		
+	</script>
 </head>
 
 <%-- 회원정보수정 입력부 --%>
-<body>
+<body onload="init()">
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <%-- 함수를 정의하는 스크립트 --%>
 <script type="text/javascript">
+	
+	function init(){//초기화 함수
+		setQno();
+		setEmail();
+	}
+	
+	
+	function setQno(){
+		var f = document.join;//form을 f로 치환한다.
+		for(i=0; i<f.qNO.options.length; i++) {
+		    if(f.qNO.options[i].value == ${user.qNO}) {
+		    	f.qNO.options[i].selected=true;
+			}
+		}//질문 표시
+	}
+	
+	function setEmail(){
+		var f = document.join;//form을 f로 치환한다.
+		
+		var email=f.hiddenEmail.value;
+		var emailArr=email.split('@');
+		
+		for(i=0; i<f.select_email.options.length; i++) {
+		    if(f.select_email.options[i].value == emailArr[1]) {
+		    	f.select_email.options[i].selected=true;
+		    	break;
+			}
+		}//셀렉트 이메일 표시
+	}
+	
+
 	function validCheck() {//유효성검사
 
 		var f = document.join; //form을 f로 치환한다.
@@ -159,7 +193,7 @@
 				</td>
 				<td class="line">
 					<%-- 비밀번호(pass) 입력 필드 --%>
-					<input name="pass" type="password" class="input_text_half" maxlength="20"/>
+					<input name="pass" type="password" class="input_text_half" maxlength="20" value="${user.pass }"/>
 					<span class="gray_font_11">비밀번호 항목은 4 ~ 20자 이내로 입력해 주세요</span>
 				</td>
 			</tr>
@@ -170,7 +204,7 @@
 				</td>
 				<td class="line">
 					<%-- 비밀번호 확인(pass_check) 필드 --%>
-					<input name="pass_check" type="password" id="join_user_passwd_check" class="input_text_half" maxlength="20"/>
+					<input name="pass_check" type="password" id="join_user_passwd_check" class="input_text_half" maxlength="20" value="${user.pass }"/>
 				</td>
 			</tr>
 
@@ -181,7 +215,7 @@
 				</td>
 				<td class="line"><!--비밀번호 찾기  질문항목들  -->
 					<select name="qNO">
-						<option value="1" selected>선택</option>
+						<option value="1">선택</option>
 						<option value="2">기억에 남는 추억의 장소는?</option>
 						<option value="3">자신의 인생 좌우명은?</option>
 						<option value="4">가장 기억에 남는 선생님 성함은?</option>
@@ -286,7 +320,7 @@
 					@ <input name="email2" type="text" id="email2" value="" style="ime-mode: disabled" class="input_text_half" maxlength="20"/>
 					<%-- 선택창(select_email)에서 '직접입력'을 선택하면 email은 email1 + email2이 된다. --%>
 					<select name="select_email">
-						<option value="직접입력" selected>직접입력</option>
+						<option value="직접입력">직접입력</option>
 						<option value="hanmail.net">hanmail.net</option>
 						<option value="naver.com">naver.com</option>
 						<option value="nate.com">nate.com</option>
@@ -307,6 +341,7 @@
 						<option value="yahoo.com">yahoo.com</option>
 						<option value="yahoo.co.kr">yahoo.co.kr</option>
 					</select>
+					<input name="hiddenEmail" type="hidden" value="${user.email}">
 					<%-- 이메일 중복체크와 수신동의(작업 중) --%>
 				</td>
 			</tr>
@@ -316,7 +351,7 @@
 				<td>관심사</td>
 				<td class="line">
 					<%-- 관심사(pTypeNO)를 선택하는 체크박스 --%>
-					<input type="checkbox" name="pTypeNO" value="눈" checked>눈
+					<input type="checkbox" name="pTypeNO" value="눈">눈
 					<input type="checkbox" name="pTypeNO" value="코">코
 				</td>
 			</tr>
