@@ -120,7 +120,8 @@
 				
 				
 				if(email2.text(f.email2.value)){
-				f.submit();//<form>태그내의 action속성의 URL로 폼데이터 전송!!
+					f.select_email.value=f.email2.value;
+					f.submit();//<form>태그내의 action속성의 URL로 폼데이터 전송!!
 				}else{
 					alert('메일 두번째칸 형식오류!!')
 				}
