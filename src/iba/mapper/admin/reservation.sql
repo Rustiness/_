@@ -12,6 +12,12 @@ create table reservation(
 	FOREIGN KEY (pTypeNO) REFERENCES plasticType(pTypeNO)
 );
 
-update reservation set rState='¿¹¾à´ë±â';
+create sequence reservation_rNOseq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;
+
+update reservation set rState='ì˜ˆì•½ëŒ€ê¸°';
 select rNO, rDate, rState from RESERVATION order by rDate;
 delete reservation where rNO='RA00009';
