@@ -68,8 +68,7 @@
 
 				<tr>
 					<td>내용</td>
-					<td colspan="9">${choice.cContent }<br> 
-							</td>
+					<td colspan="9">${choice.cContent }<br> </td> 
 				</tr>
 
 				<tr>
@@ -91,7 +90,7 @@
 			<a href="coun_mod.do"><input type="button" value="수정"></a> 
 			<input type="button" value="삭제" onclick="remove()">
 
-			<a href=coun.do><input type="button" value="목록"
+			<a href="coun.do"><input type="button" value="목록"
 				style="float: right; margin-right: 380px;"> </a>
 		</div>
 	</form>

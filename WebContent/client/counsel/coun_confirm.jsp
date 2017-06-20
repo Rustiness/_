@@ -3,13 +3,13 @@
 
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
-<c:if test="${user==null}">
+<%-- <c:if test="${user==null}">
 	<script>
 		alert("로그인 후 이용가능합니다.");
 		location.href='login.do';
 	</script>
 </c:if>
-<c:if test="${user!=null}">
+<c:if test="${user!=null}"> --%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
  function validcheck(){
@@ -38,7 +38,7 @@
 </script>
 <h3>온라인 상담등록</h3>
 <hr>
-<form action="coun.do?action=select"  method="POST" name="form">
+<form action="coun.do"  method="POST" name="form">
 	<input type="hidden" name="action" value="insert"/>
 <table border="1" cellpadding="5">
   <tr>
@@ -57,7 +57,7 @@
                         
   <tr>
    <td>작성자</td>
-   <td><input type="text" size="10" name="mNO"></td>
+   <td><input type="text" size="10" name="mNO" value="${user.mNO }" readonly="readonly"></td>
   </tr>
   
    <tr>
@@ -92,4 +92,4 @@
 <input type="reset" value="초기화">
 <a href="coun.do"><input type="button" value="나가기"/></a>
 </form>
-</c:if>
+<%-- </c:if> --%>

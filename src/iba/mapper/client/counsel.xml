@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <sqlMap namespace="counsel">
   <!-- 등록폼에서 값 입력 후 등록하는 sql -->
@@ -24,6 +25,7 @@
     UPDATE COUNSEL 
     SET
     	cCOUNT = #cCount# + 1
+
     WHERE CNO = #cNO#
   </update>
   
@@ -45,6 +47,11 @@
      select cNO,pTypeNO,mNO,cTitle,state,cContent,cCount,cDate from counsel
      where cNO=#cNO#
   </select>
+
+    <select id="selectmNO" resultClass="kr.hospi.beans.Counsel" parameterClass="String">
+     select mID,pass from member
+	 where mID=#mID#
+  </select>
   
   <select id="selectPage" resultClass="kr.hospi.beans.Counsel" parameterClass="java.util.Map"><![CDATA[
      select cNO,pTypeNO,mNO,cTitle,state,cCount
@@ -58,7 +65,8 @@
   ]]></select>
   
   <select id="selectCount" resultClass="int">
-   select count(*) from counsel
+   select count(*) from counsel 
+   where state != '3'
   </select>
   
 </sqlMap>

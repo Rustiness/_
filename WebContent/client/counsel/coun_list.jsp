@@ -90,7 +90,9 @@
 	 <!-- ================================페이징 코드 시작 ============================================== --> 
     <!-- switch == choose , when == case, otherwise == default 이렇게 같다고 생각하면 됨. -->
     <c:forEach begin="${startPage }" end="${endPage }" var="i"> <!-- totalPage = 전체 리스트 행의 갯수 / 한 페이지에 보여질 행의 갯수  == 32;-->
-      [<a href="coun.do?page=${i}" >${i }</a>] <!-- [1] 누르면 1페이지로 이동하고 [2] 누르면 2페이지로 이동 이런식으로 쭉~ -->
+      <c:if test="${i<=totalPage }"> <!--  -->
+      	[<a href="coun.do?page=${i}" >${i }</a>] <!-- [1] 누르면 1페이지로 이동하고 [2] 누르면 2페이지로 이동 이런식으로 쭉~ -->
+      </c:if>
     </c:forEach>
     
     <br>

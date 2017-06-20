@@ -14,12 +14,13 @@ import org.apache.struts.action.ActionMapping;
 import kr.hospi.beans.Counsel;
 import kr.hospi.beans.Member;
 import kr.hospi.dao.CounselDAO;
+import kr.hospi.dao.MemberDAO;
 
 public class CounAction extends Action {
-
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
 		/*  private String cNO;//상담건에 대한 식별번호
 		  private String mID;//회원아이디
 		  private String pTypeNO;//회원이 선택한 관심분야
@@ -58,6 +59,7 @@ public class CounAction extends Action {
 			  System.out.println("2");
 			  
 			  int startPage = (page - (page-1)%5);
+			  System.out.println("page: "+page);
 			  int endPage = startPage + 4;
 			  int recordCount = 5; // 한 페이지에 보여질 리스트 행의 갯수
 			  int totalRecord= dao.selectCount(); // 전체 리스트 행의 갯수 , 현재 DB에 저장되어있어서 불러올때 나올 selectAll 갯수 같은 개념.
@@ -70,8 +72,7 @@ public class CounAction extends Action {
 			  List<Counsel> pagelist = dao.selectPage(page,recordCount); //page= 1, recordCount(한페이지 행갯수)=5
 			  
 			  System.out.println("3");
-			  
-			  
+			  System.out.println("---------------------------------------------------------------");
 			  session.setAttribute("startPage", startPage);	
 			  session.setAttribute("endPage", endPage);	
 			  session.setAttribute("list", pagelist);	
@@ -88,17 +89,33 @@ public class CounAction extends Action {
 			//String mID_check=bean.getmID();
 			//String mID = (Member)request.getSession().getAttribute("user").getmNO();
 			//if(mID=mID_check){
-			//	게시글열림
-				
-			//조회수 증가전 bean
-				Counsel bean = dao.select(request.getParameter("cNO"));	
-				dao.hitUpdate(bean);//조회수 증가
-				
-				//조회수 증가후 bean
-				Counsel bean2 = dao.select(request.getParameter("cNO"));	
-				
-				session.setAttribute("choice",bean2);
+			//	게시글열림		   
+			String cNO =  request.getParameter("cNO");
+			System.out.println("select cNO 첫번째 :"+cNO);
 			
+			Counsel bean = dao.select(cNO);	
+			String mNO = request.getParameter("mNO");
+			System.out.println("++++++++++++++++++++++++++++++"+bean.getmNO());
+			if(bean.getmNO() != mNO){
+				System.out.println("메롱 다르지롱");
+			}else{
+				System.out.println("오 ㅆㅂ 마즘@!");
+			}
+			
+			
+			if(session.isNew()|| !cNO.equals(session.getAttribute("cNO"))){
+				System.out.println("isNew 후");
+				session.setAttribute("cNO",bean.getcNO());
+				dao.hitUpdate(bean);//조회수 증가
+			}
+			//조회수 증가전 bean
+				System.out.println("cNO : "+cNO);
+				System.out.println("isNew 전");
+
+		//조회수 증가후 bean
+				bean = dao.select(cNO);	
+				session.setAttribute("choice",bean);
+		
 		}else if(action.equals("writer")){
 			String search_name = request.getParameter("word");//검색
 		//	System.out.println(search_name);
@@ -136,7 +153,8 @@ public class CounAction extends Action {
 				  List<Counsel> pagelist = dao.selectPage(page,recordCount); //page= 1, recordCount(한페이지 행갯수)=5
 				  
 				  System.out.println("3");
-				  
+				  System.out.println("==============================================================");
+
 				  
 				  session.setAttribute("startPage", startPage);	
 				  session.setAttribute("endPage", endPage);	
@@ -152,22 +170,25 @@ public class CounAction extends Action {
 				
 			
 		}else if(action.equals("insert")){
+			
 			Counsel bean = new Counsel();
 			
+			String mNO = request.getParameter("mNO");
+			System.out.println("mNO============================= :"+mNO);
 			bean.setpTypeNO(request.getParameter("pTypeNO"));
-System.out.println("red");
-			Member mem = (Member)request.getSession().getAttribute("user");
-			//String mNO = mem.getmNO();
-			//bean.setmNO(mNO);
+			/*Member mem = (Member)request.getSession().getAttribute("user");
+			String mNO = mem.getmNO();*/
+			bean.setmNO(mNO);
 			bean.setcTitle(request.getParameter("cTitle"));
 			bean.setcContent(request.getParameter("cContent"));
 			bean.setState(request.getParameter("state"));
 			bean.setcCount(0);
 			
 			System.out.println("state: "+request.getParameter("state"));
-				
 			 
 			if (dao.insert(bean)){//dao에 bean값이 insert 됐다면
+				bean = dao.selectmNO(mNO);
+				
 		          List<Counsel> list2 = dao.selectAll();
 			
 			//list.add(bean);

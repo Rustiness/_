@@ -63,10 +63,22 @@ public class CounselDAO {
 		 Counsel bean=null;
 		try {
              bean = (Counsel) sqlMap.queryForObject("counsel.select",cNO);
+             System.out.println(bean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		 return bean;
+	   }//select
+	
+	   public Counsel selectmNO(String mNO){
+		   Counsel bean=null;
+		   try {
+			   bean = (Counsel) sqlMap.queryForObject("counsel.selectmNO",mNO);
+			   System.out.println(bean);
+		   } catch (SQLException e) {
+			   e.printStackTrace();
+		   }
+		   return bean;
 	   }//select
 	   
 	   public List<Counsel> selectAll(){//list에 출력할 데이터

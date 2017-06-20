@@ -46,7 +46,7 @@ VALUES ('CA'||LPAD(coun_seq.nextval,5,0),'MA00001','EY','2017-11-15','글 제목
 
 
 -- 데이터 조회 (전체)
-SELECT * FROM Counsel
+SELECT * FROM Counsel;
 
 -- 데이터 조회 (컬럼명 기입)
 SELECT cNO, mNO, pTypeNO, cDate, cTitle, cContent, cCount, imageURL, eDate, eNO, eComent, state FROM Counsel;
